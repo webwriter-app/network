@@ -40,7 +40,7 @@ import {
 import 'cytoscape-context-menus/cytoscape-context-menus.css';
 import { initNetwork } from './network-config';
 import { EventObject } from 'cytoscape';
-import { contextMenuTemplate } from './ui/ContextMenu';
+import { contextMenuTemplate, hasSimulationTableEntries } from './ui/ContextMenu';
 
 import '@shoelace-style/shoelace/dist/themes/light.css';
 
@@ -351,7 +351,8 @@ export class NetworkComponent extends LitElementWw {
 
             if (
                 this.mode === 'simulate' &&
-                (!this.selectedObject.isNode() || this.selectedObject.hasClass('net-node'))
+                (!this.selectedObject.isNode() || this.selectedObject.hasClass('net-node') ||
+                    !hasSimulationTableEntries(this.selectedObject))
             ) {
                 this.closeContextMenu();
                 return;
@@ -379,7 +380,10 @@ export class NetworkComponent extends LitElementWw {
             const firstControl = popup.querySelector<SlMenuItem | SlTab>('sl-menu-item, sl-tab');
             await firstControl?.updateComplete;
             if (menu && firstControl) menu.setCurrentItem(firstControl as SlMenuItem);
-            if (this.contextMenuAnchor === anchor) firstControl?.focus({ preventScroll: true });
+            if (this.contextMenuAnchor === anchor) {
+                const focusTarget = firstControl ?? popup.querySelector<HTMLElement>('.contextmenu--tables');
+                focusTarget?.focus({ preventScroll: true });
+            }
         });
 
         this._graph.on('tap', (_event: EventObject) => {

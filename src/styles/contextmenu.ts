@@ -51,6 +51,23 @@ export const contextMenuStyles = css`
 
     .contextmenu--tables {
         padding: var(--sl-spacing-small);
+        overflow: auto;
+        background: var(--sl-panel-background-color, white);
+        border: solid 1px var(--sl-panel-border-color, #e4e4e7);
+        border-radius: var(--sl-border-radius-medium, 0.375rem);
+    }
+
+    .contextmenu--tables table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .contextmenu--tables th,
+    .contextmenu--tables td {
+        padding: var(--sl-spacing-x-small) var(--sl-spacing-small);
+        text-align: start;
+        white-space: nowrap;
+        border-bottom: solid 1px var(--sl-panel-border-color, #e4e4e7);
     }
 
     .contextmenu sl-divider {

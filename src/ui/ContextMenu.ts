@@ -17,10 +17,18 @@ import { biAlphabet, biDiagram3, biEthernet, biPCICardNetwork, biPencil, biPlusS
 import { EdgeController } from '../event-handlers/edge-controller';
 
 import { styleMap } from 'lit/directives/style-map.js';
+import { keyed } from 'lit/directives/keyed.js';
 import { GraphEdge } from '../components/GraphEdge';
 import { AlertHelper } from '../utils/AlertHelper';
 import { AddressingHelper } from '../utils/AdressingHelper';
 import { msg } from '@lit/localize';
+
+export function hasSimulationTableEntries(node: { data(name: string): unknown }): boolean {
+    return ['arpTableIpMac', 'routingTable', 'macAddressTable'].some((name) => {
+        const table = node.data(name);
+        return table instanceof Map && table.size > 0;
+    });
+}
 
 export function contextMenuTemplate(this: NetworkComponent): TemplateResult {
     if (!this.selectedObject) return html``;
@@ -31,7 +39,14 @@ export function contextMenuTemplate(this: NetworkComponent): TemplateResult {
             : 'node'
         : 'edge';
 
-    if (this.mode === 'simulate' && type !== 'node') return html``;
+    if (this.mode === 'simulate' && (type !== 'node' || !hasSimulationTableEntries(this.selectedObject))) return html``;
+
+    const anchorRect = this.contextMenuAnchor?.getBoundingClientRect();
+    const canvasRect = this._cy?.getBoundingClientRect();
+    const viewportHeight = this.ownerDocument.documentElement.clientHeight;
+    const spaceAbove = anchorRect && canvasRect ? anchorRect.top - Math.max(0, canvasRect.top) : 0;
+    const spaceBelow = anchorRect && canvasRect ? Math.min(viewportHeight, canvasRect.bottom) - anchorRect.bottom : 0;
+    const opensUpward = spaceAbove > spaceBelow;
 
     return html`
         ${this.mode === 'edit' ? html`
@@ -61,9 +76,10 @@ export function contextMenuTemplate(this: NetworkComponent): TemplateResult {
                 <sl-popup
                     id="contextMenu"
                     active
-                    placement="bottom-start"
+                    placement=${opensUpward ? 'top-start' : 'bottom-start'}
                     flip
-                    flip-fallback-placements="bottom-end top-start top-end"
+                    flip-fallback-placements=${opensUpward ? 'top-end bottom-start bottom-end' : 'bottom-end top-start top-end'}
+                    flip-fallback-strategy="initial"
                     flip-padding="4"
                     shift
                     shift-padding="4"
@@ -77,7 +93,9 @@ export function contextMenuTemplate(this: NetworkComponent): TemplateResult {
                     @wheel=${(e: Event) => e.stopPropagation()}
                 >
                     ${this.mode === 'simulate' ? html`
-                        <div class="contextmenu contextmenu--tables">${nodeRoutingTableTemplate.bind(this)()}</div>
+                        <div class="contextmenu contextmenu--tables" tabindex="-1" aria-label=${msg('Simulation tables')}>
+                            ${nodeRoutingTableTemplate.bind(this)()}
+                        </div>
                     ` : html`
                         <sl-menu class="contextmenu" @sl-select=${handleContextMenuSelect.bind(this)}>
                             ${contextMenuItemsTemplate.bind(this)(type)}
@@ -941,78 +959,53 @@ function isPortConnected(this: NetworkComponent, node: any, port: string): boole
 }
 
 function nodeRoutingTableTemplate(this: NetworkComponent): TemplateResult {
-    const node: any = this.selectedObject;
+    const node = this.selectedObject;
+    const arpTable: Map<string, string> | undefined = node.data('arpTableIpMac');
+    const routingTable: Map<string, { gateway: string }> | undefined = node.data('routingTable');
+    const macAddressTable: Map<string, number> | undefined = node.data('macAddressTable');
+    const tables: { name: string; label: string; columns: string[]; rows: (string | number)[][] }[] = [];
 
-    const routingTable = node.data('routingTable');
-    const arpTable = node.data('arpTableIpMac');
-    const macAddressTable = node.data('macAddressTable');
+    if (arpTable?.size) {
+        tables.push({
+            name: 'arp',
+            label: msg('ARP Table'),
+            columns: ['IP', 'MAC'],
+            rows: Array.from(arpTable.entries()),
+        });
+    }
+    if (routingTable?.size) {
+        tables.push({
+            name: 'routing',
+            label: msg('Routing Table'),
+            columns: [msg('Net'), msg('Gateway')],
+            rows: Array.from(routingTable, ([destination, route]) => [destination, route.gateway]),
+        });
+    }
+    if (macAddressTable?.size) {
+        tables.push({
+            name: 'mac',
+            label: msg('Mac Address Table'),
+            columns: ['MAC', msg('Port')],
+            rows: Array.from(macAddressTable.entries()),
+        });
+    }
 
-    console.log(node);
-    return html`
-            <sl-tab-group>
-                ${arpTable ? html`<sl-tab slot="nav" panel="arp">${msg('Arp Table')}</sl-tab>` : ''}
-                ${routingTable ? html`<sl-tab slot="nav" panel="routing">${msg('Routing Table')}</sl-tab>` : ''}
-                ${macAddressTable ? html`<sl-tab slot="nav" panel="mac">${msg('Mac Address Table')}</sl-tab>` : ''}
-                ${arpTable
-                    ? html`
-                          <sl-tab-panel name="arp">
-                              <table>
-                                  <tr>
-                                      <th>IP</th>
-                                      <th>MAC</th>
-                                  </tr>
-                                  ${Array.from(arpTable.entries()).map((entry: any) => {
-                                      return html`
-                                          <tr>
-                                              <td>${entry[0]}</td>
-                                              <td>${entry[1]}</td>
-                                          </tr>
-                                      `;
-                                  })}
-                              </table>
-                          </sl-tab-panel>
-                      `
-                    : html``}
-                ${routingTable
-                    ? html`
-                          <sl-tab-panel name="routing">
-                              <table>
-                                  <tr>
-                                      <th>${msg('Net')}</th>
-                                      <th>${msg('Gateway')}</th>
-                                  </tr>
-                                  ${Array.from(routingTable.entries()).map((entry: any) => {
-                                      return html`
-                                          <tr>
-                                              <td>${entry[0]}</td>
-                                              <td>${entry[1].gateway}</td>
-                                          </tr>
-                                      `;
-                                  })}
-                              </table>
-                          </sl-tab-panel>
-                      `
-                    : html``}
-                ${macAddressTable
-                    ? html`
-                          <sl-tab-panel name="mac">
-                              <table>
-                                  <tr>
-                                      <th>MAC</th>
-                                      <th>Port</th>
-                                  </tr>
-                                  ${Array.from(macAddressTable.entries()).map((entry: any) => {
-                                      return html`
-                                          <tr>
-                                              <td>${entry[0]}</td>
-                                              <td>${entry[1]}</td>
-                                          </tr>
-                                      `;
-                                  })}
-                              </table>
-                          </sl-tab-panel>
-                      `
-                    : html``}
-            </sl-tab-group>
-    `;
+    // A different node can expose different tabs. Recreate the group so its first tab is selected.
+    return html`${keyed(node.id(), html`
+        <sl-tab-group>
+            ${tables.map((table) => html`<sl-tab slot="nav" panel=${table.name}>${table.label}</sl-tab>`)}
+            ${tables.map((table) => html`
+                <sl-tab-panel name=${table.name}>
+                        <table aria-label=${table.label}>
+                            <thead>
+                                <tr>${table.columns.map((column) => html`<th scope="col">${column}</th>`)}</tr>
+                            </thead>
+                            <tbody>
+                                ${table.rows.map((row) => html`<tr>${row.map((value) => html`<td>${value}</td>`)}</tr>`)}
+                            </tbody>
+                        </table>
+                </sl-tab-panel>
+            `)}
+        </sl-tab-group>
+    `)}`;
 }
