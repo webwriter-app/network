@@ -1,6 +1,13 @@
 import { css } from 'lit';
 
 export const networkStyles = css`
+    :host {
+        overflow: hidden;
+    }
+    :host(:not(:fullscreen):not(.ww-fullscreen)) {
+        border: 1px solid var(--sl-color-neutral-300, #d4d4d8);
+        border-radius: var(--sl-border-radius-medium, 0.375rem);
+    }
     .main-container {
         container-type: inline-size;
         height: 100%;
@@ -33,7 +40,6 @@ export const networkStyles = css`
     #myCanvas {
         position: relative;
         width: 100%;
-        border: 1px solid #adadad;
         background-color: white;
     }
     #cy {
