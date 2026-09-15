@@ -2,6 +2,8 @@ import { css } from 'lit';
 
 export const networkStyles = css`
     :host {
+        display: block;
+        box-sizing: border-box;
         overflow: hidden;
     }
     :host(:not(:fullscreen):not(.ww-fullscreen)) {
