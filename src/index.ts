@@ -441,7 +441,7 @@ export class NetworkComponent extends LitElementWw {
     public render(): TemplateResult {
         return html`
             ${this.isEditable() ? this.asideTemplate() : null}
-            <div class="canvas" id="myCanvas" style="${styleMap({height: this.isFullscreen ? "100%" : "400px"})}">
+            <div class="canvas" id="myCanvas" style="${styleMap({height: this.isFullscreen ? "100%" : "500px"})}">
                 <div class="modeSwitch">
                     <sl-select
                         value=${this.mode}
