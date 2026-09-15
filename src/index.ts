@@ -73,6 +73,17 @@ import LOCALIZE from "../localization/generated";
 import { localized, msg } from '@lit/localize';
 
 /**
+ * @internal
+ * True when a Cytoscape event came from touch input rather than mouse or pen, so that
+ * long-press handling stays exclusive to touch devices.
+ */
+function isTouchInput(originalEvent: Event | undefined): boolean {
+    if (!originalEvent) return false;
+    if (typeof TouchEvent !== 'undefined' && originalEvent instanceof TouchEvent) return true;
+    return (originalEvent as PointerEvent).pointerType === 'touch';
+}
+
+/**
  * @summary Visualization of network topologies. Can represent different kinds of networks.
  *
  * @tag ww-network
@@ -204,6 +215,13 @@ export class NetworkComponent extends LitElementWw {
 
     /**
      * @internal
+     * Set while a long press has just opened the context menu, so the `tap` emitted when the
+     * finger lifts does not immediately close it again.
+     */
+    private suppressNextTapClose = false;
+
+    /**
+     * @internal
      * Edge endpoint metadata captured from the selected edge. Used by the context menu to
      * display and adjust connection type and port numbers.
      */
@@ -315,78 +333,26 @@ export class NetworkComponent extends LitElementWw {
         super.firstUpdated(_changedProperties);
         initNetwork(this);
 
-        this._graph.on('cxttap', async (event: EventObject) => {
+        this._graph.on('cxttap', (event: EventObject) => {
             event.preventDefault();
+            void this.openContextMenuFor(event);
+        });
 
-            if (event.target === this._graph) {
-                this.closeContextMenu();
-                return;
-            }
+        this._graph.on('taphold', (event: EventObject) => {
+            if (!isTouchInput(event.originalEvent)) return;
+            this.suppressNextTapClose = true;
+            void this.openContextMenuFor(event);
+        });
 
-            this.closeConfigDrawers();
-            this.selectedObject = event.target;
-
-            if (!this.selectedObject.isNode()) {
-                const edge = this.selectedObject.data();
-
-                this.selectedPorts = {
-                    source: { connectionType: null, port: 0 },
-                    target: { connectionType: null, port: 0 },
-                };
-
-                if (edge.inPort != undefined && edge.inPort != null && !Number.isNaN(edge.inPort)) {
-                    this.selectedPorts.source.port = edge.inPort;
-                    this.selectedPorts.source.connectionType = edge.from.portData
-                        .get(edge.inPort)
-                        .get('Connection Type');
-                }
-
-                if (edge.outPort != undefined && edge.outPort != null && !Number.isNaN(edge.outPort)) {
-                    this.selectedPorts.target.port = edge.outPort;
-                    this.selectedPorts.target.connectionType = edge.to.portData
-                        .get(edge.outPort)
-                        .get('Connection Type');
-                }
-            }
-
-            if (
-                this.mode === 'simulate' &&
-                (!this.selectedObject.isNode() || this.selectedObject.hasClass('net-node') ||
-                    !hasSimulationTableEntries(this.selectedObject))
-            ) {
-                this.closeContextMenu();
-                return;
-            }
-
-            const { x, y } = event.renderedPosition;
-            const anchor: VirtualElement = {
-                contextElement: this._cy,
-                getBoundingClientRect: () => {
-                    const rect = this._cy.getBoundingClientRect();
-                    const scaleX = this._cy.clientWidth ? rect.width / this._cy.clientWidth : 1;
-                    const scaleY = this._cy.clientHeight ? rect.height / this._cy.clientHeight : 1;
-                    return new DOMRect(rect.left + x * scaleX, rect.top + y * scaleY, 0, 0);
-                },
-            };
-            this.contextMenuColorOpen = false;
-            this.contextMenuAnchor = anchor;
-            await this.updateComplete;
-            const popup = this.contextMenu;
-            await popup?.updateComplete;
-            if (this.contextMenuAnchor !== anchor || !popup) return;
-            popup.reposition();
-            const menu = popup.querySelector<SlMenu>('sl-menu');
-            await menu?.updateComplete;
-            const firstControl = popup.querySelector<SlMenuItem | SlTab>('sl-menu-item, sl-tab');
-            await firstControl?.updateComplete;
-            if (menu && firstControl) menu.setCurrentItem(firstControl as SlMenuItem);
-            if (this.contextMenuAnchor === anchor) {
-                const focusTarget = firstControl ?? popup.querySelector<HTMLElement>('.contextmenu--tables');
-                focusTarget?.focus({ preventScroll: true });
-            }
+        this._graph.on('tapstart', () => {
+            this.suppressNextTapClose = false;
         });
 
         this._graph.on('tap', (_event: EventObject) => {
+            if (this.suppressNextTapClose) {
+                this.suppressNextTapClose = false;
+                return;
+            }
             const t = this.selectedObject;
             this.selectedObject = null;
             this.selectedObject = t;
@@ -418,8 +384,84 @@ export class NetworkComponent extends LitElementWw {
         this.resizeObserver.observe(this);
     }
 
+    /**
+     * @internal
+     * Opens the context menu for the element targeted by a pointer event, anchoring it at the
+     * event position. Triggered by right-click / two-finger tap (`cxttap`) and long press (`taphold`).
+     */
+    private async openContextMenuFor(event: EventObject): Promise<void> {
+        if (event.target === this._graph) {
+            this.closeContextMenu();
+            return;
+        }
+
+        this.closeConfigDrawers();
+        this.selectedObject = event.target;
+
+        if (!this.selectedObject.isNode()) {
+            const edge = this.selectedObject.data();
+
+            this.selectedPorts = {
+                source: { connectionType: null, port: 0 },
+                target: { connectionType: null, port: 0 },
+            };
+
+            if (edge.inPort != undefined && edge.inPort != null && !Number.isNaN(edge.inPort)) {
+                this.selectedPorts.source.port = edge.inPort;
+                this.selectedPorts.source.connectionType = edge.from.portData
+                    .get(edge.inPort)
+                    .get('Connection Type');
+            }
+
+            if (edge.outPort != undefined && edge.outPort != null && !Number.isNaN(edge.outPort)) {
+                this.selectedPorts.target.port = edge.outPort;
+                this.selectedPorts.target.connectionType = edge.to.portData
+                    .get(edge.outPort)
+                    .get('Connection Type');
+            }
+        }
+
+        if (
+            this.mode === 'simulate' &&
+            (!this.selectedObject.isNode() || this.selectedObject.hasClass('net-node') ||
+                !hasSimulationTableEntries(this.selectedObject))
+        ) {
+            this.closeContextMenu();
+            return;
+        }
+
+        const { x, y } = event.renderedPosition;
+        const anchor: VirtualElement = {
+            contextElement: this._cy,
+            getBoundingClientRect: () => {
+                const rect = this._cy.getBoundingClientRect();
+                const scaleX = this._cy.clientWidth ? rect.width / this._cy.clientWidth : 1;
+                const scaleY = this._cy.clientHeight ? rect.height / this._cy.clientHeight : 1;
+                return new DOMRect(rect.left + x * scaleX, rect.top + y * scaleY, 0, 0);
+            },
+        };
+        this.contextMenuColorOpen = false;
+        this.contextMenuAnchor = anchor;
+        await this.updateComplete;
+        const popup = this.contextMenu;
+        await popup?.updateComplete;
+        if (this.contextMenuAnchor !== anchor || !popup) return;
+        popup.reposition();
+        const menu = popup.querySelector<SlMenu>('sl-menu');
+        await menu?.updateComplete;
+        const firstControl = popup.querySelector<SlMenuItem | SlTab>('sl-menu-item, sl-tab');
+        await firstControl?.updateComplete;
+        if (menu && firstControl) menu.setCurrentItem(firstControl as SlMenuItem);
+        if (this.contextMenuAnchor === anchor) {
+            const focusTarget = firstControl ?? popup.querySelector<HTMLElement>('.contextmenu--tables');
+            focusTarget?.focus({ preventScroll: true });
+        }
+    }
+
     /** @internal Closes the context menu, optionally returning keyboard focus to the canvas. */
     public closeContextMenu(restoreFocus = false): void {
+        // A long press that ends up closing instead of opening the menu must not swallow its tap.
+        this.suppressNextTapClose = false;
         this.contextMenuColorOpen = false;
         this.contextMenuAnchor = null;
         if (restoreFocus) this._cy?.focus({ preventScroll: true });
