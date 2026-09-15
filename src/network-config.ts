@@ -270,7 +270,7 @@ export function initNetwork(network: NetworkComponent): void {
         // pan: { x: 0, y: 0 },
         minZoom: 0.5,
         maxZoom: 5,
-        wheelSensitivity: 0.1,
+        wheelSensitivity: 5,
     });
 
     //options for context menu
