@@ -56,8 +56,10 @@ import SlOption from '@shoelace-style/shoelace/dist/components/option/option.com
 import SlDialog from '@shoelace-style/shoelace/dist/components/dialog/dialog.component.js';
 import SlDrawer from '@shoelace-style/shoelace/dist/components/drawer/drawer.component.js';
 import SlDivider from '@shoelace-style/shoelace/dist/components/divider/divider.component.js';
+import SlMenu from '@shoelace-style/shoelace/dist/components/menu/menu.component.js';
+import SlMenuItem from '@shoelace-style/shoelace/dist/components/menu-item/menu-item.component.js';
 import SlColorPicker from '@shoelace-style/shoelace/dist/components/color-picker/color-picker.component.js';
-import SlPopup from '@shoelace-style/shoelace/dist/components/popup/popup.component.js';
+import SlPopup, { type VirtualElement } from '@shoelace-style/shoelace/dist/components/popup/popup.component.js';
 import SlTabGroup from '@shoelace-style/shoelace/dist/components/tab-group/tab-group.component.js';
 import SlTab from '@shoelace-style/shoelace/dist/components/tab/tab.component.js';
 import SlTabPanel from '@shoelace-style/shoelace/dist/components/tab-panel/tab-panel.component.js';
@@ -188,9 +190,17 @@ export class NetworkComponent extends LitElementWw {
     @query('#toolboxButtons')
     accessor toolboxButtons!: HTMLElement;
 
-    /** @internal Custom context menu root in the shadow root. */
+    /** @internal Context menu popup in the shadow root. */
     @query('#contextMenu')
-    accessor contextMenu!: HTMLElement;
+    accessor contextMenu!: SlPopup | null;
+
+    /** @internal Virtual pointer anchor; null while the context menu is closed. */
+    @state()
+    accessor contextMenuAnchor: VirtualElement | null = null;
+
+    /** @internal Whether the context menu's color panel is open. */
+    @state()
+    accessor contextMenuColorOpen = false;
 
     /**
      * @internal
@@ -277,6 +287,8 @@ export class NetworkComponent extends LitElementWw {
             'sl-dialog': SlDialog,
             'sl-drawer': SlDrawer,
             'sl-divider': SlDivider,
+            'sl-menu': SlMenu,
+            'sl-menu-item': SlMenuItem,
             'sl-color-picker': SlColorPicker,
             'sl-popup': SlPopup,
             'sl-tab-group': SlTabGroup,
@@ -303,11 +315,11 @@ export class NetworkComponent extends LitElementWw {
         super.firstUpdated(_changedProperties);
         initNetwork(this);
 
-        this._graph.on('cxttap', (event: EventObject) => {
+        this._graph.on('cxttap', async (event: EventObject) => {
             event.preventDefault();
 
             if (event.target === this._graph) {
-                this.contextMenu.style.display = 'none';
+                this.closeContextMenu();
                 return;
             }
 
@@ -337,26 +349,54 @@ export class NetworkComponent extends LitElementWw {
                 }
             }
 
-            console.log(this.selectedObject.data());
+            if (
+                this.mode === 'simulate' &&
+                (!this.selectedObject.isNode() || this.selectedObject.hasClass('net-node'))
+            ) {
+                this.closeContextMenu();
+                return;
+            }
 
-            this.contextMenu.style.display = 'block';
-            this.contextMenu.style.left = event.renderedPosition.x + 'px';
-            this.contextMenu.style.top = event.renderedPosition.y + 'px';
+            const { x, y } = event.renderedPosition;
+            const anchor: VirtualElement = {
+                contextElement: this._cy,
+                getBoundingClientRect: () => {
+                    const rect = this._cy.getBoundingClientRect();
+                    const scaleX = this._cy.clientWidth ? rect.width / this._cy.clientWidth : 1;
+                    const scaleY = this._cy.clientHeight ? rect.height / this._cy.clientHeight : 1;
+                    return new DOMRect(rect.left + x * scaleX, rect.top + y * scaleY, 0, 0);
+                },
+            };
+            this.contextMenuColorOpen = false;
+            this.contextMenuAnchor = anchor;
+            await this.updateComplete;
+            const popup = this.contextMenu;
+            await popup?.updateComplete;
+            if (this.contextMenuAnchor !== anchor || !popup) return;
+            popup.reposition();
+            const menu = popup.querySelector<SlMenu>('sl-menu');
+            await menu?.updateComplete;
+            const firstControl = popup.querySelector<SlMenuItem | SlTab>('sl-menu-item, sl-tab');
+            await firstControl?.updateComplete;
+            if (menu && firstControl) menu.setCurrentItem(firstControl as SlMenuItem);
+            if (this.contextMenuAnchor === anchor) firstControl?.focus({ preventScroll: true });
         });
 
         this._graph.on('tap', (_event: EventObject) => {
             const t = this.selectedObject;
             this.selectedObject = null;
             this.selectedObject = t;
-            this.contextMenu.style.display = 'none';
+            this.closeContextMenu();
         });
 
         this._graph.on('drag', (_event: EventObject) => {
             const t = this.selectedObject;
             this.selectedObject = null;
             this.selectedObject = t;
-            this.contextMenu.style.display = 'none';
+            this.closeContextMenu();
         });
+
+        this._graph.on('pan zoom', () => this.closeContextMenu());
 
         load.bind(this)();
         setupListeners.bind(this)();
@@ -372,6 +412,13 @@ export class NetworkComponent extends LitElementWw {
             }
         });
         this.resizeObserver.observe(this);
+    }
+
+    /** @internal Closes the context menu, optionally returning keyboard focus to the canvas. */
+    public closeContextMenu(restoreFocus = false): void {
+        this.contextMenuColorOpen = false;
+        this.contextMenuAnchor = null;
+        if (restoreFocus) this._cy?.focus({ preventScroll: true });
     }
 
     /**
@@ -446,6 +493,7 @@ export class NetworkComponent extends LitElementWw {
                     <sl-select
                         value=${this.mode}
                         @sl-change=${(event: Event) => {
+                            this.closeContextMenu();
                             const mode = (event.target as HTMLSelectElement).value as 'edit' | 'simulate';
                             if (mode === 'edit') {
                                 const components = [...this.components];
@@ -478,7 +526,7 @@ export class NetworkComponent extends LitElementWw {
                     </sl-select>
                 </div>
 
-                <div id="cy"></div>
+                <div id="cy" tabindex="-1"></div>
                 ${this.toolboxTemplate()} ${contextMenuTemplate.bind(this)()} ${simulationMenuTemplate.bind(this)()}
                 
                 <sl-tooltip content=${this.isFullscreen ? msg("Exit Fullscreen") : msg("Fullscreen")}>

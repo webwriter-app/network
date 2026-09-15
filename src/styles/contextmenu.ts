@@ -1,28 +1,108 @@
 import { css } from 'lit';
 
 export const contextMenuStyles = css`
-    .contextmenu {
+    .contextmenu-backdrop {
         position: absolute;
-        display: flex;
-        flex-direction: column;
-
-        background-color: white;
-        outline: red solid 1px;
-
-        padding: var(--sl-spacing-small);
-
+        inset: 0;
         z-index: 1200;
     }
 
-    .contextmenu__header {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: var(--sl-spacing-small);
+    #contextMenu::part(popup) {
+        transform-origin: top left;
+        animation: network-context-menu-enter 120ms ease both;
     }
 
-    .contextmenu__title {
-        font-size: 1.2em;
+    #contextMenu[data-current-placement$='-end']::part(popup) {
+        transform-origin: top right;
+    }
+
+    #contextMenu[data-current-placement^='top']::part(popup) {
+        transform-origin: bottom left;
+    }
+
+    #contextMenu[data-current-placement^='top'][data-current-placement$='-end']::part(popup) {
+        transform-origin: bottom right;
+    }
+
+    @keyframes network-context-menu-enter {
+        from {
+            opacity: 0;
+            transform: scale(0.96);
+        }
+        to {
+            opacity: 1;
+            transform: none;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        #contextMenu::part(popup) {
+            animation: none;
+        }
+    }
+
+    .contextmenu {
+        box-sizing: border-box;
+        min-width: min(15rem, var(--auto-size-available-width, 15rem));
+        max-width: var(--auto-size-available-width, none);
+        max-height: var(--auto-size-available-height, none);
+        box-shadow: var(--sl-shadow-large, 0 4px 12px rgb(0 0 0 / 15%));
+    }
+
+    .contextmenu--tables {
+        padding: var(--sl-spacing-small);
+    }
+
+    .contextmenu sl-divider {
+        --spacing: var(--sl-spacing-x-small);
+    }
+
+    .contextmenu sl-menu-item::part(checked-icon) {
+        width: 1em;
+    }
+
+    .contextmenu sl-menu-item::part(submenu-icon) {
+        display: none;
+    }
+
+    .contextmenu sl-menu-item::part(base) {
+        align-items: center;
+        padding-inline-end: var(--sl-spacing-medium);
+    }
+
+    .contextmenu [slot='prefix'] > svg {
+        display: block;
+    }
+
+    .contextmenu__delete:not(:focus-visible)::part(base) {
+        color: var(--sl-color-danger-600);
+    }
+
+    .contextmenu__name,
+    .contextmenu__gateway {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .contextmenu__color-swatch {
+        display: block;
+        width: 1.75rem;
+        height: 1.25rem;
+        border-radius: var(--sl-border-radius-small, 0.25rem);
+        box-shadow: inset 0 0 0 1px rgb(0 0 0 / 20%);
+    }
+
+    .contextmenu__color-popup::part(popup) {
+        z-index: 1;
+    }
+
+    .contextmenu__color-panel {
+        max-width: var(--auto-size-available-width, none);
+        max-height: var(--auto-size-available-height, none);
+        overflow: auto;
+        border-radius: var(--sl-border-radius-medium, 0.375rem);
+        background: var(--sl-panel-background-color, white);
+        box-shadow: var(--sl-shadow-large, 0 4px 12px rgb(0 0 0 / 15%));
     }
 
     .configdrawer {
@@ -31,7 +111,6 @@ export const contextMenuStyles = css`
         --body-spacing: var(--sl-spacing-medium);
         --footer-spacing: var(--sl-spacing-small);
 
-        font-family: var(--sl-font-sans);
         font-size: var(--sl-font-size-small);
         color: var(--sl-color-neutral-900, #18181b);
     }

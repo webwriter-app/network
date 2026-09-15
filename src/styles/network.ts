@@ -150,7 +150,6 @@ export const networkStyles = css`
         padding-left: 1cqw !important;
         color: black !important;
         background-color: white !important;
-        font-family: --sl-font-sans !important;
         font-weight: normal !important;
         font-size: 0.8cqw !important;
         text-align: left !important;
@@ -221,12 +220,6 @@ export const networkStyles = css`
         padding-left: calc(var(--label-width) + var(--gap-width));
     }
 
-    /** SL-MENU-ITEM **/
-    sl-menu-item::part(base),
-    sl-menu-item::part(label) {
-        font-size: max(0.8cqw, 11px);
-    }
-
     /** SL-DETAILS **/
     #packet-sending-extension::part(content) {
         height: fit-content;
@@ -244,7 +237,6 @@ export const networkStyles = css`
         font-size: 14px;
         font-weight: 600;
         color: #f2f2f2;
-        font-family: sans-serif;
     }
     sl-details::part(header) {
         background-color: #8ba8cc;

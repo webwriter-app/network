@@ -2,8 +2,10 @@ import SlColorPicker from '@shoelace-style/shoelace/dist/components/color-picker
 import SlDrawer from '@shoelace-style/shoelace/dist/components/drawer/drawer.component.js';
 import SlInput from '@shoelace-style/shoelace/dist/components/input/input.component.js';
 import SlSelect from '@shoelace-style/shoelace/dist/components/select/select.component.js';
+import type SlMenuItem from '@shoelace-style/shoelace/dist/components/menu-item/menu-item.component.js';
+import type SlMenu from '@shoelace-style/shoelace/dist/components/menu/menu.component.js';
 import { SlChangeEvent } from '@shoelace-style/shoelace';
-import { html, TemplateResult } from 'lit';
+import { html, nothing, TemplateResult } from 'lit';
 import { NetworkComponent } from 'src';
 import { Ipv4Address } from '../adressing/Ipv4Address';
 import { Ipv6Address } from '../adressing/Ipv6Address';
@@ -11,7 +13,7 @@ import { MacAddress } from '../adressing/MacAddress';
 import { Net } from '../components/logicalNodes/Net';
 import { Router } from '../components/physicalNodes/Connector';
 import { GraphNodeFactory } from '../event-handlers/component-manipulation';
-import { biAlphabet, biEthernet, biPCICardNetwork, biPlusSquare, biTrash, biWifi } from '../styles/icons';
+import { biAlphabet, biDiagram3, biEthernet, biPCICardNetwork, biPencil, biPlusSquare, biRouter, biTrash, biWifi } from '../styles/icons';
 import { EdgeController } from '../event-handlers/edge-controller';
 
 import { styleMap } from 'lit/directives/style-map.js';
@@ -21,182 +23,249 @@ import { AddressingHelper } from '../utils/AdressingHelper';
 import { msg } from '@lit/localize';
 
 export function contextMenuTemplate(this: NetworkComponent): TemplateResult {
+    if (!this.selectedObject) return html``;
+
     const type = this.selectedObject?.isNode()
         ? this.selectedObject.data('cssClass').includes('net-node')
             ? 'network'
             : 'node'
         : 'edge';
 
-    if (this.mode === 'simulate' && type === 'node') return nodeRoutingTableTemplate.bind(this)();
-    if (this.mode === 'simulate')
-        return html`<div
-            id="contextMenu"
-            class="contextmenu"
-            @contextmenu=${(e: Event) => e.preventDefault()}
-            style="display:none"
-        ></div>`;
+    if (this.mode === 'simulate' && type !== 'node') return html``;
 
     return html`
-        ${type === 'network' ? networkConfigDrawerTemplate.bind(this)() : ''}
-        ${type === 'node' ? nodeConfigDrawerTemplate.bind(this)() : ''}
-        ${type === 'edge' ? edgeConfigDrawerTemplate.bind(this)() : ''}
+        ${this.mode === 'edit' ? html`
+            ${type === 'network' ? networkConfigDrawerTemplate.bind(this)() : nothing}
+            ${type === 'node' ? nodeConfigDrawerTemplate.bind(this)() : nothing}
+            ${type === 'edge' ? edgeConfigDrawerTemplate.bind(this)() : nothing}
+        ` : nothing}
 
-        <div id="contextMenu" class="contextmenu" @contextmenu=${(e: Event) => e.preventDefault()} style="display:none">
-            ${type === 'network' ? networkContextMenuTemplate.bind(this)() : ''}
-            ${type === 'node' ? nodeContextMenuTemplate.bind(this)() : ''}
-            ${type === 'edge' ? edgeContextMenuTemplate.bind(this)() : ''}
-        </div>
-    `;
-}
-
-function nodeContextMenuTemplate(this: NetworkComponent): TemplateResult {
-    return html`
-        <div class="contextmenu__header">
-            <sl-input
-                type="text"
-                placeholder="${msg('Name')}"
-                @sl-input=${(e: SlChangeEvent) => {
-                    this.selectedObject?.data('name', (e.target as HTMLInputElement).value);
+        ${this.contextMenuAnchor ? html`
+            <div
+                class="contextmenu-backdrop"
+                @pointerdown=${() => this.closeContextMenu()}
+                @wheel=${() => this.closeContextMenu()}
+                @contextmenu=${(e: Event) => e.preventDefault()}
+                @keydown=${(e: KeyboardEvent) => {
+                    if (e.key !== 'Escape' || e.defaultPrevented) return;
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if (this.contextMenuColorOpen) {
+                        this.contextMenuColorOpen = false;
+                        this.renderRoot.querySelector<SlMenuItem>('#contextMenuColor')?.focus();
+                    } else {
+                        this.closeContextMenu(true);
+                    }
                 }}
-                value=${this.selectedObject?.data('name')}
             >
-                <span slot="prefix">${biAlphabet}</span>
-            </sl-input>
-            <sl-button
-                class="contextmenu__delete"
-                circle
-                @click="${() => {
-                    GraphNodeFactory.removeNode(this.selectedObject, this);
-                    this.selectedObject.remove();
-                    this.contextMenu.style.display = 'none';
-                }}"
-                >${biTrash}</sl-button
-            >
-        </div>
-        <hr />
-        <sl-button
-            @click="${() => {
-                openConfigDrawer.bind(this)('#nodeConfigDrawer');
-            }}"
-            >${msg('Change Port Config')}</sl-button
-        >
-        <sl-color-picker
-            id="color-picker"
-            swatches=${this.colors.join('; ')}
-            @sl-change="${(e: SlChangeEvent) => {
-                const color = (e.target as SlColorPicker).value;
-                this.selectedObject?.data('color', color);
-            }}"
-            value=${this.selectedObject?.data('color')}
-        ></sl-color-picker>
-        ${this.selectedObject.data().constructor.name == '_Host' &&
-        this.selectedObject.isChild() &&
-        this.selectedObject.parent().data('gateways')?.size > 0
-            ? html`
-                  <sl-select
-                      label="${msg('Default Gateway')}"
-                      @sl-change=${(e: Event) => {
-                          const key = (e.target as HTMLSelectElement).value;
-                          const port = this.selectedObject.parent().data('gateways')?.get(key);
-                          this.selectedObject.data('defaultGateway', [key, port]);
-                      }}
-                      value=${this.selectedObject.data('defaultGateway')
-                          ? this.selectedObject.data('defaultGateway')[0]
-                          : ''}
-                  >
-                      ${Array.from(this.selectedObject.parent().data('gateways')?.keys()).map((key) => {
-                          return html`<sl-option value=${key as string}>${key}</sl-option>`;
-                      })}
-                  </sl-select>
-              `
-            : ''}
+                <sl-popup
+                    id="contextMenu"
+                    active
+                    placement="bottom-start"
+                    flip
+                    flip-fallback-placements="bottom-end top-start top-end"
+                    flip-padding="4"
+                    shift
+                    shift-padding="4"
+                    auto-size="both"
+                    auto-size-padding="4"
+                    .anchor=${this.contextMenuAnchor}
+                    .flipBoundary=${this._cy}
+                    .shiftBoundary=${this._cy}
+                    .autoSizeBoundary=${this._cy}
+                    @pointerdown=${(e: Event) => e.stopPropagation()}
+                    @wheel=${(e: Event) => e.stopPropagation()}
+                >
+                    ${this.mode === 'simulate' ? html`
+                        <div class="contextmenu contextmenu--tables">${nodeRoutingTableTemplate.bind(this)()}</div>
+                    ` : html`
+                        <sl-menu class="contextmenu" @sl-select=${handleContextMenuSelect.bind(this)}>
+                            ${contextMenuItemsTemplate.bind(this)(type)}
+                        </sl-menu>
+                        ${this.contextMenuColorOpen ? colorPanelTemplate.bind(this)() : nothing}
+                    `}
+                </sl-popup>
+            </div>
+        ` : nothing}
     `;
 }
 
-function edgeContextMenuTemplate(this: NetworkComponent): TemplateResult {
+function contextMenuItemsTemplate(this: NetworkComponent, type: 'node' | 'network' | 'edge'): TemplateResult {
+    const color = this.selectedObject.data('color') || '#ffffff';
     return html`
-        <div class="contextmenu__header">
-            <sl-button
-                class="contextmenu__delete"
-                circle
-                @click="${() => {
-                    EdgeController.removeConnection(this.selectedObject.data(), this._graph);
-                    this.selectedObject.remove();
-                    this.contextMenu.style.display = 'none';
-                }}"
-                >${biTrash}</sl-button
-            >
-        </div>
-        <hr />
-        <sl-button
-            @click="${() => {
-                openConfigDrawer.bind(this)('#edgeConfigDrawer');
-            }}"
-            >${msg('Define Interfaces')}</sl-button
-        >
-        <sl-color-picker
-            id="color-picker"
-            swatches=${this.colors.join('; ')}
-            @sl-change="${(e: SlChangeEvent) => {
-                const color = (e.target as SlColorPicker).value;
-                this.selectedObject?.data('color', color);
-            }}"
-            value=${this.selectedObject?.data('color')}
-        ></sl-color-picker>
+        ${type === 'node' ? html`
+            <sl-menu-item value="rename" aria-label=${msg('Name')}>
+                <span slot="prefix" aria-hidden="true">${biAlphabet}</span>
+                <sl-input
+                    class="contextmenu__name"
+                    size="small"
+                    aria-label=${msg('Name')}
+                    placeholder=${msg('Name')}
+                    .value=${this.selectedObject.data('name') ?? ''}
+                    @click=${stopMenuControlEvent}
+                    @mousedown=${stopMenuControlEvent}
+                    @mouseover=${stopMenuControlEvent}
+                    @focusin=${setCurrentMenuControl}
+                    @keydown=${(e: KeyboardEvent) => {
+                        if (e.key === 'Escape') return;
+                        e.stopPropagation();
+                        if (e.key === 'Enter') {
+                            e.preventDefault();
+                            (e.currentTarget as HTMLElement).closest<SlMenuItem>('sl-menu-item')?.focus();
+                        }
+                    }}
+                    @sl-input=${(e: Event) => {
+                        this.selectedObject.data('name', (e.target as SlInput).value);
+                    }}
+                ></sl-input>
+            </sl-menu-item>
+            <sl-divider></sl-divider>
+        ` : nothing}
+        <sl-menu-item value=${type + '-config'}>
+            <span slot="prefix" aria-hidden="true">${type === 'network' ? biDiagram3 : biEthernet}</span>
+            ${type === 'network' ? msg('Define Network') : type === 'node' ? msg('Change Port Config') : msg('Define Interfaces')}
+        </sl-menu-item>
+        <sl-menu-item id="contextMenuColor" value="color" aria-haspopup="dialog" aria-expanded=${this.contextMenuColorOpen}>
+            <span slot="prefix" aria-hidden="true">${biPencil}</span>
+            ${msg('Change color')}
+            <span
+                slot="suffix"
+                class="contextmenu__color-swatch"
+                style=${styleMap({ backgroundColor: color })}
+                title=${color}
+                aria-label=${color}
+            ></span>
+        </sl-menu-item>
+        ${gatewayMenuItemTemplate.bind(this)(type)}
+        <sl-divider></sl-divider>
+        <sl-menu-item value="delete" class="contextmenu__delete">
+            <span slot="prefix" aria-hidden="true">${biTrash}</span>
+            ${msg('Delete')}
+        </sl-menu-item>
     `;
 }
 
-function networkContextMenuTemplate(this: NetworkComponent): TemplateResult {
+function stopMenuControlEvent(e: Event): void {
+    e.stopPropagation();
+}
+
+function setCurrentMenuControl(e: FocusEvent): void {
+    const item = (e.currentTarget as HTMLElement).closest<SlMenuItem>('sl-menu-item');
+    if (item) item.closest<SlMenu>('sl-menu')?.setCurrentItem(item);
+}
+
+function gatewayMenuItemTemplate(this: NetworkComponent, type: 'node' | 'network' | 'edge'): TemplateResult {
+    const node = this.selectedObject;
+    const isHost = type === 'node' && node.hasClass('host-node') && node.isChild();
+    const gateways: Map<string, number> | undefined = type === 'network'
+        ? node.data('gateways')
+        : isHost ? node.parent().data('gateways') : undefined;
+    if (!gateways?.size) return html``;
+    const dataKey = type === 'network' ? 'currentDefaultGateway' : 'defaultGateway';
+
     return html`
-        <div class="contextmenu__header">
-            <sl-button
-                class="contextmenu__delete"
-                circle
-                @click="${() => {
-                    GraphNodeFactory.removeNode(this.selectedObject, this);
-                    this.selectedObject.remove();
-                    this.contextMenu.style.display = 'none';
-                }}"
-                >${biTrash}</sl-button
+        <sl-menu-item value="gateway" aria-label=${msg('Default Gateway')}>
+            <span slot="prefix" aria-hidden="true">${biRouter}</span>
+            <sl-select
+                class="contextmenu__gateway"
+                size="small"
+                hoist
+                aria-label=${msg('Default Gateway')}
+                placeholder=${msg('Default Gateway')}
+                .value=${node.data(dataKey)?.[0] ?? ''}
+                @click=${stopMenuControlEvent}
+                @mousedown=${stopMenuControlEvent}
+                @mouseover=${stopMenuControlEvent}
+                @focusin=${setCurrentMenuControl}
+                @keydown=${(e: KeyboardEvent) => {
+                    if (e.key !== 'Escape') e.stopPropagation();
+                }}
+                @sl-change=${(e: Event) => {
+                    const gateway = (e.target as SlSelect).value as string;
+                    node.data(dataKey, [gateway, gateways.get(gateway)]);
+                }}
             >
-        </div>
-        <hr />
-        <sl-button
-            @click="${() => {
-                openConfigDrawer.bind(this)('#networkConfigDrawer');
-            }}"
-            >${msg('Define Network')}</sl-button
+                ${Array.from(gateways.keys()).map((key) => html`<sl-option value=${key}>${key}</sl-option>`)}
+            </sl-select>
+        </sl-menu-item>
+    `;
+}
+
+async function handleContextMenuSelect(this: NetworkComponent, e: CustomEvent<{ item: SlMenuItem }>): Promise<void> {
+    if (e.target !== e.currentTarget) return;
+    const item = e.detail.item;
+    if (item.value === 'color') {
+        this.contextMenuColorOpen = !this.contextMenuColorOpen;
+        if (this.contextMenuColorOpen) {
+            await this.updateComplete;
+            const picker = this.renderRoot.querySelector<SlColorPicker>('#contextMenuColorPicker');
+            await picker?.updateComplete;
+            if (this.contextMenuColorOpen) picker?.focus({ preventScroll: true });
+        }
+        return;
+    }
+    this.contextMenuColorOpen = false;
+    switch (item.value) {
+        case 'rename':
+            item.querySelector<SlInput>('sl-input')?.focus();
+            break;
+        case 'gateway':
+            item.querySelector<SlSelect>('sl-select')?.show();
+            break;
+        case 'node-config':
+            openConfigDrawer.call(this, '#nodeConfigDrawer');
+            break;
+        case 'network-config':
+            openConfigDrawer.call(this, '#networkConfigDrawer');
+            break;
+        case 'edge-config':
+            openConfigDrawer.call(this, '#edgeConfigDrawer');
+            break;
+        case 'delete':
+            if (this.selectedObject.isNode()) {
+                GraphNodeFactory.removeNode(this.selectedObject, this);
+            } else {
+                EdgeController.removeConnection(this.selectedObject.data(), this._graph);
+            }
+            this.selectedObject.remove();
+            this.closeContextMenu(true);
+            break;
+    }
+}
+
+function colorPanelTemplate(this: NetworkComponent): TemplateResult {
+    return html`
+        <sl-popup
+            class="contextmenu__color-popup"
+            active
+            anchor="contextMenuColor"
+            placement="right-start"
+            distance="4"
+            flip
+            flip-fallback-placements="left-start bottom-start top-start"
+            flip-padding="4"
+            shift
+            shift-padding="4"
+            auto-size="both"
+            auto-size-padding="4"
+            .flipBoundary=${this._cy}
+            .shiftBoundary=${this._cy}
+            .autoSizeBoundary=${this._cy}
         >
-        <sl-color-picker
-            id="color-picker"
-            swatches=${this.colors.join('; ')}
-            @sl-change="${(e: SlChangeEvent) => {
-                const color = (e.target as SlColorPicker).value;
-                this.selectedObject?.data('color', color);
-            }}"
-            value=${this.selectedObject?.data('color')}
-        ></sl-color-picker>
-        ${this.selectedObject?.data('gateways')?.size > 1
-            ? html`
-                  ${msg('Default Gateway')}:
-                  <sl-select
-                      @sl-change=${(e: SlChangeEvent) => {
-                          const gateway = (e.target as SlSelect).value;
-                          const port = this.selectedObject?.data('gateways')?.get(gateway);
-                          this.selectedObject?.data('currentDefaultGateway', [gateway, port]);
-                      }}
-                      value=${this.selectedObject?.data('currentDefaultGateway')
-                          ? this.selectedObject?.data('currentDefaultGateway')[0]
-                          : ''}
-                  >
-                      ${Array.from(this.selectedObject?.data('gateways')?.keys()).map((key) => {
-                          return html`<sl-option value=${key as string}>${key}</sl-option>`;
-                      })}
-                  </sl-select>
-              `
-            : this.selectedObject?.data('gateways')?.size > 0
-            ? html` ${msg('Default Gateway')}: ${this.selectedObject?.data('currentDefaultGateway')} `
-            : ''}
+            <div class="contextmenu__color-panel" role="dialog" aria-label=${msg('Change color')}>
+                <sl-color-picker
+                    id="contextMenuColorPicker"
+                    inline
+                    label=${msg('Change color')}
+                    .swatches=${this.colors}
+                    .value=${this.selectedObject.data('color') || '#ffffff'}
+                    @sl-change=${(e: Event) => {
+                        this.selectedObject.data('color', (e.target as SlColorPicker).value);
+                        this.requestUpdate();
+                    }}
+                ></sl-color-picker>
+            </div>
+        </sl-popup>
     `;
 }
 
@@ -206,7 +275,7 @@ function handleDrawerKeydown(e: KeyboardEvent) {
 }
 
 function openConfigDrawer(this: NetworkComponent, selector: string) {
-    this.contextMenu.style.display = 'none';
+    this.closeContextMenu();
     (this.shadowRoot?.querySelector(selector) as SlDrawer | null)?.show();
 }
 
@@ -880,7 +949,6 @@ function nodeRoutingTableTemplate(this: NetworkComponent): TemplateResult {
 
     console.log(node);
     return html`
-        <div id="contextMenu" class="contextmenu" @contextmenu=${(e: Event) => e.preventDefault()} style="display:none">
             <sl-tab-group>
                 ${arpTable ? html`<sl-tab slot="nav" panel="arp">${msg('Arp Table')}</sl-tab>` : ''}
                 ${routingTable ? html`<sl-tab slot="nav" panel="routing">${msg('Routing Table')}</sl-tab>` : ''}
@@ -946,6 +1014,5 @@ function nodeRoutingTableTemplate(this: NetworkComponent): TemplateResult {
                       `
                     : html``}
             </sl-tab-group>
-        </div>
     `;
 }
