@@ -54,6 +54,8 @@ import SlAlert from '@shoelace-style/shoelace/dist/components/alert/alert.compon
 import SlSelect from '@shoelace-style/shoelace/dist/components/select/select.component.js';
 import SlOption from '@shoelace-style/shoelace/dist/components/option/option.component.js';
 import SlDialog from '@shoelace-style/shoelace/dist/components/dialog/dialog.component.js';
+import SlDrawer from '@shoelace-style/shoelace/dist/components/drawer/drawer.component.js';
+import SlDivider from '@shoelace-style/shoelace/dist/components/divider/divider.component.js';
 import SlColorPicker from '@shoelace-style/shoelace/dist/components/color-picker/color-picker.component.js';
 import SlPopup from '@shoelace-style/shoelace/dist/components/popup/popup.component.js';
 import SlTabGroup from '@shoelace-style/shoelace/dist/components/tab-group/tab-group.component.js';
@@ -273,6 +275,8 @@ export class NetworkComponent extends LitElementWw {
             'sl-select': SlSelect,
             'sl-option': SlOption,
             'sl-dialog': SlDialog,
+            'sl-drawer': SlDrawer,
+            'sl-divider': SlDivider,
             'sl-color-picker': SlColorPicker,
             'sl-popup': SlPopup,
             'sl-tab-group': SlTabGroup,
@@ -307,6 +311,7 @@ export class NetworkComponent extends LitElementWw {
                 return;
             }
 
+            this.closeConfigDrawers();
             this.selectedObject = event.target;
 
             if (!this.selectedObject.isNode()) {
@@ -367,6 +372,15 @@ export class NetworkComponent extends LitElementWw {
             }
         });
         this.resizeObserver.observe(this);
+    }
+
+    /**
+     * Closes every widget-contained configuration drawer.
+     * Called before a new context menu is opened so a drawer never shows stale content.
+     * @internal
+     */
+    public closeConfigDrawers(): void {
+        this.renderRoot.querySelectorAll('sl-drawer[open]').forEach((drawer) => (drawer as SlDrawer).hide());
     }
 
     /**

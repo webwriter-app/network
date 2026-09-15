@@ -1,5 +1,5 @@
 import SlColorPicker from '@shoelace-style/shoelace/dist/components/color-picker/color-picker.component.js';
-import SlDialog from '@shoelace-style/shoelace/dist/components/dialog/dialog.component.js';
+import SlDrawer from '@shoelace-style/shoelace/dist/components/drawer/drawer.component.js';
 import SlInput from '@shoelace-style/shoelace/dist/components/input/input.component.js';
 import SlSelect from '@shoelace-style/shoelace/dist/components/select/select.component.js';
 import { SlChangeEvent } from '@shoelace-style/shoelace';
@@ -11,7 +11,7 @@ import { MacAddress } from '../adressing/MacAddress';
 import { Net } from '../components/logicalNodes/Net';
 import { Router } from '../components/physicalNodes/Connector';
 import { GraphNodeFactory } from '../event-handlers/component-manipulation';
-import { biAlphabet, biDashSquare, biEthernet, biPCICardNetwork, biPlusSquare, biTrash, biWifi } from '../styles/icons';
+import { biAlphabet, biEthernet, biPCICardNetwork, biPlusSquare, biTrash, biWifi } from '../styles/icons';
 import { EdgeController } from '../event-handlers/edge-controller';
 
 import { styleMap } from 'lit/directives/style-map.js';
@@ -37,9 +37,9 @@ export function contextMenuTemplate(this: NetworkComponent): TemplateResult {
         ></div>`;
 
     return html`
-        ${type === 'network' ? networkContextDialogTemplate.bind(this)() : ''}
-        ${type === 'node' ? nodeContextDialogTemplate.bind(this)() : ''}
-        ${type === 'edge' ? edgeContextDialogTemplate.bind(this)() : ''}
+        ${type === 'network' ? networkConfigDrawerTemplate.bind(this)() : ''}
+        ${type === 'node' ? nodeConfigDrawerTemplate.bind(this)() : ''}
+        ${type === 'edge' ? edgeConfigDrawerTemplate.bind(this)() : ''}
 
         <div id="contextMenu" class="contextmenu" @contextmenu=${(e: Event) => e.preventDefault()} style="display:none">
             ${type === 'network' ? networkContextMenuTemplate.bind(this)() : ''}
@@ -76,7 +76,7 @@ function nodeContextMenuTemplate(this: NetworkComponent): TemplateResult {
         <hr />
         <sl-button
             @click="${() => {
-                (this.shadowRoot?.querySelector('#nodeContextDialog') as SlDialog).show();
+                openConfigDrawer.bind(this)('#nodeConfigDrawer');
             }}"
             >${msg('Change Port Config')}</sl-button
         >
@@ -130,7 +130,7 @@ function edgeContextMenuTemplate(this: NetworkComponent): TemplateResult {
         <hr />
         <sl-button
             @click="${() => {
-                (this.shadowRoot?.querySelector('#edgeContextDialog') as SlDialog).show();
+                openConfigDrawer.bind(this)('#edgeConfigDrawer');
             }}"
             >${msg('Define Interfaces')}</sl-button
         >
@@ -163,7 +163,7 @@ function networkContextMenuTemplate(this: NetworkComponent): TemplateResult {
         <hr />
         <sl-button
             @click="${() => {
-                (this.shadowRoot?.querySelector('#networkContextDialog') as SlDialog).show();
+                openConfigDrawer.bind(this)('#networkConfigDrawer');
             }}"
             >${msg('Define Network')}</sl-button
         >
@@ -200,114 +200,153 @@ function networkContextMenuTemplate(this: NetworkComponent): TemplateResult {
     `;
 }
 
-function nodeContextDialogTemplate(this: NetworkComponent) {
+function handleDrawerKeydown(e: KeyboardEvent) {
+    if (e.key !== 'Escape') return;
+    (e.currentTarget as SlDrawer).hide();
+}
+
+function openConfigDrawer(this: NetworkComponent, selector: string) {
+    this.contextMenu.style.display = 'none';
+    (this.shadowRoot?.querySelector(selector) as SlDrawer | null)?.show();
+}
+
+function nodeConfigDrawerTemplate(this: NetworkComponent) {
     const node: any = this.selectedObject;
     const ports: Map<string, Map<string, any>> = node?.data('portData');
-    const columns = ports?.size > 0 ? Array.from(Array.from(ports?.values())[0].keys()) : [];
+    const entries = ports ? Array.from(ports.entries()) : [];
 
     return html`
-        <sl-dialog
-            id="nodeContextDialog"
-            label=${msg('Details of the ports ') + node?.data('name')}
-            @sl-hide=${() => this.requestUpdate()}
+        <sl-drawer
+            id="nodeConfigDrawer"
+            class="configdrawer"
+            contained
+            placement="end"
+            @keydown=${handleDrawerKeydown}
+            label=${msg('Ports of ') + (node?.data('name') ?? '')}
+            @sl-after-hide=${() => this.requestUpdate()}
         >
-            ${ports?.size > 0
+            ${entries.length > 0
                 ? html`
-                      <table>
-                          <tr>
-                              <th>Index</th>
-                              ${columns.includes('Name') ? html`<th>${msg('Name')}</th>` : ''}
-                              ${columns.includes('Connection Type') ? html`<th>${msg('Connection Type')}</th>` : ''}
-                              ${columns.includes('MAC') ? html`<th>MAC</th>` : ''}
-                              ${columns.includes('IPv4') ? html`<th>IPv4</th>` : ''}
-                              ${columns.includes('IPv6') ? html`<th>IPv6</th>` : ''}
-                              <th></th>
-                          </tr>
-                          ${Array.from(ports?.entries()).map((port, index) => {
+                      <div class="configdrawer__stack">
+                          ${entries.map(([index, port], position) => {
+                              const connected = isPortConnected.bind(this)(node, index);
+
                               return html`
-                                  <tr>
-                                      <td>${index}</td>
-                                      ${columns.includes('Name')
-                                          ? html`<td>
-                                                <sl-input
-                                                    value=${port[1].get('Name')}
+                                  ${position > 0
+                                      ? html`<sl-divider class="portcard__separator"></sl-divider>`
+                                      : ''}
+                                  <sl-details class="portcard" ?open=${position === 0}>
+                                      <div class="portcard__summary" slot="summary">
+                                          <span class="portcard__index">${position + 1}</span>
+                                          <span class="portcard__title"
+                                              >${port.get('Name') || msg('Port') + ' ' + (position + 1)}</span
+                                          >
+                                          <sl-button
+                                              class="portcard__remove"
+                                              size="small"
+                                              circle
+                                              title=${msg('Remove Port')}
+                                              @keydown=${(e: KeyboardEvent) => e.stopPropagation()}
+                                              @click=${(e: MouseEvent) => {
+                                                  e.stopPropagation();
+                                                  removePort.bind(this)(node, index);
+                                              }}
+                                              >${biTrash}</sl-button
+                                          >
+                                      </div>
+
+                                      <div class="configdrawer__fields">
+                                          ${port.has('Name')
+                                              ? html`<sl-input
+                                                    size="small"
+                                                    label=${msg('Name')}
+                                                    placeholder=${msg('Name')}
+                                                    spellcheck="false"
+                                                    value=${port.get('Name') ?? ''}
                                                     @sl-input=${(e: SlChangeEvent) => {
                                                         const v = (e.target as SlInput).value;
                                                         const portData = node.data('portData');
-                                                        portData.get(port[0]).set('Name', v);
+                                                        portData.get(index).set('Name', v);
                                                         node.data('portData', portData);
                                                     }}
-                                                ></sl-input>
-                                            </td>`
-                                          : ''}
-                                      ${columns.includes('Connection Type')
-                                          ? html`<td>
-                                                <sl-select
+                                                ></sl-input>`
+                                              : ''}
+                                          ${port.has('Connection Type')
+                                              ? html`<sl-select
+                                                    size="small"
+                                                    hoist
+                                                    label=${msg('Connection Type')}
+                                                    help-text=${connected
+                                                        ? msg('Disconnect the port to change its type.')
+                                                        : ''}
+                                                    value=${port.get('Connection Type')}
+                                                    ?disabled=${connected}
                                                     @sl-change=${handlePortTypeChangeGenerator
-                                                        .bind(this)(port[0])
+                                                        .bind(this)(index)
                                                         .bind(this)}
-                                                    value=${port[1].get('Connection Type')}
-                                                    ?disabled=${isPortConnected.bind(this)(node, port[0])}
                                                 >
+                                                    <span slot="prefix"
+                                                        >${port.get('Connection Type') === 'wireless'
+                                                            ? biWifi
+                                                            : biEthernet}</span
+                                                    >
                                                     <sl-option value="ethernet">${msg('Ethernet')}</sl-option>
                                                     <sl-option value="wireless">${msg('Wireless')}</sl-option>
-                                                </sl-select>
-                                            </td>`
-                                          : ''}
-                                      ${columns.includes('MAC')
-                                          ? html`<td>
-                                                <sl-input
-                                                    value=${port[1].get('MAC')?.address}
+                                                </sl-select>`
+                                              : ''}
+                                          ${port.has('MAC')
+                                              ? html`<sl-input
+                                                    size="small"
+                                                    label="MAC"
+                                                    placeholder="FF:FF:FF:FF:FF:FF"
+                                                    spellcheck="false"
+                                                    value=${port.get('MAC')?.address ?? ''}
                                                     @sl-input=${handleMacAddressChangeGenerator
-                                                        .bind(this)(port[0])
+                                                        .bind(this)(index)
                                                         .bind(this)}
-                                                ></sl-input>
-                                            </td>`
-                                          : ''}
-                                      ${columns.includes('IPv4')
-                                          ? html`<td>
-                                                <sl-input
-                                                    value=${port[1].get('IPv4')?.address}
+                                                ></sl-input>`
+                                              : ''}
+                                          ${port.has('IPv4')
+                                              ? html`<sl-input
+                                                    size="small"
+                                                    label="IPv4"
+                                                    placeholder="0.0.0.0"
+                                                    spellcheck="false"
+                                                    value=${port.get('IPv4')?.address ?? ''}
                                                     @sl-input=${handleIPv4AddressChangeGenerator
-                                                        .bind(this)(port[0])
+                                                        .bind(this)(index)
                                                         .bind(this)}
-                                                ></sl-input>
-                                            </td>`
-                                          : ''}
-                                      ${columns.includes('IPv6')
-                                          ? html`<td>
-                                                <sl-input
-                                                    value=${port[1].get('IPv6')?.address}
+                                                ></sl-input>`
+                                              : ''}
+                                          ${port.has('IPv6')
+                                              ? html`<sl-input
+                                                    size="small"
+                                                    label="IPv6"
+                                                    placeholder="::"
+                                                    spellcheck="false"
+                                                    value=${port.get('IPv6')?.address ?? ''}
                                                     @sl-input=${handleIPv6AddressChangeGenerator
-                                                        .bind(this)(port[0])
+                                                        .bind(this)(index)
                                                         .bind(this)}
-                                                ></sl-input>
-                                            </td>`
-                                          : ''}
-                                      <td>
-                                          <sl-button
-                                              circle
-                                              @click=${() => {
-                                                  removePort.bind(this)(node, port[0]);
-                                              }}
-                                              >${biDashSquare}</sl-button
-                                          >
-                                      </td>
-                                  </tr>
+                                                ></sl-input>`
+                                              : ''}
+                                      </div>
+                                  </sl-details>
                               `;
                           })}
-                      </table>
+                      </div>
                   `
-                : html`<p>${msg('No port available.')}</p>`}
-            <sl-button @click="${addPort.bind(this, node)}">
+                : html`<p class="configdrawer__empty">${msg('No port available.')}</p>`}
+
+            <sl-button slot="footer" size="small" variant="primary" @click=${addPort.bind(this, node)}>
                 <span slot="prefix">${biPlusSquare}</span>
-                ${msg('Add Port')}</sl-button
-            >
-        </sl-dialog>
+                ${msg('Add Port')}
+            </sl-button>
+        </sl-drawer>
     `;
 }
 
-function edgeContextDialogTemplate(this: NetworkComponent) {
+function edgeConfigDrawerTemplate(this: NetworkComponent) {
     const edge: any = this.selectedObject;
 
     if (!edge) return html``;
@@ -315,8 +354,8 @@ function edgeContextDialogTemplate(this: NetworkComponent) {
     const source: any = edge.source();
     const target: any = edge.target();
 
-    let availableSourcePorts: number[] = [];
-    let availableTargetPorts: number[] = [];
+    const availableSourcePorts: number[] = [];
+    const availableTargetPorts: number[] = [];
 
     source.data('portLinkMapping').forEach((link: any, port: any) => {
         if (link == null || link == undefined || link == '' || link === edge.data('id')) {
@@ -329,252 +368,246 @@ function edgeContextDialogTemplate(this: NetworkComponent) {
         }
     });
 
-    return html`
-        <sl-dialog
-            id="edgeContextDialog"
-            label=${msg('Details of the connection between ') + source.data('name') + msg(' and ') + target.data('name')}
-            @sl-hide=${() => {
-                this.requestUpdate();
-            }}
-        >
-            <div class="contextmenu__edgedisplay">
-                <div class="contextmenu__edgedisplay__node">
+    const endpointTemplate = (
+        node: any,
+        side: 'source' | 'target',
+        availablePorts: number[],
+        selected: number | undefined,
+        role: string
+    ) => {
+        const other = side === 'source' ? 'target' : 'source';
+
+        return html`
+            <section class="endpoint">
+                <header class="endpoint__header">
                     <div
-                        class="contextmenu__edgedisplay__nodeImage"
+                        class="endpoint__image"
                         style=${styleMap({
-                            backgroundColor: source.data('color'),
-                            backgroundImage: `url("${source.data('backgroundPath')}")`,
+                            backgroundColor: node.data('color'),
+                            backgroundImage: `url("${node.data('backgroundPath')}")`,
                         })}
                     ></div>
-                    <div class="contextmenu__edgedisplay__nodeTitle">${source.data('name')}</div>
-                </div>
-                <div class="contextmenu__edgedisplay__edge">
+                    <div class="endpoint__names">
+                        <span class="endpoint__role">${role}</span>
+                        <span class="endpoint__title">${node.data('name')}</span>
+                    </div>
+                </header>
+
+                <div class="configdrawer__fields">
                     <sl-select
-                        style="align-self: flex-start"
-                        placeholder="${msg('Source Port')}"
+                        size="small"
+                        hoist
+                        clearable
+                        label=${msg('Port')}
+                        placeholder=${msg('Select a port')}
+                        value=${selected?.toString() ?? ''}
                         @sl-change=${(e: SlChangeEvent) => {
                             const port = parseInt((e.target as SlSelect).value as string);
                             if (Number.isNaN(port)) {
-                                this.selectedPorts['source'].connectionType = null;
-                                this.selectedPorts['source'].port = null;
+                                this.selectedPorts[side].connectionType = null;
+                                this.selectedPorts[side].port = null;
                             } else {
-                                const cv = source.data('portData').get(port).get('Connection Type');
-                                this.selectedPorts['source'].connectionType = cv;
-                                this.selectedPorts['source'].port = port;
+                                const cv = node.data('portData').get(port).get('Connection Type');
+                                this.selectedPorts[side].connectionType = cv;
+                                this.selectedPorts[side].port = port;
                             }
                             if (this.selectedPorts['source'].port && this.selectedPorts['target'].port)
                                 updatePortLink.bind(this)();
                             this.requestUpdate();
                         }}
-                        value=${edge.data('inPort')?.toString() || ''}
-                        clearable
                     >
                         <span slot="prefix">${biPCICardNetwork}</span>
-                        ${availableSourcePorts.map(
-                            (port) => html`
+                        ${availablePorts.map((port) => {
+                            const portData = node.data('portData').get(port);
+
+                            return html`
                                 <sl-option
                                     value=${port}
-                                    ?disabled=${this.selectedPorts['target'].connectionType &&
-                                    this.selectedPorts['target'].connectionType !==
-                                        source.data('portData').get(port).get('Connection Type')}
-                                    ?selected=${port === edge.data('inPort')}
+                                    ?disabled=${this.selectedPorts[other].connectionType &&
+                                    this.selectedPorts[other].connectionType !== portData.get('Connection Type')}
+                                    ?selected=${port === selected}
                                 >
                                     <span slot="prefix"
-                                        >${source.data('portData').get(port).get('Connection Type') === 'ethernet'
-                                            ? biEthernet
-                                            : biWifi}</span
+                                        >${portData.get('Connection Type') === 'ethernet' ? biEthernet : biWifi}</span
                                     >
-                                    <span slot="suffix">
-                                        ${`MAC: ${source.data('portData').get(port).get('MAC').address}`}
+                                    <span slot="suffix" class="endpoint__mac">
+                                        ${`MAC: ${portData.get('MAC').address}`}
                                     </span>
-                                    ${source.data('portData').get(port).get('Name') || port}
+                                    ${portData.get('Name') || port}
                                 </sl-option>
-                            `
-                        )}
-                    </sl-select>
-                    <hr style=${`border-top: 3px dashed ${edge.data('color')}`} />
-                    <sl-select
-                        style="align-self: flex-end"
-                        placeholder="${msg('Target Port')}"
-                        @sl-change=${(e: SlChangeEvent) => {
-                            const port = parseInt((e.target as SlSelect).value as string);
-                            if (Number.isNaN(port)) {
-                                this.selectedPorts['target'].connectionType = null;
-                                this.selectedPorts['target'].port = null;
-                            } else {
-                                const cv = target.data('portData').get(port).get('Connection Type');
-                                this.selectedPorts['target'].connectionType = cv;
-                                this.selectedPorts['target'].port = port;
-                            }
-                            if (this.selectedPorts['source'].port && this.selectedPorts['target'].port)
-                                updatePortLink.bind(this)();
-                            this.requestUpdate();
-                        }}
-                        value=${edge.data('outPort')?.toString() || ''}
-                        clearable
-                    >
-                        <span slot="prefix">${biEthernet}</span>
-                        ${availableTargetPorts.map(
-                            (port) => html`
-                                <sl-option
-                                    value=${port}
-                                    ?disabled=${this.selectedPorts['source'].connectionType &&
-                                    this.selectedPorts['source'].connectionType !==
-                                        target.data('portData').get(port).get('Connection Type')}
-                                    ?selected=${port === edge.data('outPort')}
-                                >
-                                    <span slot="prefix"
-                                        >${target.data('portData').get(port).get('Connection Type') === 'ethernet'
-                                            ? biEthernet
-                                            : biWifi}</span
-                                    >
-                                    <span slot="suffix">
-                                        ${`MAC: ${target.data('portData').get(port).get('MAC').address}`}
-                                    </span>
-                                    ${target.data('portData').get(port).get('Name') || port}
-                                </sl-option>
-                            `
-                        )}
-                    </sl-select>
-                </div>
-                <div class="contextmenu__edgedisplay__node">
-                    <div
-                        class="contextmenu__edgedisplay__nodeImage"
-                        style=${styleMap({
-                            backgroundColor: target.data('color'),
-                            backgroundImage: `url("${target.data('backgroundPath')}")`,
+                            `;
                         })}
-                    ></div>
-                    <div class="contextmenu__edgedisplay__nodeTitle">${target.data('name')}</div>
+                    </sl-select>
+                    ${availablePorts.length === 0
+                        ? html`<p class="configdrawer__empty">${msg('No port available.')}</p>`
+                        : ''}
                 </div>
+            </section>
+        `;
+    };
+
+    return html`
+        <sl-drawer
+            id="edgeConfigDrawer"
+            class="configdrawer"
+            contained
+            placement="end"
+            @keydown=${handleDrawerKeydown}
+            label=${msg('Interfaces of the connection')}
+            @sl-after-hide=${() => this.requestUpdate()}
+        >
+            <div class="configdrawer__stack">
+                ${endpointTemplate(source, 'source', availableSourcePorts, edge.data('inPort'), msg('Source'))}
+                <sl-divider class="endpoint__link" style=${`--color: ${edge.data('color')}`}></sl-divider>
+                ${endpointTemplate(target, 'target', availableTargetPorts, edge.data('outPort'), msg('Target'))}
             </div>
-        </sl-dialog>
+        </sl-drawer>
     `;
 }
 
-function networkContextDialogTemplate(this: NetworkComponent) {
+function networkConfigDrawerTemplate(this: NetworkComponent) {
     const network: any = this.selectedObject;
 
     return html`
-        <sl-dialog
-            id="networkContextDialog"
-            label=${msg('Details of the network ') + network?.data('id')}
-            @sl-hide=${() => this.requestUpdate()}
+        <sl-drawer
+            id="networkConfigDrawer"
+            class="configdrawer"
+            contained
+            placement="end"
+            @keydown=${handleDrawerKeydown}
+            label=${msg('Details of the network ') + (network?.data('id') ?? '')}
+            @sl-after-hide=${() => this.requestUpdate()}
         >
-            <sl-input
-                type="text"
-                placeholder="NetId"
-                value=${network?.data('networkAddress')?.address}
-                @sl-input=${(e: SlChangeEvent) => {
-                    const value = (e.target as SlInput).value;
-                    const subnet: Net = this.selectedObject.data();
+            <div class="configdrawer__fields">
+                <sl-input
+                    size="small"
+                    type="text"
+                    label="NetID"
+                    placeholder="0.0.0.0"
+                    spellcheck="false"
+                    value=${network?.data('networkAddress')?.address}
+                    @sl-input=${(e: SlChangeEvent) => {
+                        const value = (e.target as SlInput).value;
+                        const subnet: Net = this.selectedObject.data();
 
-                    if (Ipv4Address.validateAddress(value, this.ipv4Database) == null) {
-                        (e.target as SlInput).classList.add('danger');
-                        (e.target as SlInput).classList.remove('success');
-                        (e.target as SlInput).setAttribute('help-text', msg('IPv4 address is invalid.'));
-                        return;
-                    } else {
-                        (e.target as SlInput).classList.remove('danger');
-                        (e.target as SlInput).classList.add('success');
-                        (e.target as SlInput).setAttribute('help-text', '');
-                    }
+                        if (Ipv4Address.validateAddress(value, this.ipv4Database) == null) {
+                            (e.target as SlInput).classList.add('danger');
+                            (e.target as SlInput).classList.remove('success');
+                            (e.target as SlInput).setAttribute('help-text', msg('IPv4 address is invalid.'));
+                            return;
+                        } else {
+                            (e.target as SlInput).classList.remove('danger');
+                            (e.target as SlInput).classList.add('success');
+                            (e.target as SlInput).setAttribute('help-text', '');
+                        }
 
-                    const success = subnet.handleChangesOnNewNetInfo(value, subnet.netmask, subnet.bitmask, this);
-                    if (success) {
-                        this.selectedObject.toggleClass('unconfigured-net', false);
+                        const success = subnet.handleChangesOnNewNetInfo(value, subnet.netmask, subnet.bitmask, this);
+                        if (success) {
+                            this.selectedObject.toggleClass('unconfigured-net', false);
 
-                        const name = this.selectedObject.data('name');
-                        this.selectedObject.data('name', name);
-                    } else {
-                        (e.target as SlInput).classList.add('danger');
-                        (e.target as SlInput).classList.remove('success');
-                        (e.target as SlInput).setAttribute('help-text', msg('Invalid net id.'));
-                    }
-                }}
-            ></sl-input>
-            <sl-input
-                type="text"
-                placeholder="${msg('Network Mask')}"
-                id="netmask"
-                value=${network?.data('netmask')}
-                @sl-input=${(e: SlChangeEvent) => {
-                    const value = (e.target as SlInput).value;
-                    const subnet: Net = this.selectedObject.data();
+                            const name = this.selectedObject.data('name');
+                            this.selectedObject.data('name', name);
+                        } else {
+                            (e.target as SlInput).classList.add('danger');
+                            (e.target as SlInput).classList.remove('success');
+                            (e.target as SlInput).setAttribute('help-text', msg('Invalid net id.'));
+                        }
+                    }}
+                ></sl-input>
 
-                    if (Ipv4Address.validateAddress(value, this.ipv4Database) == null) {
-                        (e.target as SlInput).classList.add('danger');
-                        (e.target as SlInput).classList.remove('success');
-                        (e.target as SlInput).setAttribute('help-text', msg('IPv4 address is invalid.'));
-                        return;
-                    } else {
-                        (e.target as SlInput).classList.remove('danger');
-                        (e.target as SlInput).classList.add('success');
-                        (e.target as SlInput).setAttribute('help-text', '');
-                    }
+                <sl-divider></sl-divider>
 
-                    const success = subnet.handleChangesOnNewNetInfo(
-                        subnet.networkAddress.address,
-                        value,
-                        subnet.bitmask,
-                        this
-                    );
-                    if (success) {
-                        this.selectedObject.toggleClass('unconfigured-net', false);
+                <sl-input
+                    size="small"
+                    type="text"
+                    label=${msg('Network Mask')}
+                    placeholder="255.255.255.0"
+                    spellcheck="false"
+                    id="netmask"
+                    value=${network?.data('netmask')}
+                    @sl-input=${(e: SlChangeEvent) => {
+                        const value = (e.target as SlInput).value;
+                        const subnet: Net = this.selectedObject.data();
 
-                        const name = this.selectedObject.data('name');
-                        this.selectedObject.data('name', name);
+                        if (Ipv4Address.validateAddress(value, this.ipv4Database) == null) {
+                            (e.target as SlInput).classList.add('danger');
+                            (e.target as SlInput).classList.remove('success');
+                            (e.target as SlInput).setAttribute('help-text', msg('IPv4 address is invalid.'));
+                            return;
+                        } else {
+                            (e.target as SlInput).classList.remove('danger');
+                            (e.target as SlInput).classList.add('success');
+                            (e.target as SlInput).setAttribute('help-text', '');
+                        }
 
-                        const bitmask = (
-                            AddressingHelper.decimalStringWithDotToBinary(value).match(new RegExp('1', 'g')) || []
-                        ).length;
-                        this.shadowRoot?.querySelector('#bitmask')?.setAttribute('value', bitmask.toString());
-                    } else {
-                        (e.target as SlInput).classList.add('danger');
-                        (e.target as SlInput).classList.remove('success');
-                        (e.target as SlInput).setAttribute('help-text', msg('Invalid netmask.'));
-                    }
-                }}
-            ></sl-input>
-            <sl-input
-                type="number"
-                max="32"
-                min="0"
-                placeholder="${msg('Bitmask')}"
-                id="bitmask"
-                value=${network?.data('bitmask')}
-                @sl-change=${(e: SlChangeEvent) => {
-                    const value = parseInt((e.target as SlInput).value);
-                    const subnet: Net = this.selectedObject.data();
+                        const success = subnet.handleChangesOnNewNetInfo(
+                            subnet.networkAddress.address,
+                            value,
+                            subnet.bitmask,
+                            this
+                        );
+                        if (success) {
+                            this.selectedObject.toggleClass('unconfigured-net', false);
 
-                    const netmask = AddressingHelper.binaryToDecimalOctets(''.padStart(value, '1').padEnd(32, '0'));
+                            const name = this.selectedObject.data('name');
+                            this.selectedObject.data('name', name);
 
-                    const success = subnet.handleChangesOnNewNetInfo(
-                        subnet.networkAddress.address,
-                        netmask.join('.'),
-                        value,
-                        this
-                    );
+                            const bitmask = (
+                                AddressingHelper.decimalStringWithDotToBinary(value).match(new RegExp('1', 'g')) || []
+                            ).length;
+                            this.shadowRoot?.querySelector('#bitmask')?.setAttribute('value', bitmask.toString());
+                        } else {
+                            (e.target as SlInput).classList.add('danger');
+                            (e.target as SlInput).classList.remove('success');
+                            (e.target as SlInput).setAttribute('help-text', msg('Invalid netmask.'));
+                        }
+                    }}
+                ></sl-input>
 
-                    this.shadowRoot?.querySelector('#netmask')?.setAttribute('value', netmask.join('.'));
+                <sl-divider></sl-divider>
 
-                    if (success) {
-                        this.selectedObject.toggleClass('unconfigured-net', false);
+                <sl-input
+                    size="small"
+                    type="number"
+                    max="32"
+                    min="0"
+                    label=${msg('Bitmask')}
+                    placeholder=${msg('Bitmask')}
+                    id="bitmask"
+                    value=${network?.data('bitmask')}
+                    @sl-change=${(e: SlChangeEvent) => {
+                        const value = parseInt((e.target as SlInput).value);
+                        const subnet: Net = this.selectedObject.data();
 
-                        const name = this.selectedObject.data('name');
-                        this.selectedObject.data('name', name);
+                        const netmask = AddressingHelper.binaryToDecimalOctets(''.padStart(value, '1').padEnd(32, '0'));
 
-                        (e.target as SlInput).classList.remove('danger');
-                        (e.target as SlInput).classList.add('success');
-                        (e.target as SlInput).setAttribute('help-text', '');
-                    } else {
-                        (e.target as SlInput).classList.add('danger');
-                        (e.target as SlInput).classList.remove('success');
-                        (e.target as SlInput).setAttribute('help-text', msg('Invalid bitmask.'));
-                    }
-                }}
-            ></sl-input>
-        </sl-dialog>
+                        const success = subnet.handleChangesOnNewNetInfo(
+                            subnet.networkAddress.address,
+                            netmask.join('.'),
+                            value,
+                            this
+                        );
+
+                        this.shadowRoot?.querySelector('#netmask')?.setAttribute('value', netmask.join('.'));
+
+                        if (success) {
+                            this.selectedObject.toggleClass('unconfigured-net', false);
+
+                            const name = this.selectedObject.data('name');
+                            this.selectedObject.data('name', name);
+
+                            (e.target as SlInput).classList.remove('danger');
+                            (e.target as SlInput).classList.add('success');
+                            (e.target as SlInput).setAttribute('help-text', '');
+                        } else {
+                            (e.target as SlInput).classList.add('danger');
+                            (e.target as SlInput).classList.remove('success');
+                            (e.target as SlInput).setAttribute('help-text', msg('Invalid bitmask.'));
+                        }
+                    }}
+                ></sl-input>
+            </div>
+        </sl-drawer>
     `;
 }
 

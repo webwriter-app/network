@@ -264,7 +264,6 @@ export const networkStyles = css`
         margin: auto;
     }
 
-    sl-dialog::part(base),
     sl-select::part(base) {
         --width: fit-content;
     }
