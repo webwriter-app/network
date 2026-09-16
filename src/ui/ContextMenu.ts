@@ -512,10 +512,9 @@ function edgeConfigDrawerTemplate(this: NetworkComponent) {
 
                             return html`
                                 <sl-option
-                                    value=${port}
+                                    value=${String(port)}
                                     ?disabled=${this.selectedPorts[other].connectionType &&
                                     this.selectedPorts[other].connectionType !== portData.get('Connection Type')}
-                                    ?selected=${port === selected}
                                 >
                                     <span slot="prefix"
                                         >${portData.get('Connection Type') === 'ethernet' ? biEthernet : biWifi}</span
