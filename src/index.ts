@@ -266,6 +266,13 @@ export class NetworkComponent extends LitElementWw {
     @property({ type: Array, reflect: true, attribute: true })
     accessor networks: Array<Network> = [];
 
+    /**
+     * @internal
+     * Set while the canvas is rebuilt from the serialized state, so the graph listeners skip
+     * the resulting add/remove/move/data events instead of recording them as user edits.
+     */
+    suspendGraphSync = false;
+
     /** @internal Current widget mode. 'edit' enables graph editing, 'simulate' locks nodes and runs simulations. */
     @state()
     accessor mode: 'edit' | 'simulate' = 'edit';
@@ -529,6 +536,44 @@ export class NetworkComponent extends LitElementWw {
     }
 
     /**
+     * @internal
+     * Switches between 'edit' and 'simulate'.
+     *
+     * Leaving the simulation rebuilds the canvas from the serialized state, because the
+     * simulator replaces node data with decorators in place.
+     */
+    private switchMode(mode: 'edit' | 'simulate'): void {
+        this.mode = mode;
+
+        if (mode === 'simulate') {
+            this._graph.$('node').lock();
+            this.packetSimulator.initSession(this);
+            return;
+        }
+
+        const components = [...this.components];
+        const connections = [...this.connections];
+        const networks = [...this.networks];
+
+        this.ipv4Database = new Map<string, string>(); //(address, nodeId)
+        this.macDatabase = new Map<string, string>();
+        this.ipv6Database = new Map<string, string>();
+
+        this.suspendGraphSync = true;
+        try {
+            this._graph.elements().remove();
+
+            this.components = components;
+            this.connections = connections;
+            this.networks = networks;
+
+            load.bind(this)();
+        } finally {
+            this.suspendGraphSync = false;
+        }
+    }
+
+    /**
      * Renders the network canvas, mode switch, toolbox, context menu and simulation menu.
      */
     public render(): TemplateResult {
@@ -540,29 +585,7 @@ export class NetworkComponent extends LitElementWw {
                         value=${this.mode}
                         @sl-change=${(event: Event) => {
                             this.closeContextMenu();
-                            const mode = (event.target as HTMLSelectElement).value as 'edit' | 'simulate';
-                            if (mode === 'edit') {
-                                const components = [...this.components];
-                                const connections = [...this.connections];
-                                const networks = [...this.networks];
-
-                                this.ipv4Database = new Map<string, string>(); //(address, nodeId)
-                                this.macDatabase = new Map<string, string>();
-                                this.ipv6Database = new Map<string, string>();
-                                console.log(components, connections, networks);
-
-                                this._graph.elements().remove();
-
-                                this.components = components;
-                                this.connections = connections;
-                                this.networks = networks;
-
-                                load.bind(this)();
-                            } else {
-                                this._graph.$('node').lock();
-                                this.packetSimulator.initSession(this);
-                            }
-                            this.mode = mode;
+                            this.switchMode((event.target as HTMLSelectElement).value as 'edit' | 'simulate');
                         }}
                         size="small"
                     >
@@ -1051,7 +1074,7 @@ export class NetworkComponent extends LitElementWw {
                             <sl-button
                                 size=${this.screen}
                                 style="display: inline-block;"
-                                class="blue-button"
+                                class="blue-button set-source-btn"
                                 id="setSourceBtn"
                                 @click="${(event: Event) => this.packetSimulator.setSource(event, this)}"
                                 >${msg("Choose sender")}</sl-button
@@ -1073,7 +1096,7 @@ export class NetworkComponent extends LitElementWw {
                             <sl-button
                                 size=${this.screen}
                                 style="display: inline-block;"
-                                class="blue-button"
+                                class="blue-button set-target-btn"
                                 id="setTargetBtn"
                                 @click="${(event: Event) => this.packetSimulator.setTarget(event, this)}"
                                 >${msg("Choose receiver")}</sl-button
@@ -1228,11 +1251,14 @@ export class NetworkComponent extends LitElementWw {
         if (changedProperties.has('automate')) {
             // new value is
             const newValue = this.automate;
+            const subnetMode = this.renderRoot.querySelector('#current-subnet-mode') as SlSelect | null;
             if (newValue) {
-                (this.renderRoot.querySelector('#current-subnet-mode') as SlSelect).disabled = false;
+                if (subnetMode) subnetMode.disabled = false;
             } else {
-                (this.renderRoot.querySelector('#current-subnet-mode') as SlSelect).value = 'MANUAL';
-                (this.renderRoot.querySelector('#current-subnet-mode') as SlSelect).disabled = true;
+                if (subnetMode) {
+                    subnetMode.value = 'MANUAL';
+                    subnetMode.disabled = true;
+                }
                 Net.setMode('MANUAL', this);
             }
         }

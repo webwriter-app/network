@@ -8,19 +8,23 @@ import { msg } from '@lit/localize';
 
 export class EdgeController {
     static toggleDrawMode(network: NetworkComponent): void {
+        const drawModeIcon = network.renderRoot.querySelector('#drawMode') as SlIcon | null;
+        const drawButton = network.renderRoot.querySelector('#drawBtn') as HTMLElement | null;
+        const resetColorButton = network.renderRoot.querySelector('#resetColorBtn') as HTMLButtonElement | null;
+
         if (!network.drawModeOn) {
             // if (network.currentComponentToAdd != "edge") {
             //     return;
             // }
             network._edgeHandles.enableDrawMode();
-            (network.renderRoot.querySelector('#drawMode') as SlIcon).name = 'pause';
-            (network.renderRoot.querySelector('#drawBtn') as HTMLElement).style.backgroundColor = '#0291DB';
-            (network.renderRoot.querySelector('#resetColorBtn') as HTMLButtonElement).disabled = true;
+            if (drawModeIcon) drawModeIcon.name = 'pause';
+            if (drawButton) drawButton.style.backgroundColor = '#0291DB';
+            if (resetColorButton) resetColorButton.disabled = true;
         } else {
             network._edgeHandles.disableDrawMode();
-            (network.renderRoot.querySelector('#drawMode') as SlIcon).name = 'plug';
-            (network.renderRoot.querySelector('#drawBtn') as HTMLElement).style.backgroundColor = '#8BA8CC';
-            (network.renderRoot.querySelector('#resetColorBtn') as HTMLButtonElement).disabled = false;
+            if (drawModeIcon) drawModeIcon.name = 'plug';
+            if (drawButton) drawButton.style.backgroundColor = '#8BA8CC';
+            if (resetColorButton) resetColorButton.disabled = false;
         }
         network.drawModeOn = !network.drawModeOn;
         network.requestUpdate();

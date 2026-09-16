@@ -14,7 +14,7 @@ export function simulationMenuTemplate(this: NetworkComponent) {
         <div class="simulationmenu" style=${this.mode === 'simulate' ? 'display: block;' : 'display: none;'}>
             <sl-button-group>
                 <sl-button
-                    id="#setSourceBtn"
+                    class="set-source-btn"
                     @click=${(event: Event) => {
                         this.packetSimulator.setSource(event, this);
                     }}
@@ -39,7 +39,7 @@ export function simulationMenuTemplate(this: NetworkComponent) {
             </sl-button-group>
             <sl-button-group>
                 <sl-button
-                    id="#setTargetBtn"
+                    class="set-target-btn"
                     @click=${(event: Event) => {
                         this.packetSimulator.setTarget(event, this);
                     }}

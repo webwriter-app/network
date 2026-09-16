@@ -1,4 +1,3 @@
-import SlDetails from '@shoelace-style/shoelace/dist/components/details/details.component.js';
 import SlDialog from '@shoelace-style/shoelace/dist/components/dialog/dialog.component.js';
 import { html } from 'lit';
 import { NodeSingular, EdgeSingular } from 'cytoscape';
@@ -414,7 +413,8 @@ export class ImportExportController {
                 network.packetSimulator.inited = false;
                 network.packetSimulator.initSession(network);
             } else {
-                (network.renderRoot.querySelector('#tables-for-packet-simulator') as SlDetails).innerHTML = '';
+                const container = TableHelper.tableContainer(network);
+                if (container != null) container.innerHTML = '';
             }
 
             if (json.hasOwnProperty('switchable')) {

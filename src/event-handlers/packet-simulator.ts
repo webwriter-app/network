@@ -1,4 +1,4 @@
-import { SlButton, SlDetails, SlIcon, SlSelect } from '@shoelace-style/shoelace';
+import { SlButton, SlIcon, SlSelect } from '@shoelace-style/shoelace';
 import { EventObject } from 'cytoscape';
 import { NetworkComponent } from '..';
 import { DataHandlingDecorator } from '../components/dataDecorators/DataHandlingDecorator';
@@ -52,22 +52,28 @@ export class PacketSimulator {
     }
 
     setSource(buttonEvent: Event, network: NetworkComponent) {
-        let sourceButton = buttonEvent.target as SlButton;
-        sourceButton.loading = true;
-        let targetButton = network.renderRoot.querySelector('#setTargetBtn') as SlButton;
-        targetButton.disabled = true;
+        this.selectEndPoint('source', buttonEvent, network);
+    }
+
+    setTarget(buttonEvent: Event, network: NetworkComponent) {
+        this.selectEndPoint('target', buttonEvent, network);
+    }
+
+    private selectEndPoint(role: 'source' | 'target', buttonEvent: Event, network: NetworkComponent) {
+        const ownButton = buttonEvent.target as SlButton;
+        const otherButtons = network.renderRoot.querySelectorAll<SlButton>(
+            role === 'source' ? '.set-target-btn' : '.set-source-btn'
+        );
+
+        ownButton.loading = true;
+        otherButtons.forEach((button) => (button.disabled = true));
 
         const self = this;
         network._graph.one('tap', 'node', function (event: EventObject) {
-            self.sourceEndPoint = event.target.id();
-            const endpoint = network._graph.$('#' + self.sourceEndPoint);
-            self.sourceIp = endpoint.data().portData.get(1).get('IPv4').address;
+            ownButton.loading = false;
+            otherButtons.forEach((button) => (button.disabled = false));
 
-            sourceButton.loading = false;
-            targetButton.disabled = false;
-            let selects = network.renderRoot.querySelector('#ip-source-select') as SlSelect;
-            selects.innerHTML = '';
-            let node = event.target.data();
+            const node = event.target.data();
             if (!(node instanceof PhysicalNode || node instanceof DataHandlingDecorator) || node.layer < 3) {
                 AlertHelper.toastAlert(
                     'warning',
@@ -75,9 +81,26 @@ export class PacketSimulator {
                     '',
                     msg('Currently the widget only supports host as sender and receiver.')
                 );
+                network.requestUpdate();
+                return;
+            }
+
+            const ports: Map<any, Map<string, any>> = node.portData;
+            if (role === 'source') {
+                self.sourceEndPoint = event.target.id();
+                self.sourceIp = ports.get(1)?.get('IPv4')?.address;
             } else {
-                node.portData.forEach((value, port) => {
-                    selects.innerHTML +=
+                self.targetEndPoint = event.target.id();
+                self.targetIp = ports.get(1)?.get('IPv4')?.address;
+            }
+
+            const select = network.renderRoot.querySelector(
+                role === 'source' ? '#ip-source-select' : '#ip-target-select'
+            ) as SlSelect | null;
+            if (select != null) {
+                select.innerHTML = '';
+                ports.forEach((value, port) => {
+                    select.innerHTML +=
                         `<sl-menu-item value="` +
                         value.get('IPv4').address +
                         `">` +
@@ -87,46 +110,8 @@ export class PacketSimulator {
                         `</sl-menu-item>`;
                 });
             }
+
             network.requestUpdate();
-        });
-    }
-
-    setTarget(buttonEvent: Event, network: NetworkComponent) {
-        let targetButton = buttonEvent.target as SlButton;
-        targetButton.loading = true;
-        let sourceButton = network.renderRoot.querySelector('#setSourceBtn') as SlButton;
-        sourceButton.disabled = true;
-
-        const self = this;
-        network._graph.one('tap', 'node', function (event: EventObject) {
-            self.targetEndPoint = event.target.id();
-            const endpoint = network._graph.$('#' + self.targetEndPoint);
-            self.targetIp = endpoint.data().portData.get(1).get('IPv4').address;
-
-            targetButton.loading = false;
-            sourceButton.disabled = false;
-            let selects = network.renderRoot.querySelector('#ip-target-select') as SlSelect;
-            selects.innerHTML = '';
-            let node = event.target.data();
-            if (!(node instanceof PhysicalNode || node instanceof DataHandlingDecorator) || node.layer < 3) {
-                AlertHelper.toastAlert(
-                    'warning',
-                    'exclamation-triangle',
-                    '',
-                    msg('Currently the widget only supports host as sender and receiver.')
-                );
-            } else {
-                node.portData.forEach((value, port) => {
-                    selects.innerHTML +=
-                        `<sl-menu-item value="` +
-                        value.get('IPv4').address +
-                        `">` +
-                        port +
-                        `: ` +
-                        value.get('IPv4').address +
-                        `</sl-menu-item>\n`;
-                });
-            }
         });
     }
 
@@ -236,7 +221,8 @@ export class PacketSimulator {
             return;
         }
         if (this.inited) {
-            (network.renderRoot.querySelector('#tables-for-packet-simulator') as SlDetails).innerHTML = '';
+            const container = TableHelper.tableContainer(network);
+            if (container != null) container.innerHTML = '';
             //init tables again
             network._graph.nodes('.routable-decorated').forEach((node: any) => {
                 let nodeData: RoutableDecorator = node.data() as RoutableDecorator;
@@ -449,7 +435,8 @@ export class PacketSimulator {
     }
 
     stopSession(network: NetworkComponent) {
-        (network.renderRoot.querySelector('#tables-for-packet-simulator') as SlDetails).innerHTML = '';
+        const container = TableHelper.tableContainer(network);
+        if (container != null) container.innerHTML = '';
 
         network._graph.nodes('.switchable-decorated').forEach((node: any) => {
             let nodeData: SwitchableDecorator = node.data();

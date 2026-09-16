@@ -152,20 +152,22 @@ export function load(this: NetworkComponent) {
             c.ports
                 .map((p: Port) => MacAddress.validateAddress(p.mac, this.macDatabase))
                 .forEach((mac) => {
-                    MacAddress.addAddressToDatabase(mac!, this.macDatabase, component.id);
+                    if (mac == null) return;
+                    MacAddress.addAddressToDatabase(mac, this.macDatabase, component.id);
                 });
         }
         if (component.layer >= 3) {
             c.ports
                 .map((p: Port) => Ipv4Address.validateAddress(p.ip4 || '', this.ipv4Database))
                 .forEach((ip4) => {
-                    console.log('ip4', ip4);
-                    Ipv4Address.addAddressToDatabase(ip4!, this.ipv4Database, component.id);
+                    if (ip4 == null) return;
+                    Ipv4Address.addAddressToDatabase(ip4, this.ipv4Database, component.id);
                 });
             c.ports
                 .map((p: Port) => Ipv6Address.validateAddress(p.ip6 || '', this.ipv6Database))
                 .forEach((ip6) => {
-                    Ipv6Address.addAddressToDatabase(ip6!, this.ipv6Database, component.id);
+                    if (ip6 == null) return;
+                    Ipv6Address.addAddressToDatabase(ip6, this.ipv6Database, component.id);
                 });
         }
 
@@ -297,7 +299,7 @@ export function setupListeners(this: NetworkComponent) {
     this._graph.on('add', (event: EventObject) => {
         // console.log('add', event.target.data());
 
-        if (this.mode === 'simulate') return;
+        if (this.mode === 'simulate' || this.suspendGraphSync) return;
 
         if (event.target.data() instanceof Packet || event.target.data() instanceof Frame) return;
 
@@ -318,7 +320,7 @@ export function setupListeners(this: NetworkComponent) {
     });
 
     this._graph.on('remove', (event: EventObject) => {
-        if (this.mode === 'simulate') return;
+        if (this.mode === 'simulate' || this.suspendGraphSync) return;
         // console.log('remove', event);
         if (event.target.data() instanceof Packet || event.target.data() instanceof Frame) return;
         if (event.target.isNode() && event.target.data().constructor.name === '_Net') {
@@ -336,7 +338,7 @@ export function setupListeners(this: NetworkComponent) {
     });
 
     this._graph.on('data', (event: EventObject) => {
-        if (this.mode === 'simulate') return;
+        if (this.mode === 'simulate' || this.suspendGraphSync) return;
         // console.log('data', event.target.data());
 
         if (event.target.data() instanceof Packet || event.target.data() instanceof Frame) return;
@@ -358,7 +360,7 @@ export function setupListeners(this: NetworkComponent) {
     });
 
     this._graph.on('move', (event: EventObject) => {
-        if (this.mode === 'simulate') return;
+        if (this.mode === 'simulate' || this.suspendGraphSync) return;
         if (event.target.data() instanceof Packet || event.target.data() instanceof Frame) return;
         const data = event.target.data();
 
@@ -382,7 +384,7 @@ export function setupListeners(this: NetworkComponent) {
     });
 
     this._graph.on('dragfree', (event: EventObject) => {
-        if (this.mode === 'simulate') return;
+        if (this.mode === 'simulate' || this.suspendGraphSync) return;
         const target = event.target;
         const data = target.data();
         const position = target.position();

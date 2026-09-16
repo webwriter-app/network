@@ -9,8 +9,13 @@ import { RoutingData } from './routingData';
 import { msg } from '@lit/localize';
 
 export class TableHelper {
+    static tableContainer(network: NetworkComponent): SlDetails | null {
+        return network.renderRoot.querySelector('#tables-for-packet-simulator') as SlDetails | null;
+    }
+
     static addRow(tableID: string, tableType: TableType, network: NetworkComponent, tableData?: any[]) {
-        var table = network.renderRoot.querySelector('#' + tableID) as HTMLTableElement;
+        var table = network.renderRoot.querySelector('#' + tableID) as HTMLTableElement | null;
+        if (table == null) return; //tables are only rendered while editable
 
         var rowCount = table.rows.length;
         var row = table.insertRow(rowCount);
@@ -186,7 +191,8 @@ export class TableHelper {
      * @param network
      */
     static reloadTable(tableId: string, tableType: TableType, tableData: any, network: NetworkComponent) {
-        var table = network.renderRoot.querySelector('#' + tableId) as HTMLTableElement;
+        var table = network.renderRoot.querySelector('#' + tableId) as HTMLTableElement | null;
+        if (table == null) return;
         switch (tableType) {
             case 'ArpTable':
                 table.innerHTML = '<tr><td></td><td>IP</td><td>MAC</td></tr>';
@@ -240,12 +246,14 @@ export class TableHelper {
 
         let detail = network.renderRoot.querySelector('#details-for-' + tableId) as SlDetails;
         if (detail == null) {
+            const container = TableHelper.tableContainer(network);
+            if (container == null) return; //no table UI outside of the editor
             detail = document.createElement('sl-details') as SlDetails;
             detail.id = '#details-for-' + tableId;
             detail.summary = label + ' of ' + nodeId;
             detail.className = 'details-for-table';
             detail.open = true;
-            (network.renderRoot.querySelector('#tables-for-packet-simulator') as SlDetails).appendChild(detail);
+            container.appendChild(detail);
         }
         switch (tableType) {
             case 'ArpTable':
