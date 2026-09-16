@@ -531,7 +531,7 @@ function handleEdgeRemove(this: NetworkComponent, event: EventObject) {
     const target = event.target;
     const data = target.data();
 
-    const c = this.connections.find((c) => c.from === data.source && c.to === data.target);
+    const c = this.connections.find((c) => c.id === data.id);
 
     if (!c) return;
 
@@ -578,7 +578,7 @@ function handleNodeDataChange(this: NetworkComponent, event: EventObject) {
         const p: Port = {
             name: port.get('Name') || 'port',
             type: port.get('Connection Type') || 'ethernet',
-            mac: (port.get('MAC') as MacAddress).address || '00:00:00:00:00:00',
+            mac: (port.get('MAC') as MacAddress)?.address || '00:00:00:00:00:00',
             ip4: (port.get('IPv4') as Ipv4Address)?.address,
             ip6: (port.get('IPv6') as Ipv6Address)?.address,
         };

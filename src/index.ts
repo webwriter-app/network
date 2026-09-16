@@ -84,6 +84,27 @@ function isTouchInput(originalEvent: Event | undefined): boolean {
 }
 
 /**
+ * @internal
+ * JSON converter for the serialized state attributes. A missing or invalid attribute yields an
+ * empty array instead of `null`, e.g. when undo removes the attribute of a freshly inserted widget.
+ */
+const arrayAttributeConverter = {
+    fromAttribute(value: string | null): unknown[] {
+        try {
+            return value ? JSON.parse(value) ?? [] : [];
+        } catch {
+            return [];
+        }
+    },
+    toAttribute(value: unknown[]): string {
+        return JSON.stringify(value);
+    },
+};
+
+/** @internal Attributes holding the serialized widget state. */
+const STATE_ATTRIBUTES = ['components', 'connections', 'networks'] as const;
+
+/**
  * @summary Visualization of network topologies. Can represent different kinds of networks.
  *
  * @tag ww-network
@@ -251,19 +272,19 @@ export class NetworkComponent extends LitElementWw {
     /**
      * Serialized components (nodes). Used to populate the canvas and for export.
      */
-    @property({ type: Array, reflect: true, attribute: true })
+    @property({ type: Array, reflect: true, attribute: true, converter: arrayAttributeConverter })
     accessor components: Array<Component> = [];
 
     /**
      * Serialized connections (edges) between components.
      */
-    @property({ type: Array, reflect: true, attribute: true })
+    @property({ type: Array, reflect: true, attribute: true, converter: arrayAttributeConverter })
     accessor connections: Array<Connection> = [];
 
     /**
      * Serialized logical networks for subnetting and validation.
      */
-    @property({ type: Array, reflect: true, attribute: true })
+    @property({ type: Array, reflect: true, attribute: true, converter: arrayAttributeConverter })
     accessor networks: Array<Network> = [];
 
     /**
@@ -272,6 +293,12 @@ export class NetworkComponent extends LitElementWw {
      * the resulting add/remove/move/data events instead of recording them as user edits.
      */
     suspendGraphSync = false;
+
+    /**
+     * @internal
+     * Set when a state attribute was changed from outside the widget.
+     */
+    private stateChangedExternally = false;
 
     /** @internal Current widget mode. 'edit' enables graph editing, 'simulate' locks nodes and runs simulations. */
     @state()
@@ -375,6 +402,7 @@ export class NetworkComponent extends LitElementWw {
 
         this._graph.on('pan zoom', () => this.closeContextMenu());
 
+        this.stateChangedExternally = false;
         load.bind(this)();
         setupListeners.bind(this)();
         window.addEventListener('scroll', this.onScroll);
@@ -551,10 +579,17 @@ export class NetworkComponent extends LitElementWw {
             return;
         }
 
-        const components = [...this.components];
-        const connections = [...this.connections];
-        const networks = [...this.networks];
+        // Stop running packet animations before their nodes are removed.
+        if (this.packetSimulator.inited) this.packetSimulator.stopSession(this);
+        this.rebuildGraph();
+    }
 
+    /**
+     * @internal
+     * Replaces all canvas elements with the ones described by the serialized state.
+     * The state properties themselves are left untouched, so no attribute change is emitted.
+     */
+    private rebuildGraph(): void {
         this.ipv4Database = new Map<string, string>(); //(address, nodeId)
         this.macDatabase = new Map<string, string>();
         this.ipv6Database = new Map<string, string>();
@@ -562,15 +597,22 @@ export class NetworkComponent extends LitElementWw {
         this.suspendGraphSync = true;
         try {
             this._graph.elements().remove();
-
-            this.components = components;
-            this.connections = connections;
-            this.networks = networks;
-
             load.bind(this)();
         } finally {
             this.suspendGraphSync = false;
         }
+    }
+
+    /**
+     * @internal
+     * Detects state attribute changes that did not originate from the widget itself.
+     */
+    attributeChangedCallback(name: string, oldValue: string | null, value: string | null): void {
+        const stateAttribute = STATE_ATTRIBUTES.find((attribute) => attribute === name);
+        if (stateAttribute && value !== arrayAttributeConverter.toAttribute(this[stateAttribute])) {
+            this.stateChangedExternally = true;
+        }
+        super.attributeChangedCallback(name, oldValue, value);
     }
 
     /**
@@ -1230,6 +1272,16 @@ export class NetworkComponent extends LitElementWw {
      * @internal
      */
     updated(changedProperties: Map<string, unknown>) {
+        if (this.stateChangedExternally && this.networkAvailable) {
+            this.stateChangedExternally = false;
+            this.closeContextMenu();
+            this.closeConfigDrawers();
+            this.selectedObject = null;
+            const mode = this.mode;
+            this.switchMode('edit');
+            if (mode === 'simulate') this.switchMode('simulate');
+        }
+
         if (changedProperties.has('contentEditable')) {
             // new value is
             const newValue = this.isEditable();
