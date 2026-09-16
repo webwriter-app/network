@@ -2,7 +2,6 @@
   "name": "@webwriter/network",
   "version": "2.0.7",
   "description": "Visualization of network topologies. Can represent different kinds of networks.",
-  "repository": "github:webwriter-app/network",
   "keywords": [
     "webwriter-widget",
     "widget-conceptual",
@@ -50,6 +49,7 @@
   ],
   "license": "MIT",
   "author": "Jorik van Genuchten",
+  "repository": "github:webwriter-app/network",
   "scripts": {
     "prepublishOnly": "npx @webwriter/build"
   },

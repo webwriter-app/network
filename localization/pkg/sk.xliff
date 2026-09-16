@@ -1,1 +1,9 @@
-﻿<?xml version="1.0" encoding="utf-8"?><xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.1" srcLang="en" trgLang="sk"><file id="." original="."><unit id="description"><segment><source>Visualization of network topologies. Can represent different kinds of networks.</source><target>Vizualizácia sieťových topológií. Môže reprezentovať rôzne druhy sietí.</target></segment></unit></file><file id="./widgets/ww-network" original="./widgets/ww-network"><unit id="label"><segment><source>undefined</source><target>nedefinované</target></segment></unit></file></xliff>
+<?xml version="1.0" encoding="utf-8" ?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.1" srcLang="en" trgLang="sk">
+<file id="." original=".">
+<unit id="description"><segment><source>Visualization of network topologies. Can represent different kinds of networks.</source><target>Vizualizácia topológií sietí. Umožňuje znázorniť rôzne typy sietí.</target></segment></unit>
+</file>
+<file id="./widgets/ww-network" original="./widgets/ww-network">
+<unit id="label"><segment><source>undefined</source><target>nešpecifikované</target></segment></unit>
+</file>
+</xliff>

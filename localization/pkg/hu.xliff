@@ -1,1 +1,9 @@
-﻿<?xml version="1.0" encoding="utf-8"?><xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.1" srcLang="en" trgLang="hu"><file id="." original="."><unit id="description"><segment><source>Visualization of network topologies. Can represent different kinds of networks.</source><target>Hálózati topológiák vizualizálása. Különböző típusú hálózatok ábrázolására képes.</target></segment></unit></file><file id="./widgets/ww-network" original="./widgets/ww-network"><unit id="label"><segment><source>undefined</source><target>undefined</target></segment></unit></file></xliff>
+<?xml version="1.0" encoding="utf-8" ?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.1" srcLang="en" trgLang="hu">
+<file id="." original=".">
+<unit id="description"><segment><source>Visualization of network topologies. Can represent different kinds of networks.</source><target>Hálózati topológiák vizualizálása. Különböző típusú hálózatokat képes ábrázolni.</target></segment></unit>
+</file>
+<file id="./widgets/ww-network" original="./widgets/ww-network">
+<unit id="label"><segment><source>undefined</source><target>nem definiált</target></segment></unit>
+</file>
+</xliff>

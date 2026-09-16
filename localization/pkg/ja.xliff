@@ -1,1 +1,9 @@
-﻿<?xml version="1.0" encoding="utf-8"?><xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.1" srcLang="en" trgLang="ja"><file id="." original="."><unit id="description"><segment><source>Visualization of network topologies. Can represent different kinds of networks.</source><target>ネットワークトポロジの視覚化さまざまな種類のネットワークを表現できる</target></segment></unit></file><file id="./widgets/ww-network" original="./widgets/ww-network"><unit id="label"><segment><source>undefined</source><target>未定義</target></segment></unit></file></xliff>
+<?xml version="1.0" encoding="utf-8" ?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.1" srcLang="en" trgLang="ja">
+<file id="." original=".">
+<unit id="description"><segment><source>Visualization of network topologies. Can represent different kinds of networks.</source><target>ネットワークトポロジーの可視化。さまざまな種類のネットワークを表現できます。</target></segment></unit>
+</file>
+<file id="./widgets/ww-network" original="./widgets/ww-network">
+<unit id="label"><segment><source>undefined</source><target>未定義</target></segment></unit>
+</file>
+</xliff>

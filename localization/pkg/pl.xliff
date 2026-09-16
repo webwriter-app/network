@@ -1,1 +1,9 @@
-﻿<?xml version="1.0" encoding="utf-8"?><xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.1" srcLang="en" trgLang="pl"><file id="." original="."><unit id="description"><segment><source>Visualization of network topologies. Can represent different kinds of networks.</source><target>Wizualizacja topologii sieci. Może reprezentować różne rodzaje sieci.</target></segment></unit></file><file id="./widgets/ww-network" original="./widgets/ww-network"><unit id="label"><segment><source>undefined</source><target>niezdefiniowany</target></segment></unit></file></xliff>
+<?xml version="1.0" encoding="utf-8" ?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.1" srcLang="en" trgLang="pl">
+<file id="." original=".">
+<unit id="description"><segment><source>Visualization of network topologies. Can represent different kinds of networks.</source><target>Wizualizacja topologii sieci. Umożliwia przedstawianie różnych rodzajów sieci.</target></segment></unit>
+</file>
+<file id="./widgets/ww-network" original="./widgets/ww-network">
+<unit id="label"><segment><source>undefined</source><target>nieokreślone</target></segment></unit>
+</file>
+</xliff>

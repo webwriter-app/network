@@ -685,10 +685,6 @@
         <source>Example networks for simulations</source>
         <target>模拟网络示例</target>
       </trans-unit>
-      <trans-unit id="sf2811f9a2c3aecfb">
-        <source>Details of the ports </source>
-        <target>港口详情 </target>
-      </trans-unit>
       <trans-unit id="sef49aec68fd1dc66">
         <source>Name</source>
         <target>名称</target>
@@ -700,22 +696,6 @@
       <trans-unit id="sf35d6a5dc03d5557">
         <source>Add Port</source>
         <target>添加端口</target>
-      </trans-unit>
-      <trans-unit id="s5d754d60e804c665">
-        <source>Details of the connection between </source>
-        <target>之间的详细联系 </target>
-      </trans-unit>
-      <trans-unit id="s3c0a015edb522c38">
-        <source> and </source>
-        <target>和 </target>
-      </trans-unit>
-      <trans-unit id="sa4b72835cba0d053">
-        <source>Source Port</source>
-        <target>来源港</target>
-      </trans-unit>
-      <trans-unit id="sc9e9b70c7d6caa43">
-        <source>Target Port</source>
-        <target>目标端口</target>
       </trans-unit>
       <trans-unit id="s9a66f95d51e77c3d">
         <source>Details of the network </source>
@@ -748,10 +728,6 @@
       <trans-unit id="sb3db490afc111f9f">
         <source>IPv6 address is invalid.</source>
         <target>IPv6 地址无效。</target>
-      </trans-unit>
-      <trans-unit id="s331ff328f4efcdce">
-        <source>Arp Table</source>
-        <target>阿尔普表</target>
       </trans-unit>
       <trans-unit id="s13a56952f9635fe4">
         <source>Set Source</source>
@@ -892,6 +868,54 @@
       <trans-unit id="sbfe6d7af32c6737d">
         <source>Packet sending controller to start simulation</source>
         <target>数据包发送控制器启动模拟</target>
+      </trans-unit>
+      <trans-unit id="s349e167cfb664e7f">
+        <source>Simulation tables</source>
+        <target>模拟表</target>
+      </trans-unit>
+      <trans-unit id="sbca820dcc7f49c76">
+        <source>Change color</source>
+        <target>更改颜色</target>
+      </trans-unit>
+      <trans-unit id="sdc673e73b5c13aea">
+        <source>Delete</source>
+        <target>删除</target>
+      </trans-unit>
+      <trans-unit id="s0480d34205c42b70">
+        <source>Ports of </source>
+        <target>港口 </target>
+      </trans-unit>
+      <trans-unit id="sb354dc19a7208a86">
+        <source>Port</source>
+        <target>端口</target>
+      </trans-unit>
+      <trans-unit id="s954199c24bb1bd31">
+        <source>Disconnect the port to remove it.</source>
+        <target>断开端口连接以将其移除。</target>
+      </trans-unit>
+      <trans-unit id="sfcafb45ec30fbc60">
+        <source>Remove Port</source>
+        <target>删除端口</target>
+      </trans-unit>
+      <trans-unit id="s61506a07625cfc18">
+        <source>Disconnect the port to change its type.</source>
+        <target>断开端口连接以更改其类型。</target>
+      </trans-unit>
+      <trans-unit id="s431ab01e3ccd9bf1">
+        <source>Select a port</source>
+        <target>选择一个端口</target>
+      </trans-unit>
+      <trans-unit id="sa67b523cb72c0edb">
+        <source>Interfaces of the connection</source>
+        <target>连接的接口</target>
+      </trans-unit>
+      <trans-unit id="s5f43af3669b1e098">
+        <source>Source</source>
+        <target>源</target>
+      </trans-unit>
+      <trans-unit id="sff5bb7742c2896c8">
+        <source>Target</source>
+        <target>目标</target>
       </trans-unit>
     </body>
   </file>
