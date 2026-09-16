@@ -1,6 +1,6 @@
 {
   "name": "@webwriter/network",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "Visualization of network topologies. Can represent different kinds of networks.",
   "keywords": [
     "webwriter-widget",

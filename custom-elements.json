@@ -114,19 +114,14 @@
                 "text": "boolean"
               },
               "privacy": "private",
-              "description": "Whether the editor is in fullscreen mode.\nUses the Fullscreen API to determine if the element itself is the fullscreen element.",
+              "description": "Whether the editor is in fullscreen mode.\r\nUses the Fullscreen API to determine if the element itself is the fullscreen element.",
               "readonly": true
             },
             {
               "kind": "method",
               "name": "handleFullscreenToggle",
               "privacy": "private",
-              "description": "Toggles fullscreen mode using the Fullscreen API and requests a re-render afterwards.\nSafely catches errors when entering fullscreen is not allowed."
-            },
-            {
-              "kind": "method",
-              "name": "addEdge",
-              "privacy": "private"
+              "description": "Toggles fullscreen mode using the Fullscreen API and requests a re-render afterwards.\r\nSafely catches errors when entering fullscreen is not allowed."
             }
           ],
           "attributes": [

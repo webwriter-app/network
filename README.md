@@ -1,5 +1,5 @@
-# Network (`@webwriter/network@2.0.7`)
-[License: MIT](LICENSE) | Version: 2.0.7
+# Network (`@webwriter/network@2.0.8`)
+[License: MIT](LICENSE) | Version: 2.0.8
 
 Visualization of network topologies. Can represent different kinds of networks.
 
@@ -71,4 +71,4 @@ npm install @webwriter/network
 
 
 ---
-*Generated with @webwriter/build@1.9.0*
+*Generated with @webwriter/build@1.9.1*
