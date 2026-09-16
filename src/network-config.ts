@@ -82,7 +82,8 @@ export function initNetwork(network: NetworkComponent): void {
                 'source-label': function (edge: EdgeSingular) {
                     let source: PhysicalNode = edge.data('from');
                     let port: number = edge.data('inPort');
-                    let portData: Map<string, any> = source.portData.get(port)!;
+                    let portData: Map<string, any> | undefined = source?.portData?.get(port);
+                    if (portData == undefined) return '';
                     let label = '';
                     //TOEXTEND:hide IPv6 since the widget doesn't support IPv6 atm
                     portData.forEach(
@@ -99,7 +100,8 @@ export function initNetwork(network: NetworkComponent): void {
                 'target-label': function (edge: EdgeSingular) {
                     let target: PhysicalNode = edge.data('to');
                     let port: number = edge.data('outPort');
-                    let portData: Map<string, any> = target.portData.get(port)!;
+                    let portData: Map<string, any> | undefined = target?.portData?.get(port);
+                    if (portData == undefined) return '';
                     let label = '';
                     portData.forEach(
                         (value, key) =>

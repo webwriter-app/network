@@ -332,7 +332,10 @@ function nodeConfigDrawerTemplate(this: NetworkComponent) {
                                               class="portcard__remove"
                                               size="small"
                                               circle
-                                              title=${msg('Remove Port')}
+                                              ?disabled=${connected}
+                                              title=${connected
+                                                  ? msg('Disconnect the port to remove it.')
+                                                  : msg('Remove Port')}
                                               @keydown=${(e: KeyboardEvent) => e.stopPropagation()}
                                               @click=${(e: MouseEvent) => {
                                                   e.stopPropagation();
@@ -839,7 +842,10 @@ function addPort(this: NetworkComponent, node: any) {
         const mac = MacAddress.generateRandomAddress(this.macDatabase);
         const ipv4 = Ipv4Address.getLoopBackAddress();
         const ipv6 = Ipv6Address.getLoopBackAddress();
-        const name = 'port-' + (node.data('portData').size + 1);
+        const takenNames = new Set([...node.data('portData').values()].map((port: any) => port.get('Name')));
+        let nameNumber = node.data('portData').size + 1;
+        while (takenNames.has('port-' + nameNumber)) nameNumber++;
+        const name = 'port-' + nameNumber;
         const connectionType = 'ethernet';
 
         portInfo.set('MAC', mac);
@@ -858,6 +864,11 @@ function addPort(this: NetworkComponent, node: any) {
 }
 
 function removePort(this: NetworkComponent, node: any, index: string) {
+    if (isPortConnected.bind(this)(node, index)) {
+        AlertHelper.toastAlert('warning', 'exclamation-triangle', '', msg('Disconnect the port to remove it.'));
+        return;
+    }
+
     const ipv4 = node.data('portData').get(index).get('IPv4');
     if (ipv4 != null) Ipv4Address.removeAddressFromDatabase(ipv4, this.ipv4Database);
 
@@ -869,10 +880,68 @@ function removePort(this: NetworkComponent, node: any, index: string) {
 
     node.data('portData').delete(index);
     node.data('portLinkMapping').delete(index);
+    node.data('portNetMapping')?.delete(index);
 
-    node.data('numberOfInterfacesOrPorts', node.data('numberOfInterfacesOrPorts') - 1);
+    compactPortNumbers.bind(this)(node);
+
+    node.data('numberOfInterfacesOrPorts', node.data('portData').size);
 
     this.requestUpdate();
+}
+
+function compactPortNumbers(this: NetworkComponent, node: any): void {
+    const renumber = new Map<number, number>();
+    let next = 1;
+    for (const port of node.data('portData').keys()) renumber.set(Number(port), next++);
+    if ([...renumber].every(([from, to]) => from === to)) return;
+
+    const shifted = (port: any): number | undefined => {
+        const to = renumber.get(Number(port));
+        return to !== undefined && to !== Number(port) ? to : undefined;
+    };
+    const rekey = (map: Map<any, any> | undefined) => {
+        if (!map) return;
+        const entries = [...map.entries()];
+        map.clear();
+        entries.forEach(([port, value]) => {
+            const to = renumber.get(Number(port));
+            if (to !== undefined) map.set(to, value);
+        });
+    };
+
+    //the port maps first: edge labels read them as soon as an edge's port number changes
+    rekey(node.data('portData'));
+    rekey(node.data('portLinkMapping'));
+    rekey(node.data('portNetMapping'));
+
+    //connections, through data() so the saved connections follow
+    node.connectedEdges().forEach((edge: any) => {
+        if (edge.source().same(node)) {
+            const to = shifted(edge.data('inPort'));
+            if (to !== undefined) edge.data('inPort', to);
+        }
+        if (edge.target().same(node)) {
+            const to = shifted(edge.data('outPort'));
+            if (to !== undefined) edge.data('outPort', to);
+        }
+    });
+
+    //gateway assignments referring to one of this router's ports
+    const id = node.id();
+    this._graph.nodes('.net-node').forEach((net: any) => {
+        const gateways: Map<string, number | null> | undefined = net.data('gateways');
+        const gatewayTo = gateways?.has(id) ? shifted(gateways.get(id)) : undefined;
+        if (gatewayTo !== undefined) gateways!.set(id, gatewayTo);
+
+        const current = net.data('currentDefaultGateway');
+        const currentTo = current?.[0] === id ? shifted(current[1]) : undefined;
+        if (currentTo !== undefined) net.data('currentDefaultGateway', [id, currentTo]);
+    });
+    this._graph.nodes('.physical-node').forEach((other: any) => {
+        const gateway = other.data('defaultGateway');
+        const to = gateway?.[0] === id ? shifted(gateway[1]) : undefined;
+        if (to !== undefined) other.data('defaultGateway', [id, to]);
+    });
 }
 
 function updatePortLink(this: NetworkComponent) {
@@ -955,7 +1024,12 @@ function configurePorts(this: NetworkComponent, edge: GraphEdge, inPort: number,
 }
 
 function isPortConnected(this: NetworkComponent, node: any, port: string): boolean {
-    return node.data('portLinkMapping').get(port) != null;
+    //ask the edges: portLinkMapping holds '' for ports that were never linked
+    return node.connectedEdges().some(
+        (edge: any) =>
+            (edge.source().same(node) && Number(edge.data('inPort')) === Number(port)) ||
+            (edge.target().same(node) && Number(edge.data('outPort')) === Number(port))
+    );
 }
 
 function nodeRoutingTableTemplate(this: NetworkComponent): TemplateResult {
