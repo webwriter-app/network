@@ -281,6 +281,7 @@ export class NetworkComponent extends LitElementWw {
     accessor networks: Array<Network> = [];
 
     private dataObserver = new MutationObserver(() => this.restoreData());
+    private skipDataWrite = false;
 
     private restoreData() {
         const data = readData(this);
@@ -297,7 +298,10 @@ export class NetworkComponent extends LitElementWw {
             this.networks = data.networks as Network[];
             changed = true;
         }
-        this.stateChangedExternally ||= changed;
+        if (changed) {
+            this.skipDataWrite = true;
+            this.stateChangedExternally = true;
+        }
     }
 
     /**
@@ -1276,13 +1280,15 @@ export class NetworkComponent extends LitElementWw {
      */
     updated(changedProperties: Map<string, unknown>) {
         super.updated(changedProperties);
-        if (this.hasUpdated && ['components', 'connections', 'networks'].some((key) => changedProperties.has(key))) {
+        const dataChanged = ['components', 'connections', 'networks'].some((key) => changedProperties.has(key));
+        if (this.hasUpdated && dataChanged && !this.skipDataWrite) {
             writeData(this, {
                 components: this.components,
                 connections: this.connections,
                 networks: this.networks,
             });
         }
+        if (dataChanged) this.skipDataWrite = false;
         if (this.stateChangedExternally && this.networkAvailable) {
             this.stateChangedExternally = false;
             this.closeContextMenu();
