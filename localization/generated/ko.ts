@@ -238,5 +238,7 @@
 'sff5bb7742c2896c8': `대상`,
 'sff73ed19941a31e1': `캔버스에서 호스트를 클릭합니다.`,
 'sff9aad8a96d11e8c': `발신자의 맥 주소:`,
+'sa0aaabb83bc98a72': `Import network`,
+'s3f402f3f155ca6c9': `Export network`,
     };
   

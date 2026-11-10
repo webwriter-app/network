@@ -238,5 +238,7 @@
 'sff5bb7742c2896c8': `Kohde`,
 'sff73ed19941a31e1': `Napsauta isäntäkoneen kohdalla kankaalla`,
 'sff9aad8a96d11e8c': `Lähettäjän Mac-osoite:`,
+'sa0aaabb83bc98a72': `Import network`,
+'s3f402f3f155ca6c9': `Export network`,
     };
   

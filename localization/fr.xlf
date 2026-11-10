@@ -1,4 +1,5 @@
-<xliff xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd" xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd" version="1.2">
   <file original="lit-localize-inputs" datatype="plaintext" source-language="en" target-language="fr">
     <body>
       <trans-unit id="s64ef2a6c2dd1d3d1">
@@ -917,6 +918,12 @@
         <source>Target</source>
         <target>Destination</target>
       </trans-unit>
-    </body>
+    <trans-unit id="sa0aaabb83bc98a72">
+  <source>Import network</source>
+<target>Importer un réseau</target></trans-unit>
+<trans-unit id="s3f402f3f155ca6c9">
+  <source>Export network</source>
+<target>Exporter le réseau</target></trans-unit>
+</body>
   </file>
 </xliff>

@@ -238,5 +238,7 @@
 'sff5bb7742c2896c8': `Destinazione`,
 'sff73ed19941a31e1': `Fare clic su un host dell'area di disegno`,
 'sff9aad8a96d11e8c': `Indirizzo Mac del mittente:`,
+'sa0aaabb83bc98a72': `Import network`,
+'s3f402f3f155ca6c9': `Export network`,
     };
   

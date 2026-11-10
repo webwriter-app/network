@@ -238,5 +238,7 @@
 'sff5bb7742c2896c8': `Siht`,
 'sff73ed19941a31e1': `Klõpsake lõuendil peremees`,
 'sff9aad8a96d11e8c': `Saatja Mac-aadress:`,
+'sa0aaabb83bc98a72': `Import network`,
+'s3f402f3f155ca6c9': `Export network`,
     };
   

@@ -189,6 +189,8 @@
 's13a56952f9635fe4': `Set Source`,
 'se340f70c28bb766c': `Set Target`,
 's479cdff9480652de': `Start Simulation`,
+'sa0aaabb83bc98a72': `Import network`,
+'s3f402f3f155ca6c9': `Export network`,
 's64ef2a6c2dd1d3d1': `Edit`,
 'scfcffcf35292bc6f': `Simulate`,
 'sd03c537f123f42a6': `Exit Fullscreen`,

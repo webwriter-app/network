@@ -238,5 +238,7 @@
 'sff5bb7742c2896c8': `Destinație`,
 'sff73ed19941a31e1': `Faceți clic pe o gazdă de pe pânză`,
 'sff9aad8a96d11e8c': `Adresa Mac a expeditorului:`,
+'sa0aaabb83bc98a72': `Import network`,
+'s3f402f3f155ca6c9': `Export network`,
     };
   

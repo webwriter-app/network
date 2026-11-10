@@ -238,5 +238,7 @@
 'sff5bb7742c2896c8': `Cél`,
 'sff73ed19941a31e1': `Kattintson a vásznon egy gazdatestre`,
 'sff9aad8a96d11e8c': `A feladó Mac címe:`,
+'sa0aaabb83bc98a72': `Import network`,
+'s3f402f3f155ca6c9': `Export network`,
     };
   

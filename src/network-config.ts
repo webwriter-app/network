@@ -382,7 +382,7 @@ export function initNetwork(network: NetworkComponent): void {
     let edgehandlesOptions = {
         canConnect: function (sourceNode: any, targetNode: any) {
             // whether an edge can be created between source and target
-            return EdgeController.canConnect(sourceNode, targetNode);
+            return EdgeController.canConnect(sourceNode, targetNode, network);
         },
         edgeParams: function (sourceNode: any, targetNode: any) {
             return EdgeController.newUnconfiguredEdge(network, sourceNode.data(), targetNode.data());

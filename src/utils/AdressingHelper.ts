@@ -1,8 +1,8 @@
-import { msg } from "@lit/localize";
+import { sourceMsg } from "../../localization/localizer";
 
 export class AddressingHelper {
     static numTo8BitBinary(num: number): string {
-        if (num < 0) throw new Error(msg("Octets shouldn't be of negative value"));
+        if (num < 0) throw new Error(sourceMsg("Octets shouldn't be of negative value"));
         if (num == undefined || num == 0) {
             return "00000000";
         }

@@ -4,7 +4,6 @@ import { NetworkComponent } from '..';
 import { GraphEdge } from '../components/GraphEdge';
 import { PhysicalNode } from '../components/physicalNodes/PhysicalNode';
 import { AlertHelper } from '../utils/AlertHelper';
-import { msg } from '@lit/localize';
 
 export class EdgeController {
     static toggleDrawMode(network: NetworkComponent): void {
@@ -30,7 +29,7 @@ export class EdgeController {
         network.requestUpdate();
     }
 
-    static canConnect(source: NodeSingular, target: NodeSingular): boolean {
+    static canConnect(source: NodeSingular, target: NodeSingular, network: NetworkComponent): boolean {
         //disallow loop & duplicate edge
         if (source.same(target) || source.allAreNeighbors(target)) {
             return false;
@@ -48,7 +47,7 @@ export class EdgeController {
             AlertHelper.toastAlert(
                 'warning',
                 'exclamation-triangle',
-                sourceNode.name + ' ' + msg('is out of available ports.'),
+                sourceNode.name + ' ' + network.msg('is out of available ports.'),
                 ''
             );
             return false;
@@ -57,7 +56,7 @@ export class EdgeController {
             AlertHelper.toastAlert(
                 'warning',
                 'exclamation-triangle',
-                targetNode.name + ' ' + msg('is out of available ports.'),
+                targetNode.name + ' ' + network.msg('is out of available ports.'),
                 ''
             );
             return false;
