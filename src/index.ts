@@ -117,6 +117,13 @@ export class NetworkComponent extends LitElementWw {
     }
     readonly actions = NetworkComponent.buildActions(this.msg);
 
+    constructor() {
+        super();
+        this.addEventListener('optionschange', event => {
+            if (event.target === this) this._graph?.updateStyle();
+        });
+    }
+
     importNetwork(files: File[]) {
         if (files[0]) ImportExportController.importSpecificFile(files[0], this);
     }
@@ -717,17 +724,17 @@ export class NetworkComponent extends LitElementWw {
                                 </sl-button>
                             </sl-tooltip>
                             <sl-tooltip content=${this.msg("Hub")} placement="top">
-                                <sl-button circle class="toolbox__btn" @click=${this.addNetworkDevice().hub}>
+                                <sl-button circle class="toolbox__btn" aria-label=${this.msg("Hub")} @click=${this.addNetworkDevice().hub}>
                                     ${iHub}
                                 </sl-button>
                             </sl-tooltip>
                             <sl-tooltip content=${this.msg("Bridge")} placement="top">
-                                <sl-button circle class="toolbox__btn" @click=${this.addNetworkDevice().bridge}>
+                                <sl-button circle class="toolbox__btn" aria-label=${this.msg("Bridge")} @click=${this.addNetworkDevice().bridge}>
                                     ${iBridge}
                                 </sl-button>
                             </sl-tooltip>
                             <sl-tooltip content=${this.msg("Switch")} placement="top">
-                                <sl-button circle class="toolbox__btn" @click=${this.addNetworkDevice().switch}>
+                                <sl-button circle class="toolbox__btn" aria-label=${this.msg("Switch")} @click=${this.addNetworkDevice().switch}>
                                     ${iSwitch}
                                 </sl-button>
                             </sl-tooltip>

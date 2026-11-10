@@ -2,8 +2,8 @@
     // Do not modify this file by hand!
     // Re-generate this file by running lit-localize
 
-    
-    
+
+
 
     /* eslint-disable no-irregular-whitespace */
     /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -31,6 +31,7 @@
 's0f527a17b9b690e2': `Szép munka!`,
 's1018d5f2b1cc4e8d': `Hozzáférési pont`,
 's10a895b419c64000': `a csomaghoz feladó/fogadó hozzárendelése`,
+'s110e81e1ca4f992c': `L2- és L3-adatok`,
 's138df1ceb51a3661': `Az átjáróhoz beillesztett IPv4 nem felel meg az alhálózati maszknak, vagy a hálózat nincs konfigurálva.`,
 's13a56952f9635fe4': `Forrás beállítása`,
 's146232d3025412f3': `Érvénytelen bitmaszk.`,
@@ -46,6 +47,7 @@
 's22b5492cdee5c0d6': `Kézi üzemmód`,
 's22feccbbd1ae2aa8': `3 Ethernet és egy átjáró.`,
 's265dbd543be2f5ed': `Hozzáférési pont`,
+'s269a190f0086d892': `Nincs konfigurálva`,
 's2906cb2c9daacae3': `az új hálózati címtartományt ellenőrzik, ha azok kiterjesztik a régieket.`,
 's2c35f5501ffe52a0': `Rajzolási mód váltása`,
 's2e55a928208bdb7f': `A csomagod a loop-back címmel befejezte a küldést.`,
@@ -66,6 +68,7 @@
 's3d312902efb57145': `A meglévő hálózat kibővül az új állomással.`,
 's3ec4a053318b0ae8': `hosts/gateways/subnetworks`,
 's3f015779aaa1979d': `Hálózati cím`,
+'s3f402f3f155ca6c9': `Hálózat exportálása`,
 's4114a8a9e84611a4': `Nincs elérhető kikötő.`,
 's42cbd8dca939a9c7': `Ellenőrizze a  címet.`,
 's431446cf4939d374': `Minden háló helyesen van konfigurálva!`,
@@ -94,18 +97,20 @@
 's5f43af3669b1e098': `Forrás`,
 's61506a07625cfc18': `A port típusának megváltoztatásához válassza le a portot.`,
 's62278f512692e037': `Ülés`,
+'s631790646d968f40': `L3-adatok`,
 's649522600e4a80ac': `Új csomag küldésének megkezdése`,
 's64ef2a6c2dd1d3d1': `Szerkesztés`,
 's6503256c2de2745c': `Edge`,
 's652d3637d25431f5': `A címzett megkapta az üzenetet!`,
 's6881b5a560c88bf8': `Háló alapú üzemmód be:`,
-'s6b05f9d8801fc14f': `Házigazda`,
+'s6b05f9d8801fc14f': `Állomás`,
 's6debdd8a9764e3fc': `Válassza ki az alkatrészt`,
 's6e488f7a11e566e4': `Kérjük, rendelje újra a portokat, vagy bontsa el ezt a kapcsolatot.`,
 's6e5cadbf42d9dfe4': `Az ütköző címekhez új IPv4-címek kerülnek kiosztásra.`,
 's6ea934c6536e4930': `Kattintson a jobb gombbal az egyes hálózatokra, majd válassza a Részletek szerkesztése lehetőséget a konfiguráció módosításához.`,
 's6f1b8c80ab2b4fd4': `Tipp: Használja a CIDR/Subnetting vezérlőt a drag-and-drop funkciót, majd ellenőrizze.`,
 's71183ed55882f1c9': `Az IPv4-cím érvénytelen.`,
+'s72dee52f05a8a31b': `L2 ARP-kérés`,
 's73b5a4a416157778': `Ethernet egy híddal és 2 állomással.`,
 's73c3e21df2f12350': `Draw-and-drop aktiválása`,
 's768df033dc306fbc': `A csomópont hálózatba húzása előtt`,
@@ -131,7 +136,7 @@
 's8c8aeec90bdad274': `2 Ethernet és 4 útválasztó.`,
 's8ccfa5f804f6777a': `Példa grafikonok/gyakorlatok`,
 's8d70ca4af5a9c009': `címmel`,
-'s8e114dd98aeedf91': `Switch`,
+'s8e114dd98aeedf91': `Hálózati kapcsoló`,
 's8ec5e5061ca83fb9': `A konfigurálatlan hálózat még mindig létezik.`,
 's94c954118f54fa1d': `Bemeneti portok száma`,
 's953fefbfaf0e2e3d': `CIDR/ alhálózatbeállítás`,
@@ -144,12 +149,14 @@
 's9c84598a99c03b88': `Bitmaszk`,
 's9d1892a929c95c41': `visszaállítja az összes táblázatot, és befejezi az aktuális szimulációs munkamenetet.`,
 's9feb1a1345ccc3e5': `Hálózat`,
+'sa0aaabb83bc98a72': `Hálózat importálása`,
 'sa165462237196374': `Ebben az üzemmódban, amikor a felhasználók címeket szerkesztenek:`,
 'sa1e005e5c8a7cf53': `Kérjük, a csomagküldés szimulálása előtt lépjen be egy munkamenetbe.`,
 'sa2885d6d322c7379': `host/router: ARP-tábla és útválasztási táblázat létrehozása`,
 'sa67b523cb72c0edb': `A kapcsolat interfészei`,
 'sa9b946da3254eeb2': `Konfigurálatlan hálózat, automatikusan beállított Ipv4-cím a loop-backhez.`,
 'sabab0da440471b2c': `Fizikai csomópont`,
+'sae0547f6ee918ff9': `Rendelj hozzá portokat vagy interfészeket`,
 'saf114a45c687be19': `Host-alapú üzemmód:`,
 'safb8ca5860037ac7': `Hogyan konfigurálhatók a táblázatok?`,
 'sb1463e72905de3f8': `Egy ethernet, egy vezeték nélküli hálózat és egy átjáró.`,
@@ -235,10 +242,8 @@
 'sfc2940e33d865b93': `További részletekért kérjük, használja az Alhálózati/CIDR funkció Ellenőrzés gombját.`,
 'sfcafb45ec30fbc60': `Port eltávolítása`,
 'sfd468f7c41396df5': `Csomagküldő vezérlő`,
+'sfdd5df424bd1f92a': `L2 ARP-válasz`,
 'sff5bb7742c2896c8': `Cél`,
 'sff73ed19941a31e1': `Kattintson a vásznon egy gazdatestre`,
 'sff9aad8a96d11e8c': `A feladó Mac címe:`,
-'sa0aaabb83bc98a72': `Import network`,
-'s3f402f3f155ca6c9': `Export network`,
     };
-  

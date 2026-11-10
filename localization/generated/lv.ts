@@ -2,8 +2,8 @@
     // Do not modify this file by hand!
     // Re-generate this file by running lit-localize
 
-    
-    
+
+
 
     /* eslint-disable no-irregular-whitespace */
     /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -31,6 +31,7 @@
 's0f527a17b9b690e2': `Labi padarīts!`,
 's1018d5f2b1cc4e8d': `Piekļuves punkts`,
 's10a895b419c64000': `piešķirt paketei sūtītāju/saņēmēju.`,
+'s110e81e1ca4f992c': `L2 un L3 dati`,
 's138df1ceb51a3661': `Ievietotā IPv4 vārteja neatbilst apakštīkla maskai vai tīkls nav konfigurēts.`,
 's13a56952f9635fe4': `Iestatīt avotu`,
 's146232d3025412f3': `Nederīga bitmaska.`,
@@ -46,6 +47,7 @@
 's22b5492cdee5c0d6': `Manuālais režīms`,
 's22feccbbd1ae2aa8': `3 Ethernet tīkli un vārtejas.`,
 's265dbd543be2f5ed': `Piekļuves punkts`,
+'s269a190f0086d892': `Nav konfigurēts`,
 's2906cb2c9daacae3': `jaunais tīkla adrešu diapazons tiks pārbaudīts, vai tas paplašina veco.`,
 's2c35f5501ffe52a0': `Pārslēgt zīmēšanas režīmu`,
 's2e55a928208bdb7f': `Jūsu pakete ir pabeigta sūtīt ar cilpas atpakaļceļa adresi.`,
@@ -66,6 +68,7 @@
 's3d312902efb57145': `Esošais tīkls tiks paplašināts, lai ietvertu jauno mitekli.`,
 's3ec4a053318b0ae8': `hosts/vārti/apakštīkli`,
 's3f015779aaa1979d': `Tīkla adrese`,
+'s3f402f3f155ca6c9': `Eksportēt tīklu`,
 's4114a8a9e84611a4': `Osta nav pieejama.`,
 's42cbd8dca939a9c7': `Pārbaudiet`,
 's431446cf4939d374': `Visi tīkli ir pareizi konfigurēti!`,
@@ -94,18 +97,20 @@
 's5f43af3669b1e098': `Avots`,
 's61506a07625cfc18': `Atvienojiet portu, lai mainītu tā tipu.`,
 's62278f512692e037': `Sesija`,
+'s631790646d968f40': `L3 dati`,
 's649522600e4a80ac': `Sākt sūtīt jaunu paketi`,
 's64ef2a6c2dd1d3d1': `Rediģēt`,
 's6503256c2de2745c': `Edge`,
 's652d3637d25431f5': `Jūsu saņēmējs ir saņēmis ziņojumu!`,
 's6881b5a560c88bf8': `Ieslēgts tīkla režīms:`,
-'s6b05f9d8801fc14f': `Saimnieks`,
+'s6b05f9d8801fc14f': `Resursdators`,
 's6debdd8a9764e3fc': `Izvēlieties komponentu`,
 's6e488f7a11e566e4': `Lūdzu, pāradresējiet ostas vai pārtrauciet šo savienojumu.`,
 's6e5cadbf42d9dfe4': `Konfliktējošām adresēm tiks piešķirts jauns IPv4.`,
 's6ea934c6536e4930': `Lai mainītu tīkla konfigurāciju, noklikšķiniet uz katra tīkla ar peles labo pogu un pēc tam atlasiet iespēju Rediģēt informāciju.`,
 's6f1b8c80ab2b4fd4': `Padoms: Izmantojiet CIDR/apakštīklu kontrolieri, lai velciet un nometiet, pēc tam pārbaudiet.`,
 's71183ed55882f1c9': `IPv4 adrese ir nederīga.`,
+'s72dee52f05a8a31b': `L2 ARP pieprasījums`,
 's73b5a4a416157778': `Ethernet ar tiltu un 2 saimniekiem.`,
 's73c3e21df2f12350': `Aktivizēt Draw-and-drop`,
 's768df033dc306fbc': `Pirms mezgla vilkšanas tīklā`,
@@ -131,7 +136,7 @@
 's8c8aeec90bdad274': `2 Ethernet un 4 maršrutētāji.`,
 's8ccfa5f804f6777a': `Piemēru grafiki/uzdevumi`,
 's8d70ca4af5a9c009': `ar adresi`,
-'s8e114dd98aeedf91': `Pārslēdziet`,
+'s8e114dd98aeedf91': `Tīkla komutators`,
 's8ec5e5061ca83fb9': `Joprojām pastāv nekonfigurēts tīkls.`,
 's94c954118f54fa1d': `Ieejas pieslēgvietu skaits`,
 's953fefbfaf0e2e3d': `CIDR/ apakštīklu veidošana`,
@@ -144,12 +149,14 @@
 's9c84598a99c03b88': `Bitmaska`,
 's9d1892a929c95c41': `atiestatīs visas tabulas un izbeigs pašreizējo simulācijas sesiju.`,
 's9feb1a1345ccc3e5': `Tīkls`,
+'sa0aaabb83bc98a72': `Importēt tīklu`,
 'sa165462237196374': `Šajā režīmā, kad lietotāji rediģē adreses:`,
 'sa1e005e5c8a7cf53': `Lūdzu, pirms paketes nosūtīšanas simulēšanas ieslēdziet sesiju.`,
 'sa2885d6d322c7379': `saimnieks/maršrutētājs: Tiek izveidota ARP tabula un maršrutēšanas tabula`,
 'sa67b523cb72c0edb': `Savienojuma interfeisi`,
 'sa9b946da3254eeb2': `Nekonfigurēts tīkls, automātiski iestatīta Ipv4 adrese, lai veiktu loop-back.`,
 'sabab0da440471b2c': `Fiziskais mezgls`,
+'sae0547f6ee918ff9': `Piešķiriet portus vai saskarnes`,
 'saf114a45c687be19': `Uz resursdatoriem balstīts režīms:`,
 'safb8ca5860037ac7': `Kā konfigurēt tabulas?`,
 'sb1463e72905de3f8': `Ethernet, bezvadu tīkls un vārteja.`,
@@ -235,10 +242,8 @@
 'sfc2940e33d865b93': `Lai iegūtu sīkāku informāciju, lūdzu, izmantojiet pogas Pārbaudīt/CIDR funkciju.`,
 'sfcafb45ec30fbc60': `Noņemt portu`,
 'sfd468f7c41396df5': `Paketes nosūtīšanas kontrolieris`,
+'sfdd5df424bd1f92a': `L2 ARP atbilde`,
 'sff5bb7742c2896c8': `Mērķis`,
 'sff73ed19941a31e1': `Noklikšķiniet uz saimnieka uz audekla`,
 'sff9aad8a96d11e8c': `Sūtītāja Mac adrese:`,
-'sa0aaabb83bc98a72': `Import network`,
-'s3f402f3f155ca6c9': `Export network`,
     };
-  

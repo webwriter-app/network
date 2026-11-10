@@ -2,8 +2,8 @@
     // Do not modify this file by hand!
     // Re-generate this file by running lit-localize
 
-    
-    
+
+
 
     /* eslint-disable no-irregular-whitespace */
     /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -31,6 +31,7 @@
 's0f527a17b9b690e2': `Muito bem!`,
 's1018d5f2b1cc4e8d': `Ponto de acesso`,
 's10a895b419c64000': `atribuir um remetente/recetor para o pacote`,
+'s110e81e1ca4f992c': `Dados L2 e L3`,
 's138df1ceb51a3661': `O IPv4 inserido para o gateway não corresponde à máscara de sub-rede ou a rede não está configurada.`,
 's13a56952f9635fe4': `Fonte do conjunto`,
 's146232d3025412f3': `Máscara de bits inválida.`,
@@ -46,6 +47,7 @@
 's22b5492cdee5c0d6': `Modo manual`,
 's22feccbbd1ae2aa8': `3 Ethernets e um gateway.`,
 's265dbd543be2f5ed': `Ponto de acesso`,
+'s269a190f0086d892': `Não configurado`,
 's2906cb2c9daacae3': `O novo intervalo de endereços de rede será verificado se expande os antigos.`,
 's2c35f5501ffe52a0': `Alternar o modo de sorteio`,
 's2e55a928208bdb7f': `O seu pacote terminou de ser enviado com o endereço de retorno.`,
@@ -66,6 +68,7 @@
 's3d312902efb57145': `A rede existente expandir-se-á para conter o novo anfitrião.`,
 's3ec4a053318b0ae8': `hosts/gateways/sub-redes`,
 's3f015779aaa1979d': `Endereço de rede`,
+'s3f402f3f155ca6c9': `Exportar rede`,
 's4114a8a9e84611a4': `Não há porta disponível.`,
 's42cbd8dca939a9c7': `Verificar`,
 's431446cf4939d374': `Todas as redes estão corretamente configuradas!`,
@@ -94,6 +97,7 @@
 's5f43af3669b1e098': `Origem`,
 's61506a07625cfc18': `Desligue a porta para alterar o seu tipo.`,
 's62278f512692e037': `Sessão`,
+'s631790646d968f40': `Dados L3`,
 's649522600e4a80ac': `Iniciar o envio de um novo pacote`,
 's64ef2a6c2dd1d3d1': `Editar`,
 's6503256c2de2745c': `Borda`,
@@ -106,6 +110,7 @@
 's6ea934c6536e4930': `Clique com o botão direito do rato em cada rede e selecione Editar detalhes para alterar a respectiva configuração.`,
 's6f1b8c80ab2b4fd4': `Sugestão: Utilize o controlador CIDR/Subnetting para arrastar e largar e depois verificar.`,
 's71183ed55882f1c9': `O endereço IPv4 é inválido.`,
+'s72dee52f05a8a31b': `Pedido ARP L2`,
 's73b5a4a416157778': `Ethernet com uma ponte e 2 anfitriões.`,
 's73c3e21df2f12350': `Ativar o Draw-and-drop`,
 's768df033dc306fbc': `Antes de arrastar um nó para a rede`,
@@ -131,7 +136,7 @@
 's8c8aeec90bdad274': `2 Ethernets e 4 routers.`,
 's8ccfa5f804f6777a': `Exemplos de gráficos/exercícios`,
 's8d70ca4af5a9c009': `com endereço`,
-'s8e114dd98aeedf91': `Interruptor`,
+'s8e114dd98aeedf91': `Comutador de rede`,
 's8ec5e5061ca83fb9': `A rede não configurada ainda existe.`,
 's94c954118f54fa1d': `Número de portas de entrada`,
 's953fefbfaf0e2e3d': `CIDR/ Sub-rede`,
@@ -144,12 +149,14 @@
 's9c84598a99c03b88': `Máscara de bits`,
 's9d1892a929c95c41': `reinicia todas as tabelas e termina a sessão de simulação atual.`,
 's9feb1a1345ccc3e5': `Rede`,
+'sa0aaabb83bc98a72': `Importar rede`,
 'sa165462237196374': `Durante este modo, quando os utilizadores editam endereços de:`,
 'sa1e005e5c8a7cf53': `Inicie uma sessão antes de simular o envio de um pacote.`,
 'sa2885d6d322c7379': `anfitrião/roteador: A tabela ARP e a tabela de encaminhamento são criadas`,
 'sa67b523cb72c0edb': `Interfaces da ligação`,
 'sa9b946da3254eeb2': `Rede não configurada, definir automaticamente o endereço Ipv4 para o loop-back.`,
 'sabab0da440471b2c': `Nó físico`,
+'sae0547f6ee918ff9': `Atribua portas ou interfaces`,
 'saf114a45c687be19': `Modo baseado em hosts:`,
 'safb8ca5860037ac7': `Como configurar as tabelas?`,
 'sb1463e72905de3f8': `Uma rede ethernet, uma rede sem fios e um gateway.`,
@@ -235,10 +242,8 @@
 'sfc2940e33d865b93': `Utilize o botão Verificar da funcionalidade Subnetting/CIDR para obter mais pormenores`,
 'sfcafb45ec30fbc60': `Remover porta`,
 'sfd468f7c41396df5': `Controlador de envio de pacotes`,
+'sfdd5df424bd1f92a': `Resposta ARP L2`,
 'sff5bb7742c2896c8': `Destino`,
 'sff73ed19941a31e1': `Clique num anfitrião na tela`,
 'sff9aad8a96d11e8c': `Endereço Mac do remetente:`,
-'sa0aaabb83bc98a72': `Import network`,
-'s3f402f3f155ca6c9': `Export network`,
     };
-  

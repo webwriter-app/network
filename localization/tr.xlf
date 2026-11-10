@@ -1,4 +1,5 @@
-<xliff xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd" xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd" version="1.2">
   <file original="lit-localize-inputs" datatype="plaintext" source-language="en" target-language="tr">
     <body>
       <trans-unit id="s64ef2a6c2dd1d3d1">
@@ -55,8 +56,7 @@
       </trans-unit>
       <trans-unit id="s8e114dd98aeedf91">
         <source>Switch</source>
-        <target>Anahtar</target>
-      </trans-unit>
+<target>Ağ anahtarı</target></trans-unit>
       <trans-unit id="s6503256c2de2745c">
         <source>Edge</source>
         <target>Kenar</target>
@@ -95,8 +95,7 @@
       </trans-unit>
       <trans-unit id="s6b05f9d8801fc14f">
         <source>Host</source>
-        <target>Ev sahibi</target>
-      </trans-unit>
+<target>Ana bilgisayar</target></trans-unit>
       <trans-unit id="s1018d5f2b1cc4e8d">
         <source>Access Point</source>
         <target>Erişim Noktası</target>
@@ -917,6 +916,30 @@
         <source>Target</source>
         <target>Hedef</target>
       </trans-unit>
-    </body>
+    <trans-unit id="sa0aaabb83bc98a72">
+  <source>Import network</source>
+<target>Ağı içe aktar</target></trans-unit>
+<trans-unit id="s3f402f3f155ca6c9">
+  <source>Export network</source>
+<target>Ağı dışa aktar</target></trans-unit>
+<trans-unit id="sae0547f6ee918ff9">
+  <source>Please assign ports/interfaces</source>
+<target>Bağlantı noktalarını veya arayüzleri atayın</target></trans-unit>
+<trans-unit id="s269a190f0086d892">
+  <source>Unconfigured</source>
+<target>Yapılandırılmamış</target></trans-unit>
+<trans-unit id="s110e81e1ca4f992c">
+  <source>L2 L3 Data</source>
+<target>L2 ve L3 verileri</target></trans-unit>
+<trans-unit id="s72dee52f05a8a31b">
+  <source>L2 ARP request</source>
+<target>L2 ARP isteği</target></trans-unit>
+<trans-unit id="sfdd5df424bd1f92a">
+  <source>L2 ARP reply</source>
+<target>L2 ARP yanıtı</target></trans-unit>
+<trans-unit id="s631790646d968f40">
+  <source>L3 Data</source>
+<target>L3 verileri</target></trans-unit>
+</body>
   </file>
 </xliff>

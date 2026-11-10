@@ -2,8 +2,8 @@
     // Do not modify this file by hand!
     // Re-generate this file by running lit-localize
 
-    
-    
+
+
 
     /* eslint-disable no-irregular-whitespace */
     /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -31,6 +31,7 @@
 's0f527a17b9b690e2': `Godt gjort!`,
 's1018d5f2b1cc4e8d': `Tilgangspunkt`,
 's10a895b419c64000': `tilordne en avsender/mottaker for pakken`,
+'s110e81e1ca4f992c': `L2- og L3-data`,
 's138df1ceb51a3661': `IPv4 for gateway stemmer ikke overens med nettverksmasken, eller nettverket er ikke konfigurert.`,
 's13a56952f9635fe4': `Sett kilde`,
 's146232d3025412f3': `Ugyldig bitmaske.`,
@@ -46,6 +47,7 @@
 's22b5492cdee5c0d6': `Manuell modus`,
 's22feccbbd1ae2aa8': `3 eternett og en gateway.`,
 's265dbd543be2f5ed': `Tilgangspunkt`,
+'s269a190f0086d892': `Ikke konfigurert`,
 's2906cb2c9daacae3': `nye nettverksadresseområdet vil bli sjekket hvis de utvider de gamle.`,
 's2c35f5501ffe52a0': `Veksle tegnemodus`,
 's2e55a928208bdb7f': `Pakken er ferdig sendt med loop-back-adressen.`,
@@ -66,6 +68,7 @@
 's3d312902efb57145': `Det eksisterende nettverket utvides til å omfatte den nye verten.`,
 's3ec4a053318b0ae8': `verter/gatewayer/undernettverk`,
 's3f015779aaa1979d': `Nettverksadresse`,
+'s3f402f3f155ca6c9': `Eksporter nettverk`,
 's4114a8a9e84611a4': `Ingen port tilgjengelig.`,
 's42cbd8dca939a9c7': `Sjekk`,
 's431446cf4939d374': `Alle nett er riktig konfigurert!`,
@@ -94,6 +97,7 @@
 's5f43af3669b1e098': `Kilde`,
 's61506a07625cfc18': `Koble fra porten for å endre typen.`,
 's62278f512692e037': `Sesjon`,
+'s631790646d968f40': `L3-data`,
 's649522600e4a80ac': `Start sending av en ny pakke`,
 's64ef2a6c2dd1d3d1': `Rediger`,
 's6503256c2de2745c': `Kant`,
@@ -106,6 +110,7 @@
 's6ea934c6536e4930': `Høyreklikk på hvert nettverk, og velg deretter Rediger detaljer for å endre konfigurasjonen.`,
 's6f1b8c80ab2b4fd4': `Tips: Bruk CIDR/Subnetting-kontrolleren til å dra og slippe og deretter sjekke.`,
 's71183ed55882f1c9': `IPv4-adressen er ugyldig.`,
+'s72dee52f05a8a31b': `L2 ARP-forespørsel`,
 's73b5a4a416157778': `Ethernet med en bro og to verter.`,
 's73c3e21df2f12350': `Aktiver Tegn-og-slipp`,
 's768df033dc306fbc': `Før du drar en node inn i nettverket`,
@@ -131,7 +136,7 @@
 's8c8aeec90bdad274': `2 eternett og 4 rutere.`,
 's8ccfa5f804f6777a': `Eksempler på grafer/øvelser`,
 's8d70ca4af5a9c009': `med adresse`,
-'s8e114dd98aeedf91': `Bryter`,
+'s8e114dd98aeedf91': `Nettverkssvitsj`,
 's8ec5e5061ca83fb9': `Ukonfigurert nett eksisterer fortsatt.`,
 's94c954118f54fa1d': `Antall inngangsporter`,
 's953fefbfaf0e2e3d': `CIDR/ Subnetting`,
@@ -144,12 +149,14 @@
 's9c84598a99c03b88': `Bitmaske`,
 's9d1892a929c95c41': `nullstiller alle tabeller og avslutter den gjeldende simuleringsøkten.`,
 's9feb1a1345ccc3e5': `Nettverk`,
+'sa0aaabb83bc98a72': `Importer nettverk`,
 'sa165462237196374': `I denne modusen, når brukere redigerer adresser til:`,
 'sa1e005e5c8a7cf53': `Vennligst start en økt før du simulerer sending av en pakke.`,
 'sa2885d6d322c7379': `vert/ruter: ARP-tabell og rutingstabell opprettes`,
 'sa67b523cb72c0edb': `Grensesnitt for tilkoblingen`,
 'sa9b946da3254eeb2': `Ukonfigurert nett, automatisk satt Ipv4-adresse til loop-back.`,
 'sabab0da440471b2c': `Fysisk node`,
+'sae0547f6ee918ff9': `Tilordne porter eller grensesnitt`,
 'saf114a45c687be19': `Vertsbasert modus:`,
 'safb8ca5860037ac7': `Hvordan konfigurerer jeg tabellene?`,
 'sb1463e72905de3f8': `Et Ethernet, et trådløst nettverk og en gateway.`,
@@ -235,10 +242,8 @@
 'sfc2940e33d865b93': `Bruk Sjekk-knappen i Subnetting/CIDR-funksjonen for mer informasjon`,
 'sfcafb45ec30fbc60': `Fjern port`,
 'sfd468f7c41396df5': `Kontrollenhet for pakkesending`,
+'sfdd5df424bd1f92a': `L2 ARP-svar`,
 'sff5bb7742c2896c8': `Mål`,
 'sff73ed19941a31e1': `Klikk på en host på lerretet`,
 'sff9aad8a96d11e8c': `Mac-adresse til avsender:`,
-'sa0aaabb83bc98a72': `Import network`,
-'s3f402f3f155ca6c9': `Export network`,
     };
-  

@@ -2,8 +2,8 @@
     // Do not modify this file by hand!
     // Re-generate this file by running lit-localize
 
-    
-    
+
+
 
     /* eslint-disable no-irregular-whitespace */
     /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -31,6 +31,7 @@
 's0f527a17b9b690e2': `¡Bien hecho!`,
 's1018d5f2b1cc4e8d': `Punto de acceso`,
 's10a895b419c64000': `asignar un remitente/receptor para el paquete`,
+'s110e81e1ca4f992c': `Datos de L2 y L3`,
 's138df1ceb51a3661': `El IPv4 insertado para la pasarela no coincide con la máscara de subred o la red no está configurada.`,
 's13a56952f9635fe4': `Fuente`,
 's146232d3025412f3': `Máscara de bits no válida.`,
@@ -46,6 +47,7 @@
 's22b5492cdee5c0d6': `Modo manual`,
 's22feccbbd1ae2aa8': `3 Ethernets y una pasarela.`,
 's265dbd543be2f5ed': `Punto de acceso`,
+'s269a190f0086d892': `Sin configurar`,
 's2906cb2c9daacae3': `nuevo rango de direcciones de red se comprobará si amplían las antiguas.`,
 's2c35f5501ffe52a0': `Conmutar el modo de dibujo`,
 's2e55a928208bdb7f': `Su paquete ha terminado de enviarse con la dirección de bucle de retorno.`,
@@ -95,18 +97,20 @@
 's5f43af3669b1e098': `Origen`,
 's61506a07625cfc18': `Desconecta el puerto para cambiar su tipo.`,
 's62278f512692e037': `Sesión`,
+'s631790646d968f40': `Datos de L3`,
 's649522600e4a80ac': `Iniciar el envío de un nuevo paquete`,
 's64ef2a6c2dd1d3d1': `Editar`,
 's6503256c2de2745c': `Borde`,
 's652d3637d25431f5': `Su destinatario ha recibido el mensaje.`,
 's6881b5a560c88bf8': `Modo basado en red activado:`,
-'s6b05f9d8801fc14f': `Anfitrión`,
+'s6b05f9d8801fc14f': `Host`,
 's6debdd8a9764e3fc': `Elija su componente`,
 's6e488f7a11e566e4': `Por favor, reasigne sus puertos o descarte esta conexión.`,
 's6e5cadbf42d9dfe4': `Se asignarán nuevas IPv4 para las direcciones en conflicto.`,
 's6ea934c6536e4930': `Haga clic con el botón derecho en cada red y seleccione Editar detalles para cambiar su configuración.`,
 's6f1b8c80ab2b4fd4': `Consejo: Utilice el controlador CIDR/Subnetting para arrastrar y soltar y, a continuación, compruebe.`,
 's71183ed55882f1c9': `La dirección IPv4 no es válida.`,
+'s72dee52f05a8a31b': `Solicitud ARP de L2`,
 's73b5a4a416157778': `Ethernet con un puente y 2 hosts.`,
 's73c3e21df2f12350': `Activar Dibujar y soltar`,
 's768df033dc306fbc': `Antes de arrastrar un nodo a la red`,
@@ -132,7 +136,7 @@
 's8c8aeec90bdad274': `2 Ethernets y 4 routers.`,
 's8ccfa5f804f6777a': `Ejemplos de gráficos/ejercicios`,
 's8d70ca4af5a9c009': `con dirección`,
-'s8e114dd98aeedf91': `Interruptor`,
+'s8e114dd98aeedf91': `Conmutador de red`,
 's8ec5e5061ca83fb9': `La red no configurada sigue existiendo.`,
 's94c954118f54fa1d': `Número de puertos de entrada`,
 's953fefbfaf0e2e3d': `CIDR/Subredes`,
@@ -152,6 +156,7 @@
 'sa67b523cb72c0edb': `Interfaces de la conexión`,
 'sa9b946da3254eeb2': `Red no configurada, establece automáticamente la dirección Ipv4 para loop-back.`,
 'sabab0da440471b2c': `Nodo físico`,
+'sae0547f6ee918ff9': `Asigna puertos o interfaces`,
 'saf114a45c687be19': `Modo basado en hosts:`,
 'safb8ca5860037ac7': `¿Cómo configurar las tablas?`,
 'sb1463e72905de3f8': `Una red ethernet, una red inalámbrica y una pasarela.`,
@@ -237,8 +242,8 @@
 'sfc2940e33d865b93': `Utilice el botón Comprobar de la función Subnetting/CIDR para obtener más información.`,
 'sfcafb45ec30fbc60': `Eliminar puerto`,
 'sfd468f7c41396df5': `Controlador de envío de paquetes`,
+'sfdd5df424bd1f92a': `Respuesta ARP de L2`,
 'sff5bb7742c2896c8': `Destino`,
 'sff73ed19941a31e1': `Haga clic en un anfitrión del lienzo`,
 'sff9aad8a96d11e8c': `Dirección Mac del remitente:`,
     };
-  

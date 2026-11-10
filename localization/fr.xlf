@@ -56,8 +56,7 @@
       </trans-unit>
       <trans-unit id="s8e114dd98aeedf91">
         <source>Switch</source>
-        <target>Interrupteur</target>
-      </trans-unit>
+<target>Commutateur réseau</target></trans-unit>
       <trans-unit id="s6503256c2de2745c">
         <source>Edge</source>
         <target>Bord</target>
@@ -924,6 +923,24 @@
 <trans-unit id="s3f402f3f155ca6c9">
   <source>Export network</source>
 <target>Exporter le réseau</target></trans-unit>
+<trans-unit id="sae0547f6ee918ff9">
+  <source>Please assign ports/interfaces</source>
+<target>Attribuez des ports ou des interfaces</target></trans-unit>
+<trans-unit id="s269a190f0086d892">
+  <source>Unconfigured</source>
+<target>Non configuré</target></trans-unit>
+<trans-unit id="s110e81e1ca4f992c">
+  <source>L2 L3 Data</source>
+<target>Données L2 et L3</target></trans-unit>
+<trans-unit id="s72dee52f05a8a31b">
+  <source>L2 ARP request</source>
+<target>Requête ARP L2</target></trans-unit>
+<trans-unit id="sfdd5df424bd1f92a">
+  <source>L2 ARP reply</source>
+<target>Réponse ARP L2</target></trans-unit>
+<trans-unit id="s631790646d968f40">
+  <source>L3 Data</source>
+<target>Données L3</target></trans-unit>
 </body>
   </file>
 </xliff>

@@ -2,8 +2,8 @@
     // Do not modify this file by hand!
     // Re-generate this file by running lit-localize
 
-    
-    
+
+
 
     /* eslint-disable no-irregular-whitespace */
     /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -31,6 +31,7 @@
 's0f527a17b9b690e2': `Ben fatto!`,
 's1018d5f2b1cc4e8d': `Punto di accesso`,
 's10a895b419c64000': `assegnare un mittente/ricevitore per il pacchetto`,
+'s110e81e1ca4f992c': `Dati L2 e L3`,
 's138df1ceb51a3661': `L'IPv4 inserito per il gateway non corrisponde alla maschera di sottorete o la rete non è configurata.`,
 's13a56952f9635fe4': `Fonte del set`,
 's146232d3025412f3': `Maschera di bit non valida.`,
@@ -46,6 +47,7 @@
 's22b5492cdee5c0d6': `Modalità manuale`,
 's22feccbbd1ae2aa8': `3 Ethernet e un gateway.`,
 's265dbd543be2f5ed': `Punto di accesso`,
+'s269a190f0086d892': `Non configurato`,
 's2906cb2c9daacae3': `nuovo intervallo di indirizzi di rete verrà controllato se si estende a quelli vecchi.`,
 's2c35f5501ffe52a0': `Alterna la modalità di estrazione`,
 's2e55a928208bdb7f': `Il pacchetto ha terminato l'invio con l'indirizzo di loop-back.`,
@@ -66,6 +68,7 @@
 's3d312902efb57145': `La rete esistente si espanderà per contenere il nuovo host.`,
 's3ec4a053318b0ae8': `host/gateway/sottoreti`,
 's3f015779aaa1979d': `Indirizzo di rete`,
+'s3f402f3f155ca6c9': `Esporta rete`,
 's4114a8a9e84611a4': `Nessuna porta disponibile.`,
 's42cbd8dca939a9c7': `Controllo`,
 's431446cf4939d374': `Tutte le reti sono configurate correttamente!`,
@@ -94,18 +97,20 @@
 's5f43af3669b1e098': `Origine`,
 's61506a07625cfc18': `Scollegare la porta per modificarne il tipo.`,
 's62278f512692e037': `Sessione`,
+'s631790646d968f40': `Dati L3`,
 's649522600e4a80ac': `Iniziare l'invio di un nuovo pacchetto`,
 's64ef2a6c2dd1d3d1': `Modifica`,
 's6503256c2de2745c': `Bordo`,
 's652d3637d25431f5': `Il destinatario ha ricevuto il messaggio!`,
 's6881b5a560c88bf8': `Modalità basata sulla rete attivata:`,
-'s6b05f9d8801fc14f': `Ospite`,
+'s6b05f9d8801fc14f': `Host`,
 's6debdd8a9764e3fc': `Scegliete il vostro componente`,
 's6e488f7a11e566e4': `Si prega di riassegnare le porte o di interrompere la connessione.`,
 's6e5cadbf42d9dfe4': `Verranno assegnati nuovi IPv4 per gli indirizzi in conflitto.`,
 's6ea934c6536e4930': `Fare clic con il pulsante destro del mouse su ciascuna rete, quindi selezionare Modifica dettagli per modificarne la configurazione.`,
 's6f1b8c80ab2b4fd4': `Suggerimento: utilizzare il controller CIDR/Subnetting per trascinare e controllare.`,
 's71183ed55882f1c9': `L'indirizzo IPv4 non è valido.`,
+'s72dee52f05a8a31b': `Richiesta ARP L2`,
 's73b5a4a416157778': `Ethernet con un bridge e 2 host.`,
 's73c3e21df2f12350': `Attivare il Draw-and-drop`,
 's768df033dc306fbc': `Prima di trascinare un nodo nella rete`,
@@ -131,7 +136,7 @@
 's8c8aeec90bdad274': `2 Ethernet e 4 router.`,
 's8ccfa5f804f6777a': `Grafici di esempio/esercizi`,
 's8d70ca4af5a9c009': `con indirizzo`,
-'s8e114dd98aeedf91': `Interruttore`,
+'s8e114dd98aeedf91': `Switch di rete`,
 's8ec5e5061ca83fb9': `La rete non configurata esiste ancora.`,
 's94c954118f54fa1d': `Numero di porte di ingresso`,
 's953fefbfaf0e2e3d': `CIDR/Subnetting`,
@@ -144,12 +149,14 @@
 's9c84598a99c03b88': `Maschera di bit`,
 's9d1892a929c95c41': `azzera tutte le tabelle e termina la sessione di simulazione in corso.`,
 's9feb1a1345ccc3e5': `Rete`,
+'sa0aaabb83bc98a72': `Importa rete`,
 'sa165462237196374': `In questa modalità, quando gli utenti modificano gli indirizzi di:`,
 'sa1e005e5c8a7cf53': `Si prega di accedere a una sessione prima di simulare l'invio di un pacchetto.`,
 'sa2885d6d322c7379': `host/router: Vengono create la tabella ARP e la tabella di routing`,
 'sa67b523cb72c0edb': `Interfacce della connessione`,
 'sa9b946da3254eeb2': `Rete non configurata, impostazione automatica dell'indirizzo Ipv4 per il loop-back.`,
 'sabab0da440471b2c': `Nodo fisico`,
+'sae0547f6ee918ff9': `Assegna porte o interfacce`,
 'saf114a45c687be19': `Modalità basata su host:`,
 'safb8ca5860037ac7': `Come configurare le tabelle?`,
 'sb1463e72905de3f8': `Una rete Ethernet, una rete wireless e un gateway.`,
@@ -235,10 +242,8 @@
 'sfc2940e33d865b93': `Per maggiori dettagli, utilizzare il pulsante Controlla della funzione Subnetting/CIDR.`,
 'sfcafb45ec30fbc60': `Rimuovi porta`,
 'sfd468f7c41396df5': `Controllore di invio dei pacchetti`,
+'sfdd5df424bd1f92a': `Risposta ARP L2`,
 'sff5bb7742c2896c8': `Destinazione`,
 'sff73ed19941a31e1': `Fare clic su un host dell'area di disegno`,
 'sff9aad8a96d11e8c': `Indirizzo Mac del mittente:`,
-'sa0aaabb83bc98a72': `Import network`,
-'s3f402f3f155ca6c9': `Export network`,
     };
-  

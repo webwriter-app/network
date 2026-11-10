@@ -2,8 +2,8 @@
     // Do not modify this file by hand!
     // Re-generate this file by running lit-localize
 
-    
-    
+
+
 
     /* eslint-disable no-irregular-whitespace */
     /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -31,6 +31,7 @@
 's0f527a17b9b690e2': `Dobra robota!`,
 's1018d5f2b1cc4e8d': `Punkt dostępu`,
 's10a895b419c64000': `przypisanie nadawcy/odbiorcy dla pakietu`,
+'s110e81e1ca4f992c': `Dane L2 i L3`,
 's138df1ceb51a3661': `Wstawiony adres IPv4 dla bramy nie pasuje do maski podsieci lub sieć nie jest skonfigurowana.`,
 's13a56952f9635fe4': `Źródło zestawu`,
 's146232d3025412f3': `Nieprawidłowa maska bitowa.`,
@@ -46,6 +47,7 @@
 's22b5492cdee5c0d6': `Tryb ręczny`,
 's22feccbbd1ae2aa8': `3 sieci Ethernet i brama.`,
 's265dbd543be2f5ed': `Punkt dostępu`,
+'s269a190f0086d892': `Nieskonfigurowane`,
 's2906cb2c9daacae3': `nowy zakres adresów sieciowych zostanie sprawdzony, czy rozszerzają one stare adresy.`,
 's2c35f5501ffe52a0': `Przełączanie trybu rysowania`,
 's2e55a928208bdb7f': `Pakiet został wysłany z adresem pętli zwrotnej.`,
@@ -66,6 +68,7 @@
 's3d312902efb57145': `Istniejąca sieć rozszerzy się tak, aby pomieścić nowego hosta.`,
 's3ec4a053318b0ae8': `hosty/bramy/podsieci`,
 's3f015779aaa1979d': `Adres sieciowy`,
+'s3f402f3f155ca6c9': `Eksportuj sieć`,
 's4114a8a9e84611a4': `Brak dostępnego portu.`,
 's42cbd8dca939a9c7': `Sprawdź`,
 's431446cf4939d374': `Wszystkie sieci są poprawnie skonfigurowane!`,
@@ -94,18 +97,20 @@
 's5f43af3669b1e098': `Źródło`,
 's61506a07625cfc18': `Odłącz port, aby zmienić jego typ.`,
 's62278f512692e037': `Sesja`,
+'s631790646d968f40': `Dane L3`,
 's649522600e4a80ac': `Rozpoczęcie wysyłania nowego pakietu`,
 's64ef2a6c2dd1d3d1': `Edytuj`,
 's6503256c2de2745c': `Krawędź`,
 's652d3637d25431f5': `Odbiornik otrzymał wiadomość!`,
 's6881b5a560c88bf8': `Tryb sieciowy włączony:`,
-'s6b05f9d8801fc14f': `Gospodarz`,
+'s6b05f9d8801fc14f': `Host`,
 's6debdd8a9764e3fc': `Wybierz swój komponent`,
 's6e488f7a11e566e4': `Prosimy o ponowne przypisanie portów lub odrzucenie tego połączenia.`,
 's6e5cadbf42d9dfe4': `Nowe IPv4 zostanie przydzielone dla adresów będących w konflikcie.`,
 's6ea934c6536e4930': `Kliknij prawym przyciskiem myszy każdą sieć, a następnie wybierz Edytuj szczegóły, aby zmienić jej konfigurację.`,
 's6f1b8c80ab2b4fd4': `Wskazówka: Użyj kontrolera CIDR/Subnetting, aby przeciągnąć i upuścić, a następnie sprawdź.`,
 's71183ed55882f1c9': `Adres IPv4 jest nieprawidłowy.`,
+'s72dee52f05a8a31b': `Żądanie ARP L2`,
 's73b5a4a416157778': `Ethernet z mostem i 2 hostami.`,
 's73c3e21df2f12350': `Aktywuj funkcję Rysuj i upuść`,
 's768df033dc306fbc': `Przed przeciągnięciem węzła do sieci`,
@@ -131,7 +136,7 @@
 's8c8aeec90bdad274': `2 sieci Ethernet i 4 routery.`,
 's8ccfa5f804f6777a': `Przykładowe wykresy/ćwiczenia`,
 's8d70ca4af5a9c009': `z adresem`,
-'s8e114dd98aeedf91': `Przełącznik`,
+'s8e114dd98aeedf91': `Przełącznik sieciowy`,
 's8ec5e5061ca83fb9': `Nieskonfigurowana sieć nadal istnieje.`,
 's94c954118f54fa1d': `Liczba portów wejściowych`,
 's953fefbfaf0e2e3d': `CIDR/podsieć`,
@@ -144,12 +149,14 @@
 's9c84598a99c03b88': `Maska bitowa`,
 's9d1892a929c95c41': `resetuje wszystkie tabele i kończy bieżącą sesję symulacji.`,
 's9feb1a1345ccc3e5': `Sieć`,
+'sa0aaabb83bc98a72': `Importuj sieć`,
 'sa165462237196374': `W tym trybie, gdy użytkownicy edytują adresy:`,
 'sa1e005e5c8a7cf53': `Zainicjuj sesję przed symulacją wysyłania pakietu.`,
 'sa2885d6d322c7379': `host/router: Tworzona jest tablica ARP i tablica routingu`,
 'sa67b523cb72c0edb': `Interfejsy połączenia`,
 'sa9b946da3254eeb2': `Nieskonfigurowana sieć, automatycznie ustawia adres IPv4 na pętlę zwrotną.`,
 'sabab0da440471b2c': `Węzeł fizyczny`,
+'sae0547f6ee918ff9': `Przypisz porty lub interfejsy`,
 'saf114a45c687be19': `Tryb oparty na hostach:`,
 'safb8ca5860037ac7': `Jak skonfigurować tabele?`,
 'sb1463e72905de3f8': `Sieć Ethernet, sieć bezprzewodowa i brama.`,
@@ -235,10 +242,8 @@
 'sfc2940e33d865b93': `Aby uzyskać więcej informacji, użyj przycisku Sprawdź w funkcji Podsieć/CIDR.`,
 'sfcafb45ec30fbc60': `Usuń port`,
 'sfd468f7c41396df5': `Kontroler wysyłania pakietów`,
+'sfdd5df424bd1f92a': `Odpowiedź ARP L2`,
 'sff5bb7742c2896c8': `Miejsce docelowe`,
 'sff73ed19941a31e1': `Kliknij hosta na kanwie`,
 'sff9aad8a96d11e8c': `Adres Mac nadawcy:`,
-'sa0aaabb83bc98a72': `Import network`,
-'s3f402f3f155ca6c9': `Export network`,
     };
-  

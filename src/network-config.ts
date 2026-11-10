@@ -28,7 +28,7 @@ export function initNetwork(network: NetworkComponent): void {
         network.packetSimulator.stopSession(network);
     }
     network.networkAvailable = true;
-    let style = [
+    const style = [
         {
             selector: '[name]',
             style: {
@@ -65,7 +65,7 @@ export function initNetwork(network: NetworkComponent): void {
                 'line-style': 'dotted',
                 'line-opacity': 0.8,
                 'font-size': 8,
-                label: 'Please assign ports/interfaces',
+                label: () => network.msg('Please assign ports/interfaces'),
                 'edge-text-rotation': 'autorotate',
             },
         },
@@ -154,7 +154,7 @@ export function initNetwork(network: NetworkComponent): void {
         {
             selector: '.unconfigured-net',
             style: {
-                label: 'unconfigured',
+                label: () => network.msg('Unconfigured'),
             },
         },
         {
@@ -205,28 +205,28 @@ export function initNetwork(network: NetworkComponent): void {
             selector: '.data-node-layer2-layer3',
             style: {
                 'background-image': 'resources/datagram/2header-3header.png',
-                label: 'L2 L3 DATA',
+                label: () => network.msg('L2 L3 Data'),
             },
         },
         {
             selector: '.arp-req-node',
             style: {
                 'background-image': 'resources/datagram/2header.png',
-                label: 'L2 ARP req',
+                label: () => network.msg('L2 ARP request'),
             },
         },
         {
             selector: '.arp-res-node',
             style: {
                 'background-image': 'resources/datagram/2header.png',
-                label: 'L2 ARP res',
+                label: () => network.msg('L2 ARP reply'),
             },
         },
         {
             selector: '.data-node-layer3',
             style: {
                 'background-image': 'resources/datagram/3header.png',
-                label: 'L3    DATA',
+                label: () => network.msg('L3 Data'),
             },
         },
         {

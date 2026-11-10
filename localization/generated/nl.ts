@@ -2,8 +2,8 @@
     // Do not modify this file by hand!
     // Re-generate this file by running lit-localize
 
-    
-    
+
+
 
     /* eslint-disable no-irregular-whitespace */
     /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -31,6 +31,7 @@
 's0f527a17b9b690e2': `Goed gedaan!`,
 's1018d5f2b1cc4e8d': `Toegangspunt`,
 's10a895b419c64000': `een zender/ontvanger voor het pakket toewijzen`,
+'s110e81e1ca4f992c': `L2- en L3-gegevens`,
 's138df1ceb51a3661': `Ingevoegd IPv4 voor gateway komt niet overeen met het subnetmasker of het netwerk is niet geconfigureerd.`,
 's13a56952f9635fe4': `Bron instellen`,
 's146232d3025412f3': `Ongeldig bitmasker.`,
@@ -46,6 +47,7 @@
 's22b5492cdee5c0d6': `Handmatige modus`,
 's22feccbbd1ae2aa8': `3 Ethernets en een gateway.`,
 's265dbd543be2f5ed': `Toegangspunt`,
+'s269a190f0086d892': `Niet geconfigureerd`,
 's2906cb2c9daacae3': `nieuwe netwerkadresbereik worden gecontroleerd als ze de oude uitbreiden.`,
 's2c35f5501ffe52a0': `Tekenmodus schakelen`,
 's2e55a928208bdb7f': `Je pakket is klaar met verzenden met het loop-back adres.`,
@@ -66,6 +68,7 @@
 's3d312902efb57145': `Het bestaande netwerk wordt uitgebreid om de nieuwe host te bevatten.`,
 's3ec4a053318b0ae8': `hosts/gateways/subnetwerken`,
 's3f015779aaa1979d': `Netwerkadres`,
+'s3f402f3f155ca6c9': `Netwerk exporteren`,
 's4114a8a9e84611a4': `Geen poort beschikbaar.`,
 's42cbd8dca939a9c7': `Controleer`,
 's431446cf4939d374': `Alle netten zijn correct geconfigureerd!`,
@@ -94,18 +97,20 @@
 's5f43af3669b1e098': `Bron`,
 's61506a07625cfc18': `Koppel de poort los om het type te wijzigen.`,
 's62278f512692e037': `Sessie`,
+'s631790646d968f40': `L3-gegevens`,
 's649522600e4a80ac': `Een nieuw pakket verzenden`,
 's64ef2a6c2dd1d3d1': `Bewerk`,
 's6503256c2de2745c': `Rand`,
 's652d3637d25431f5': `Je ontvanger heeft het bericht ontvangen!`,
 's6881b5a560c88bf8': `Netmodus aan:`,
-'s6b05f9d8801fc14f': `Gastheer`,
+'s6b05f9d8801fc14f': `Host`,
 's6debdd8a9764e3fc': `Kies je component`,
 's6e488f7a11e566e4': `Wijs uw poorten opnieuw toe of annuleer deze verbinding.`,
 's6e5cadbf42d9dfe4': `Voor conflicterende adressen wordt een nieuw IPv4 toegewezen.`,
 's6ea934c6536e4930': `Klik met de rechtermuisknop op elk netwerk en selecteer Details bewerken om de configuratie te wijzigen.`,
 's6f1b8c80ab2b4fd4': `Tip: Gebruik de CIDR/Subnetting-controller om te slepen en vervolgens te controleren.`,
 's71183ed55882f1c9': `IPv4-adres is ongeldig.`,
+'s72dee52f05a8a31b': `L2 ARP-verzoek`,
 's73b5a4a416157778': `Ethernet met een bridge en 2 hosts.`,
 's73c3e21df2f12350': `Tekenen-en-neerzetten activeren`,
 's768df033dc306fbc': `Voordat je een knooppunt naar het netwerk sleept`,
@@ -131,7 +136,7 @@
 's8c8aeec90bdad274': `2 Ethernets en 4 routers.`,
 's8ccfa5f804f6777a': `Voorbeeldgrafieken/oefeningen`,
 's8d70ca4af5a9c009': `met adres`,
-'s8e114dd98aeedf91': `Schakel`,
+'s8e114dd98aeedf91': `Netwerkswitch`,
 's8ec5e5061ca83fb9': `Ongeconfigureerd net bestaat nog steeds.`,
 's94c954118f54fa1d': `Aantal ingangspoorten`,
 's953fefbfaf0e2e3d': `CIDR/Subnetting`,
@@ -144,12 +149,14 @@
 's9c84598a99c03b88': `Bitmasker`,
 's9d1892a929c95c41': `reset alle tabellen en beëindigt de huidige simulatiesessie.`,
 's9feb1a1345ccc3e5': `Netwerk`,
+'sa0aaabb83bc98a72': `Netwerk importeren`,
 'sa165462237196374': `Wanneer gebruikers in deze modus adressen bewerken van:`,
 'sa1e005e5c8a7cf53': `Sluit een sessie af voordat u het verzenden van een pakket simuleert.`,
 'sa2885d6d322c7379': `host/router: ARP-tabel en routeringstabel worden aangemaakt`,
 'sa67b523cb72c0edb': `Interfaces van de verbinding`,
 'sa9b946da3254eeb2': `Ongeconfigureerd net, stelt automatisch Ipv4-adres in op loop-back.`,
 'sabab0da440471b2c': `Fysiek knooppunt`,
+'sae0547f6ee918ff9': `Wijs poorten of interfaces toe`,
 'saf114a45c687be19': `Hostgebaseerde modus:`,
 'safb8ca5860037ac7': `Hoe configureer ik de tabellen?`,
 'sb1463e72905de3f8': `Een Ethernet, een draadloos netwerk en een gateway.`,
@@ -235,10 +242,8 @@
 'sfc2940e33d865b93': `Gebruik de knop Controleren van de functie Subnetting/CIDR voor meer informatie.`,
 'sfcafb45ec30fbc60': `Poort verwijderen`,
 'sfd468f7c41396df5': `Pakketverzendcontroller`,
+'sfdd5df424bd1f92a': `L2 ARP-antwoord`,
 'sff5bb7742c2896c8': `Doel`,
 'sff73ed19941a31e1': `Klik op een host op het canvas`,
 'sff9aad8a96d11e8c': `Mac-adres van afzender:`,
-'sa0aaabb83bc98a72': `Import network`,
-'s3f402f3f155ca6c9': `Export network`,
     };
-  
