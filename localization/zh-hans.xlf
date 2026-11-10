@@ -1,5 +1,5 @@
 <xliff xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd" xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
-  <file original="lit-localize-inputs" datatype="plaintext" source-language="en" target-language="zh-Hans">
+  <file original="lit-localize-inputs" datatype="plaintext" source-language="en" target-language="zh-hans">
     <body>
       <trans-unit id="s64ef2a6c2dd1d3d1">
         <source>Edit</source>
