@@ -71,6 +71,7 @@ import { SlChangeEvent } from '@shoelace-style/shoelace';
 import { styleMap } from 'lit/directives/style-map.js';
 import LOCALIZE from "../localization/generated";
 import { localized, msg } from '@lit/localize';
+import { readData, writeData } from './data-state';
 
 /**
  * @internal
@@ -82,27 +83,6 @@ function isTouchInput(originalEvent: Event | undefined): boolean {
     if (typeof TouchEvent !== 'undefined' && originalEvent instanceof TouchEvent) return true;
     return (originalEvent as PointerEvent).pointerType === 'touch';
 }
-
-/**
- * @internal
- * JSON converter for the serialized state attributes. A missing or invalid attribute yields an
- * empty array instead of `null`, e.g. when undo removes the attribute of a freshly inserted widget.
- */
-const arrayAttributeConverter = {
-    fromAttribute(value: string | null): unknown[] {
-        try {
-            return value ? JSON.parse(value) ?? [] : [];
-        } catch {
-            return [];
-        }
-    },
-    toAttribute(value: unknown[]): string {
-        return JSON.stringify(value);
-    },
-};
-
-/** @internal Attributes holding the serialized widget state. */
-const STATE_ATTRIBUTES = ['components', 'connections', 'networks'] as const;
 
 /**
  * @summary Visualization of network topologies. Can represent different kinds of networks.
@@ -118,11 +98,24 @@ const STATE_ATTRIBUTES = ['components', 'connections', 'networks'] as const;
  * @prop {Array<Connection>} [connections=[]] - Serialized edges between components.
  * @prop {Array<Network>} [networks=[]] - Serialized logical networks.
  *
- * @csspart options - Sidebar container for import/export and controllers.
+ * @slot data - Direct application/json block stores network components, connections, and networks.
  */
 @localized()
 @customElement('ww-network')
 export class NetworkComponent extends LitElementWw {
+    static actions: Record<string, any> = {
+        importNetwork: { label: { _: "Import network" }, icon: "Upload", intent: "default", input: { type: "file", accept: ".json,application/json" } },
+        exportNetwork: { label: { _: "Export network" }, icon: "Download", intent: "default" },
+    };
+    readonly actions = NetworkComponent.actions;
+
+    importNetwork(files: File[]) {
+        if (files[0]) ImportExportController.importSpecificFile(files[0], this);
+    }
+
+    exportNetwork() {
+        ImportExportController.exportFile(this);
+    }
     /** @internal Localization bundle. */
     public localize = LOCALIZE;
 
@@ -272,20 +265,40 @@ export class NetworkComponent extends LitElementWw {
     /**
      * Serialized components (nodes). Used to populate the canvas and for export.
      */
-    @property({ type: Array, reflect: true, attribute: true, converter: arrayAttributeConverter })
+    @property({ type: Array, attribute: false })
     accessor components: Array<Component> = [];
 
     /**
      * Serialized connections (edges) between components.
      */
-    @property({ type: Array, reflect: true, attribute: true, converter: arrayAttributeConverter })
+    @property({ type: Array, attribute: false })
     accessor connections: Array<Connection> = [];
 
     /**
      * Serialized logical networks for subnetting and validation.
      */
-    @property({ type: Array, reflect: true, attribute: true, converter: arrayAttributeConverter })
+    @property({ type: Array, attribute: false })
     accessor networks: Array<Network> = [];
+
+    private dataObserver = new MutationObserver(() => this.restoreData());
+
+    private restoreData() {
+        const data = readData(this);
+        let changed = false;
+        if (Array.isArray(data.components) && JSON.stringify(data.components) !== JSON.stringify(this.components)) {
+            this.components = data.components as Component[];
+            changed = true;
+        }
+        if (Array.isArray(data.connections) && JSON.stringify(data.connections) !== JSON.stringify(this.connections)) {
+            this.connections = data.connections as Connection[];
+            changed = true;
+        }
+        if (Array.isArray(data.networks) && JSON.stringify(data.networks) !== JSON.stringify(this.networks)) {
+            this.networks = data.networks as Network[];
+            changed = true;
+        }
+        this.stateChangedExternally ||= changed;
+    }
 
     /**
      * @internal
@@ -365,6 +378,8 @@ export class NetworkComponent extends LitElementWw {
      */
     protected firstUpdated(_changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>): void {
         super.firstUpdated(_changedProperties);
+        this.restoreData();
+        this.dataObserver.observe(this, { childList: true, subtree: true });
         initNetwork(this);
 
         this._graph.on('cxttap', (event: EventObject) => {
@@ -517,6 +532,7 @@ export class NetworkComponent extends LitElementWw {
      * @internal
      */
     disconnectedCallback() {
+        this.dataObserver.disconnect();
         super.disconnectedCallback();
         window.removeEventListener('scroll', this.onScroll);
         this.resizeObserver?.disconnect();
@@ -604,23 +620,10 @@ export class NetworkComponent extends LitElementWw {
     }
 
     /**
-     * @internal
-     * Detects state attribute changes that did not originate from the widget itself.
-     */
-    attributeChangedCallback(name: string, oldValue: string | null, value: string | null): void {
-        const stateAttribute = STATE_ATTRIBUTES.find((attribute) => attribute === name);
-        if (stateAttribute && value !== arrayAttributeConverter.toAttribute(this[stateAttribute])) {
-            this.stateChangedExternally = true;
-        }
-        super.attributeChangedCallback(name, oldValue, value);
-    }
-
-    /**
      * Renders the network canvas, mode switch, toolbox, context menu and simulation menu.
      */
     public render(): TemplateResult {
         return html`
-            ${this.isEditable() ? this.asideTemplate() : null}
             <div class="canvas" id="myCanvas" style="${styleMap({height: this.isFullscreen ? "100%" : "500px"})}">
                 <div class="modeSwitch">
                     <sl-select
@@ -908,7 +911,7 @@ export class NetworkComponent extends LitElementWw {
      */
     private asideTemplate(): TemplateResult {
         return html`
-            <aside part="options" style="display: none">
+            <aside style="display: none">
                 <form autocomplete="off">
                     <input class="importBtn" style="width: 11cqw;" type="file" id="import-file" />
                     <sl-tooltip content=${msg("Import a file created by this widget")} placement="bottom">
@@ -1272,6 +1275,14 @@ export class NetworkComponent extends LitElementWw {
      * @internal
      */
     updated(changedProperties: Map<string, unknown>) {
+        super.updated(changedProperties);
+        if (this.hasUpdated && ['components', 'connections', 'networks'].some((key) => changedProperties.has(key))) {
+            writeData(this, {
+                components: this.components,
+                connections: this.connections,
+                networks: this.networks,
+            });
+        }
         if (this.stateChangedExternally && this.networkAvailable) {
             this.stateChangedExternally = false;
             this.closeContextMenu();

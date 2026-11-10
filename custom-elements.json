@@ -55,9 +55,7 @@
                 "text": "Array<Component>"
               },
               "default": "[]",
-              "description": "Serialized node list.",
-              "attribute": "components",
-              "reflects": true
+              "description": "Serialized node list. Persisted in the direct JSON data block."
             },
             {
               "kind": "field",
@@ -66,9 +64,7 @@
                 "text": "Array<Connection>"
               },
               "default": "[]",
-              "description": "Serialized edges between components.",
-              "attribute": "connections",
-              "reflects": true
+              "description": "Serialized edges between components. Persisted in the direct JSON data block."
             },
             {
               "kind": "field",
@@ -77,9 +73,7 @@
                 "text": "Array<Network>"
               },
               "default": "[]",
-              "description": "Serialized logical networks.",
-              "attribute": "networks",
-              "reflects": true
+              "description": "Serialized logical networks. Persisted in the direct JSON data block."
             },
             {
               "kind": "field",
@@ -150,33 +144,6 @@
               },
               "description": "The currently selected Cytoscape element (node or edge).",
               "fieldName": "selectedObject"
-            },
-            {
-              "name": "components",
-              "type": {
-                "text": "Array<Component>"
-              },
-              "default": "[]",
-              "description": "Serialized node list.",
-              "fieldName": "components"
-            },
-            {
-              "name": "connections",
-              "type": {
-                "text": "Array<Connection>"
-              },
-              "default": "[]",
-              "description": "Serialized edges between components.",
-              "fieldName": "connections"
-            },
-            {
-              "name": "networks",
-              "type": {
-                "text": "Array<Network>"
-              },
-              "default": "[]",
-              "description": "Serialized logical networks.",
-              "fieldName": "networks"
             }
           ],
           "superclass": {
