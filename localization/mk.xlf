@@ -334,7 +334,7 @@
 <target>Користете го копчето Провери во функцијата CIDR/Подмрежување за повеќе детали.</target></trans-unit>
 <trans-unit id="s0a1356ab500a1312">
   <source>The sender or receiver is not selected yet, use the Choose sender/receiver button then click on the graph node.</source>
-<target>Испраќачот или примачот сè уште не е избран; употребете го копчето Избери испраќач/примач, а потоа кликнете на јазолот на графот.</target></trans-unit>
+<target>Испраќачот или примачот сѐ уште не е избран; употребете го копчето Избери испраќач/примач, а потоа кликнете на јазолот на графот.</target></trans-unit>
 <trans-unit id="sedb7e84739dabb52">
   <source>The widget currently only support sending Parcel between layer 3 components</source>
 <target>Виџетот моментално поддржува испраќање пакети само меѓу компоненти на слој 3.</target></trans-unit>
@@ -349,7 +349,7 @@
 <target>Сите мрежи се правилно конфигурирани!</target></trans-unit>
 <trans-unit id="s8ec5e5061ca83fb9">
   <source>Unconfigured net still exists.</source>
-<target>Сè уште постои неконфигурирана мрежа.</target></trans-unit>
+<target>Сѐ уште постои неконфигурирана мрежа.</target></trans-unit>
 <trans-unit id="s330a19f706948b7c">
   <source>Cross validation between Nets: </source>
 <target>Вкрстена проверка меѓу мрежите:</target></trans-unit>

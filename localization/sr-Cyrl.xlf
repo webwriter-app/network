@@ -4,37 +4,37 @@
 <body>
 <trans-unit id="s652d3637d25431f5">
   <source>Your receiver has received the message!</source>
-<target>Ваш је прималац примио поруку!</target></trans-unit>
+<target>Прималац је примио поруку!</target></trans-unit>
 <trans-unit id="s47abed60b53d9f15">
   <source>The connection type of assigned ports are not compatible!</source>
-<target>Врсте повезивања додијељених прикључака нису компатибилне!</target></trans-unit>
+<target>Типови везе додељених портова нису компатибилни!</target></trans-unit>
 <trans-unit id="s6e488f7a11e566e4">
   <source>Please re-assign your ports or dismiss this connection.</source>
-<target>Поновно додијелите прикључке или прекините ову везу.</target></trans-unit>
+<target>Поново доделите портове или уклоните ову везу.</target></trans-unit>
 <trans-unit id="sf56b78a9e5b4640f">
   <source>The  netmask you entered</source>
-<target>Маска подмреже коју сте унијели</target></trans-unit>
+<target>Нетмаска коју сте унели</target></trans-unit>
 <trans-unit id="sb3c6effefba5ccb8">
   <source>doesn't match the bitmask</source>
-<target>не подудара се с битмаском</target></trans-unit>
+<target>не одговара битмаски</target></trans-unit>
 <trans-unit id="s0a7748b8de0b3a6f">
   <source>Derived netmask is</source>
-<target>Изведена маска подмреже је</target></trans-unit>
+<target>Израчуната нетмаска је</target></trans-unit>
 <trans-unit id="s2f034d5e354fd8fe">
   <source>Provided network ID is not valid.</source>
-<target>Унесени ИД мреже није ваљан.</target></trans-unit>
+<target>Унети ID мреже није важећи.</target></trans-unit>
 <trans-unit id="s4860102f9ca44d7b">
   <source>Net-based Mode for CIDR/Subnetting activated:</source>
-<target>Активиран је начин рада за мрежу ЦИДР/подмрежавање:</target></trans-unit>
+<target>Укључен је режим заснован на мрежи за CIDR/подмрежавање:</target></trans-unit>
 <trans-unit id="scfc539cb2204d99f">
   <source>Cannot create a net without both bitmask and netmask!</source>
-<target>Није могуће створити мрежу без битмаске и маске подмреже!</target></trans-unit>
+<target>Не можете да направите мрежу без битмаске и нетмаске!</target></trans-unit>
 <trans-unit id="saf114a45c687be19">
   <source>Hosts-based mode:</source>
 <target>Начин рада темељен на хостовима:</target></trans-unit>
 <trans-unit id="se60f6f327c8094af">
   <source>No valid network address can be assigned to this net.</source>
-<target>Овој се мрежи не може додијелити ваљана мрежна адреса.</target></trans-unit>
+<target>Овој мрежи се не може доделити важећа адреса мреже.</target></trans-unit>
 <trans-unit id="s6b05f9d8801fc14f">
   <source>Host</source>
 <target>Хост</target></trans-unit>
@@ -43,7 +43,7 @@
 <target>Мрежа</target></trans-unit>
 <trans-unit id="sc2abe27bb5be2879">
   <source>Gateway</source>
-<target>Приступник</target></trans-unit>
+<target>гејтвеј</target></trans-unit>
 <trans-unit id="sc096fbcee1f2951a">
   <source>should contain</source>
 <target>мора садржавати</target></trans-unit>
@@ -55,16 +55,16 @@
 <target>Мрежа</target></trans-unit>
 <trans-unit id="s33aec365752c45d7">
   <source>The netmask you entered</source>
-<target>Маска подмреже коју сте унијели</target></trans-unit>
+<target>Маска подмреже коју сте унели</target></trans-unit>
 <trans-unit id="s95b91fa7ce0e4422">
   <source>Your changes have been saved.</source>
-<target>Ваше су промјене сачуване.</target></trans-unit>
+<target>Промене су сачуване.</target></trans-unit>
 <trans-unit id="sbee40693bf2c18e9">
   <source>Host-based mode on:</source>
-<target>Укључен је начин рада темељен на хостовима:</target></trans-unit>
+<target>Укључен је режим заснован на хосту:</target></trans-unit>
 <trans-unit id="sb6ee4842d085bac3">
   <source>New network doesn't extend old network!</source>
-<target>Нова мрежа не обухваћа стару мрежу!</target></trans-unit>
+<target>Нова мрежа не проширује стару мрежу!</target></trans-unit>
 <trans-unit id="s186f0d4339ae84fd">
   <source>Repeater</source>
 <target>Понављач</target></trans-unit>
@@ -73,94 +73,94 @@
 <target>Мост</target></trans-unit>
 <trans-unit id="s1018d5f2b1cc4e8d">
   <source>Access Point</source>
-<target>Приступна точка</target></trans-unit>
+<target>Приступна тачка</target></trans-unit>
 <trans-unit id="sfa2e7dafd99371ff">
   <source>Port number</source>
-<target>Број прикључка</target></trans-unit>
+<target>Број порта</target></trans-unit>
 <trans-unit id="sc1b1fc103ff1b1b3">
   <source>Interface name</source>
-<target>Назив сучеља</target></trans-unit>
+<target>Назив интерфејса</target></trans-unit>
 <trans-unit id="sb7233970916468e3">
   <source>Connection type</source>
 <target>Врста везе</target></trans-unit>
 <trans-unit id="s44646f1a480a4a28">
   <source>MAC Address</source>
-<target>МАЦ адреса</target></trans-unit>
+<target>MAC адреса</target></trans-unit>
 <trans-unit id="scbbde46d3e773c0e">
   <source>Ethernet</source>
-<target>Етхернет</target></trans-unit>
+<target>Ethernet</target></trans-unit>
 <trans-unit id="s05f14bdb78dbcdb1">
   <source>Wireless</source>
 <target>Бежична веза</target></trans-unit>
 <trans-unit id="s7a1405870058921f">
   <source>Assigning ports for this connection</source>
-<target>Додјела прикључака за ову везу</target></trans-unit>
+<target>Додела портова за ову везу</target></trans-unit>
 <trans-unit id="se2cc791794723812">
   <source>Select one from available ports:</source>
-<target>Изаберите један од доступних прикључака:</target></trans-unit>
+<target>Изаберите један од доступних портова:</target></trans-unit>
 <trans-unit id="se29a5823185d420c">
   <source>Please choose port/interface for</source>
-<target>Изаберите прикључак/сучеље за</target></trans-unit>
+<target>Изаберите порт/интерфејс за</target></trans-unit>
 <trans-unit id="s0771257848b4d7a3">
   <source>Details about component</source>
-<target>Појединости о компоненти</target></trans-unit>
+<target>Детаљи о компоненти</target></trans-unit>
 <trans-unit id="sb4f8acbdda6ff3b9">
   <source>Details of the ports</source>
-<target>Појединости о прикључцима</target></trans-unit>
+<target>Детаљи о портовима</target></trans-unit>
 <trans-unit id="s5804ccf243041e60">
   <source>is not a valid MAC Address.</source>
-<target>није ваљана МАЦ адреса.</target></trans-unit>
+<target>није важећа MAC адреса.</target></trans-unit>
 <trans-unit id="sb781a2ba64e70be8">
   <source>Subnet-based mode on:</source>
-<target>Укључен је начин рада темељен на подмрежи:</target></trans-unit>
+<target>Укључен је режим заснован на подмрежи:</target></trans-unit>
 <trans-unit id="sdb11e8f269ea1b13">
   <source>Inserted IPv4 doesn't match the subnet mask.</source>
-<target>Унесена ИПв4 адреса не одговара маски подмреже.</target></trans-unit>
+<target>Унета IPv4 адреса не одговара субнет маски.</target></trans-unit>
 <trans-unit id="s138df1ceb51a3661">
   <source>Inserted IPv4 for gateway doesn't match the subnet mask or the network is not configured.</source>
-<target>Унесена ИПв4 адреса приступника не одговара маски подмреже или мрежа није конфигурирана.</target></trans-unit>
+<target>Унета IPv4 адреса за гејтвеј не одговара субнет маски или мрежа није подешена.</target></trans-unit>
 <trans-unit id="s213a3bbc3f7af684">
   <source>is not valid.</source>
-<target>није ваљано.</target></trans-unit>
+<target>није важеће.</target></trans-unit>
 <trans-unit id="sed931f57adaad8c0">
   <source>is not a valid IPv6 Address.</source>
-<target>није ваљана ИПв6 адреса.</target></trans-unit>
+<target>није важећа IPv6 адреса.</target></trans-unit>
 <trans-unit id="s3f015779aaa1979d">
   <source>Network Address</source>
-<target>Мрежна адреса</target></trans-unit>
+<target>Адреса мреже</target></trans-unit>
 <trans-unit id="sf866305516492af0">
   <source>Interface</source>
-<target>Сучеље</target></trans-unit>
+<target>Интерфејс</target></trans-unit>
 <trans-unit id="se1b13a7c92d4dcc3">
   <source>Connection Type</source>
-<target>Врста везе</target></trans-unit>
+<target>Тип везе</target></trans-unit>
 <trans-unit id="s89d11288ef7198fa">
   <source>This network has no gateway.</source>
-<target>Ова мрежа нема приступник.</target></trans-unit>
+<target>Ова мрежа нема гејтвеј.</target></trans-unit>
 <trans-unit id="sff9aad8a96d11e8c">
   <source>Mac Address of Sender:</source>
-<target>МАЦ адреса пошиљатеља:</target></trans-unit>
+<target>MAC адреса пошиљаоца:</target></trans-unit>
 <trans-unit id="sd9f73b49c90cb730">
   <source>IP Address of Sender:</source>
-<target>ИП адреса пошиљатеља:</target></trans-unit>
+<target>IP адреса пошиљаоца:</target></trans-unit>
 <trans-unit id="s228664e90e9a6cec">
   <source>Mac Address of Receiver:</source>
-<target>МАЦ адреса примаоца:</target></trans-unit>
+<target>MAC адреса примаоца:</target></trans-unit>
 <trans-unit id="s8b0705a2df382b10">
   <source>IP Address of Receiver:</source>
-<target>ИП адреса примаоца:</target></trans-unit>
+<target>IP адреса примаоца:</target></trans-unit>
 <trans-unit id="s9739ed2dd4a000eb">
   <source>Add/ Configure graph components</source>
-<target>Додај/конфигурирај компоненте графа</target></trans-unit>
+<target>Додај/подеси компоненте графа</target></trans-unit>
 <trans-unit id="s953fefbfaf0e2e3d">
   <source>CIDR/ Subnetting</source>
-<target>ЦИДР/подмрежавање</target></trans-unit>
+<target>CIDR/подмрежавање</target></trans-unit>
 <trans-unit id="sbd62973250ca30ae">
   <source>Packet travelling simulation</source>
-<target>Симулација пријеноса пакета</target></trans-unit>
+<target>Симулација путовања пакета</target></trans-unit>
 <trans-unit id="s492ae98a6cd1ae70">
   <source>How to add a physical node (host, router, switch,...)?</source>
-<target>Како додати физички чвор (хост, усмеривач, преклопник...)?</target></trans-unit>
+<target>Како додати физички чвор (хост, рутер, преклопник...)?</target></trans-unit>
 <trans-unit id="sd9994f251f1280cf">
   <source>Step</source>
 <target>Корак</target></trans-unit>
@@ -169,7 +169,7 @@
 <target>Изаберите компоненту</target></trans-unit>
 <trans-unit id="s0e98fa123505c680">
   <source>More details with "Add details for ports"</source>
-<target>Више појединости уз „Додај појединости о прикључцима”</target></trans-unit>
+<target>Више детаља уз „Додај детаље о портовима”</target></trans-unit>
 <trans-unit id="s3356cd0d48121928">
   <source>Pick a color also if you want to:</source>
 <target>По жељи изаберите и боју:</target></trans-unit>
@@ -184,34 +184,34 @@
 <target>Конфигурирајте мрежу</target></trans-unit>
 <trans-unit id="s55759c57f408a4bd">
   <source>How to add a link between two physical nodes?</source>
-<target>Како додати везу између двају физичких чворова?</target></trans-unit>
+<target>Како додати везу између два физичка чвора?</target></trans-unit>
 <trans-unit id="s87dd4e7f900ee9ea">
   <source>Choose edge component</source>
-<target>Изаберите компоненту брида</target></trans-unit>
+<target>Изаберите компоненту ивице</target></trans-unit>
 <trans-unit id="s2c35f5501ffe52a0">
   <source>Toggle draw mode</source>
 <target>Укључи/искључи начин цртања</target></trans-unit>
 <trans-unit id="s95bd2e0d6d483b0d">
   <source>Draw then configure on right click</source>
-<target>Нацртајте, а затим конфигурирајте десним кликом</target></trans-unit>
+<target>Нацртајте, а затим подесите десним кликом</target></trans-unit>
 <trans-unit id="s01743e321d86591f">
   <source>Activate the "assign gateway" mode:</source>
-<target>Активирајте начин рада „Додијели приступник”:</target></trans-unit>
+<target>Активирајте режим „Додели гејтвеј”:</target></trans-unit>
 <trans-unit id="s57df860deb5b4777">
   <source>Drag the gateway on the edge of a network:</source>
-<target>Превуците приступник на руб мреже:</target></trans-unit>
+<target>Превуците гејтвеј на ивицу мреже:</target></trans-unit>
 <trans-unit id="s181fd03f13912ebc">
   <source>How to drag a component into a network?</source>
-<target>Како повући компоненту у мрежу?</target></trans-unit>
+<target>Како превући компоненту у мрежу?</target></trans-unit>
 <trans-unit id="sf226fb633985e8b4">
   <source>Activate the "drag-and-drop" mode:</source>
-<target>Активирајте начин рада „Повуци и испусти”:</target></trans-unit>
+<target>Активирајте режим „превуци и пусти”:</target></trans-unit>
 <trans-unit id="sb2d67306c97f577a">
   <source>Drag the component inside the network:</source>
 <target>Превуците компоненту унутар мреже:</target></trans-unit>
 <trans-unit id="se965fe13b9222a65">
   <source>How does the Net-based mode work?</source>
-<target>Како ради начин рада темељен на мрежи?</target></trans-unit>
+<target>Како функционише режим заснован на мрежи?</target></trans-unit>
 <trans-unit id="s768df033dc306fbc">
   <source>Before dragging a node into network</source>
 <target>Прије повлачења чвора у мрежу</target></trans-unit>
@@ -220,211 +220,211 @@
 <target>Након повлачења чвора у мрежу</target></trans-unit>
 <trans-unit id="s6e5cadbf42d9dfe4">
   <source>New IPv4 will be assigned for conflicting addresses.</source>
-<target>Додијелит ће се нова ИПв4 адреса за адресе у сукобу.</target></trans-unit>
+<target>Додијелит ће се нова IPv4 адреса за адресе у сукобу.</target></trans-unit>
 <trans-unit id="sa165462237196374">
   <source>During this mode, when users edit addresses of:</source>
-<target>Током тог начина рада, када корисници уређују адресе за:</target></trans-unit>
+<target>У овом режиму, када корисници мењају адресе за:</target></trans-unit>
 <trans-unit id="s5eab6ee6f2de2dc9">
   <source>conflicting addresses of all related hosts/gateways will be reassigned.</source>
-<target>адресе свих повезаних хостова/приступника које су у сукобу бит ће поновно додијељене.</target></trans-unit>
+<target>Конфликтне адресе свих повезаних хостова/гејтвеја биће поново додељене.</target></trans-unit>
 <trans-unit id="sf3b70df62ae36483">
   <source>new addresses will be validated against the network addresses and will only be accepted when they are valid.</source>
-<target>нове ће се адресе проверити према мрежним адресама и прихватити само ако су ваљане.</target></trans-unit>
+<target>Нове адресе ће бити проверене према адресама мреже и биће прихваћене само ако су важеће.</target></trans-unit>
 <trans-unit id="sdf132350672d0884">
   <source>How does the Host-based mode work?</source>
-<target>Како ради начин рада темељен на хостовима?</target></trans-unit>
+<target>Како функционише режим заснован на хосту?</target></trans-unit>
 <trans-unit id="sc2227119cd519b57">
   <source>Before dragging host0 into network</source>
-<target>Прије повлачења хоста0 у мрежу</target></trans-unit>
+<target>Прије повлачења host0 у мрежу</target></trans-unit>
 <trans-unit id="s50edcfd6439c5398">
   <source>After dragging host0 into network</source>
-<target>Након повлачења хоста0 у мрежу</target></trans-unit>
+<target>Након повлачења host0 у мрежу</target></trans-unit>
 <trans-unit id="s3d312902efb57145">
   <source>The existing network will expand to contain the new host.</source>
-<target>Постојећа ће се мрежа проширити како би обухватила нови хост.</target></trans-unit>
+<target>Постојећа мрежа ће се проширити како би обухватила нови хост.</target></trans-unit>
 <trans-unit id="s8709fa6bb7aa0002">
   <source>networks</source>
 <target>мреже</target></trans-unit>
 <trans-unit id="s2906cb2c9daacae3">
   <source>new network address range will be checked if they expands the old ones.</source>
-<target>проверит ће се проширује ли нови распон мрежних адреса постојећи.</target></trans-unit>
+<target>Провериће се да ли нови опсег адреса мреже проширује постојећи опсег.</target></trans-unit>
 <trans-unit id="s3ec4a053318b0ae8">
   <source>hosts/gateways/subnetworks</source>
 <target>хостови/приступници/подмреже</target></trans-unit>
 <trans-unit id="sb6017dbf0932fc3d">
   <source>the existing network will expand to contain the new addresses.</source>
-<target>постојећа ће се мрежа проширити како би обухватила нове адресе.</target></trans-unit>
+<target>Постојећа мрежа ће се проширити како би обухватила нове адресе.</target></trans-unit>
 <trans-unit id="se911c0eb6fe86b71">
   <source>How to manipulate a simulation session?</source>
 <target>Како управљати сесијом симулације?</target></trans-unit>
 <trans-unit id="sd17ec63289209641">
   <source>if you don't use a graph from the examples, Init a new simulation session</source>
-<target>ако не користите граф из примјера, покрените нову сесију симулације</target></trans-unit>
+<target>Ако не користите граф из примера, покрените нову сесију симулације.</target></trans-unit>
 <trans-unit id="sb25dcf3e6fa2992a">
   <source>In this step, for the:</source>
 <target>У овом кораку за:</target></trans-unit>
 <trans-unit id="sa2885d6d322c7379">
   <source>host/router: ARP table and routing table are created</source>
-<target>хост/усмеривач: израђују се АРП таблица и таблица усмјеравања</target></trans-unit>
+<target>хост/рутер: креирају се ARP табела и табела рутирања</target></trans-unit>
 <trans-unit id="s30c43f21d5cc55e7">
   <source>switch/bridge/access point: MAC address table is created</source>
-<target>преклопник/мост/приступну точку: израђује се таблица МАЦ адреса</target></trans-unit>
+<target>преклопник/мост/приступна тачка: креира се табела MAC адреса</target></trans-unit>
 <trans-unit id="s10a895b419c64000">
   <source>assign a sender/receiver for the packet</source>
-<target>додијелите пошиљатеља/примаоца пакету</target></trans-unit>
+<target>Доделите пошиљаоца/примаоца пакету</target></trans-unit>
 <trans-unit id="se2d49a99d6a83255">
   <source>Click on Choose sender or Choose receiver</source>
-<target>Кликните „Изабери пошиљатеља” или „Изабери примаоца”</target></trans-unit>
+<target>Кликните на „Изабери пошиљаоца” или „Изабери примаоца”</target></trans-unit>
 <trans-unit id="sff73ed19941a31e1">
   <source>Click on a host on the canvas</source>
-<target>Кликните хост на платну</target></trans-unit>
+<target>Кликните на хост на платну</target></trans-unit>
 <trans-unit id="sef49669556fd05dc">
   <source>Choose an IP</source>
-<target>Изаберите ИП адресу</target></trans-unit>
+<target>Изаберите IP адресу</target></trans-unit>
 <trans-unit id="sb3e91073b21ceb33">
   <source>start sending a packet with the assigned sender and receiver in step 2</source>
-<target>започните слање пакета с додијељеним пошиљатељем и прималацем у 2. кораку</target></trans-unit>
+<target>Покрените слање пакета са пошиљаоцем и примаоцем додељеним у 2. кораку</target></trans-unit>
 <trans-unit id="s33541b5c2b2dff1a">
   <source>Repeat steps 2 and 3 as much as desired.&lt;br/&gt; You can also use pause/resume or change focus/speed during or before starting to send a packet.</source>
-<target>Поновите кораке 2 и 3 колико год желите.&lt;br/&gt; Можете и да паузирате или наставите слање, или да промените фокус или брзину током слања пакета или пре него што га започнете.</target></trans-unit>
+<target>Понављајте 2. и 3. корак колико желите.&lt;br/&gt; Можете и да паузирате/наставите или промените фокус/брзину пре или током слања пакета.</target></trans-unit>
 <trans-unit id="s19db88ac376ff979">
   <source>Last step</source>
-<target>Задњи корак</target></trans-unit>
+<target>Последњи корак</target></trans-unit>
 <trans-unit id="s0106a71d5407aaa9">
   <source>Stop session</source>
-<target>Заустави сесију</target></trans-unit>
+<target>Зауставите сесију</target></trans-unit>
 <trans-unit id="s9d1892a929c95c41">
   <source>resets all tables and ends the current simulation session.</source>
-<target>поништава све таблице и завршава тренутачну сесију симулације.</target></trans-unit>
+<target>ресетује све табеле и завршава тренутну сесију симулације.</target></trans-unit>
 <trans-unit id="sbf424bf9f5374d3f">
   <source>Start from step 1 again for a new simulation session.</source>
-<target>Поновно почните од 1. корака за нову сесију симулације.</target></trans-unit>
+<target>За нову сесију симулације поново почните од 1. корака.</target></trans-unit>
 <trans-unit id="safb8ca5860037ac7">
   <source>How to configure the tables?</source>
-<target>Како конфигурирати таблице?</target></trans-unit>
+<target>Како подесити табеле?</target></trans-unit>
 <trans-unit id="sfa22b4f47f6a0daa">
   <source>Init. Ignore this step if you use an example graph, or there is a session running</source>
-<target>Покретање. Прескочите овај корак ако користите примјер графа или је сесија већ покренута.</target></trans-unit>
+<target>Покрените. Прескочите овај корак ако користите пример графа или је сесија већ покренута.</target></trans-unit>
 <trans-unit id="s5beb40a454294a7e">
   <source>Click on Add to generate a new row in the table</source>
-<target>Кликните „Додај” да бисте створили нови редак у таблици.</target></trans-unit>
+<target>Кликните на „Додај” да бисте направили нови ред у табели.</target></trans-unit>
 <trans-unit id="s347e78eb6a59dd4f">
   <source>Fill your table according to its type. Except for the tables of the routers, tables of other nodes can be filled automatically.</source>
-<target>Испуните таблицу према њезиној врсти. Осим таблица усмеривача, таблице осталих чворова могу се испунити аутоматски.</target></trans-unit>
+<target>Попуните табелу у складу са њеном врстом. Табеле других чворова могу се попунити аутоматски, осим табела рутера.</target></trans-unit>
 <trans-unit id="s1bce63088d7fcd55">
   <source>Remove button removes all checked rows</source>
-<target>Гумб „Уклони” уклања све означене ретке.</target></trans-unit>
+<target>Дугме „Уклони” уклања све означене редове.</target></trans-unit>
 <trans-unit id="s7f9f4694cf4a1ee3">
   <source>Save button saves the current table on the UI to the database</source>
-<target>Гумб „Спреми” спрема тренутачну таблицу из сучеља у базу података.</target></trans-unit>
+<target>Дугме „Сачувај” уписује тренутну табелу из корисничког интерфејса у базу података.</target></trans-unit>
 <trans-unit id="s870a89403be74609">
   <source>is out of available ports.</source>
-<target>ије изван доступних прикључака.</target></trans-unit>
+<target>нема доступних портова.</target></trans-unit>
 <trans-unit id="s7f03c3305cc572c7">
   <source>Currently the widget only supports host as sender and receiver.</source>
-<target>Wидгет тренутачно подржава само хост као пошиљатеља и примаоца.</target></trans-unit>
+<target>Виџет тренутно подржава само хост као пошиљаоца и примаоца.</target></trans-unit>
 <trans-unit id="sa1e005e5c8a7cf53">
   <source>Please Init a session before simulating sending a packet.</source>
-<target>Покрените сесију прије симулације слања пакета.</target></trans-unit>
+<target>Покрените сесију пре симулирања слања пакета.</target></trans-unit>
 <trans-unit id="s8c139c7e7f2a7866">
   <source>Your graph is not qualified for this feature:</source>
-<target>Ваш граф не испуњава услове за ову значајку:</target></trans-unit>
+<target>Ваш граф не испуњава услове за ову функцију:</target></trans-unit>
 <trans-unit id="sfc2940e33d865b93">
   <source>Please use the Check button of the Subnetting/CIDR feature for more details</source>
-<target>За више појединости употријебите гумб „Провери” у значајци ЦИДР/подмрежавање.</target></trans-unit>
+<target>За детаље користите дугме „Провери” у функцији CIDR/подмрежавање.</target></trans-unit>
 <trans-unit id="s0a1356ab500a1312">
   <source>The sender or receiver is not selected yet, use the Choose sender/receiver button then click on the graph node.</source>
-<target>Пошиљатељ или прималац још није одабран. Кликните гумб „Изабери пошиљатеља/примаоца”, а затим чвор на графу.</target></trans-unit>
+<target>Пошиљалац или прималац још није изабран. Кликните на дугме „Изабери пошиљаоца/примаоца”, па на чвор графа.</target></trans-unit>
 <trans-unit id="sedb7e84739dabb52">
   <source>The widget currently only support sending Parcel between layer 3 components</source>
-<target>Wидгет тренутачно подржава слање пакета само између компоненти 3. слоја.</target></trans-unit>
+<target>Виџет тренутно подржава само слање пакета између компоненти 3. слоја.</target></trans-unit>
 <trans-unit id="s2e55a928208bdb7f">
   <source>Your packet finished sending with the loop-back address.</source>
-<target>Ваш је пакет довршио слање путем адресе повратне петље.</target></trans-unit>
+<target>Слање пакета је завршено помоћу loopback адресе.</target></trans-unit>
 <trans-unit id="s0f527a17b9b690e2">
   <source>Well done!</source>
 <target>Одлично!</target></trans-unit>
 <trans-unit id="s431446cf4939d374">
   <source>All nets are correctly configured!</source>
-<target>Све су мреже исправно конфигуриране!</target></trans-unit>
+<target>Све мреже су исправно подешене!</target></trans-unit>
 <trans-unit id="s8ec5e5061ca83fb9">
   <source>Unconfigured net still exists.</source>
-<target>Још увијек постоји неконфигурирана мрежа.</target></trans-unit>
+<target>И даље постоји неподешена мрежа.</target></trans-unit>
 <trans-unit id="s330a19f706948b7c">
   <source>Cross validation between Nets: </source>
-<target>Унакрсна провера међу мрежама:</target></trans-unit>
+<target>Унакрсна провера мрежа: </target></trans-unit>
 <trans-unit id="s3b07747d0bd1c988">
   <source>Setting up gateway: </source>
-<target>Постављање приступника:</target></trans-unit>
+<target>Подешавање гејтвеја: </target></trans-unit>
 <trans-unit id="s6881b5a560c88bf8">
   <source>Net-based mode on:</source>
-<target>Укључен је начин рада темељен на мрежи:</target></trans-unit>
+<target>Укључен је режим заснован на мрежи:</target></trans-unit>
 <trans-unit id="sa9b946da3254eeb2">
   <source>Unconfigured net, automatically set Ipv4 address to loop-back.</source>
-<target>Неконфигурираној мрежи аутоматски је додијељена ИПв4 адреса повратне петље.</target></trans-unit>
+<target>Неподешеној мрежи IPv4 адреса је аутоматски постављена на loopback.</target></trans-unit>
 <trans-unit id="sba272ff6dce6bf6c">
   <source>An exercise for CIDR from classful networks: drag and drop then check.</source>
-<target>Вјежба за ЦИДР из мрежа с класама: превуците и испустите, затим проверите.</target></trans-unit>
+<target>Вежба за CIDR из класних мрежа: превуците и пустите, па проверите.</target></trans-unit>
 <trans-unit id="sf5a28de7d04f6bf1">
   <source>An exercise for CIDR from classful networks: configure the classful networks then check.</source>
-<target>Вјежба за ЦИДР из мрежа с класама: конфигурирајте мреже с класама, затим проверите.</target></trans-unit>
+<target>Вежба за CIDR из класних мрежа: подесите класне мреже, па проверите.</target></trans-unit>
 <trans-unit id="se6394d8e29dba878">
   <source>An exercise for subnetting from a classful network: configure the subnets then check.</source>
-<target>Вјежба за подмрежавање из мреже с класама: конфигурирајте подмреже, затим проверите.</target></trans-unit>
+<target>Вежба за подмрежавање класне мреже: подесите подмреже, па проверите.</target></trans-unit>
 <trans-unit id="s0be43d4fa79554a1">
   <source>A mixed exercise of CIDR and subnetting: drag and drop then check.</source>
-<target>Комбинирана вјежба за ЦИДР и подмрежавање: превуците и испустите, затим проверите.</target></trans-unit>
+<target>Комбинована вежба за CIDR и подмрежавање: превуците и пустите, па проверите.</target></trans-unit>
 <trans-unit id="sc12a027fbcfb0c9b">
   <source>Ethernet with a repeater and 2 hosts.</source>
-<target>Етхернет с понављачем и 2 хоста.</target></trans-unit>
+<target>Ethernet с понављачем и 2 хоста.</target></trans-unit>
 <trans-unit id="scc2c5dc40950c43d">
   <source>Ethernet with a hub and 3 hosts.</source>
-<target>Етхернет с концентратором и 3 хоста.</target></trans-unit>
+<target>Ethernet с концентратором и 3 хоста.</target></trans-unit>
 <trans-unit id="s73b5a4a416157778">
   <source>Ethernet with a bridge and 2 hosts.</source>
-<target>Етхернет с мостом и 2 хоста.</target></trans-unit>
+<target>Ethernet с мостом и 2 хоста.</target></trans-unit>
 <trans-unit id="sdbdba9594afe53ce">
   <source>Ethernet with a switch and 3 hosts.</source>
-<target>Етхернет с преклопником и 3 хоста.</target></trans-unit>
+<target>Ethernet с преклопником и 3 хоста.</target></trans-unit>
 <trans-unit id="s370a2d0578bd2c7b">
   <source>Wifi network with 1 access point, 3 hosts.</source>
-<target>Wи-Фи мрежа с 1 приступном точком и 3 хоста.</target></trans-unit>
+<target>Wi-Fi мрежа са једном приступном тачком и 3 хоста.</target></trans-unit>
 <trans-unit id="s2f615aee386409b0">
   <source>2 Ethernets with a gateway.</source>
-<target>2 Етхернет мреже с приступником.</target></trans-unit>
+<target>2 Ethernet мреже с гејтвејом.</target></trans-unit>
 <trans-unit id="sb1463e72905de3f8">
   <source>An ethernet, a wireless network and a gateway.</source>
-<target>Етхернет, бежична мрежа и приступник.</target></trans-unit>
+<target>Ethernet, бежична мрежа и гејтвеј.</target></trans-unit>
 <trans-unit id="s22feccbbd1ae2aa8">
   <source>3 Ethernets and a gateway.</source>
-<target>3 Етхернет мреже и приступник.</target></trans-unit>
+<target>3 Ethernet мреже и гејтвеј.</target></trans-unit>
 <trans-unit id="s18662a2a14477a6f">
   <source>2 Ethernets and 3 routers.</source>
-<target>2 Етхернет мреже и 3 усмеривача.</target></trans-unit>
+<target>2 Ethernet мреже и 3 усмеривача.</target></trans-unit>
 <trans-unit id="s8c8aeec90bdad274">
   <source>2 Ethernets and 4 routers.</source>
-<target>2 Етхернет мреже и 4 усмеривача.</target></trans-unit>
+<target>2 Ethernet мреже и 4 усмеривача.</target></trans-unit>
 <trans-unit id="s1f7698c061c208c9">
   <source>Open</source>
 <target>Отвори</target></trans-unit>
 <trans-unit id="s7eb13b92e2f5090f">
   <source>Example exercises for CIDR/ Subnetting</source>
-<target>Примјери вјежби за ЦИДР/подмрежавање</target></trans-unit>
+<target>Примери вежби за CIDR/подмрежавање</target></trans-unit>
 <trans-unit id="sb8766aae5913b0ef">
   <source>Example networks for simulations</source>
-<target>Примјери мрежа за симулације</target></trans-unit>
+<target>Примери мрежа за симулације</target></trans-unit>
 <trans-unit id="s6f1b8c80ab2b4fd4">
   <source>Tip: Use the CIDR/Subnetting controller to drag-and-drop then check.</source>
-<target>Савјет: превуците и испустите помоћу контролера ЦИДР/подмрежавање, а затим проверите.</target></trans-unit>
+<target>Савет: користите CIDR/подмрежавање контролер за превлачење и испуштање, па проверите.</target></trans-unit>
 <trans-unit id="s6ea934c6536e4930">
   <source>Right-click on each network, then select Edit details to change its configuration.</source>
-<target>Десном типком миша кликните сваку мрежу, а затим изаберите „Уреди појединости” да бисте променили њезину конфигурацију.</target></trans-unit>
+<target>Кликните десним тастером на сваку мрежу, па изаберите „Уреди детаље” да бисте променили подешавања.</target></trans-unit>
 <trans-unit id="scfdc7642367b9665">
   <source>Tip: Set source and destination then click on play button in</source>
-<target>Савјет: поставите извор и одредиште, а затим кликните гумб за репродукцију у</target></trans-unit>
+<target>Савет: подесите извор и одредиште, па кликните на дугме за репродукцију у</target></trans-unit>
 <trans-unit id="sbfe6d7af32c6737d">
   <source>Packet sending controller to start simulation</source>
-<target>контролеру слања пакета да бисте покренули симулацију</target></trans-unit>
+<target>контролеру за слање пакета да бисте покренули симулацију</target></trans-unit>
 <trans-unit id="s64ef2a6c2dd1d3d1">
   <source>Edit</source>
 <target>Уреди</target></trans-unit>
@@ -433,16 +433,16 @@
 <target>Симулирај</target></trans-unit>
 <trans-unit id="sd03c537f123f42a6">
   <source>Exit Fullscreen</source>
-<target>Изађи из приказа преко целог заслона</target></trans-unit>
+<target>Изађи из режима целог екрана</target></trans-unit>
 <trans-unit id="s4b10acae683d2978">
   <source>Fullscreen</source>
-<target>Цели заслон</target></trans-unit>
+<target>Цео екран</target></trans-unit>
 <trans-unit id="s5eedf01beec54734">
   <source>Tutorials</source>
-<target>Водичи</target></trans-unit>
+<target>Упутства</target></trans-unit>
 <trans-unit id="sba1e8892999bb878">
   <source>Computer</source>
-<target>Рачунало</target></trans-unit>
+<target>Рачунар</target></trans-unit>
 <trans-unit id="s4f0026a488fbdca3">
   <source>Mobile device</source>
 <target>Мобилни уређај</target></trans-unit>
@@ -454,7 +454,7 @@
 <target>Усмеривач</target></trans-unit>
 <trans-unit id="s265dbd543be2f5ed">
   <source>Access point</source>
-<target>Приступна точка</target></trans-unit>
+<target>Приступна тачка</target></trans-unit>
 <trans-unit id="s491d2a19cd6ec58c">
   <source>Hub</source>
 <target>Концентратор</target></trans-unit>
@@ -466,25 +466,25 @@
 <target>Брид</target></trans-unit>
 <trans-unit id="sf4c791f0705344d6">
   <source>Network assignment</source>
-<target>Додјела мреже</target></trans-unit>
+<target>Додела мреже</target></trans-unit>
 <trans-unit id="sf0751c039d26da12">
   <source>Gateway assignment</source>
-<target>Додјела приступника</target></trans-unit>
+<target>Додела гејтвеја</target></trans-unit>
 <trans-unit id="s0201d8d614a1b5a4">
   <source>Validate global address assignments</source>
 <target>Провери додјеле глобалних адреса</target></trans-unit>
 <trans-unit id="s9c0c880f87b91eb4">
   <source>Import a file created by this widget</source>
-<target>Увези датотеку створену овим wидгетом</target></trans-unit>
+<target>Увезите датотеку направљену овим виџетом</target></trans-unit>
 <trans-unit id="s04507e583f35a215">
   <source>Export the current graph</source>
-<target>Извези тренутачни граф</target></trans-unit>
+<target>Извезите тренутни граф</target></trans-unit>
 <trans-unit id="s8ccfa5f804f6777a">
   <source>Example graphs/exercises</source>
-<target>Примјери графова/вјежби</target></trans-unit>
+<target>Примери графова/вежби</target></trans-unit>
 <trans-unit id="s7c31cf556c31642f">
   <source>Tutorials for features of this widget</source>
-<target>Водичи за значајке овог wидгета</target></trans-unit>
+<target>Упутства за функције овог виџета</target></trans-unit>
 <trans-unit id="sabab0da440471b2c">
   <source>Physical Node</source>
 <target>Физички чвор</target></trans-unit>
@@ -493,31 +493,31 @@
 <target>Логички чвор</target></trans-unit>
 <trans-unit id="sbe1c7d207f771f2d">
   <source>Number of ports</source>
-<target>Број прикључака</target></trans-unit>
+<target>Број портова</target></trans-unit>
 <trans-unit id="s94c954118f54fa1d">
   <source>Number of input ports</source>
-<target>Број улазних прикључака</target></trans-unit>
+<target>Број улазних портова</target></trans-unit>
 <trans-unit id="sd9d1a55c5a664641">
   <source>Add details for ports</source>
-<target>Додај појединости о прикључцима</target></trans-unit>
+<target>Додај појединости о портовима</target></trans-unit>
 <trans-unit id="s79ca6e84a4df82e5">
   <source>NetID</source>
-<target>ИД мреже</target></trans-unit>
+<target>ID мреже</target></trans-unit>
 <trans-unit id="s0b985047f07efbd0">
   <source>Netmask</source>
 <target>Маска подмреже</target></trans-unit>
 <trans-unit id="see822b9851671c85">
   <source>Click to add your component</source>
-<target>Кликните за додавање компоненте</target></trans-unit>
+<target>Кликните да додате компоненту</target></trans-unit>
 <trans-unit id="scf4ac84fce176d91">
   <source>Click to draw connecting links</source>
-<target>Кликните за цртање повезница</target></trans-unit>
+<target>Кликните да нацртате везе</target></trans-unit>
 <trans-unit id="s08cf63ff39d4bfaf">
   <source>Click to change color of existing components</source>
-<target>Кликните за промјену боје постојећих компоненти</target></trans-unit>
+<target>Кликните да промените боју постојећих компоненти</target></trans-unit>
 <trans-unit id="s2ffac3a7ddd1580b">
   <source>CIDR/Subnetting controller</source>
-<target>Контролер ЦИДР/подмрежавања</target></trans-unit>
+<target>Контролер CIDR/подмрежавања</target></trans-unit>
 <trans-unit id="s82dba63ce339e3a6">
   <source>Choose a mode</source>
 <target>Изаберите начин рада</target></trans-unit>
@@ -526,16 +526,16 @@
 <target>Ручни начин рада</target></trans-unit>
 <trans-unit id="sf0453217220f9a2d">
   <source>Net-based Mode</source>
-<target>Начин рада темељен на мрежи</target></trans-unit>
+<target>Режим заснован на мрежи</target></trans-unit>
 <trans-unit id="s7bc931f3ffdb6e60">
   <source>Host-based Mode</source>
-<target>Начин рада темељен на хостовима</target></trans-unit>
+<target>Режим заснован на хосту</target></trans-unit>
 <trans-unit id="s73c3e21df2f12350">
   <source>Activate Draw-and-drop</source>
 <target>Укључи цртање и испуштање</target></trans-unit>
 <trans-unit id="s7a3fb8031d3600cb">
   <source>Drag to assign gateway</source>
-<target>Превуците за додјелу приступника</target></trans-unit>
+<target>Превуците за доделу гејтвеја</target></trans-unit>
 <trans-unit id="s42cbd8dca939a9c7">
   <source>Check</source>
 <target>Провери</target></trans-unit>
@@ -544,7 +544,7 @@
 <target>Контролер слања пакета</target></trans-unit>
 <trans-unit id="s0dcc53abaa5c5df9">
   <source>Choose sender</source>
-<target>Изабери пошиљатеља</target></trans-unit>
+<target>Изабери пошиљаоца</target></trans-unit>
 <trans-unit id="s0356c70f23c234fd">
   <source>Choose receiver</source>
 <target>Изабери примаоца</target></trans-unit>
@@ -553,16 +553,16 @@
 <target>Брзина</target></trans-unit>
 <trans-unit id="sd8fe5e97ed28d99c">
   <source>Focus on animated nodes</source>
-<target>Фокусирај се на анимиране чворове</target></trans-unit>
+<target>Фокусирај анимиране чворове</target></trans-unit>
 <trans-unit id="s62278f512692e037">
   <source>Session</source>
 <target>Сесија</target></trans-unit>
 <trans-unit id="s1951d0ebc9976aaf">
   <source>Create a new simulation session</source>
-<target>Створи нову сесију симулације</target></trans-unit>
+<target>Креирај нову сесију симулације</target></trans-unit>
 <trans-unit id="s649522600e4a80ac">
   <source>Start sending a new packet</source>
-<target>Почни слати нови пакет</target></trans-unit>
+<target>Почни слање новог пакета</target></trans-unit>
 <trans-unit id="se4752f0e82f9a5ab">
   <source>Pause/resume all packets</source>
 <target>Паузирај/настави све пакете</target></trans-unit>
@@ -583,10 +583,10 @@
 <target>Дефинирај мрежу</target></trans-unit>
 <trans-unit id="s46e517b2962de3ce">
   <source>Change Port Config</source>
-<target>Промени конфигурацију прикључка</target></trans-unit>
+<target>Промени подешавања порта</target></trans-unit>
 <trans-unit id="sdff41263f305c0ea">
   <source>Define Interfaces</source>
-<target>Дефинирај сучеља</target></trans-unit>
+<target>Дефиниши интерфејсе</target></trans-unit>
 <trans-unit id="sbca820dcc7f49c76">
   <source>Change color</source>
 <target>Промени боју</target></trans-unit>
@@ -595,34 +595,34 @@
 <target>Избриши</target></trans-unit>
 <trans-unit id="sbc909ebb8c28f954">
   <source>Default Gateway</source>
-<target>Задани приступник</target></trans-unit>
+<target>Подразумевани гејтвеј</target></trans-unit>
 <trans-unit id="s0480d34205c42b70">
   <source>Ports of </source>
-<target>Прикључци за </target></trans-unit>
+<target>Портови за </target></trans-unit>
 <trans-unit id="sb354dc19a7208a86">
   <source>Port</source>
-<target>Прикључак</target></trans-unit>
+<target>Порт</target></trans-unit>
 <trans-unit id="s954199c24bb1bd31">
   <source>Disconnect the port to remove it.</source>
-<target>Одспојите прикључак да бисте га уклонили.</target></trans-unit>
+<target>Прекините везу порта да бисте га уклонили.</target></trans-unit>
 <trans-unit id="sfcafb45ec30fbc60">
   <source>Remove Port</source>
-<target>Уклони прикључак</target></trans-unit>
+<target>Уклони порт</target></trans-unit>
 <trans-unit id="s61506a07625cfc18">
   <source>Disconnect the port to change its type.</source>
-<target>Одспојите прикључак да бисте променили његову врсту.</target></trans-unit>
+<target>Прекините везу порта да бисте променили његов тип.</target></trans-unit>
 <trans-unit id="s4114a8a9e84611a4">
   <source>No port available.</source>
-<target>Нема доступних прикључака.</target></trans-unit>
+<target>Нема доступних портова.</target></trans-unit>
 <trans-unit id="sf35d6a5dc03d5557">
   <source>Add Port</source>
-<target>Додај прикључак</target></trans-unit>
+<target>Додај порт</target></trans-unit>
 <trans-unit id="s431ab01e3ccd9bf1">
   <source>Select a port</source>
-<target>Изабери прикључак</target></trans-unit>
+<target>Изабери порт</target></trans-unit>
 <trans-unit id="sa67b523cb72c0edb">
   <source>Interfaces of the connection</source>
-<target>Сучеља везе</target></trans-unit>
+<target>Интерфејси везе</target></trans-unit>
 <trans-unit id="s5f43af3669b1e098">
   <source>Source</source>
 <target>Извор</target></trans-unit>
@@ -634,25 +634,25 @@
 <target>Појединости о мрежи </target></trans-unit>
 <trans-unit id="s71183ed55882f1c9">
   <source>IPv4 address is invalid.</source>
-<target>ИПв4 адреса није ваљана.</target></trans-unit>
+<target>IPv4 адреса није важећа.</target></trans-unit>
 <trans-unit id="s5882939b7613896e">
   <source>Invalid net id.</source>
-<target>Неваљани ИД мреже.</target></trans-unit>
+<target>Неважећи ID мреже.</target></trans-unit>
 <trans-unit id="sf2fe311e301fa69b">
   <source>Network Mask</source>
 <target>Маска мреже</target></trans-unit>
 <trans-unit id="s02ba6f5ad4b7f7d3">
   <source>Invalid netmask.</source>
-<target>Маска подмреже није ваљана.</target></trans-unit>
+<target>Маска подмреже није важећа.</target></trans-unit>
 <trans-unit id="s146232d3025412f3">
   <source>Invalid bitmask.</source>
-<target>Битмаска није ваљана.</target></trans-unit>
+<target>Битмаска није важећа.</target></trans-unit>
 <trans-unit id="s0ccb657bb5ab7aef">
   <source>MAC address is invalid.</source>
-<target>МАЦ адреса није ваљана.</target></trans-unit>
+<target>MAC адреса није важећа.</target></trans-unit>
 <trans-unit id="sb3db490afc111f9f">
   <source>IPv6 address is invalid.</source>
-<target>ИПв6 адреса није ваљана.</target></trans-unit>
+<target>IPv6 адреса није важећа.</target></trans-unit>
 <trans-unit id="s13a56952f9635fe4">
   <source>Set Source</source>
 <target>Постави извор</target></trans-unit>
@@ -667,19 +667,19 @@
 <target>Октети не смију имати негативне вриједности</target></trans-unit>
 <trans-unit id="s0b0811fac0075534">
   <source>Your table is saved!</source>
-<target>Ваша је таблица спремљена!</target></trans-unit>
+<target>Табела је сачувана!</target></trans-unit>
 <trans-unit id="s9c84598a99c03b88">
   <source>Bitmask</source>
 <target>Битмаска</target></trans-unit>
 <trans-unit id="sbcc845948d536d4e">
   <source>ARP Table</source>
-<target>АРП таблица</target></trans-unit>
+<target>ARP таблица</target></trans-unit>
 <trans-unit id="sc86686973428936d">
   <source>Routing Table</source>
 <target>Таблица усмјеравања</target></trans-unit>
 <trans-unit id="s47f47667e50169dc">
   <source>Mac Address Table</source>
-<target>Таблица МАЦ адреса</target></trans-unit>
+<target>Таблица MAC адреса</target></trans-unit>
 <trans-unit id="sf9aee319a006c9b4">
   <source>Add</source>
 <target>Додај</target></trans-unit>
@@ -688,7 +688,7 @@
 <target>Уклони</target></trans-unit>
 <trans-unit id="s33f85f24c0f5f008">
   <source>Save</source>
-<target>Спреми</target></trans-unit>
+<target>Сачувај</target></trans-unit>
 <trans-unit id="sa0aaabb83bc98a72">
   <source>Import network</source>
 <target>Увези мрежу</target></trans-unit>
@@ -697,22 +697,22 @@
 <target>Извези мрежу</target></trans-unit>
 <trans-unit id="sae0547f6ee918ff9">
   <source>Please assign ports/interfaces</source>
-<target>Додијелите прикључке/сучеља</target></trans-unit>
+<target>Доделите портове/интерфејсе</target></trans-unit>
 <trans-unit id="s269a190f0086d892">
   <source>Unconfigured</source>
-<target>Неконфигурирано</target></trans-unit>
+<target>Није подешено</target></trans-unit>
 <trans-unit id="s110e81e1ca4f992c">
   <source>L2 L3 Data</source>
-<target>Л2 Л3 подаци</target></trans-unit>
+<target>L2 L3 подаци</target></trans-unit>
 <trans-unit id="s72dee52f05a8a31b">
   <source>L2 ARP request</source>
-<target>Л2 АРП захтјев</target></trans-unit>
+<target>L2 ARP захтјев</target></trans-unit>
 <trans-unit id="sfdd5df424bd1f92a">
   <source>L2 ARP reply</source>
-<target>Л2 АРП одговор</target></trans-unit>
+<target>L2 ARP одговор</target></trans-unit>
 <trans-unit id="s631790646d968f40">
   <source>L3 Data</source>
-<target>Л3 подаци</target></trans-unit>
+<target>L3 подаци</target></trans-unit>
 </body>
 </file>
 </xliff>
