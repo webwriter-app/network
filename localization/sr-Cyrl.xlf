@@ -286,7 +286,7 @@
 <target>започните слање пакета с додијељеним пошиљатељем и прималацем у 2. кораку</target></trans-unit>
 <trans-unit id="s33541b5c2b2dff1a">
   <source>Repeat steps 2 and 3 as much as desired.&lt;br/&gt; You can also use pause/resume or change focus/speed during or before starting to send a packet.</source>
-<target>Поновите 2. и 3. корак колико год желите.&lt;бр/&gt;Можете и паузирати/наставити или променити фокус/брзину током слања пакета или прије његова почетка.</target></trans-unit>
+<target>Поновите кораке 2 и 3 колико год желите.&lt;br/&gt; Можете и да паузирате или наставите слање, или да промените фокус или брзину током слања пакета или пре него што га започнете.</target></trans-unit>
 <trans-unit id="s19db88ac376ff979">
   <source>Last step</source>
 <target>Задњи корак</target></trans-unit>
