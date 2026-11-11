@@ -105,7 +105,16 @@
       "om": "Agarsiisa mul’ataa topolojii neetworkii. Gosa neetworkii adda addaa bakka bu’uu danda’a.",
       "so": "Muuqaalka qaab-dhismeedka shabakadaha. Waxay muujin kartaa noocyo shabakadeed oo kala duwan.",
       "ti": "ምርኢታዊ መግለጺ ኣቃውማ ኔትወርክ። ዝተፈላለዩ ዓይነታት ኔትወርክ ክውክል ይኽእል።",
-      "ha": "Nuna tsarin haɗin cibiyoyin sadarwa a zane. Yana iya nuna nau’o’in cibiyoyi daban-daban."
+      "ha": "Nuna tsarin haɗin cibiyoyin sadarwa a zane. Yana iya nuna nau’o’in cibiyoyi daban-daban.",
+      "yue-Hans": "将网络拓扑视觉化，亦可表示唔同类型嘅网络。",
+      "yue-Hant": "將網絡拓撲視覺化，亦可表示唔同類型嘅網絡。",
+      "kmr": "Dîtbarîkirina topolojiyên torê. Dikare cûreyên cuda yên toran nîşan bide.",
+      "kmr-Latn": "Dîtbarîkirina topolojiyên torê. Dikare cûreyên cuda yên toran nîşan bide.",
+      "kmr-Arab": "دیتباریکرنا تۆپۆلۆژیێن تۆرێ. دکارە جوورەیێن جودا یێن تۆران نیشان بدە.",
+      "ckb": "وێنەکردنی تۆپۆلۆژیای تۆڕ. دەتوانێت جۆرە جیاوازەکانی تۆڕ پیشان بدات.",
+      "ckb-Arab": "وێنەکردنی تۆپۆلۆژیای تۆڕ. دەتوانێت جۆرە جیاوازەکانی تۆڕ پیشان بدات.",
+      "af-ZA": "Visualiseer netwerktopologieë. Kan verskillende soorte netwerke voorstel.",
+      "af-NA": "Visualiseer netwerktopologieë. Kan verskillende soorte netwerke voorstel."
     },
     "label": {
       "_": "Network",
@@ -210,7 +219,16 @@
       "om": "Neetworkii",
       "so": "Shabakad",
       "ti": "ኔትወርክ",
-      "ha": "Cibiyar sadarwa"
+      "ha": "Cibiyar sadarwa",
+      "yue-Hans": "网络",
+      "yue-Hant": "網絡",
+      "kmr": "Tor",
+      "kmr-Latn": "Tor",
+      "kmr-Arab": "تۆر",
+      "ckb": "تۆڕ",
+      "ckb-Arab": "تۆڕ",
+      "af-ZA": "Netwerk",
+      "af-NA": "Netwerk"
     }
   },
   "./widgets/ww-network": {
@@ -317,7 +335,16 @@
       "om": "Neetworkii",
       "so": "Shabakad",
       "ti": "ኔትወርክ",
-      "ha": "Cibiyar sadarwa"
+      "ha": "Cibiyar sadarwa",
+      "yue-Hans": "网络",
+      "yue-Hant": "網絡",
+      "kmr": "Tor",
+      "kmr-Latn": "Tor",
+      "kmr-Arab": "تۆر",
+      "ckb": "تۆڕ",
+      "ckb-Arab": "تۆڕ",
+      "af-ZA": "Netwerk",
+      "af-NA": "Netwerk"
     }
   },
   "./snippets/simple-network": {
@@ -424,7 +451,16 @@
       "om": "Neetworkii Salphaa",
       "so": "Shabakad fudud",
       "ti": "ቀሊል ኔትወርክ",
-      "ha": "Cibiyar sadarwa mai sauƙi"
+      "ha": "Cibiyar sadarwa mai sauƙi",
+      "yue-Hans": "简单网络",
+      "yue-Hant": "簡單網絡",
+      "kmr": "Tora Hêsan",
+      "kmr-Latn": "Tora Hêsan",
+      "kmr-Arab": "تۆرا هێسان",
+      "ckb": "تۆڕی سادە",
+      "ckb-Arab": "تۆڕی سادە",
+      "af-ZA": "Eenvoudige netwerk",
+      "af-NA": "Eenvoudige netwerk"
     }
   },
   "./snippets/complex-network": {
@@ -531,7 +567,16 @@
       "om": "Neetworkii Walxaxaa",
       "so": "Shabakad isku dhafan",
       "ti": "ዝተሓላለኸ ኔትወርክ",
-      "ha": "Cibiyar sadarwa mai sarƙaƙiya"
+      "ha": "Cibiyar sadarwa mai sarƙaƙiya",
+      "yue-Hans": "复杂网络",
+      "yue-Hant": "複雜網絡",
+      "kmr": "Tora Tevlihev",
+      "kmr-Latn": "Tora Tevlihev",
+      "kmr-Arab": "تۆرا تەڤلهەڤ",
+      "ckb": "تۆڕی ئاڵۆز",
+      "ckb-Arab": "تۆڕی ئاڵۆز",
+      "af-ZA": "Komplekse netwerk",
+      "af-NA": "Komplekse netwerk"
     }
   },
   "./snippets/triple-network": {
@@ -638,7 +683,16 @@
       "om": "Neetworkii Sadii",
       "so": "Shabakad saddex qaybood ah",
       "ti": "ሰለስተ ኔትወርክ",
-      "ha": "Cibiyar sadarwa mai sassa uku"
+      "ha": "Cibiyar sadarwa mai sassa uku",
+      "yue-Hans": "三重网络",
+      "yue-Hant": "三重網絡",
+      "kmr": "Tora Sêqatî",
+      "kmr-Latn": "Tora Sêqatî",
+      "kmr-Arab": "تۆرا سێقاتی",
+      "ckb": "تۆڕی سێ‌لایەن",
+      "ckb-Arab": "تۆڕی سێ‌لایەن",
+      "af-ZA": "Drievoudige netwerk",
+      "af-NA": "Drievoudige netwerk"
     }
   }
 }
