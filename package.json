@@ -135,9 +135,8 @@
   "dependencies": {
     "@lit/localize": "^0.12.2",
     "@shoelace-style/shoelace": "^2.16.0",
-    "@types/cytoscape": "^3.21.7",
-    "@webwriter/lit": "^2.1.8",
-    "cytoscape": "^3.30.2",
+    "@webwriter/lit": "^3.0.0",
+    "cytoscape": "^3.35.0",
     "cytoscape-compound-drag-and-drop": "^1.1.0",
     "cytoscape-context-menus": "^4.2.1",
     "cytoscape-edgehandles": "^4.0.1",
@@ -161,5 +160,8 @@
     ".": {},
     "./widgets/ww-network": {}
   },
-  "customElements": "custom-elements.json"
+  "customElements": "custom-elements.json",
+  "devDependencies": {
+    "@webwriter/build": "^1.13.1"
+  }
 }
