@@ -1,4 +1,5 @@
-import { msg } from '@lit/localize';
+import type { MsgFn } from "@lit/localize";
+import { sourceMsg } from "../../localization/localizer";
 import { AlertHelper } from '../utils/AlertHelper';
 import { PhysicalNode } from './physicalNodes/PhysicalNode';
 
@@ -30,7 +31,7 @@ export class GraphEdge {
         this.target = this.to.id;
     }
 
-    static addPorts(edge: GraphEdge, inPort: number, outPort: number): GraphEdge | null {
+    static addPorts(edge: GraphEdge, inPort: number, outPort: number, msg: MsgFn = sourceMsg): GraphEdge | null {
         let inPortData: Map<string, any> | undefined = edge.from.portData.get(inPort);
         let outPortData: Map<string, any> | undefined = edge.to.portData.get(outPort);
 

@@ -194,8 +194,8 @@ export function load(this: NetworkComponent) {
         const addedEdge = this._graph.add(edge);
 
         if (c.inPort && c.outPort) {
-            // const newData = GraphEdge.addPorts(addedEdge.data(), c.inPort, c.outPort);
-            const newData = GraphEdge.addPorts(addedEdge.data(), c.inPort, c.outPort);
+            // const newData = GraphEdge.addPorts(addedEdge.data(), c.inPort, c.outPort, this.msg);
+            const newData = GraphEdge.addPorts(addedEdge.data(), c.inPort, c.outPort, this.msg);
 
             if (newData != null) {
                 addedEdge.removeClass('unconfigured-edge');

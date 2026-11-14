@@ -2,8 +2,8 @@
     // Do not modify this file by hand!
     // Re-generate this file by running lit-localize
 
-    
-    
+
+
 
     /* eslint-disable no-irregular-whitespace */
     /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -31,6 +31,7 @@
 's0f527a17b9b690e2': `Bravo !`,
 's1018d5f2b1cc4e8d': `Point d'accès`,
 's10a895b419c64000': `attribuer un expéditeur/récepteur au paquet`,
+'s110e81e1ca4f992c': `Données L2 et L3`,
 's138df1ceb51a3661': `L'IPv4 inséré pour la passerelle ne correspond pas au masque de sous-réseau ou le réseau n'est pas configuré.`,
 's13a56952f9635fe4': `Set Source`,
 's146232d3025412f3': `Masque de bits non valide.`,
@@ -46,6 +47,7 @@
 's22b5492cdee5c0d6': `Mode manuel`,
 's22feccbbd1ae2aa8': `3 Ethernets et une passerelle.`,
 's265dbd543be2f5ed': `Point d'accès`,
+'s269a190f0086d892': `Non configuré`,
 's2906cb2c9daacae3': `La nouvelle plage d'adresses réseau sera vérifiée si elle dépasse l'ancienne.`,
 's2c35f5501ffe52a0': `Basculer le mode de tirage`,
 's2e55a928208bdb7f': `Votre paquet a fini d'être envoyé avec l'adresse de bouclage.`,
@@ -66,6 +68,7 @@
 's3d312902efb57145': `Le réseau existant s'étend pour contenir le nouvel hôte.`,
 's3ec4a053318b0ae8': `hôtes/passerelles/sous-réseaux`,
 's3f015779aaa1979d': `Adresse du réseau`,
+'s3f402f3f155ca6c9': `Exporter le réseau`,
 's4114a8a9e84611a4': `Aucun port n'est disponible.`,
 's42cbd8dca939a9c7': `Vérifier`,
 's431446cf4939d374': `Tous les réseaux sont correctement configurés !`,
@@ -94,6 +97,7 @@
 's5f43af3669b1e098': `Source`,
 's61506a07625cfc18': `Déconnectez le port pour modifier son type.`,
 's62278f512692e037': `Session`,
+'s631790646d968f40': `Données L3`,
 's649522600e4a80ac': `Commencer à envoyer un nouveau paquet`,
 's64ef2a6c2dd1d3d1': `Editer`,
 's6503256c2de2745c': `Bord`,
@@ -106,6 +110,7 @@
 's6ea934c6536e4930': `Cliquez avec le bouton droit de la souris sur chaque réseau, puis sélectionnez Modifier les détails pour modifier sa configuration.`,
 's6f1b8c80ab2b4fd4': `Conseil : Utilisez le contrôleur CIDR/Subnetting pour glisser-déposer puis vérifier.`,
 's71183ed55882f1c9': `L'adresse IPv4 n'est pas valide.`,
+'s72dee52f05a8a31b': `Requête ARP L2`,
 's73b5a4a416157778': `Ethernet avec un pont et 2 hôtes.`,
 's73c3e21df2f12350': `Activer le dessin et le dépôt`,
 's768df033dc306fbc': `Avant de faire glisser un nœud dans le réseau`,
@@ -131,7 +136,7 @@
 's8c8aeec90bdad274': `2 Ethernets et 4 routeurs.`,
 's8ccfa5f804f6777a': `Exemples de graphiques/exercices`,
 's8d70ca4af5a9c009': `avec adresse`,
-'s8e114dd98aeedf91': `Interrupteur`,
+'s8e114dd98aeedf91': `Commutateur réseau`,
 's8ec5e5061ca83fb9': `Le réseau non configuré existe toujours.`,
 's94c954118f54fa1d': `Nombre de ports d'entrée`,
 's953fefbfaf0e2e3d': `CIDR/ Subnetting`,
@@ -144,12 +149,14 @@
 's9c84598a99c03b88': `Masque de bits`,
 's9d1892a929c95c41': `réinitialise toutes les tables et met fin à la session de simulation en cours.`,
 's9feb1a1345ccc3e5': `Réseau`,
+'sa0aaabb83bc98a72': `Importer un réseau`,
 'sa165462237196374': `Dans ce mode, lorsque les utilisateurs modifient les adresses de :`,
 'sa1e005e5c8a7cf53': `Veuillez initier une session avant de simuler l'envoi d'un paquet.`,
 'sa2885d6d322c7379': `hôte/routeur : La table ARP et la table de routage sont créées`,
 'sa67b523cb72c0edb': `Interfaces de la connexion`,
 'sa9b946da3254eeb2': `Réseau non configuré, définition automatique de l'adresse IPv4 pour le bouclage.`,
 'sabab0da440471b2c': `Nœud physique`,
+'sae0547f6ee918ff9': `Attribuez des ports ou des interfaces`,
 'saf114a45c687be19': `Mode basé sur les hôtes :`,
 'safb8ca5860037ac7': `Comment configurer les tableaux ?`,
 'sb1463e72905de3f8': `Un réseau Ethernet, un réseau sans fil et une passerelle.`,
@@ -235,8 +242,8 @@
 'sfc2940e33d865b93': `Pour plus de détails, veuillez utiliser le bouton Vérifier de la fonction Sous-réseau/CIDR.`,
 'sfcafb45ec30fbc60': `Supprimer un port`,
 'sfd468f7c41396df5': `Contrôleur d'envoi de paquets`,
+'sfdd5df424bd1f92a': `Réponse ARP L2`,
 'sff5bb7742c2896c8': `Destination`,
 'sff73ed19941a31e1': `Cliquez sur un hôte dans le canevas`,
 'sff9aad8a96d11e8c': `Adresse Mac de l'expéditeur :`,
     };
-  

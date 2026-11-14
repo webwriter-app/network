@@ -1,4 +1,3 @@
-import { msg } from '@lit/localize';
 import { NetworkComponent } from '../..';
 import { AddressingHelper } from '../../utils/AdressingHelper';
 import { AlertHelper } from '../../utils/AlertHelper';
@@ -79,7 +78,7 @@ export class RoutableDecorator extends DataHandlingDecorator {
                     }
 
                     AnimationHelper.blinkingThenRemoveNode('processing-data-node-3part', dataNode.id(), network);
-                    AlertHelper.toastAlert('success', 'check2-all', '', msg('Your receiver has received the message!'));
+                    AlertHelper.toastAlert('success', 'check2-all', '', network.msg('Your receiver has received the message!'));
                 } else if (this.cssClass.includes('router-node')) {
                     this.removeLayer2Header(data, network);
                     let portToSend = this.findPortToSend(data.layer3header.ipReceiver);

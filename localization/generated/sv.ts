@@ -2,8 +2,8 @@
     // Do not modify this file by hand!
     // Re-generate this file by running lit-localize
 
-    
-    
+
+
 
     /* eslint-disable no-irregular-whitespace */
     /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -31,6 +31,7 @@
 's0f527a17b9b690e2': `Bra gjort!`,
 's1018d5f2b1cc4e8d': `Accesspunkt`,
 's10a895b419c64000': `tilldela en avsändare/mottagare för paketet`,
+'s110e81e1ca4f992c': `L2- och L3-data`,
 's138df1ceb51a3661': `IPv4 som infogats för gateway stämmer inte överens med subnätmasken eller så är nätverket inte konfigurerat.`,
 's13a56952f9635fe4': `Ställ in källa`,
 's146232d3025412f3': `Ogiltig bitmask.`,
@@ -46,6 +47,7 @@
 's22b5492cdee5c0d6': `Manuellt läge`,
 's22feccbbd1ae2aa8': `3 Ethernets och en gateway.`,
 's265dbd543be2f5ed': `Åtkomstpunkt`,
+'s269a190f0086d892': `Inte konfigurerat`,
 's2906cb2c9daacae3': `nya nätverksadressområdet kommer att kontrolleras om de utökar de gamla.`,
 's2c35f5501ffe52a0': `Växla dragläge`,
 's2e55a928208bdb7f': `Ditt paket har skickats färdigt med loop-back-adressen.`,
@@ -66,6 +68,7 @@
 's3d312902efb57145': `Det befintliga nätverket kommer att expandera för att rymma den nya värden.`,
 's3ec4a053318b0ae8': `hosts/gateways/subnätverk`,
 's3f015779aaa1979d': `Nätverksadress`,
+'s3f402f3f155ca6c9': `Exportera nätverk`,
 's4114a8a9e84611a4': `Ingen port tillgänglig.`,
 's42cbd8dca939a9c7': `Kontrollera`,
 's431446cf4939d374': `Alla nät är korrekt konfigurerade!`,
@@ -94,6 +97,7 @@
 's5f43af3669b1e098': `Källa`,
 's61506a07625cfc18': `Koppla bort porten för att ändra dess typ.`,
 's62278f512692e037': `Session`,
+'s631790646d968f40': `L3-data`,
 's649522600e4a80ac': `Börja skicka ett nytt paket`,
 's64ef2a6c2dd1d3d1': `Redigera`,
 's6503256c2de2745c': `Kant`,
@@ -106,6 +110,7 @@
 's6ea934c6536e4930': `Högerklicka på varje nätverk och välj sedan Edit details för att ändra dess konfiguration.`,
 's6f1b8c80ab2b4fd4': `Tips: Använd CIDR/Subnetting-styrenheten för att dra och släppa och sedan kontrollera.`,
 's71183ed55882f1c9': `IPv4-adressen är ogiltig.`,
+'s72dee52f05a8a31b': `L2 ARP-begäran`,
 's73b5a4a416157778': `Ethernet med en brygga och 2 värdar.`,
 's73c3e21df2f12350': `Aktivera dra-och-släpp`,
 's768df033dc306fbc': `Innan du drar en nod till nätverket`,
@@ -131,7 +136,7 @@
 's8c8aeec90bdad274': `2 Ethernets och 4 routrar.`,
 's8ccfa5f804f6777a': `Exempel på grafer/övningar`,
 's8d70ca4af5a9c009': `med adress`,
-'s8e114dd98aeedf91': `Växla`,
+'s8e114dd98aeedf91': `Nätverksswitch`,
 's8ec5e5061ca83fb9': `Okonfigurerat nät finns fortfarande kvar.`,
 's94c954118f54fa1d': `Antal inmatningsportar`,
 's953fefbfaf0e2e3d': `CIDR/ Subnätverk`,
@@ -144,12 +149,14 @@
 's9c84598a99c03b88': `Bitmask`,
 's9d1892a929c95c41': `återställer alla tabeller och avslutar den aktuella simuleringssessionen.`,
 's9feb1a1345ccc3e5': `Nätverk`,
+'sa0aaabb83bc98a72': `Importera nätverk`,
 'sa165462237196374': `Under detta läge, när användare redigerar adresser till:`,
 'sa1e005e5c8a7cf53': `Starta en session innan du simulerar att skicka ett paket.`,
 'sa2885d6d322c7379': `värd/router: ARP-tabell och routingtabell skapas`,
 'sa67b523cb72c0edb': `Anslutningens gränssnitt`,
 'sa9b946da3254eeb2': `Okonfigurerat nät, automatiskt inställd Ipv4-adress för loop-back.`,
 'sabab0da440471b2c': `Fysisk nod`,
+'sae0547f6ee918ff9': `Tilldela portar eller gränssnitt`,
 'saf114a45c687be19': `Värdbaserat läge:`,
 'safb8ca5860037ac7': `Hur konfigurerar man tabellerna?`,
 'sb1463e72905de3f8': `Ett Ethernet-nätverk, ett trådlöst nätverk och en gateway.`,
@@ -235,8 +242,8 @@
 'sfc2940e33d865b93': `Använd knappen Kontrollera i funktionen Subnetting/CIDR för mer information`,
 'sfcafb45ec30fbc60': `Ta bort port`,
 'sfd468f7c41396df5': `Styrenhet för sändning av paket`,
+'sfdd5df424bd1f92a': `L2 ARP-svar`,
 'sff5bb7742c2896c8': `Mål`,
 'sff73ed19941a31e1': `Klicka på en värd på skärmen`,
 'sff9aad8a96d11e8c': `Avsändarens Mac-adress:`,
     };
-  

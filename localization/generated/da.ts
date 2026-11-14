@@ -2,8 +2,8 @@
     // Do not modify this file by hand!
     // Re-generate this file by running lit-localize
 
-    
-    
+
+
 
     /* eslint-disable no-irregular-whitespace */
     /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -31,6 +31,7 @@
 's0f527a17b9b690e2': `Godt gået!`,
 's1018d5f2b1cc4e8d': `Adgangspunkt`,
 's10a895b419c64000': `Tildel en afsender/modtager til pakken`,
+'s110e81e1ca4f992c': `L2- og L3-data`,
 's138df1ceb51a3661': `Indsat IPv4 for gateway stemmer ikke overens med subnetmasken, eller netværket er ikke konfigureret.`,
 's13a56952f9635fe4': `Indstil kilde`,
 's146232d3025412f3': `Ugyldig bitmaske.`,
@@ -46,6 +47,7 @@
 's22b5492cdee5c0d6': `Manuel tilstand`,
 's22feccbbd1ae2aa8': `3 Ethernets og en gateway.`,
 's265dbd543be2f5ed': `Adgangspunkt`,
+'s269a190f0086d892': `Ikke konfigureret`,
 's2906cb2c9daacae3': `nye netværksadresseområde vil blive kontrolleret, hvis de udvider de gamle.`,
 's2c35f5501ffe52a0': `Skift træktilstand`,
 's2e55a928208bdb7f': `Din pakke er færdig med at blive sendt med loop-back-adressen.`,
@@ -66,6 +68,7 @@
 's3d312902efb57145': `Det eksisterende netværk udvides til at indeholde den nye vært.`,
 's3ec4a053318b0ae8': `hosts/gateways/undernetværk`,
 's3f015779aaa1979d': `Netværksadresse`,
+'s3f402f3f155ca6c9': `Eksportér netværk`,
 's4114a8a9e84611a4': `Ingen port tilgængelig.`,
 's42cbd8dca939a9c7': `Tjek`,
 's431446cf4939d374': `Alle net er korrekt konfigureret!`,
@@ -94,6 +97,7 @@
 's5f43af3669b1e098': `Kilde`,
 's61506a07625cfc18': `Afbryd porten for at ændre dens type.`,
 's62278f512692e037': `Session`,
+'s631790646d968f40': `L3-data`,
 's649522600e4a80ac': `Begynd at sende en ny pakke`,
 's64ef2a6c2dd1d3d1': `Rediger`,
 's6503256c2de2745c': `Kant`,
@@ -106,6 +110,7 @@
 's6ea934c6536e4930': `Højreklik på hvert netværk, og vælg derefter Rediger detaljer for at ændre dets konfiguration.`,
 's6f1b8c80ab2b4fd4': `Tip: Brug CIDR/Subnetting-controlleren til at trække og slippe og derefter kontrollere.`,
 's71183ed55882f1c9': `IPv4-adressen er ugyldig.`,
+'s72dee52f05a8a31b': `L2 ARP-anmodning`,
 's73b5a4a416157778': `Ethernet med en bro og 2 værter.`,
 's73c3e21df2f12350': `Aktivér træk-og-slip`,
 's768df033dc306fbc': `Før du trækker en node ind i netværket`,
@@ -131,7 +136,7 @@
 's8c8aeec90bdad274': `2 Ethernets og 4 routere.`,
 's8ccfa5f804f6777a': `Eksempler på grafer/øvelser`,
 's8d70ca4af5a9c009': `med adresse`,
-'s8e114dd98aeedf91': `Skift`,
+'s8e114dd98aeedf91': `Netværksswitch`,
 's8ec5e5061ca83fb9': `Det ukonfigurerede net findes stadig.`,
 's94c954118f54fa1d': `Antal indgangsporte`,
 's953fefbfaf0e2e3d': `CIDR/ Subnetting`,
@@ -144,12 +149,14 @@
 's9c84598a99c03b88': `Bitmaske`,
 's9d1892a929c95c41': `nulstiller alle tabeller og afslutter den aktuelle simuleringssession.`,
 's9feb1a1345ccc3e5': `Netværk`,
+'sa0aaabb83bc98a72': `Importér netværk`,
 'sa165462237196374': `I denne tilstand, når brugere redigerer adresser på:`,
 'sa1e005e5c8a7cf53': `Start en session, før du simulerer afsendelse af en pakke.`,
 'sa2885d6d322c7379': `vært/router: ARP-tabel og routingtabel er oprettet`,
 'sa67b523cb72c0edb': `Forbindelsens grænseflader`,
 'sa9b946da3254eeb2': `Ukonfigureret net, indstiller automatisk Ipv4-adresse til loop-back.`,
 'sabab0da440471b2c': `Fysisk knudepunkt`,
+'sae0547f6ee918ff9': `Tildel porte eller grænseflader`,
 'saf114a45c687be19': `Værtsbaseret tilstand:`,
 'safb8ca5860037ac7': `Hvordan konfigureres tabellerne?`,
 'sb1463e72905de3f8': `Et ethernet, et trådløst netværk og en gateway.`,
@@ -235,8 +242,8 @@
 'sfc2940e33d865b93': `Brug Check-knappen i Subnetting/CIDR-funktionen for at få flere detaljer.`,
 'sfcafb45ec30fbc60': `Fjern port`,
 'sfd468f7c41396df5': `Controller til afsendelse af pakker`,
+'sfdd5df424bd1f92a': `L2 ARP-svar`,
 'sff5bb7742c2896c8': `Mål`,
 'sff73ed19941a31e1': `Klik på en vært på lærredet`,
 'sff9aad8a96d11e8c': `Afsenderens Mac-adresse:`,
     };
-  

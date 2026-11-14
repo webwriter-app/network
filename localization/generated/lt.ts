@@ -2,8 +2,8 @@
     // Do not modify this file by hand!
     // Re-generate this file by running lit-localize
 
-    
-    
+
+
 
     /* eslint-disable no-irregular-whitespace */
     /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -31,6 +31,7 @@
 's0f527a17b9b690e2': `Puikiai atlikta!`,
 's1018d5f2b1cc4e8d': `Prieigos taškas`,
 's10a895b419c64000': `priskirti paketui siuntėją ir gavėją.`,
+'s110e81e1ca4f992c': `L2 ir L3 duomenys`,
 's138df1ceb51a3661': `Įterptas IPv4 šliuzas neatitinka potinklio kaukės arba tinklas nėra sukonfigūruotas.`,
 's13a56952f9635fe4': `Nustatyti šaltinį`,
 's146232d3025412f3': `Netinkama bitų kaukė.`,
@@ -46,6 +47,7 @@
 's22b5492cdee5c0d6': `Rankinis režimas`,
 's22feccbbd1ae2aa8': `3 eterneto tinklai ir vartai.`,
 's265dbd543be2f5ed': `Prieigos taškas`,
+'s269a190f0086d892': `Nesukonfigūruota`,
 's2906cb2c9daacae3': `naujas tinklo adresų diapazonas bus tikrinamas, ar jis išplečia senąjį.`,
 's2c35f5501ffe52a0': `Perjungti piešimo režimą`,
 's2e55a928208bdb7f': `Jūsų paketas baigtas siųsti su grįžtamosios kilpos adresu.`,
@@ -66,6 +68,7 @@
 's3d312902efb57145': `Esamas tinklas išsiplės, kad į jį patektų naujas kompiuteris.`,
 's3ec4a053318b0ae8': `prieglobsčio serveriai / vartai / antriniai tinklai`,
 's3f015779aaa1979d': `Tinklo adresas`,
+'s3f402f3f155ca6c9': `Eksportuoti tinklą`,
 's4114a8a9e84611a4': `Nėra prievado.`,
 's42cbd8dca939a9c7': `Patikrinkite`,
 's431446cf4939d374': `Visi tinklai sukonfigūruoti teisingai!`,
@@ -94,18 +97,20 @@
 's5f43af3669b1e098': `Šaltinis`,
 's61506a07625cfc18': `Atjunkite prievadą, kad pakeistumėte jo tipą.`,
 's62278f512692e037': `Sesija`,
+'s631790646d968f40': `L3 duomenys`,
 's649522600e4a80ac': `Pradėti siųsti naują paketą`,
 's64ef2a6c2dd1d3d1': `Redaguoti`,
 's6503256c2de2745c': `Kraštas`,
 's652d3637d25431f5': `Jūsų gavėjas gavo pranešimą!`,
 's6881b5a560c88bf8': `Įjungtas tinklo režimas:`,
-'s6b05f9d8801fc14f': `Šeimininkas`,
+'s6b05f9d8801fc14f': `Pagrindinis kompiuteris`,
 's6debdd8a9764e3fc': `Pasirinkite komponentą`,
 's6e488f7a11e566e4': `Iš naujo priskirkite prievadus arba nutraukite šį ryšį.`,
 's6e5cadbf42d9dfe4': `Konfliktuojantiems adresams bus priskirtas naujas IPv4.`,
 's6ea934c6536e4930': `Dešiniuoju pelės klavišu spustelėkite kiekvieną tinklą, tada pasirinkite Redaguoti detales ir pakeiskite jo konfigūraciją.`,
 's6f1b8c80ab2b4fd4': `Patarimas: naudokite CIDR / potinklinio tinklo valdiklį, kad galėtumėte vilkti ir nuleisti, tada patikrinkite.`,
 's71183ed55882f1c9': `IPv4 adresas negalioja.`,
+'s72dee52f05a8a31b': `L2 ARP užklausa`,
 's73b5a4a416157778': `Ethernet su tiltu ir 2 kompiuteriais.`,
 's73c3e21df2f12350': `Suaktyvinti "Draw-and-drop" funkciją`,
 's768df033dc306fbc': `Prieš vilkdami mazgą į tinklą`,
@@ -131,7 +136,7 @@
 's8c8aeec90bdad274': `2 Ethernet ir 4 maršrutizatoriai.`,
 's8ccfa5f804f6777a': `Grafikų ir (arba) pratimų pavyzdžiai`,
 's8d70ca4af5a9c009': `su adresu`,
-'s8e114dd98aeedf91': `Perjungti`,
+'s8e114dd98aeedf91': `Tinklo komutatorius`,
 's8ec5e5061ca83fb9': `Vis dar egzistuoja nekonfigūruotas tinklas.`,
 's94c954118f54fa1d': `Įvesties prievadų skaičius`,
 's953fefbfaf0e2e3d': `CIDR / potinklinio tinklo nustatymas`,
@@ -144,12 +149,14 @@
 's9c84598a99c03b88': `Bitų maskuotė`,
 's9d1892a929c95c41': `iš naujo nustatomos visos lentelės ir baigiama dabartinė modeliavimo sesija.`,
 's9feb1a1345ccc3e5': `Tinklas`,
+'sa0aaabb83bc98a72': `Importuoti tinklą`,
 'sa165462237196374': `Šiuo režimu, kai naudotojai redaguoja adresus:`,
 'sa1e005e5c8a7cf53': `Prieš imituodami paketų siuntimą, įveskite sesiją.`,
 'sa2885d6d322c7379': `prieglobstis/maršrutizatorius: Sukuriama ARP lentelė ir maršrutizavimo lentelė`,
 'sa67b523cb72c0edb': `Ryšio sąsajos`,
 'sa9b946da3254eeb2': `Nekonfigūruotas tinklas, automatiškai nustatytas Ipv4 adresas, kad būtų galima grįžti atgal.`,
 'sabab0da440471b2c': `Fizinis mazgas`,
+'sae0547f6ee918ff9': `Priskirkite prievadus arba sąsajas`,
 'saf114a45c687be19': `Šeimininkais pagrįstas režimas:`,
 'safb8ca5860037ac7': `Kaip konfigūruoti lenteles?`,
 'sb1463e72905de3f8': `Eterneto, belaidis tinklas ir šliuzas.`,
@@ -235,8 +242,8 @@
 'sfc2940e33d865b93': `Norėdami gauti daugiau informacijos, naudokite funkciją Subnetting/CIDR (Tinklų potinklio / CIDR) patikrinimo mygtuką`,
 'sfcafb45ec30fbc60': `Pašalinti prievadą`,
 'sfd468f7c41396df5': `Paketų siuntimo valdiklis`,
+'sfdd5df424bd1f92a': `L2 ARP atsakymas`,
 'sff5bb7742c2896c8': `Tikslas`,
 'sff73ed19941a31e1': `Spustelėkite ant drobėje esančio priimančiojo`,
 'sff9aad8a96d11e8c': `Siuntėjo "Mac" adresas:`,
     };
-  

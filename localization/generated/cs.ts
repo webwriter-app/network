@@ -2,8 +2,8 @@
     // Do not modify this file by hand!
     // Re-generate this file by running lit-localize
 
-    
-    
+
+
 
     /* eslint-disable no-irregular-whitespace */
     /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -31,6 +31,7 @@
 's0f527a17b9b690e2': `Výborně!`,
 's1018d5f2b1cc4e8d': `Přístupový bod`,
 's10a895b419c64000': `přiřadit paketu odesílatele/příjemce.`,
+'s110e81e1ca4f992c': `Data L2 a L3`,
 's138df1ceb51a3661': `Vložená adresa IPv4 pro bránu neodpovídá masce podsítě nebo síť není nakonfigurována.`,
 's13a56952f9635fe4': `Nastavit zdroj`,
 's146232d3025412f3': `Neplatná bitová maska.`,
@@ -46,6 +47,7 @@
 's22b5492cdee5c0d6': `Manuální režim`,
 's22feccbbd1ae2aa8': `3 sítě Ethernet a brána.`,
 's265dbd543be2f5ed': `Přístupový bod`,
+'s269a190f0086d892': `Nenakonfigurováno`,
 's2906cb2c9daacae3': `nový rozsah síťových adres bude zkontrolován, zda rozšiřuje staré adresy.`,
 's2c35f5501ffe52a0': `Přepínání režimu čerpání`,
 's2e55a928208bdb7f': `Odesílání paketu skončilo s adresou zpětné smyčky.`,
@@ -66,6 +68,7 @@
 's3d312902efb57145': `Stávající síť se rozšíří tak, aby obsahovala nového hostitele.`,
 's3ec4a053318b0ae8': `hostitelé/brány/podsítě`,
 's3f015779aaa1979d': `Síťová adresa`,
+'s3f402f3f155ca6c9': `Exportovat síť`,
 's4114a8a9e84611a4': `Není k dispozici žádný port.`,
 's42cbd8dca939a9c7': `Podívejte se na stránky .`,
 's431446cf4939d374': `Všechny sítě jsou správně nakonfigurovány!`,
@@ -94,6 +97,7 @@
 's5f43af3669b1e098': `Zdroj`,
 's61506a07625cfc18': `Odpojte port, abyste mohli změnit jeho typ.`,
 's62278f512692e037': `Relace`,
+'s631790646d968f40': `Data L3`,
 's649522600e4a80ac': `Zahájení odesílání nového paketu`,
 's64ef2a6c2dd1d3d1': `Upravit`,
 's6503256c2de2745c': `Hrana`,
@@ -106,6 +110,7 @@
 's6ea934c6536e4930': `Klikněte pravým tlačítkem myši na každou síť a výběrem možnosti Upravit podrobnosti změňte její konfiguraci.`,
 's6f1b8c80ab2b4fd4': `Tip: Pomocí ovladače CIDR/Podsíťování můžete přetahovat a poté kontrolovat.`,
 's71183ed55882f1c9': `Adresa IPv4 je neplatná.`,
+'s72dee52f05a8a31b': `Požadavek ARP v L2`,
 's73b5a4a416157778': `Ethernet s mostem a 2 hostiteli.`,
 's73c3e21df2f12350': `Aktivace funkce Draw-and-drop`,
 's768df033dc306fbc': `Před přetažením uzlu do sítě`,
@@ -131,7 +136,7 @@
 's8c8aeec90bdad274': `2 sítě Ethernet a 4 směrovače.`,
 's8ccfa5f804f6777a': `Příklady grafů/cvičení`,
 's8d70ca4af5a9c009': `s adresou`,
-'s8e114dd98aeedf91': `Přepínač`,
+'s8e114dd98aeedf91': `Síťový přepínač`,
 's8ec5e5061ca83fb9': `Nekonfigurovaná síť stále existuje.`,
 's94c954118f54fa1d': `Počet vstupních portů`,
 's953fefbfaf0e2e3d': `CIDR/podsíťování`,
@@ -144,12 +149,14 @@
 's9c84598a99c03b88': `Bitová maska`,
 's9d1892a929c95c41': `vynuluje všechny tabulky a ukončí aktuální relaci simulace.`,
 's9feb1a1345ccc3e5': `Síť`,
+'sa0aaabb83bc98a72': `Importovat síť`,
 'sa165462237196374': `V tomto režimu, když uživatelé upravují adresy:`,
 'sa1e005e5c8a7cf53': `Před simulací odeslání paketu ukončete relaci.`,
 'sa2885d6d322c7379': `hostitel/směrovač: Vytvoří se tabulka ARP a směrovací tabulka`,
 'sa67b523cb72c0edb': `Rozhraní připojení`,
 'sa9b946da3254eeb2': `Nekonfigurovaná síť, automaticky nastavená adresa Ipv4 na zpětnou smyčku.`,
 'sabab0da440471b2c': `Fyzický uzel`,
+'sae0547f6ee918ff9': `Přiřaďte porty nebo rozhraní`,
 'saf114a45c687be19': `Režim založený na hostitelích:`,
 'safb8ca5860037ac7': `Jak nakonfigurovat tabulky?`,
 'sb1463e72905de3f8': `Ethernet, bezdrátová síť a brána.`,
@@ -235,8 +242,8 @@
 'sfc2940e33d865b93': `Pro více informací použijte tlačítko Kontrola funkce Subnetting/CIDR.`,
 'sfcafb45ec30fbc60': `Odstranit port`,
 'sfd468f7c41396df5': `Řídicí jednotka pro odesílání paketů`,
+'sfdd5df424bd1f92a': `Odpověď ARP v L2`,
 'sff5bb7742c2896c8': `Cíl`,
 'sff73ed19941a31e1': `Klikněte na hostitele na plátně`,
 'sff9aad8a96d11e8c': `Adresa Mac odesílatele:`,
     };
-  

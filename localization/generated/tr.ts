@@ -2,8 +2,8 @@
     // Do not modify this file by hand!
     // Re-generate this file by running lit-localize
 
-    
-    
+
+
 
     /* eslint-disable no-irregular-whitespace */
     /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -31,6 +31,7 @@
 's0f527a17b9b690e2': `Aferin sana!`,
 's1018d5f2b1cc4e8d': `Erişim Noktası`,
 's10a895b419c64000': `paket için bir gönderici/alıcı atayın`,
+'s110e81e1ca4f992c': `L2 ve L3 verileri`,
 's138df1ceb51a3661': `Ağ geçidi için eklenen IPv4 alt ağ maskesiyle eşleşmiyor veya ağ yapılandırılmamış.`,
 's13a56952f9635fe4': `Kaynak Ayarla`,
 's146232d3025412f3': `Geçersiz bit maskesi.`,
@@ -46,6 +47,7 @@
 's22b5492cdee5c0d6': `Manuel Mod`,
 's22feccbbd1ae2aa8': `3 Ethernet ve bir ağ geçidi.`,
 's265dbd543be2f5ed': `Erişim noktası`,
+'s269a190f0086d892': `Yapılandırılmamış`,
 's2906cb2c9daacae3': `yeni ağ adresi aralığı eskilerini genişletiyorsa kontrol edilecektir.`,
 's2c35f5501ffe52a0': `Çizim modunu değiştir`,
 's2e55a928208bdb7f': `Paketiniz geri döngü adresi ile gönderimi tamamladı.`,
@@ -66,6 +68,7 @@
 's3d312902efb57145': `Mevcut ağ yeni ana bilgisayarı içerecek şekilde genişleyecektir.`,
 's3ec4a053318b0ae8': `hosts/gateways/subnetworks`,
 's3f015779aaa1979d': `Ağ Adresi`,
+'s3f402f3f155ca6c9': `Ağı dışa aktar`,
 's4114a8a9e84611a4': `Bağlantı noktası yok.`,
 's42cbd8dca939a9c7': `Kontrol et`,
 's431446cf4939d374': `Tüm ağlar doğru şekilde yapılandırıldı!`,
@@ -94,18 +97,20 @@
 's5f43af3669b1e098': `Kaynak`,
 's61506a07625cfc18': `Yuvanın türünü değiştirmek için bağlantısını kesin.`,
 's62278f512692e037': `Oturum`,
+'s631790646d968f40': `L3 verileri`,
 's649522600e4a80ac': `Yeni bir paket göndermeye başlayın`,
 's64ef2a6c2dd1d3d1': `Düzenle`,
 's6503256c2de2745c': `Kenar`,
 's652d3637d25431f5': `Alıcınız mesajı aldı!`,
 's6881b5a560c88bf8': `Ağ tabanlı mod açık:`,
-'s6b05f9d8801fc14f': `Ev sahibi`,
+'s6b05f9d8801fc14f': `Ana bilgisayar`,
 's6debdd8a9764e3fc': `Bileşeninizi seçin`,
 's6e488f7a11e566e4': `Lütfen bağlantı noktalarınızı yeniden atayın veya bu bağlantıyı kapatın.`,
 's6e5cadbf42d9dfe4': `Çakışan adresler için yeni IPv4 atanacaktır.`,
 's6ea934c6536e4930': `Her bir ağa sağ tıklayın, ardından yapılandırmasını değiştirmek için Ayrıntıları düzenle'yi seçin.`,
 's6f1b8c80ab2b4fd4': `İpucu: Sürükleyip bırakmak ve ardından kontrol etmek için CIDR/Subnetting denetleyicisini kullanın.`,
 's71183ed55882f1c9': `IPv4 adresi geçersiz.`,
+'s72dee52f05a8a31b': `L2 ARP isteği`,
 's73b5a4a416157778': `Bir köprü ve 2 ana bilgisayar ile Ethernet.`,
 's73c3e21df2f12350': `Çiz ve bırak özelliğini etkinleştirin`,
 's768df033dc306fbc': `Bir düğümü ağa sürüklemeden önce`,
@@ -131,7 +136,7 @@
 's8c8aeec90bdad274': `2 Ethernet ve 4 yönlendirici.`,
 's8ccfa5f804f6777a': `Örnek grafikler/alıştırmalar`,
 's8d70ca4af5a9c009': `adres ile`,
-'s8e114dd98aeedf91': `Anahtar`,
+'s8e114dd98aeedf91': `Ağ anahtarı`,
 's8ec5e5061ca83fb9': `Yapılandırılmamış ağ hala mevcut.`,
 's94c954118f54fa1d': `Giriş portu sayısı`,
 's953fefbfaf0e2e3d': `CIDR/ Alt Ağ Oluşturma`,
@@ -144,12 +149,14 @@
 's9c84598a99c03b88': `Bit maskesi`,
 's9d1892a929c95c41': `tüm tabloları sıfırlar ve geçerli simülasyon oturumunu sonlandırır.`,
 's9feb1a1345ccc3e5': `Şebeke`,
+'sa0aaabb83bc98a72': `Ağı içe aktar`,
 'sa165462237196374': `Bu mod sırasında, kullanıcılar adresleri düzenlediğinde:`,
 'sa1e005e5c8a7cf53': `Lütfen bir paket gönderme simülasyonu yapmadan önce bir oturum başlatın.`,
 'sa2885d6d322c7379': `ana bilgisayar/yönlendirici: ARP tablosu ve yönlendirme tablosu oluşturulur`,
 'sa67b523cb72c0edb': `Bağlantının arayüzleri`,
 'sa9b946da3254eeb2': `Yapılandırılmamış ağ, Ipv4 adresini otomatik olarak geri döngüye ayarlar.`,
 'sabab0da440471b2c': `Fiziksel Düğüm`,
+'sae0547f6ee918ff9': `Bağlantı noktalarını veya arayüzleri atayın`,
 'saf114a45c687be19': `Ana bilgisayar tabanlı mod:`,
 'safb8ca5860037ac7': `Tablolar nasıl yapılandırılır?`,
 'sb1463e72905de3f8': `Bir ethernet, bir kablosuz ağ ve bir ağ geçidi.`,
@@ -235,8 +242,8 @@
 'sfc2940e33d865b93': `Daha fazla ayrıntı için lütfen Alt Ağ Oluşturma/CIDR özelliğinin Kontrol düğmesini kullanın`,
 'sfcafb45ec30fbc60': `Bağlantı Noktasını Kaldır`,
 'sfd468f7c41396df5': `Paket gönderme kontrolörü`,
+'sfdd5df424bd1f92a': `L2 ARP yanıtı`,
 'sff5bb7742c2896c8': `Hedef`,
 'sff73ed19941a31e1': `Tuval üzerinde bir ana bilgisayara tıklayın`,
 'sff9aad8a96d11e8c': `Gönderenin Mac Adresi:`,
     };
-  

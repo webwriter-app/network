@@ -2,8 +2,8 @@
     // Do not modify this file by hand!
     // Re-generate this file by running lit-localize
 
-    
-    
+
+
 
     /* eslint-disable no-irregular-whitespace */
     /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -31,6 +31,7 @@
 's0f527a17b9b690e2': `Gut gemacht!`,
 's1018d5f2b1cc4e8d': `Zugangspunkt`,
 's10a895b419c64000': `einen Absender/Empfänger für das Paket zuweisen`,
+'s110e81e1ca4f992c': `L2- und L3-Daten`,
 's138df1ceb51a3661': `Die eingegebene IPv4 für das Gateway stimmt nicht mit der Subnetzmaske überein oder das Netzwerk ist nicht konfiguriert.`,
 's13a56952f9635fe4': `Quelle einstellen`,
 's146232d3025412f3': `Ungültige Bitmaske.`,
@@ -46,6 +47,7 @@
 's22b5492cdee5c0d6': `Manueller Modus`,
 's22feccbbd1ae2aa8': `3 Ethernets und ein Gateway.`,
 's265dbd543be2f5ed': `Zugangspunkt`,
+'s269a190f0086d892': `Nicht konfiguriert`,
 's2906cb2c9daacae3': `Der neue Netzadressbereich wird geprüft, wenn er den alten erweitert.`,
 's2c35f5501ffe52a0': `Zeichenmodus umschalten`,
 's2e55a928208bdb7f': `Ihr Paket wurde mit der Loop-Back-Adresse gesendet.`,
@@ -66,6 +68,7 @@
 's3d312902efb57145': `Das bestehende Netz wird erweitert, um den neuen Host aufzunehmen.`,
 's3ec4a053318b0ae8': `Hosts/Gateways/Teilnetze`,
 's3f015779aaa1979d': `Netzwerkadresse`,
+'s3f402f3f155ca6c9': `Netzwerk exportieren`,
 's4114a8a9e84611a4': `Kein Port verfügbar.`,
 's42cbd8dca939a9c7': `Überprüfen`,
 's431446cf4939d374': `Alle Netze sind korrekt konfiguriert!`,
@@ -94,6 +97,7 @@
 's5f43af3669b1e098': `Quelle`,
 's61506a07625cfc18': `Trennen Sie den Port, um seinen Typ zu ändern.`,
 's62278f512692e037': `Sitzung`,
+'s631790646d968f40': `L3-Daten`,
 's649522600e4a80ac': `Start des Versands eines neuen Pakets`,
 's64ef2a6c2dd1d3d1': `Bearbeiten`,
 's6503256c2de2745c': `Kante`,
@@ -106,6 +110,7 @@
 's6ea934c6536e4930': `Klicken Sie mit der rechten Maustaste auf jedes Netzwerk und wählen Sie dann Details bearbeiten, um die Konfiguration zu ändern.`,
 's6f1b8c80ab2b4fd4': `Tipp: Verwenden Sie den CIDR/Subnetting-Controller zum Ziehen und Ablegen und prüfen Sie dann.`,
 's71183ed55882f1c9': `IPv4-Adresse ist ungültig.`,
+'s72dee52f05a8a31b': `L2-ARP-Anfrage`,
 's73b5a4a416157778': `Ethernet mit einer Brücke und 2 Hosts.`,
 's73c3e21df2f12350': `Aktivieren Sie Draw-and-drop`,
 's768df033dc306fbc': `Vor dem Ziehen eines Knotens ins Netzwerk`,
@@ -131,7 +136,7 @@
 's8c8aeec90bdad274': `2 Ethernets und 4 Router.`,
 's8ccfa5f804f6777a': `Beispielgrafiken/Übungen`,
 's8d70ca4af5a9c009': `mit Adresse`,
-'s8e114dd98aeedf91': `Switch`,
+'s8e114dd98aeedf91': `Netzwerk-Switch`,
 's8ec5e5061ca83fb9': `Das unkonfigurierte Netz existiert noch.`,
 's94c954118f54fa1d': `Anzahl der Eingangsanschlüsse`,
 's953fefbfaf0e2e3d': `CIDR/ Subnetting`,
@@ -144,12 +149,14 @@
 's9c84598a99c03b88': `Bitmaske`,
 's9d1892a929c95c41': `setzt alle Tabellen zurück und beendet die aktuelle Simulationssitzung.`,
 's9feb1a1345ccc3e5': `Netzwerk`,
+'sa0aaabb83bc98a72': `Netzwerk importieren`,
 'sa165462237196374': `In diesem Modus können die Benutzer die Adressen von:`,
 'sa1e005e5c8a7cf53': `Bitte initiieren Sie eine Sitzung, bevor Sie das Senden eines Pakets simulieren.`,
 'sa2885d6d322c7379': `Host/Router: ARP-Tabelle und Routing-Tabelle werden erstellt`,
 'sa67b523cb72c0edb': `Schnittstellen der Verbindung`,
 'sa9b946da3254eeb2': `Unkonfiguriertes Netz, automatische Einstellung der Ipv4-Adresse auf Loopback.`,
 'sabab0da440471b2c': `Physischer Knoten`,
+'sae0547f6ee918ff9': `Ports oder Schnittstellen zuweisen`,
 'saf114a45c687be19': `Hosts-basierter Modus:`,
 'safb8ca5860037ac7': `Wie sind die Tabellen zu konfigurieren?`,
 'sb1463e72905de3f8': `Ein Ethernet, ein drahtloses Netzwerk und ein Gateway.`,
@@ -235,8 +242,8 @@
 'sfc2940e33d865b93': `Bitte benutzen Sie die Schaltfläche Prüfen der Funktion Subnetting/CIDR für weitere Details`,
 'sfcafb45ec30fbc60': `Port entfernen`,
 'sfd468f7c41396df5': `Controller zum Senden von Paketen`,
+'sfdd5df424bd1f92a': `L2-ARP-Antwort`,
 'sff5bb7742c2896c8': `Ziel`,
 'sff73ed19941a31e1': `Klicken Sie auf einen Host auf der Leinwand`,
 'sff9aad8a96d11e8c': `Mac-Adresse des Absenders:`,
     };
-  

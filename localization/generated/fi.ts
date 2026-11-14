@@ -2,8 +2,8 @@
     // Do not modify this file by hand!
     // Re-generate this file by running lit-localize
 
-    
-    
+
+
 
     /* eslint-disable no-irregular-whitespace */
     /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -31,6 +31,7 @@
 's0f527a17b9b690e2': `Hyvin tehty!`,
 's1018d5f2b1cc4e8d': `Access Point`,
 's10a895b419c64000': `määrittää paketille lähettäjän/vastaanottajan.`,
+'s110e81e1ca4f992c': `L2- ja L3-tiedot`,
 's138df1ceb51a3661': `Yhdyskäytävän IPv4-osoite ei vastaa aliverkon maskia tai verkkoa ei ole määritetty.`,
 's13a56952f9635fe4': `Aseta lähde`,
 's146232d3025412f3': `Virheellinen bittimerkki.`,
@@ -46,6 +47,7 @@
 's22b5492cdee5c0d6': `Manuaalinen tila`,
 's22feccbbd1ae2aa8': `3 eternetiä ja yhdyskäytävä.`,
 's265dbd543be2f5ed': `Liityntäpiste`,
+'s269a190f0086d892': `Määrittämättä`,
 's2906cb2c9daacae3': `uusi verkko-osoitealue tarkistetaan, jos ne laajentavat vanhoja.`,
 's2c35f5501ffe52a0': `Vaihda piirtotilaa`,
 's2e55a928208bdb7f': `Pakettisi lähetys päättyi loop-back-osoitteella.`,
@@ -66,6 +68,7 @@
 's3d312902efb57145': `Nykyinen verkko laajenee niin, että se sisältää uuden isännän.`,
 's3ec4a053318b0ae8': `hosts/gateways/subnetworks`,
 's3f015779aaa1979d': `Verkko-osoite`,
+'s3f402f3f155ca6c9': `Vie verkko`,
 's4114a8a9e84611a4': `Porttia ei ole käytettävissä.`,
 's42cbd8dca939a9c7': `Tarkista`,
 's431446cf4939d374': `Kaikki verkot on konfiguroitu oikein!`,
@@ -94,6 +97,7 @@
 's5f43af3669b1e098': `Lähde`,
 's61506a07625cfc18': `Irrota portti, jotta voit muuttaa sen tyyppiä.`,
 's62278f512692e037': `Istunto`,
+'s631790646d968f40': `L3-tiedot`,
 's649522600e4a80ac': `Aloita uuden paketin lähettäminen`,
 's64ef2a6c2dd1d3d1': `Muokkaa`,
 's6503256c2de2745c': `Edge`,
@@ -106,6 +110,7 @@
 's6ea934c6536e4930': `Napsauta hiiren kakkospainikkeella kutakin verkkoa ja valitse sitten Muokkaa tietoja muuttaaksesi sen kokoonpanoa.`,
 's6f1b8c80ab2b4fd4': `Vihje: Käytä CIDR/Subnetting-ohjainta vetämällä ja pudottamalla ja tarkista sitten.`,
 's71183ed55882f1c9': `IPv4-osoite on virheellinen.`,
+'s72dee52f05a8a31b': `L2-ARP-pyyntö`,
 's73b5a4a416157778': `Ethernet, jossa on silta ja 2 isäntää.`,
 's73c3e21df2f12350': `Aktivoi Draw-and-drop`,
 's768df033dc306fbc': `Ennen kuin vedät solmun verkkoon`,
@@ -131,7 +136,7 @@
 's8c8aeec90bdad274': `2 eternettiä ja 4 reititintä.`,
 's8ccfa5f804f6777a': `Esimerkkikaaviot/-harjoitukset`,
 's8d70ca4af5a9c009': `osoitteella`,
-'s8e114dd98aeedf91': `Kytkin`,
+'s8e114dd98aeedf91': `Verkkokytkin`,
 's8ec5e5061ca83fb9': `Konfiguroimaton verkko on edelleen olemassa.`,
 's94c954118f54fa1d': `Tuloporttien lukumäärä`,
 's953fefbfaf0e2e3d': `CIDR/ Aliverkon määritys`,
@@ -144,12 +149,14 @@
 's9c84598a99c03b88': `Bitmask`,
 's9d1892a929c95c41': `nollaa kaikki taulukot ja lopettaa nykyisen simulointiistunnon.`,
 's9feb1a1345ccc3e5': `Verkko`,
+'sa0aaabb83bc98a72': `Tuo verkko`,
 'sa165462237196374': `Tässä tilassa, kun käyttäjät muokkaavat osoitteita:`,
 'sa1e005e5c8a7cf53': `Käynnistä istunto ennen paketin lähettämisen simulointia.`,
 'sa2885d6d322c7379': `isäntä/reititin: ARP-taulukko ja reititystaulukko luodaan`,
 'sa67b523cb72c0edb': `Yhteyden rajapinnat`,
 'sa9b946da3254eeb2': `Konfiguroimaton verkko, asettaa automaattisesti Ipv4-osoitteen loop-backiin.`,
 'sabab0da440471b2c': `Fyysinen solmu`,
+'sae0547f6ee918ff9': `Määritä portit tai liitännät`,
 'saf114a45c687be19': `Isäntäpohjainen tila:`,
 'safb8ca5860037ac7': `Miten taulukot määritetään?`,
 'sb1463e72905de3f8': `Ethernet, langaton verkko ja yhdyskäytävä.`,
@@ -235,8 +242,8 @@
 'sfc2940e33d865b93': `Käytä tarkempia tietoja Subnetting/CIDR-toiminnon Tarkista-painiketta.`,
 'sfcafb45ec30fbc60': `Poista portti`,
 'sfd468f7c41396df5': `Pakettien lähettämisen ohjain`,
+'sfdd5df424bd1f92a': `L2-ARP-vastaus`,
 'sff5bb7742c2896c8': `Kohde`,
 'sff73ed19941a31e1': `Napsauta isäntäkoneen kohdalla kankaalla`,
 'sff9aad8a96d11e8c': `Lähettäjän Mac-osoite:`,
     };
-  

@@ -1,4 +1,5 @@
-import { msg } from '@lit/localize';
+import type { MsgFn } from "@lit/localize";
+import { sourceMsg } from "../../../localization/localizer";
 import { NetworkComponent } from '../..';
 import { Ipv4Address } from '../../adressing/Ipv4Address';
 import { AddressingHelper } from '../../utils/AdressingHelper';
@@ -29,7 +30,8 @@ export class Net extends LogicalNode {
         netmask: string | null,
         bitmask: number | null,
         database: Map<string, string>,
-        id?: string
+        id?: string,
+        msg: MsgFn = sourceMsg
     ) {
         super(color);
 
@@ -131,8 +133,8 @@ export class Net extends LogicalNode {
                 AlertHelper.toastAlert(
                     'danger',
                     'exclamation-diamond',
-                    msg('Net-based Mode for CIDR/Subnetting activated:'),
-                    msg('Cannot create a net without both bitmask and netmask!')
+                    network.msg('Net-based Mode for CIDR/Subnetting activated:'),
+                    network.msg('Cannot create a net without both bitmask and netmask!')
                 );
                 return null;
             }
@@ -141,12 +143,14 @@ export class Net extends LogicalNode {
                 netAd,
                 netmaskValid ? netmask : null,
                 bitmaskValid ? bitmask : null,
-                database
+                database,
+                undefined,
+                network.msg
             );
             unconfiguredNet.cssClass.push('unconfigured-net');
             return unconfiguredNet;
         }
-        return new Net(color, netAd, netmaskValid ? netmask : null, bitmaskValid ? bitmask : null, database);
+        return new Net(color, netAd, netmaskValid ? netmask : null, bitmaskValid ? bitmask : null, database, undefined, network.msg);
     }
 
     static setMode(mode: SubnettingMode, network: NetworkComponent): void {
@@ -210,8 +214,8 @@ export class Net extends LogicalNode {
             AlertHelper.toastAlert(
                 'warning',
                 'exclamation-triangle',
-                msg('Hosts-based mode:'),
-                msg('No valid network address can be assigned to this net.')
+                network.msg('Hosts-based mode:'),
+                network.msg('No valid network address can be assigned to this net.')
             );
             net.setNetInfo(null, null, null, null, true, '');
             return;
@@ -317,27 +321,27 @@ export class Net extends LogicalNode {
             unmatchedPairs.forEach(([type, name], node) => {
                 switch (type) {
                     case 'host':
-                        alert += `<li>${msg("Host")} ` + name + ': ' + node + '</li>';
+                        alert += `<li>${network.msg("Host")} ` + name + ': ' + node + '</li>';
                         break;
                     case 'net':
-                        alert += `<li>${msg("Net")} ` + node + '</li>';
+                        alert += `<li>${network.msg("Net")} ` + node + '</li>';
                         break;
                     case 'gateway':
-                        alert += `<li>${msg("Gateway")} ` + name + ': ' + node + '</li>';
+                        alert += `<li>${network.msg("Gateway")} ` + name + ': ' + node + '</li>';
                         break;
                 }
             });
             alert += '</ul>';
         }
         if (shouldContains.size != 0) {
-            alert += `${msg("should contain")}: <ul>`;
+            alert += `${network.msg("should contain")}: <ul>`;
             shouldContains.forEach((name, ip) => {
-                alert += `<li>${msg("Host")} ` + name + ` ${msg("with address")} ` + ip + '</li>';
+                alert += `<li>${network.msg("Host")} ` + name + ` ${network.msg("with address")} ` + ip + '</li>';
             });
             alert += '</ul>';
         }
 
-        AlertHelper.toastAlert('warning', 'exclamation-triangle', `${msg("Network")} ` + this.name, alert);
+        AlertHelper.toastAlert('warning', 'exclamation-triangle', `${network.msg("Network")} ` + this.name, alert);
         return false;
     }
 
@@ -415,11 +419,11 @@ export class Net extends LogicalNode {
                     'warning',
                     'exclamation-diamond',
                     '',
-                    `${msg("The netmask you entered")} <strong>` +
+                    `${network.msg("The netmask you entered")} <strong>` +
                         newnetmask +
-                        `</strong> ${msg("doesn't match the bitmask")} <strong>` +
+                        `</strong> ${network.msg("doesn't match the bitmask")} <strong>` +
                         newBitmask +
-                        `</strong>. ${msg("Derived netmask is")}: ` +
+                        `</strong>. ${network.msg("Derived netmask is")}: ` +
                         derivedDecimalMask.join('.')
                 );
             }
@@ -449,7 +453,7 @@ export class Net extends LogicalNode {
                 AddressingHelper.getBroadcastAddress(this.networkAddress.address, this.bitmask),
                 null!
             );
-            AlertHelper.toastAlert('success', 'check2-circle', msg('Your changes have been saved.'), '');
+            AlertHelper.toastAlert('success', 'check2-circle', network.msg('Your changes have been saved.'), '');
             return true;
         }
 
@@ -475,8 +479,8 @@ export class Net extends LogicalNode {
                     AlertHelper.toastAlert(
                         'danger',
                         'exclamation-triangle',
-                        msg('Host-based mode on:'),
-                        msg("New network doesn't extend old network!")
+                        network.msg('Host-based mode on:'),
+                        network.msg("New network doesn't extend old network!")
                     );
                     return false;
                 }
@@ -549,7 +553,7 @@ export class Net extends LogicalNode {
             network.ipv4Database.delete(AddressingHelper.getBroadcastAddress(networkToFree[0], networkToFree[1]));
             network.ipv4Database.delete(networkToFree[0]);
         }
-        AlertHelper.toastAlert('success', 'check2-circle', msg('Your changes have been saved.'), '');
+        AlertHelper.toastAlert('success', 'check2-circle', network.msg('Your changes have been saved.'), '');
         return true;
     }
 }

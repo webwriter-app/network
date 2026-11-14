@@ -1,3 +1,5 @@
+import type { MsgFn } from "@lit/localize";
+import { effectiveLanguage, localizeElement, nativeLanguageAttributes, sourceMsg } from "../localization/localizer";
 import { html, LitElement, PropertyValueMap, TemplateResult } from 'lit';
 import { LitElementWw } from '@webwriter/lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
@@ -69,8 +71,7 @@ import { simulationMenuTemplate } from './ui/SimulationMenu';
 import { Component, Connection, load, Network, setupListeners } from './utils/setup';
 import { SlChangeEvent } from '@shoelace-style/shoelace';
 import { styleMap } from 'lit/directives/style-map.js';
-import LOCALIZE from "../localization/generated";
-import { localized, msg } from '@lit/localize';
+import { readData, writeData } from './data-state';
 
 /**
  * @internal
@@ -82,27 +83,6 @@ function isTouchInput(originalEvent: Event | undefined): boolean {
     if (typeof TouchEvent !== 'undefined' && originalEvent instanceof TouchEvent) return true;
     return (originalEvent as PointerEvent).pointerType === 'touch';
 }
-
-/**
- * @internal
- * JSON converter for the serialized state attributes. A missing or invalid attribute yields an
- * empty array instead of `null`, e.g. when undo removes the attribute of a freshly inserted widget.
- */
-const arrayAttributeConverter = {
-    fromAttribute(value: string | null): unknown[] {
-        try {
-            return value ? JSON.parse(value) ?? [] : [];
-        } catch {
-            return [];
-        }
-    },
-    toAttribute(value: unknown[]): string {
-        return JSON.stringify(value);
-    },
-};
-
-/** @internal Attributes holding the serialized widget state. */
-const STATE_ATTRIBUTES = ['components', 'connections', 'networks'] as const;
 
 /**
  * @summary Visualization of network topologies. Can represent different kinds of networks.
@@ -118,13 +98,39 @@ const STATE_ATTRIBUTES = ['components', 'connections', 'networks'] as const;
  * @prop {Array<Connection>} [connections=[]] - Serialized edges between components.
  * @prop {Array<Network>} [networks=[]] - Serialized logical networks.
  *
- * @csspart options - Sidebar container for import/export and controllers.
+ * @slot data - Direct application/json block stores network components, connections, and networks.
  */
-@localized()
 @customElement('ww-network')
 export class NetworkComponent extends LitElementWw {
-    /** @internal Localization bundle. */
-    public localize = LOCALIZE;
+    static override get observedAttributes() { return nativeLanguageAttributes(this, super.observedAttributes); }
+
+    override get lang(): string { return effectiveLanguage(this); }
+    override set lang(value: string) { this.setAttribute("lang", value); }
+    public readonly msg = localizeElement(this, true);
+    static get actions() { return this.buildActions(sourceMsg); }
+
+    private static buildActions(msg: MsgFn) {
+      return {
+          importNetwork: { label: { get _() { return msg("Import network"); } }, icon: "Upload", intent: "default", input: { type: "file", accept: ".json,application/json" } },
+          exportNetwork: { label: { get _() { return msg("Export network"); } }, icon: "Download", intent: "default" },
+      };
+    }
+    readonly actions = NetworkComponent.buildActions(this.msg);
+
+    constructor() {
+        super();
+        this.addEventListener('optionschange', event => {
+            if (event.target === this) this._graph?.updateStyle();
+        });
+    }
+
+    importNetwork(files: File[]) {
+        if (files[0]) ImportExportController.importSpecificFile(files[0], this);
+    }
+
+    exportNetwork() {
+        ImportExportController.exportFile(this);
+    }
 
     /** @internal Reference to the Cytoscape container element. */
     @query('#cy')
@@ -272,20 +278,44 @@ export class NetworkComponent extends LitElementWw {
     /**
      * Serialized components (nodes). Used to populate the canvas and for export.
      */
-    @property({ type: Array, reflect: true, attribute: true, converter: arrayAttributeConverter })
+    @property({ type: Array, attribute: false })
     accessor components: Array<Component> = [];
 
     /**
      * Serialized connections (edges) between components.
      */
-    @property({ type: Array, reflect: true, attribute: true, converter: arrayAttributeConverter })
+    @property({ type: Array, attribute: false })
     accessor connections: Array<Connection> = [];
 
     /**
      * Serialized logical networks for subnetting and validation.
      */
-    @property({ type: Array, reflect: true, attribute: true, converter: arrayAttributeConverter })
+    @property({ type: Array, attribute: false })
     accessor networks: Array<Network> = [];
+
+    private dataObserver = new MutationObserver(() => this.restoreData());
+    private skipDataWrite = false;
+
+    private restoreData() {
+        const data = readData(this);
+        let changed = false;
+        if (Array.isArray(data.components) && JSON.stringify(data.components) !== JSON.stringify(this.components)) {
+            this.components = data.components as Component[];
+            changed = true;
+        }
+        if (Array.isArray(data.connections) && JSON.stringify(data.connections) !== JSON.stringify(this.connections)) {
+            this.connections = data.connections as Connection[];
+            changed = true;
+        }
+        if (Array.isArray(data.networks) && JSON.stringify(data.networks) !== JSON.stringify(this.networks)) {
+            this.networks = data.networks as Network[];
+            changed = true;
+        }
+        if (changed) {
+            this.skipDataWrite = true;
+            this.stateChangedExternally = true;
+        }
+    }
 
     /**
      * @internal
@@ -365,6 +395,8 @@ export class NetworkComponent extends LitElementWw {
      */
     protected firstUpdated(_changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>): void {
         super.firstUpdated(_changedProperties);
+        this.restoreData();
+        this.dataObserver.observe(this, { childList: true, subtree: true });
         initNetwork(this);
 
         this._graph.on('cxttap', (event: EventObject) => {
@@ -517,6 +549,7 @@ export class NetworkComponent extends LitElementWw {
      * @internal
      */
     disconnectedCallback() {
+        this.dataObserver.disconnect();
         super.disconnectedCallback();
         window.removeEventListener('scroll', this.onScroll);
         this.resizeObserver?.disconnect();
@@ -604,23 +637,10 @@ export class NetworkComponent extends LitElementWw {
     }
 
     /**
-     * @internal
-     * Detects state attribute changes that did not originate from the widget itself.
-     */
-    attributeChangedCallback(name: string, oldValue: string | null, value: string | null): void {
-        const stateAttribute = STATE_ATTRIBUTES.find((attribute) => attribute === name);
-        if (stateAttribute && value !== arrayAttributeConverter.toAttribute(this[stateAttribute])) {
-            this.stateChangedExternally = true;
-        }
-        super.attributeChangedCallback(name, oldValue, value);
-    }
-
-    /**
      * Renders the network canvas, mode switch, toolbox, context menu and simulation menu.
      */
     public render(): TemplateResult {
         return html`
-            ${this.isEditable() ? this.asideTemplate() : null}
             <div class="canvas" id="myCanvas" style="${styleMap({height: this.isFullscreen ? "100%" : "500px"})}">
                 <div class="modeSwitch">
                     <sl-select
@@ -632,15 +652,15 @@ export class NetworkComponent extends LitElementWw {
                         size="small"
                     >
                         <span slot="prefix">${this.mode === 'edit' ? biPencil : biBoxes}</span>
-                        <sl-option value="edit">${msg("Edit")}</sl-option>
-                        <sl-option value="simulate">${msg("Simulate")}</sl-option>
+                        <sl-option value="edit">${this.msg("Edit")}</sl-option>
+                        <sl-option value="simulate">${this.msg("Simulate")}</sl-option>
                     </sl-select>
                 </div>
 
                 <div id="cy" tabindex="-1"></div>
                 ${this.toolboxTemplate()} ${contextMenuTemplate.bind(this)()} ${simulationMenuTemplate.bind(this)()}
                 
-                <sl-tooltip content=${this.isFullscreen ? msg("Exit Fullscreen") : msg("Fullscreen")}>
+                <sl-tooltip content=${this.isFullscreen ? this.msg("Exit Fullscreen") : this.msg("Fullscreen")}>
                     <sl-button size="large" circle class="fullscreenButton" @click=${() => this.handleFullscreenToggle()}>
                         ${this.isFullscreen ? biFullscreenMinimize : biFullscreenMaximize}
                     </sl-button>
@@ -649,7 +669,7 @@ export class NetworkComponent extends LitElementWw {
 
             <div id="inputDialog"></div>
             <!-- <sl-dialog id="example-graphs"> ${ImportExportController.exampleTemplate(this)} </sl-dialog> -->
-            <!-- <sl-dialog id="instructions" label="${msg("Tutorials")}"> ${DialogFactory.showHelpText(this)} </sl-dialog> -->
+            <!-- <sl-dialog id="instructions" label="${this.msg("Tutorials")}"> ${DialogFactory.showHelpText(this)} </sl-dialog> -->
         `;
     }
 
@@ -671,12 +691,12 @@ export class NetworkComponent extends LitElementWw {
                         <sl-button circle class="toolbox__btn" ?disabled=${this.drawModeOn}> ${biPerson} </sl-button>
                         <!-- </sl-tooltip> -->
                         <div class="toolbox__subbuttons">
-                            <sl-tooltip content=${msg("Computer")} placement="top">
+                            <sl-tooltip content=${this.msg("Computer")} placement="top">
                                 <sl-button circle class="toolbox__btn" @click=${this.addHost().computer}>
                                     ${biPcDisplayHorizontal}
                                 </sl-button>
                             </sl-tooltip>
-                            <sl-tooltip content=${msg("Mobile device")} placement="top">
+                            <sl-tooltip content=${this.msg("Mobile device")} placement="top">
                                 <sl-button circle class="toolbox__btn" @click=${this.addHost().mobile}>
                                     ${biPhone}
                                 </sl-button>
@@ -684,44 +704,44 @@ export class NetworkComponent extends LitElementWw {
                         </div>
                     </div>
                     <div class="toolbox__buttongroup">
-                        <!-- <sl-tooltip content=${msg("Network device")} placement="left"> -->
+                        <!-- <sl-tooltip content=${this.msg("Network device")} placement="left"> -->
                         <sl-button circle class="toolbox__btn" ?disabled=${this.drawModeOn}> ${biHdd} </sl-button>
                         <!-- </sl-tooltip> -->
                         <div class="toolbox__subbuttons">
-                            <sl-tooltip content=${msg("Router")} placement="top">
+                            <sl-tooltip content=${this.msg("Router")} placement="top">
                                 <sl-button circle class="toolbox__btn" @click=${this.addNetworkDevice().router}>
                                     ${biRouter}
                                 </sl-button>
                             </sl-tooltip>
-                            <sl-tooltip content=${msg("Access point")} placement="top">
+                            <sl-tooltip content=${this.msg("Access point")} placement="top">
                                 <sl-button circle class="toolbox__btn" @click=${this.addNetworkDevice().accessPoint}>
                                     ${biBroadcastPin}
                                 </sl-button>
                             </sl-tooltip>
-                            <sl-tooltip content=${msg("Repeater")} placement="top">
+                            <sl-tooltip content=${this.msg("Repeater")} placement="top">
                                 <sl-button circle class="toolbox__btn" @click=${this.addNetworkDevice().repeater}>
                                     ${biHdd}
                                 </sl-button>
                             </sl-tooltip>
-                            <sl-tooltip content=${msg("Hub")} placement="top">
-                                <sl-button circle class="toolbox__btn" @click=${this.addNetworkDevice().hub}>
+                            <sl-tooltip content=${this.msg("Hub")} placement="top">
+                                <sl-button circle class="toolbox__btn" aria-label=${this.msg("Hub")} @click=${this.addNetworkDevice().hub}>
                                     ${iHub}
                                 </sl-button>
                             </sl-tooltip>
-                            <sl-tooltip content=${msg("Bridge")} placement="top">
-                                <sl-button circle class="toolbox__btn" @click=${this.addNetworkDevice().bridge}>
+                            <sl-tooltip content=${this.msg("Bridge")} placement="top">
+                                <sl-button circle class="toolbox__btn" aria-label=${this.msg("Bridge")} @click=${this.addNetworkDevice().bridge}>
                                     ${iBridge}
                                 </sl-button>
                             </sl-tooltip>
-                            <sl-tooltip content=${msg("Switch")} placement="top">
-                                <sl-button circle class="toolbox__btn" @click=${this.addNetworkDevice().switch}>
+                            <sl-tooltip content=${this.msg("Switch")} placement="top">
+                                <sl-button circle class="toolbox__btn" aria-label=${this.msg("Switch")} @click=${this.addNetworkDevice().switch}>
                                     ${iSwitch}
                                 </sl-button>
                             </sl-tooltip>
                         </div>
                     </div>
                     <div class="toolbox__buttongroup">
-                        <sl-tooltip content=${msg("Edge")} placement="left">
+                        <sl-tooltip content=${this.msg("Edge")} placement="left">
                             <sl-button
                                 circle
                                 class="toolbox__btn"
@@ -733,7 +753,7 @@ export class NetworkComponent extends LitElementWw {
                         </sl-tooltip>
                     </div>
                     <div class="toolbox__buttongroup">
-                        <sl-tooltip content=${msg("Network")} placement="bottom">
+                        <sl-tooltip content=${this.msg("Network")} placement="bottom">
                             <sl-button
                                 circle
                                 class="toolbox__btn"
@@ -745,7 +765,7 @@ export class NetworkComponent extends LitElementWw {
                         </sl-tooltip>
 
                         <div class="toolbox__subbuttons">
-                            <sl-tooltip content=${msg("Network assignment")} placement="top">
+                            <sl-tooltip content=${this.msg("Network assignment")} placement="top">
                                 <sl-button
                                     circle
                                     class="toolbox__btn"
@@ -756,7 +776,7 @@ export class NetworkComponent extends LitElementWw {
                                     ${biCloudPlus}
                                 </sl-button>
                             </sl-tooltip>
-                            <sl-tooltip content=${msg("Gateway assignment")} placement="top">
+                            <sl-tooltip content=${this.msg("Gateway assignment")} placement="top">
                                 <sl-button
                                     circle
                                     class="toolbox__btn"
@@ -767,7 +787,7 @@ export class NetworkComponent extends LitElementWw {
                                     ${biCloudArrowUp}
                                 </sl-button>
                             </sl-tooltip>
-                            <sl-tooltip content=${msg("Validate global address assignments")} placement="top">
+                            <sl-tooltip content=${this.msg("Validate global address assignments")} placement="top">
                                 <sl-button
                                     circle
                                     class="toolbox__btn"
@@ -908,10 +928,10 @@ export class NetworkComponent extends LitElementWw {
      */
     private asideTemplate(): TemplateResult {
         return html`
-            <aside part="options" style="display: none">
+            <aside style="display: none">
                 <form autocomplete="off">
                     <input class="importBtn" style="width: 11cqw;" type="file" id="import-file" />
-                    <sl-tooltip content=${msg("Import a file created by this widget")} placement="bottom">
+                    <sl-tooltip content=${this.msg("Import a file created by this widget")} placement="bottom">
                         <button
                             class="importBtn"
                             type="button"
@@ -920,7 +940,7 @@ export class NetworkComponent extends LitElementWw {
                             Import
                         </button>
                     </sl-tooltip>
-                    <sl-tooltip content=${msg("Export the current graph")} placement="bottom">
+                    <sl-tooltip content=${this.msg("Export the current graph")} placement="bottom">
                         <button
                             class="importBtn"
                             type="button"
@@ -929,7 +949,7 @@ export class NetworkComponent extends LitElementWw {
                             Export
                         </button>
                     </sl-tooltip>
-                    <sl-tooltip content=${msg("Example graphs/exercises")} placement="bottom">
+                    <sl-tooltip content=${this.msg("Example graphs/exercises")} placement="bottom">
                         <button
                             class="importBtn"
                             type="button"
@@ -938,7 +958,7 @@ export class NetworkComponent extends LitElementWw {
                             Examples
                         </button>
                     </sl-tooltip>
-                    <sl-tooltip content=${msg("Tutorials for features of this widget")} placement="bottom">
+                    <sl-tooltip content=${this.msg("Tutorials for features of this widget")} placement="bottom">
                         <button
                             class="importBtn"
                             type="button"
@@ -950,7 +970,7 @@ export class NetworkComponent extends LitElementWw {
                 </form>
                 <h2>New Node</h2>
                 <div class="componentMenu">
-                    <sl-tooltip content=${msg("Host")} placement="top">
+                    <sl-tooltip content=${this.msg("Host")} placement="top">
                         <sl-dropdown placement="bottom">
                             <button class="btn" id="host" slot="trigger"><sl-icon name="person"></sl-icon></button>
                             <sl-menu>
@@ -963,37 +983,37 @@ export class NetworkComponent extends LitElementWw {
                             </sl-menu>
                         </sl-dropdown>
                     </sl-tooltip>
-                    <sl-tooltip content=${msg("Network device")} placement="top">
+                    <sl-tooltip content=${this.msg("Network device")} placement="top">
                         <sl-dropdown placement="bottom">
                             <button class="btn" id="connector" slot="trigger"><sl-icon name="hdd"></sl-icon></button>
                             <sl-menu>
                                 <sl-menu-item id="router" @click="${this.clickOnComponentButton}"
-                                    >${msg("Router")} <sl-icon name="router"></sl-icon
+                                    >${this.msg("Router")} <sl-icon name="router"></sl-icon
                                 ></sl-menu-item>
                                 <sl-menu-item id="access-point" @click="${this.clickOnComponentButton}"
-                                    >${msg("Access Point")} <sl-icon name="broadcast-pin"></sl-icon
+                                    >${this.msg("Access Point")} <sl-icon name="broadcast-pin"></sl-icon
                                 ></sl-menu-item>
                                 <sl-menu-item id="repeater" @click="${this.clickOnComponentButton}"
-                                    >${msg("Repeater")} <sl-icon name="hdd"></sl-icon
+                                    >${this.msg("Repeater")} <sl-icon name="hdd"></sl-icon
                                 ></sl-menu-item>
                                 <sl-menu-item id="hub" @click="${this.clickOnComponentButton}"
-                                    >${msg("Hub")} <sl-icon src="resources/icons/hub.svg"></sl-icon
+                                    >${this.msg("Hub")} <sl-icon src="resources/icons/hub.svg"></sl-icon
                                 ></sl-menu-item>
                                 <sl-menu-item id="bridge" @click="${this.clickOnComponentButton}"
-                                    >${msg("Bridge")} <sl-icon src="resources/icons/bridge.svg"></sl-icon
+                                    >${this.msg("Bridge")} <sl-icon src="resources/icons/bridge.svg"></sl-icon
                                 ></sl-menu-item>
                                 <sl-menu-item id="switch" @click="${this.clickOnComponentButton}"
-                                    >${msg("Switch")} <sl-icon src="resources/icons/switch.svg"></sl-icon
+                                    >${this.msg("Switch")} <sl-icon src="resources/icons/switch.svg"></sl-icon
                                 ></sl-menu-item>
                             </sl-menu>
                         </sl-dropdown>
                     </sl-tooltip>
-                    <sl-tooltip content=${msg("Edge")} placement="top">
+                    <sl-tooltip content=${this.msg("Edge")} placement="top">
                         <button class="btn" id="edge" @click="${this.clickOnComponentButton}">
                             <sl-icon name="share"></sl-icon>
                         </button>
                     </sl-tooltip>
-                    <sl-tooltip content=${msg("Network")} placement="top">
+                    <sl-tooltip content=${this.msg("Network")} placement="top">
                         <button class="btn" id="net" @click="${this.clickOnComponentButton}">
                             <sl-icon name="diagram-3"></sl-icon>
                         </button>
@@ -1001,16 +1021,16 @@ export class NetworkComponent extends LitElementWw {
                 </div>
                 <div class="nameBox">
                     <sl-tab-group id="physical-logical-group">
-                        <sl-tab slot="nav" panel="physical">${msg("Physical Node")}</sl-tab>
-                        <sl-tab slot="nav" panel="logical">${msg("Logical Node")}</sl-tab>
+                        <sl-tab slot="nav" panel="physical">${this.msg("Physical Node")}</sl-tab>
+                        <sl-tab slot="nav" panel="logical">${this.msg("Logical Node")}</sl-tab>
 
                         <sl-tab-panel name="physical" id="physical-node-panel" active>
                             <sl-input class="label-on-left" label="Name" id="inputName" placeholder="Name"></sl-input>
                             <sl-input
                                 class="label-on-left"
-                                label=${msg("Number of ports")}
+                                label=${this.msg("Number of ports")}
                                 id="ports"
-                                placeholder=${msg("Number of input ports")}
+                                placeholder=${this.msg("Number of input ports")}
                                 type="number"
                                 min="1"
                             ></sl-input>
@@ -1018,20 +1038,20 @@ export class NetworkComponent extends LitElementWw {
                                 size=${this.screen}
                                 style="margin-top: 1cqw;"
                                 @click="${() => DialogFactory.generateInputsDetailsForNode(this)}"
-                                >${msg("Add details for ports")}</sl-button
+                                >${this.msg("Add details for ports")}</sl-button
                             >
                         </sl-tab-panel>
                         <sl-tab-panel name="logical" id="logical-node-panel">
-                            <sl-input class="label-on-left" label=${msg("NetID")} id="net-num" placeholder="0.0.0.0"></sl-input>
+                            <sl-input class="label-on-left" label=${this.msg("NetID")} id="net-num" placeholder="0.0.0.0"></sl-input>
                             <sl-input
                                 class="label-on-left"
-                                label=${msg("Netmask")}
+                                label=${this.msg("Netmask")}
                                 id="net-mask"
                                 placeholder="255.255.255.255"
                             ></sl-input>
                             <sl-input
                                 class="label-on-left"
-                                label=${msg("Bitmask")}
+                                label=${this.msg("Bitmask")}
                                 id="net-bitmask"
                                 placeholder=""
                                 type="number"
@@ -1043,12 +1063,12 @@ export class NetworkComponent extends LitElementWw {
                 </div>
                 <div class="colorPalette"></div>
                 <div class="addOption">
-                    <sl-tooltip content=${msg("Click to add your component")} placement="left" style="--max-width: 7cqw;">
+                    <sl-tooltip content=${this.msg("Click to add your component")} placement="left" style="--max-width: 7cqw;">
                         <button class="addBtn" id="addCompBtn" @click="${() => GraphNodeFactory.addNode(this)}">
                             <sl-icon name="plus" disabled="${this.isEditable()}"></sl-icon>
                         </button>
                     </sl-tooltip>
-                    <sl-tooltip content=${msg("Click to draw connecting links")} placement="left" style="--max-width: 7cqw;">
+                    <sl-tooltip content=${this.msg("Click to draw connecting links")} placement="left" style="--max-width: 7cqw;">
                         <button
                             class="addBtn"
                             id="drawBtn"
@@ -1059,7 +1079,7 @@ export class NetworkComponent extends LitElementWw {
                         </button>
                     </sl-tooltip>
                     <sl-tooltip
-                        content=${msg("Click to change color of existing components")}
+                        content=${this.msg("Click to change color of existing components")}
                         placement="left"
                         style="--max-width: 9cqw;"
                     >
@@ -1073,9 +1093,9 @@ export class NetworkComponent extends LitElementWw {
                     </sl-tooltip>
                 </div>
                 <sl-menu style="background-color: #F1F1F1; border: transparent; height: 100%;">
-                    <sl-details summary=${msg("CIDR/Subnetting controller")} open>
+                    <sl-details summary=${this.msg("CIDR/Subnetting controller")} open>
                         <sl-menu-label
-                            >${msg("Choose a mode")}:
+                            >${this.msg("Choose a mode")}:
                             <sl-select
                                 size=${this.screen}
                                 id="current-subnet-mode"
@@ -1084,34 +1104,34 @@ export class NetworkComponent extends LitElementWw {
                                 }}"
                                 value="MANUAL"
                             >
-                                <sl-menu-item value="MANUAL">${msg("Manual Mode")}</sl-menu-item>
-                                <sl-menu-item value="NET_BASED">${msg("Net-based Mode")}</sl-menu-item>
-                                <sl-menu-item value="HOST_BASED">${msg("Host-based Mode")}</sl-menu-item>
+                                <sl-menu-item value="MANUAL">${this.msg("Manual Mode")}</sl-menu-item>
+                                <sl-menu-item value="NET_BASED">${this.msg("Net-based Mode")}</sl-menu-item>
+                                <sl-menu-item value="HOST_BASED">${this.msg("Host-based Mode")}</sl-menu-item>
                             </sl-select>
                         </sl-menu-label>
                         <sl-menu-item
                             @click="${(event: Event) => this.subnettingController.toggleDragAndDropSubnetting(event, this)}"
                             style="font-size: max(0.1cqw, 12px) !important;"
-                            >${msg("Activate Draw-and-drop")}</sl-menu-item
+                            >${this.msg("Activate Draw-and-drop")}</sl-menu-item
                         >
                         <sl-menu-item
                             @click="${(event: Event) => this.subnettingController.toggleAssigningGateway(event, this)}"
                             style="font-size: max(0.1cqw, 12px) !important;"
-                            >${msg("Drag to assign gateway")}</sl-menu-item
+                            >${this.msg("Drag to assign gateway")}</sl-menu-item
                         >
                         <sl-menu-item>
-                            <sl-tooltip hoist content=${msg("Validate global address assignments")} placement="top">
+                            <sl-tooltip hoist content=${this.msg("Validate global address assignments")} placement="top">
                                 <sl-button
                                     size=${this.screen}
                                     class="blue-button"
                                     @click="${() => this.subnettingController.validateAllNets(false, this)}"
-                                    >${msg("Check")}</sl-button
+                                    >${this.msg("Check")}</sl-button
                                 >
                             </sl-tooltip>
                         </sl-menu-item>
                     </sl-details>
 
-                    <sl-details id="packet-sending-extension" summary=${msg("Packet sending controller")}>
+                    <sl-details id="packet-sending-extension" summary=${this.msg("Packet sending controller")}>
                         <sl-menu-item style="display: flex;">
                             <sl-button
                                 size=${this.screen}
@@ -1119,7 +1139,7 @@ export class NetworkComponent extends LitElementWw {
                                 class="blue-button set-source-btn"
                                 id="setSourceBtn"
                                 @click="${(event: Event) => this.packetSimulator.setSource(event, this)}"
-                                >${msg("Choose sender")}</sl-button
+                                >${this.msg("Choose sender")}</sl-button
                             >
                             <sl-select
                                 size=${this.screen}
@@ -1141,7 +1161,7 @@ export class NetworkComponent extends LitElementWw {
                                 class="blue-button set-target-btn"
                                 id="setTargetBtn"
                                 @click="${(event: Event) => this.packetSimulator.setTarget(event, this)}"
-                                >${msg("Choose receiver")}</sl-button
+                                >${this.msg("Choose receiver")}</sl-button
                             >
                             <sl-select
                                 size=${this.screen}
@@ -1160,7 +1180,7 @@ export class NetworkComponent extends LitElementWw {
                             ><sl-input
                                 class="label-on-left"
                                 @sl-change="${(event: SlChangeEvent) => (this.packetSimulator.duration = +(event.target as SlInput).value * 1000)}"
-                                label=${msg("Speed")}
+                                label=${this.msg("Speed")}
                                 type="number"
                                 min="1"
                             ></sl-input
@@ -1171,11 +1191,11 @@ export class NetworkComponent extends LitElementWw {
                                 target.checked = !target.checked;
                                 this.packetSimulator.focus = target.checked;
                             }}"
-                            >${msg("Focus on animated nodes")}</sl-menu-item
+                            >${this.msg("Focus on animated nodes")}</sl-menu-item
                         >
                         <sl-menu-item>
-                            <b><i>${msg("Session")}: </i></b>
-                            <sl-tooltip hoist content=${msg("Create a new simulation session")} placement="top">
+                            <b><i>${this.msg("Session")}: </i></b>
+                            <sl-tooltip hoist content=${this.msg("Create a new simulation session")} placement="top">
                                 <sl-button
                                     class="blue-button"
                                     size=${this.screen}
@@ -1183,7 +1203,7 @@ export class NetworkComponent extends LitElementWw {
                                     >Init</sl-button
                                 >
                             </sl-tooltip>
-                            <sl-tooltip hoist content=${msg("Start sending a new packet")} placement="top">
+                            <sl-tooltip hoist content=${this.msg("Start sending a new packet")} placement="top">
                                 <sl-button
                                     class="blue-button"
                                     size=${this.screen}
@@ -1191,7 +1211,7 @@ export class NetworkComponent extends LitElementWw {
                                     ><sl-icon name="play"
                                 /></sl-button>
                             </sl-tooltip>
-                            <sl-tooltip hoist content=${msg("Pause/resume all packets")} placement="top">
+                            <sl-tooltip hoist content=${this.msg("Pause/resume all packets")} placement="top">
                                 <sl-button
                                     class="blue-button"
                                     size=${this.screen}
@@ -1201,7 +1221,7 @@ export class NetworkComponent extends LitElementWw {
                                         src="/node_modules/@shoelace-style/shoelace/dist/assets/icons/pause.svg"
                                 /></sl-button>
                             </sl-tooltip>
-                            <sl-tooltip hoist content=${msg("Stop the simulation session")} placement="top">
+                            <sl-tooltip hoist content=${this.msg("Stop the simulation session")} placement="top">
                                 <sl-button
                                     class="blue-button"
                                     size=${this.screen}
@@ -1211,7 +1231,7 @@ export class NetworkComponent extends LitElementWw {
                             </sl-tooltip>
                         </sl-menu-item>
                         <sl-menu-item>
-                            <sl-details id="tables-for-packet-simulator" summary=${msg("Track tables")} open> </sl-details>
+                            <sl-details id="tables-for-packet-simulator" summary=${this.msg("Track tables")} open> </sl-details>
                         </sl-menu-item>
                     </sl-details>
                 </sl-menu>
@@ -1272,6 +1292,16 @@ export class NetworkComponent extends LitElementWw {
      * @internal
      */
     updated(changedProperties: Map<string, unknown>) {
+        super.updated(changedProperties);
+        const dataChanged = ['components', 'connections', 'networks'].some((key) => changedProperties.has(key));
+        if (this.hasUpdated && dataChanged && !this.skipDataWrite) {
+            writeData(this, {
+                components: this.components,
+                connections: this.connections,
+                networks: this.networks,
+            });
+        }
+        if (dataChanged) this.skipDataWrite = false;
         if (this.stateChangedExternally && this.networkAvailable) {
             this.stateChangedExternally = false;
             this.closeContextMenu();

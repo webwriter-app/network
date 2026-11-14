@@ -2,8 +2,8 @@
     // Do not modify this file by hand!
     // Re-generate this file by running lit-localize
 
-    
-    
+
+
 
     /* eslint-disable no-irregular-whitespace */
     /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -31,6 +31,7 @@
 's0f527a17b9b690e2': `Bagus sekali!`,
 's1018d5f2b1cc4e8d': `Titik Akses`,
 's10a895b419c64000': `menetapkan pengirim/penerima untuk paket tersebut`,
+'s110e81e1ca4f992c': `Data L2 dan L3`,
 's138df1ceb51a3661': `IPv4 yang dimasukkan untuk gateway tidak sesuai dengan subnet mask atau jaringan tidak dikonfigurasi.`,
 's13a56952f9635fe4': `Tetapkan Sumber`,
 's146232d3025412f3': `Bitmask tidak valid.`,
@@ -46,6 +47,7 @@
 's22b5492cdee5c0d6': `Mode Manual`,
 's22feccbbd1ae2aa8': `3 Ethernet dan sebuah gateway.`,
 's265dbd543be2f5ed': `Titik akses`,
+'s269a190f0086d892': `Belum dikonfigurasi`,
 's2906cb2c9daacae3': `rentang alamat jaringan baru akan diperiksa jika mereka memperluas yang lama.`,
 's2c35f5501ffe52a0': `Alihkan mode gambar`,
 's2e55a928208bdb7f': `Paket Anda selesai dikirim dengan alamat loop-back.`,
@@ -66,6 +68,7 @@
 's3d312902efb57145': `Jaringan yang ada akan diperluas untuk menampung host baru.`,
 's3ec4a053318b0ae8': `host/gateway/subjaringan`,
 's3f015779aaa1979d': `Alamat Jaringan`,
+'s3f402f3f155ca6c9': `Ekspor jaringan`,
 's4114a8a9e84611a4': `Tidak ada port yang tersedia.`,
 's42cbd8dca939a9c7': `Periksa`,
 's431446cf4939d374': `Semua jaring dikonfigurasi dengan benar!`,
@@ -94,18 +97,20 @@
 's5f43af3669b1e098': `Sumber`,
 's61506a07625cfc18': `Putuskan sambungan port untuk mengubah jenisnya.`,
 's62278f512692e037': `Sesi`,
+'s631790646d968f40': `Data L3`,
 's649522600e4a80ac': `Mulai mengirim paket baru`,
 's64ef2a6c2dd1d3d1': `Sunting`,
 's6503256c2de2745c': `Tepi`,
 's652d3637d25431f5': `Penerima Anda telah menerima pesan!`,
 's6881b5a560c88bf8': `Mode berbasis net aktif:`,
-'s6b05f9d8801fc14f': `Tuan rumah`,
+'s6b05f9d8801fc14f': `Host`,
 's6debdd8a9764e3fc': `Pilih komponen Anda`,
 's6e488f7a11e566e4': `Tetapkan kembali port Anda atau putuskan sambungan ini.`,
 's6e5cadbf42d9dfe4': `IPv4 baru akan diberikan untuk alamat yang saling bertentangan.`,
 's6ea934c6536e4930': `Klik kanan pada setiap jaringan, lalu pilih Edit detail untuk mengubah konfigurasinya.`,
 's6f1b8c80ab2b4fd4': `Saran: Gunakan pengontrol CIDR/Subnetting untuk menyeret dan melepas, kemudian memeriksa.`,
 's71183ed55882f1c9': `Alamat IPv4 tidak valid.`,
+'s72dee52f05a8a31b': `Permintaan ARP L2`,
 's73b5a4a416157778': `Ethernet dengan jembatan dan 2 host.`,
 's73c3e21df2f12350': `Aktifkan Tarik dan lepas`,
 's768df033dc306fbc': `Sebelum menyeret node ke dalam jaringan`,
@@ -131,7 +136,7 @@
 's8c8aeec90bdad274': `2 Ethernet dan 4 router.`,
 's8ccfa5f804f6777a': `Contoh grafik/latihan`,
 's8d70ca4af5a9c009': `dengan alamat`,
-'s8e114dd98aeedf91': `Beralih`,
+'s8e114dd98aeedf91': `Switch jaringan`,
 's8ec5e5061ca83fb9': `Net yang tidak terkonfigurasi masih ada.`,
 's94c954118f54fa1d': `Jumlah port input`,
 's953fefbfaf0e2e3d': `CIDR/ Subnetting`,
@@ -144,12 +149,14 @@
 's9c84598a99c03b88': `Bitmask`,
 's9d1892a929c95c41': `mengatur ulang semua tabel dan mengakhiri sesi simulasi saat ini.`,
 's9feb1a1345ccc3e5': `Jaringan`,
+'sa0aaabb83bc98a72': `Impor jaringan`,
 'sa165462237196374': `Selama mode ini, ketika pengguna mengedit alamat:`,
 'sa1e005e5c8a7cf53': `Silakan Inisiasi sesi sebelum melakukan simulasi pengiriman paket.`,
 'sa2885d6d322c7379': `host/router: Tabel ARP dan tabel perutean dibuat`,
 'sa67b523cb72c0edb': `Antarmuka koneksi`,
 'sa9b946da3254eeb2': `Net yang tidak dikonfigurasi, secara otomatis mengatur alamat Ipv4 untuk mengulang kembali.`,
 'sabab0da440471b2c': `Simpul Fisik`,
+'sae0547f6ee918ff9': `Tetapkan port atau antarmuka`,
 'saf114a45c687be19': `Mode berbasis host:`,
 'safb8ca5860037ac7': `Bagaimana cara mengkonfigurasi tabel?`,
 'sb1463e72905de3f8': `Sebuah ethernet, jaringan nirkabel, dan gateway.`,
@@ -235,8 +242,8 @@
 'sfc2940e33d865b93': `Silakan gunakan tombol Periksa pada fitur Subnetting/CIDR untuk detail lebih lanjut`,
 'sfcafb45ec30fbc60': `Hapus Port`,
 'sfd468f7c41396df5': `Pengontrol pengiriman paket`,
+'sfdd5df424bd1f92a': `Balasan ARP L2`,
 'sff5bb7742c2896c8': `Tujuan`,
 'sff73ed19941a31e1': `Klik pada host di kanvas`,
 'sff9aad8a96d11e8c': `Alamat Mac Pengirim:`,
     };
-  

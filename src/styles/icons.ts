@@ -138,6 +138,7 @@ export const biBroadcastPin = html`<svg
 </svg>`;
 
 export const iHub = html`<svg
+    aria-hidden="true"
     width="16"
     height="16"
     xmlns="http://www.w3.org/2000/svg"
@@ -145,7 +146,6 @@ export const iHub = html`<svg
     fill="currentColor"
 >
     <g>
-        <title>Layer 1</title>
         <path
             id="svg_1"
             d="m4.6875,11a0.5,0.5 0 1 0 0,-1a0.5,0.5 0 0 0 0,1zm-1.5,-0.5a0.5,0.5 0 1 1 -1,0a0.5,0.5 0 0 1 1,0z"
@@ -166,6 +166,7 @@ export const iHub = html`<svg
 </svg>`;
 
 export const iBridge = html`<svg
+    aria-hidden="true"
     width="16"
     height="16"
     xmlns="http://www.w3.org/2000/svg"
@@ -173,7 +174,6 @@ export const iBridge = html`<svg
     fill="currentColor"
 >
     <g>
-        <title>Layer 1</title>
         <path
             id="svg_1"
             d="m4.75,11.1875a0.5,0.5 0 1 0 0,-1a0.5,0.5 0 0 0 0,1zm-1.5,-0.5a0.5,0.5 0 1 1 -1,0a0.5,0.5 0 0 1 1,0z"
@@ -192,6 +192,7 @@ export const iBridge = html`<svg
 </svg>`;
 
 export const iSwitch = html`<svg
+    aria-hidden="true"
     width="16"
     height="16"
     xmlns="http://www.w3.org/2000/svg"
@@ -199,7 +200,6 @@ export const iSwitch = html`<svg
     fill="currentColor"
 >
     <g>
-        <title>Layer 1</title>
         <path
             id="svg_1"
             d="m4.75,11.1875a0.5,0.5 0 1 0 0,-1a0.5,0.5 0 0 0 0,1zm-1.5,-0.5a0.5,0.5 0 1 1 -1,0a0.5,0.5 0 0 1 1,0z"

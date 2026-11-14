@@ -2,8 +2,8 @@
     // Do not modify this file by hand!
     // Re-generate this file by running lit-localize
 
-    
-    
+
+
 
     /* eslint-disable no-irregular-whitespace */
     /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -31,6 +31,7 @@
 's0f527a17b9b690e2': `Hästi tehtud!`,
 's1018d5f2b1cc4e8d': `Juurdepääsupunkt`,
 's10a895b419c64000': `määrata paketile saatja/vastuvõtja.`,
+'s110e81e1ca4f992c': `L2 ja L3 andmed`,
 's138df1ceb51a3661': `Sisestatud IPv4 värava jaoks ei vasta alamvõrgu maskile või võrk ei ole konfigureeritud.`,
 's13a56952f9635fe4': `Määra allikas`,
 's146232d3025412f3': `Vale bitimask.`,
@@ -46,6 +47,7 @@
 's22b5492cdee5c0d6': `Manuaalne režiim`,
 's22feccbbd1ae2aa8': `3 Etherneti ja värav.`,
 's265dbd543be2f5ed': `Juurdepääsupunkt`,
+'s269a190f0086d892': `Seadistamata`,
 's2906cb2c9daacae3': `uut võrgu aadressi vahemikku kontrollitakse, kui need laiendavad vanu.`,
 's2c35f5501ffe52a0': `Vahetage tõmberežiimi`,
 's2e55a928208bdb7f': `Teie pakett lõpetas saatmise koos tagasisaatmisaadressiga.`,
@@ -66,6 +68,7 @@
 's3d312902efb57145': `Olemasolev võrk laieneb, et see sisaldaks uut vastuvõtjat.`,
 's3ec4a053318b0ae8': `hostid/väravad/alavõrgud`,
 's3f015779aaa1979d': `Võrgu aadress`,
+'s3f402f3f155ca6c9': `Ekspordi võrk`,
 's4114a8a9e84611a4': `Port puudub.`,
 's42cbd8dca939a9c7': `Vaata`,
 's431446cf4939d374': `Kõik võrgud on õigesti konfigureeritud!`,
@@ -94,18 +97,20 @@
 's5f43af3669b1e098': `Allikas`,
 's61506a07625cfc18': `Ühendage port lahti, et muuta selle tüüpi.`,
 's62278f512692e037': `Sessioon`,
+'s631790646d968f40': `L3 andmed`,
 's649522600e4a80ac': `Alusta uue paketi saatmist`,
 's64ef2a6c2dd1d3d1': `Muuda`,
 's6503256c2de2745c': `Edge`,
 's652d3637d25431f5': `Teie vastuvõtja on sõnumi kätte saanud!`,
 's6881b5a560c88bf8': `Võrgupõhine režiim sisse:`,
-'s6b05f9d8801fc14f': `Vastuvõtja`,
+'s6b05f9d8801fc14f': `Host`,
 's6debdd8a9764e3fc': `Valige oma komponent`,
 's6e488f7a11e566e4': `Palun määrake oma pordid ümber või lõpetage see ühendus.`,
 's6e5cadbf42d9dfe4': `Vastuoluliste aadresside jaoks määratakse uus IPv4.`,
 's6ea934c6536e4930': `Iga võrgu muutmiseks tehke paremklõps ja valige Edit details (Muuda üksikasju).`,
 's6f1b8c80ab2b4fd4': `Vihje: Kasutage CIDR/Subnetting kontrolleri lohistamiseks ja seejärel kontrollige.`,
 's71183ed55882f1c9': `IPv4-aadress on kehtetu.`,
+'s72dee52f05a8a31b': `L2 ARP päring`,
 's73b5a4a416157778': `Ethernet koos silla ja 2 hostiga.`,
 's73c3e21df2f12350': `Aktiveeri Draw-and-drop`,
 's768df033dc306fbc': `Enne sõlme võrku lohistamist`,
@@ -131,7 +136,7 @@
 's8c8aeec90bdad274': `2 Etherneti ja 4 marsruuterit.`,
 's8ccfa5f804f6777a': `Näidisgraafikud/harjutused`,
 's8d70ca4af5a9c009': `koos aadressiga`,
-'s8e114dd98aeedf91': `Lülita`,
+'s8e114dd98aeedf91': `Võrgukommutaator`,
 's8ec5e5061ca83fb9': `Konfigureerimata võrk on endiselt olemas.`,
 's94c954118f54fa1d': `Sisendportide arv`,
 's953fefbfaf0e2e3d': `CIDR/ alamvõrkude määramine`,
@@ -144,12 +149,14 @@
 's9c84598a99c03b88': `Bitmask`,
 's9d1892a929c95c41': `nullib kõik tabelid ja lõpetab praeguse simulatsioonisessiooni.`,
 's9feb1a1345ccc3e5': `Võrk`,
+'sa0aaabb83bc98a72': `Impordi võrk`,
 'sa165462237196374': `Selle režiimi ajal, kui kasutajad redigeerivad aadressi:`,
 'sa1e005e5c8a7cf53': `Enne paketi saatmise simuleerimist lülitage sessioon sisse.`,
 'sa2885d6d322c7379': `host/router: ARP tabel ja marsruutimistabel on loodud`,
 'sa67b523cb72c0edb': `Ühenduse liidesed`,
 'sa9b946da3254eeb2': `Konfigureerimata võrk, automaatne Ipv4-aadressi seadistamine loop-back'ile.`,
 'sabab0da440471b2c': `Füüsiline sõlmpunkt`,
+'sae0547f6ee918ff9': `Määrake pordid või liidesed`,
 'saf114a45c687be19': `Host-põhine režiim:`,
 'safb8ca5860037ac7': `Kuidas seadistada tabeleid?`,
 'sb1463e72905de3f8': `Ethernet, traadita võrk ja värav.`,
@@ -235,8 +242,8 @@
 'sfc2940e33d865b93': `Täpsema teabe saamiseks kasutage funktsiooni Subnetting/CIDR nuppu Check (Kontrollida).`,
 'sfcafb45ec30fbc60': `Eemalda port`,
 'sfd468f7c41396df5': `Pakettide saatmise kontroller`,
+'sfdd5df424bd1f92a': `L2 ARP vastus`,
 'sff5bb7742c2896c8': `Siht`,
 'sff73ed19941a31e1': `Klõpsake lõuendil peremees`,
 'sff9aad8a96d11e8c': `Saatja Mac-aadress:`,
     };
-  

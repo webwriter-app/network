@@ -2,8 +2,8 @@
     // Do not modify this file by hand!
     // Re-generate this file by running lit-localize
 
-    
-    
+
+
 
     /* eslint-disable no-irregular-whitespace */
     /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -31,6 +31,7 @@
 's0f527a17b9b690e2': `Odlično opravljeno!`,
 's1018d5f2b1cc4e8d': `Dostopna točka`,
 's10a895b419c64000': `dodeli pošiljatelja/prejemnika paketa.`,
+'s110e81e1ca4f992c': `Podatki L2 in L3`,
 's138df1ceb51a3661': `Vstavljeni IPv4 za prehod se ne ujema z masko podomrežja ali omrežje ni konfigurirano.`,
 's13a56952f9635fe4': `Nastaviti vir`,
 's146232d3025412f3': `Nepravilna bitna maska.`,
@@ -46,6 +47,7 @@
 's22b5492cdee5c0d6': `Ročni način`,
 's22feccbbd1ae2aa8': `3 ethernetna omrežja in prehod.`,
 's265dbd543be2f5ed': `Dostopna točka`,
+'s269a190f0086d892': `Ni nastavljeno`,
 's2906cb2c9daacae3': `novo območje omrežnih naslovov bo preverjeno, če se razširijo stari naslovi.`,
 's2c35f5501ffe52a0': `Preklapljanje načina risanja`,
 's2e55a928208bdb7f': `Vaš paket je končal pošiljanje z naslovom povratne zanke.`,
@@ -66,6 +68,7 @@
 's3d312902efb57145': `Obstoječe omrežje se bo razširilo, da bo vsebovalo novega gostitelja.`,
 's3ec4a053318b0ae8': `gostitelji/vozlišča/podomrežja`,
 's3f015779aaa1979d': `Omrežni naslov`,
+'s3f402f3f155ca6c9': `Izvozi omrežje`,
 's4114a8a9e84611a4': `Vrata niso na voljo.`,
 's42cbd8dca939a9c7': `Preverite`,
 's431446cf4939d374': `Vse mreže so pravilno konfigurirane!`,
@@ -94,6 +97,7 @@
 's5f43af3669b1e098': `Vir`,
 's61506a07625cfc18': `Odklopite vrata, da spremenite njihov tip.`,
 's62278f512692e037': `Seja`,
+'s631790646d968f40': `Podatki L3`,
 's649522600e4a80ac': `Začetek pošiljanja novega paketa`,
 's64ef2a6c2dd1d3d1': `Uredi`,
 's6503256c2de2745c': `Rob`,
@@ -106,6 +110,7 @@
 's6ea934c6536e4930': `Z desno tipko miške kliknite vsako omrežje in izberite Uredi podrobnosti, da spremenite njegovo konfiguracijo.`,
 's6f1b8c80ab2b4fd4': `Nasvet: Uporabite kontrolnik CIDR/podomrežja za vlečenje in spuščanje ter nato preverite.`,
 's71183ed55882f1c9': `Naslov IPv4 je neveljaven.`,
+'s72dee52f05a8a31b': `Zahteva ARP na L2`,
 's73b5a4a416157778': `Ethernet z mostom in dvema gostiteljema.`,
 's73c3e21df2f12350': `Aktivacija funkcije Nariši in spusti`,
 's768df033dc306fbc': `Pred vlečenjem vozlišča v omrežje`,
@@ -131,7 +136,7 @@
 's8c8aeec90bdad274': `2 etherneta in 4 usmerjevalniki.`,
 's8ccfa5f804f6777a': `Primeri grafov/ vaj`,
 's8d70ca4af5a9c009': `z naslovom`,
-'s8e114dd98aeedf91': `Stikalo`,
+'s8e114dd98aeedf91': `Omrežno stikalo`,
 's8ec5e5061ca83fb9': `Nekonfigurirana mreža še vedno obstaja.`,
 's94c954118f54fa1d': `Število vhodnih vrat`,
 's953fefbfaf0e2e3d': `CIDR/podomrežje`,
@@ -144,12 +149,14 @@
 's9c84598a99c03b88': `Bitna maska`,
 's9d1892a929c95c41': `ponastavi vse tabele in konča trenutno sejo simulacije.`,
 's9feb1a1345ccc3e5': `Omrežje`,
+'sa0aaabb83bc98a72': `Uvozi omrežje`,
 'sa165462237196374': `V tem načinu uporabniki pri urejanju naslovov:`,
 'sa1e005e5c8a7cf53': `Pred simulacijo pošiljanja paketa vnesite sejo.`,
 'sa2885d6d322c7379': `gostitelj/usmerjevalnik: Ustvarjena sta tabela ARP in usmerjevalna tabela`,
 'sa67b523cb72c0edb': `Vmesniki povezave`,
 'sa9b946da3254eeb2': `Nerazporejeno omrežje, samodejno nastavljen naslov IPv4 za povratno zanko.`,
 'sabab0da440471b2c': `Fizično vozlišče`,
+'sae0547f6ee918ff9': `Dodeli vrata ali vmesnike`,
 'saf114a45c687be19': `Način, ki temelji na gostiteljih:`,
 'safb8ca5860037ac7': `Kako konfigurirati tabele?`,
 'sb1463e72905de3f8': `ethernet, brezžično omrežje in prehod.`,
@@ -235,8 +242,8 @@
 'sfc2940e33d865b93': `Za več podrobnosti uporabite gumb Preveri funkcijo Subnetting/CIDR.`,
 'sfcafb45ec30fbc60': `Odstrani vrata`,
 'sfd468f7c41396df5': `Krmilnik za pošiljanje paketov`,
+'sfdd5df424bd1f92a': `Odgovor ARP na L2`,
 'sff5bb7742c2896c8': `Cilj`,
 'sff73ed19941a31e1': `Kliknite na gostitelja na platnu`,
 'sff9aad8a96d11e8c': `Naslov Mac pošiljatelja:`,
     };
-  

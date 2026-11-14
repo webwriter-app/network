@@ -2,8 +2,8 @@
     // Do not modify this file by hand!
     // Re-generate this file by running lit-localize
 
-    
-    
+
+
 
     /* eslint-disable no-irregular-whitespace */
     /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -31,6 +31,7 @@
 's0f527a17b9b690e2': `Bine lucrat!`,
 's1018d5f2b1cc4e8d': `Punct de acces`,
 's10a895b419c64000': `atribuie un expeditor/receptor pentru pachet`,
+'s110e81e1ca4f992c': `Date L2 și L3`,
 's138df1ceb51a3661': `IPv4 inserat pentru gateway nu corespunde măștii de subrețea sau rețeaua nu este configurată.`,
 's13a56952f9635fe4': `Setați sursa`,
 's146232d3025412f3': `Mască de biți invalidă.`,
@@ -46,6 +47,7 @@
 's22b5492cdee5c0d6': `Mod manual`,
 's22feccbbd1ae2aa8': `3 Ethernet-uri și un gateway.`,
 's265dbd543be2f5ed': `Punct de acces`,
+'s269a190f0086d892': `Neconfigurat`,
 's2906cb2c9daacae3': `noua gamă de adrese de rețea va fi verificată dacă le extinde pe cele vechi.`,
 's2c35f5501ffe52a0': `Comutarea modului de extragere`,
 's2e55a928208bdb7f': `Pachetul dvs. a terminat de trimis cu adresa loop-back.`,
@@ -66,6 +68,7 @@
 's3d312902efb57145': `Rețeaua existentă se va extinde pentru a conține noua gazdă.`,
 's3ec4a053318b0ae8': `gazde/puncte de acces/sub-rețele`,
 's3f015779aaa1979d': `Adresa rețelei`,
+'s3f402f3f155ca6c9': `Exportă rețeaua`,
 's4114a8a9e84611a4': `Niciun port disponibil.`,
 's42cbd8dca939a9c7': `Verificare`,
 's431446cf4939d374': `Toate rețelele sunt configurate corect!`,
@@ -94,6 +97,7 @@
 's5f43af3669b1e098': `Sursă`,
 's61506a07625cfc18': `Deconectați portul pentru a-i schimba tipul.`,
 's62278f512692e037': `Sesiune`,
+'s631790646d968f40': `Date L3`,
 's649522600e4a80ac': `Începe trimiterea unui nou pachet`,
 's64ef2a6c2dd1d3d1': `Editare`,
 's6503256c2de2745c': `Marginea`,
@@ -106,6 +110,7 @@
 's6ea934c6536e4930': `Faceți clic dreapta pe fiecare rețea, apoi selectați Editare detalii pentru a modifica configurația acesteia.`,
 's6f1b8c80ab2b4fd4': `Sfat: Folosiți controlerul CIDR/Subnetting pentru a glisa și apoi verifica.`,
 's71183ed55882f1c9': `Adresa IPv4 este invalidă.`,
+'s72dee52f05a8a31b': `Cerere ARP L2`,
 's73b5a4a416157778': `Ethernet cu o punte și 2 gazde.`,
 's73c3e21df2f12350': `Activați Draw-and-drop`,
 's768df033dc306fbc': `Înainte de a glisa un nod în rețea`,
@@ -131,7 +136,7 @@
 's8c8aeec90bdad274': `2 Ethernet-uri și 4 routere.`,
 's8ccfa5f804f6777a': `Exemple de grafice/exerciții`,
 's8d70ca4af5a9c009': `cu adresă`,
-'s8e114dd98aeedf91': `Comutator`,
+'s8e114dd98aeedf91': `Comutator de rețea`,
 's8ec5e5061ca83fb9': `Rețeaua neconfigurată există încă.`,
 's94c954118f54fa1d': `Număr de porturi de intrare`,
 's953fefbfaf0e2e3d': `CIDR/ Subnetting`,
@@ -144,12 +149,14 @@
 's9c84598a99c03b88': `Mască de biți`,
 's9d1892a929c95c41': `resetează toate tabelele și încheie sesiunea curentă de simulare.`,
 's9feb1a1345ccc3e5': `Rețea`,
+'sa0aaabb83bc98a72': `Importă rețeaua`,
 'sa165462237196374': `În timpul acestui mod, atunci când utilizatorii editează adresele de:`,
 'sa1e005e5c8a7cf53': `Vă rugăm să inițiați o sesiune înainte de a simula trimiterea unui pachet.`,
 'sa2885d6d322c7379': `gazdă/router: Tabelul ARP și tabelul de rutare sunt create`,
 'sa67b523cb72c0edb': `Interfețele conexiunii`,
 'sa9b946da3254eeb2': `Rețea neconfigurată, setează automat adresa Ipv4 pentru loop-back.`,
 'sabab0da440471b2c': `Nod fizic`,
+'sae0547f6ee918ff9': `Atribuie porturi sau interfețe`,
 'saf114a45c687be19': `Mod bazat pe gazde:`,
 'safb8ca5860037ac7': `Cum se configurează tabelele?`,
 'sb1463e72905de3f8': `O rețea ethernet, o rețea fără fir și un gateway.`,
@@ -235,8 +242,8 @@
 'sfc2940e33d865b93': `Pentru mai multe detalii, vă rugăm să utilizați butonul Verificare al funcției Subnetting/CIDR`,
 'sfcafb45ec30fbc60': `Eliminare port`,
 'sfd468f7c41396df5': `Controler de trimitere a pachetelor`,
+'sfdd5df424bd1f92a': `Răspuns ARP L2`,
 'sff5bb7742c2896c8': `Destinație`,
 'sff73ed19941a31e1': `Faceți clic pe o gazdă de pe pânză`,
 'sff9aad8a96d11e8c': `Adresa Mac a expeditorului:`,
     };
-  

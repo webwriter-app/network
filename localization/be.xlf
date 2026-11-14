@@ -1,0 +1,718 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+<file target-language="be" source-language="en" original="lit-localize-inputs" datatype="plaintext">
+<body>
+<trans-unit id="s652d3637d25431f5">
+  <source>Your receiver has received the message!</source>
+<target>Атрымальнік атрымаў паведамленне!</target></trans-unit>
+<trans-unit id="s47abed60b53d9f15">
+  <source>The connection type of assigned ports are not compatible!</source>
+<target>Тыпы злучэння прызначаных партоў несумяшчальныя!</target></trans-unit>
+<trans-unit id="s6e488f7a11e566e4">
+  <source>Please re-assign your ports or dismiss this connection.</source>
+<target>Прызначце парты нанова або скасуйце злучэнне.</target></trans-unit>
+<trans-unit id="sf56b78a9e5b4640f">
+  <source>The  netmask you entered</source>
+<target>Уведзеная вамі маска сеткі</target></trans-unit>
+<trans-unit id="sb3c6effefba5ccb8">
+  <source>doesn't match the bitmask</source>
+<target>не супадае з бітавай маскай</target></trans-unit>
+<trans-unit id="s0a7748b8de0b3a6f">
+  <source>Derived netmask is</source>
+<target>Вылічаная маска сеткі:</target></trans-unit>
+<trans-unit id="s2f034d5e354fd8fe">
+  <source>Provided network ID is not valid.</source>
+<target>Пазначаны ідэнтыфікатар сеткі несапраўдны.</target></trans-unit>
+<trans-unit id="s4860102f9ca44d7b">
+  <source>Net-based Mode for CIDR/Subnetting activated:</source>
+<target>Уключаны рэжым на аснове сеткі для CIDR і падсетак:</target></trans-unit>
+<trans-unit id="scfc539cb2204d99f">
+  <source>Cannot create a net without both bitmask and netmask!</source>
+<target>Немагчыма стварыць сетку без бітавай маскі і маскі сеткі!</target></trans-unit>
+<trans-unit id="saf114a45c687be19">
+  <source>Hosts-based mode:</source>
+<target>Рэжым на аснове хастоў:</target></trans-unit>
+<trans-unit id="se60f6f327c8094af">
+  <source>No valid network address can be assigned to this net.</source>
+<target>Гэтай сетцы немагчыма прызначыць сапраўдны сеткавы адрас.</target></trans-unit>
+<trans-unit id="s6b05f9d8801fc14f">
+  <source>Host</source>
+<target>Хост</target></trans-unit>
+<trans-unit id="s3741f219c32abe78">
+  <source>Net</source>
+<target>Сетка</target></trans-unit>
+<trans-unit id="sc2abe27bb5be2879">
+  <source>Gateway</source>
+<target>Шлюз</target></trans-unit>
+<trans-unit id="sc096fbcee1f2951a">
+  <source>should contain</source>
+<target>павінна ўтрымліваць</target></trans-unit>
+<trans-unit id="s8d70ca4af5a9c009">
+  <source>with address</source>
+<target>з адрасам</target></trans-unit>
+<trans-unit id="s9feb1a1345ccc3e5">
+  <source>Network</source>
+<target>Сетка</target></trans-unit>
+<trans-unit id="s33aec365752c45d7">
+  <source>The netmask you entered</source>
+<target>Уведзеная вамі маска сеткі</target></trans-unit>
+<trans-unit id="s95b91fa7ce0e4422">
+  <source>Your changes have been saved.</source>
+<target>Вашы змены захаваны.</target></trans-unit>
+<trans-unit id="sbee40693bf2c18e9">
+  <source>Host-based mode on:</source>
+<target>Уключаны рэжым на аснове хастоў:</target></trans-unit>
+<trans-unit id="sb6ee4842d085bac3">
+  <source>New network doesn't extend old network!</source>
+<target>Новая сетка не пашырае старую!</target></trans-unit>
+<trans-unit id="s186f0d4339ae84fd">
+  <source>Repeater</source>
+<target>Паўтаральнік</target></trans-unit>
+<trans-unit id="s8545094bc2096970">
+  <source>Bridge</source>
+<target>Мост</target></trans-unit>
+<trans-unit id="s1018d5f2b1cc4e8d">
+  <source>Access Point</source>
+<target>Кропка доступу</target></trans-unit>
+<trans-unit id="sfa2e7dafd99371ff">
+  <source>Port number</source>
+<target>Нумар порта</target></trans-unit>
+<trans-unit id="sc1b1fc103ff1b1b3">
+  <source>Interface name</source>
+<target>Назва інтэрфейсу</target></trans-unit>
+<trans-unit id="sb7233970916468e3">
+  <source>Connection type</source>
+<target>Тып злучэння</target></trans-unit>
+<trans-unit id="s44646f1a480a4a28">
+  <source>MAC Address</source>
+<target>MAC-адрас</target></trans-unit>
+<trans-unit id="scbbde46d3e773c0e">
+  <source>Ethernet</source>
+<target>Ethernet</target></trans-unit>
+<trans-unit id="s05f14bdb78dbcdb1">
+  <source>Wireless</source>
+<target>Бесправадное злучэнне</target></trans-unit>
+<trans-unit id="s7a1405870058921f">
+  <source>Assigning ports for this connection</source>
+<target>Прызначэнне партоў для гэтага злучэння</target></trans-unit>
+<trans-unit id="se2cc791794723812">
+  <source>Select one from available ports:</source>
+<target>Выберыце адзін з даступных партоў:</target></trans-unit>
+<trans-unit id="se29a5823185d420c">
+  <source>Please choose port/interface for</source>
+<target>Выберыце порт або інтэрфейс для</target></trans-unit>
+<trans-unit id="s0771257848b4d7a3">
+  <source>Details about component</source>
+<target>Звесткі пра кампанент</target></trans-unit>
+<trans-unit id="sb4f8acbdda6ff3b9">
+  <source>Details of the ports</source>
+<target>Звесткі пра парты</target></trans-unit>
+<trans-unit id="s5804ccf243041e60">
+  <source>is not a valid MAC Address.</source>
+<target>не з’яўляецца сапраўдным MAC-адрасам.</target></trans-unit>
+<trans-unit id="sb781a2ba64e70be8">
+  <source>Subnet-based mode on:</source>
+<target>Уключаны рэжым на аснове падсеткі:</target></trans-unit>
+<trans-unit id="sdb11e8f269ea1b13">
+  <source>Inserted IPv4 doesn't match the subnet mask.</source>
+<target>Уведзены IPv4-адрас не адпавядае масцы падсеткі.</target></trans-unit>
+<trans-unit id="s138df1ceb51a3661">
+  <source>Inserted IPv4 for gateway doesn't match the subnet mask or the network is not configured.</source>
+<target>IPv4-адрас шлюза не адпавядае масцы падсеткі або сетка не наладжана.</target></trans-unit>
+<trans-unit id="s213a3bbc3f7af684">
+  <source>is not valid.</source>
+<target>несапраўдны.</target></trans-unit>
+<trans-unit id="sed931f57adaad8c0">
+  <source>is not a valid IPv6 Address.</source>
+<target>не з’яўляецца сапраўдным IPv6-адрасам.</target></trans-unit>
+<trans-unit id="s3f015779aaa1979d">
+  <source>Network Address</source>
+<target>Сеткавы адрас</target></trans-unit>
+<trans-unit id="sf866305516492af0">
+  <source>Interface</source>
+<target>Інтэрфейс</target></trans-unit>
+<trans-unit id="se1b13a7c92d4dcc3">
+  <source>Connection Type</source>
+<target>Тып злучэння</target></trans-unit>
+<trans-unit id="s89d11288ef7198fa">
+  <source>This network has no gateway.</source>
+<target>У гэтай сеткі няма шлюза.</target></trans-unit>
+<trans-unit id="sff9aad8a96d11e8c">
+  <source>Mac Address of Sender:</source>
+<target>MAC-адрас адпраўніка:</target></trans-unit>
+<trans-unit id="sd9f73b49c90cb730">
+  <source>IP Address of Sender:</source>
+<target>IP-адрас адпраўніка:</target></trans-unit>
+<trans-unit id="s228664e90e9a6cec">
+  <source>Mac Address of Receiver:</source>
+<target>MAC-адрас атрымальніка:</target></trans-unit>
+<trans-unit id="s8b0705a2df382b10">
+  <source>IP Address of Receiver:</source>
+<target>IP-адрас атрымальніка:</target></trans-unit>
+<trans-unit id="s9739ed2dd4a000eb">
+  <source>Add/ Configure graph components</source>
+<target>Дадаванне і наладжванне кампанентаў графа</target></trans-unit>
+<trans-unit id="s953fefbfaf0e2e3d">
+  <source>CIDR/ Subnetting</source>
+<target>CIDR і падзел на падсеткі</target></trans-unit>
+<trans-unit id="sbd62973250ca30ae">
+  <source>Packet travelling simulation</source>
+<target>Сімуляцыя перамяшчэння пакетаў</target></trans-unit>
+<trans-unit id="s492ae98a6cd1ae70">
+  <source>How to add a physical node (host, router, switch,...)?</source>
+<target>Як дадаць фізічны вузел, напрыклад хост, маршрутызатар ці камутатар?</target></trans-unit>
+<trans-unit id="sd9994f251f1280cf">
+  <source>Step</source>
+<target>Крок</target></trans-unit>
+<trans-unit id="s6debdd8a9764e3fc">
+  <source>Choose your component</source>
+<target>Выберыце кампанент</target></trans-unit>
+<trans-unit id="s0e98fa123505c680">
+  <source>More details with "Add details for ports"</source>
+<target>Дадатковыя звесткі: «Дадаць звесткі пра парты»</target></trans-unit>
+<trans-unit id="s3356cd0d48121928">
+  <source>Pick a color also if you want to:</source>
+<target>Пры жаданні таксама выберыце колер:</target></trans-unit>
+<trans-unit id="s78ab938d4d37d39c">
+  <source>Click add</source>
+<target>Націсніце «Дадаць»</target></trans-unit>
+<trans-unit id="s4c51e3cba34af73d">
+  <source>How to add a logical node (network node)?</source>
+<target>Як дадаць лагічны вузел, то-бок вузел сеткі?</target></trans-unit>
+<trans-unit id="s47707a379c47dc00">
+  <source>Configure your network</source>
+<target>Наладзьце сваю сетку</target></trans-unit>
+<trans-unit id="s55759c57f408a4bd">
+  <source>How to add a link between two physical nodes?</source>
+<target>Як злучыць два фізічныя вузлы?</target></trans-unit>
+<trans-unit id="s87dd4e7f900ee9ea">
+  <source>Choose edge component</source>
+<target>Выберыце кампанент злучэння</target></trans-unit>
+<trans-unit id="s2c35f5501ffe52a0">
+  <source>Toggle draw mode</source>
+<target>Уключыце рэжым малявання</target></trans-unit>
+<trans-unit id="s95bd2e0d6d483b0d">
+  <source>Draw then configure on right click</source>
+<target>Намалюйце злучэнне і наладзьце яго правай кнопкай мышы</target></trans-unit>
+<trans-unit id="s01743e321d86591f">
+  <source>Activate the "assign gateway" mode:</source>
+<target>Уключыце рэжым «Прызначыць шлюз»:</target></trans-unit>
+<trans-unit id="s57df860deb5b4777">
+  <source>Drag the gateway on the edge of a network:</source>
+<target>Перацягніце шлюз да краю сеткі:</target></trans-unit>
+<trans-unit id="s181fd03f13912ebc">
+  <source>How to drag a component into a network?</source>
+<target>Як перацягнуць кампанент у сетку?</target></trans-unit>
+<trans-unit id="sf226fb633985e8b4">
+  <source>Activate the "drag-and-drop" mode:</source>
+<target>Уключыце рэжым перацягвання:</target></trans-unit>
+<trans-unit id="sb2d67306c97f577a">
+  <source>Drag the component inside the network:</source>
+<target>Перацягніце кампанент унутр сеткі:</target></trans-unit>
+<trans-unit id="se965fe13b9222a65">
+  <source>How does the Net-based mode work?</source>
+<target>Як працуе рэжым на аснове сеткі?</target></trans-unit>
+<trans-unit id="s768df033dc306fbc">
+  <source>Before dragging a node into network</source>
+<target>Перад перацягваннем вузла ў сетку</target></trans-unit>
+<trans-unit id="s05c0bb42cb996b2d">
+  <source>After dragging the node into network</source>
+<target>Пасля перацягвання вузла ў сетку</target></trans-unit>
+<trans-unit id="s6e5cadbf42d9dfe4">
+  <source>New IPv4 will be assigned for conflicting addresses.</source>
+<target>Для адрасоў, якія канфліктуюць, будуць прызначаны новыя IPv4-адрасы.</target></trans-unit>
+<trans-unit id="sa165462237196374">
+  <source>During this mode, when users edit addresses of:</source>
+<target>У гэтым рэжыме, калі карыстальнікі змяняюць адрасы:</target></trans-unit>
+<trans-unit id="s5eab6ee6f2de2dc9">
+  <source>conflicting addresses of all related hosts/gateways will be reassigned.</source>
+<target>адрасы ўсіх звязаных хастоў і шлюзаў, якія канфліктуюць, будуць прызначаны нанова.</target></trans-unit>
+<trans-unit id="sf3b70df62ae36483">
+  <source>new addresses will be validated against the network addresses and will only be accepted when they are valid.</source>
+<target>новыя адрасы параўноўваюцца з адрасамі сеткі і прымаюцца толькі тады, калі яны сапраўдныя.</target></trans-unit>
+<trans-unit id="sdf132350672d0884">
+  <source>How does the Host-based mode work?</source>
+<target>Як працуе рэжым на аснове хастоў?</target></trans-unit>
+<trans-unit id="sc2227119cd519b57">
+  <source>Before dragging host0 into network</source>
+<target>Перад перацягваннем host0 у сетку</target></trans-unit>
+<trans-unit id="s50edcfd6439c5398">
+  <source>After dragging host0 into network</source>
+<target>Пасля перацягвання host0 у сетку</target></trans-unit>
+<trans-unit id="s3d312902efb57145">
+  <source>The existing network will expand to contain the new host.</source>
+<target>Існая сетка пашырыцца, каб уключыць новы хост.</target></trans-unit>
+<trans-unit id="s8709fa6bb7aa0002">
+  <source>networks</source>
+<target>сетак</target></trans-unit>
+<trans-unit id="s2906cb2c9daacae3">
+  <source>new network address range will be checked if they expands the old ones.</source>
+<target>новы дыяпазон сеткавых адрасоў правяраецца на пашырэнне папярэдняга.</target></trans-unit>
+<trans-unit id="s3ec4a053318b0ae8">
+  <source>hosts/gateways/subnetworks</source>
+<target>хастоў, шлюзаў і падсетак</target></trans-unit>
+<trans-unit id="sb6017dbf0932fc3d">
+  <source>the existing network will expand to contain the new addresses.</source>
+<target>існая сетка пашырыцца, каб уключыць новыя адрасы.</target></trans-unit>
+<trans-unit id="se911c0eb6fe86b71">
+  <source>How to manipulate a simulation session?</source>
+<target>Як кіраваць сеансам сімуляцыі?</target></trans-unit>
+<trans-unit id="sd17ec63289209641">
+  <source>if you don't use a graph from the examples, Init a new simulation session</source>
+<target>Калі вы не выкарыстоўваеце граф з прыкладаў, пачніце новы сеанс сімуляцыі.</target></trans-unit>
+<trans-unit id="sb25dcf3e6fa2992a">
+  <source>In this step, for the:</source>
+<target>На гэтым кроку для:</target></trans-unit>
+<trans-unit id="sa2885d6d322c7379">
+  <source>host/router: ARP table and routing table are created</source>
+<target>хаста або маршрутызатара ствараюцца табліца ARP і табліца маршрутызацыі.</target></trans-unit>
+<trans-unit id="s30c43f21d5cc55e7">
+  <source>switch/bridge/access point: MAC address table is created</source>
+<target>камутатара, моста або кропкі доступу ствараецца табліца MAC-адрасоў.</target></trans-unit>
+<trans-unit id="s10a895b419c64000">
+  <source>assign a sender/receiver for the packet</source>
+<target>прызначце адпраўніка і атрымальніка пакета.</target></trans-unit>
+<trans-unit id="se2d49a99d6a83255">
+  <source>Click on Choose sender or Choose receiver</source>
+<target>Націсніце «Выбраць адпраўніка» або «Выбраць атрымальніка».</target></trans-unit>
+<trans-unit id="sff73ed19941a31e1">
+  <source>Click on a host on the canvas</source>
+<target>Націсніце хост на палатне.</target></trans-unit>
+<trans-unit id="sef49669556fd05dc">
+  <source>Choose an IP</source>
+<target>Выберыце IP-адрас.</target></trans-unit>
+<trans-unit id="sb3e91073b21ceb33">
+  <source>start sending a packet with the assigned sender and receiver in step 2</source>
+<target>Пачніце адпраўку пакета, выкарыстоўваючы адпраўніка і атрымальніка з кроку 2.</target></trans-unit>
+<trans-unit id="s33541b5c2b2dff1a">
+  <source>Repeat steps 2 and 3 as much as desired.&lt;br/&gt; You can also use pause/resume or change focus/speed during or before starting to send a packet.</source>
+<target>Паўтарайце крокі 2 і 3 колькі заўгодна.&lt;br/&gt; Таксама можна прыпыніць ці аднавіць адпраўку або змяніць фокус і хуткасць да ці падчас адпраўкі пакета.</target></trans-unit>
+<trans-unit id="s19db88ac376ff979">
+  <source>Last step</source>
+<target>Апошні крок</target></trans-unit>
+<trans-unit id="s0106a71d5407aaa9">
+  <source>Stop session</source>
+<target>Спыніць сеанс</target></trans-unit>
+<trans-unit id="s9d1892a929c95c41">
+  <source>resets all tables and ends the current simulation session.</source>
+<target>скідае ўсе табліцы і завяршае бягучы сеанс сімуляцыі.</target></trans-unit>
+<trans-unit id="sbf424bf9f5374d3f">
+  <source>Start from step 1 again for a new simulation session.</source>
+<target>Каб пачаць новы сеанс, вярніцеся да кроку 1.</target></trans-unit>
+<trans-unit id="safb8ca5860037ac7">
+  <source>How to configure the tables?</source>
+<target>Як наладзіць табліцы?</target></trans-unit>
+<trans-unit id="sfa22b4f47f6a0daa">
+  <source>Init. Ignore this step if you use an example graph, or there is a session running</source>
+<target>Пачніце сеанс. Прапусціце гэты крок, калі выкарыстоўваеце граф з прыкладаў або сеанс ужо ідзе.</target></trans-unit>
+<trans-unit id="s5beb40a454294a7e">
+  <source>Click on Add to generate a new row in the table</source>
+<target>Націсніце «Дадаць», каб стварыць новы радок у табліцы.</target></trans-unit>
+<trans-unit id="s347e78eb6a59dd4f">
+  <source>Fill your table according to its type. Except for the tables of the routers, tables of other nodes can be filled automatically.</source>
+<target>Запоўніце табліцу ў адпаведнасці з яе тыпам. Табліцы іншых вузлоў, акрамя маршрутызатараў, можна запоўніць аўтаматычна.</target></trans-unit>
+<trans-unit id="s1bce63088d7fcd55">
+  <source>Remove button removes all checked rows</source>
+<target>Кнопка «Выдаліць» выдаляе ўсе адзначаныя радкі.</target></trans-unit>
+<trans-unit id="s7f9f4694cf4a1ee3">
+  <source>Save button saves the current table on the UI to the database</source>
+<target>Кнопка «Захаваць» запісвае бягучую табліцу з інтэрфейсу ў базу даных.</target></trans-unit>
+<trans-unit id="s870a89403be74609">
+  <source>is out of available ports.</source>
+<target>не мае вольных партоў.</target></trans-unit>
+<trans-unit id="s7f03c3305cc572c7">
+  <source>Currently the widget only supports host as sender and receiver.</source>
+<target>Пакуль толькі хосты могуць быць адпраўнікамі і атрымальнікамі.</target></trans-unit>
+<trans-unit id="sa1e005e5c8a7cf53">
+  <source>Please Init a session before simulating sending a packet.</source>
+<target>Пачніце сеанс, перш чым імітаваць адпраўку пакета.</target></trans-unit>
+<trans-unit id="s8c139c7e7f2a7866">
+  <source>Your graph is not qualified for this feature:</source>
+<target>Ваш граф не адпавядае патрабаванням гэтай функцыі:</target></trans-unit>
+<trans-unit id="sfc2940e33d865b93">
+  <source>Please use the Check button of the Subnetting/CIDR feature for more details</source>
+<target>Каб даведацца больш, націсніце «Праверыць» у раздзеле CIDR і падсетак.</target></trans-unit>
+<trans-unit id="s0a1356ab500a1312">
+  <source>The sender or receiver is not selected yet, use the Choose sender/receiver button then click on the graph node.</source>
+<target>Адпраўнік або атрымальнік яшчэ не выбраны. Націсніце адпаведную кнопку выбару, а потым націсніце вузел графа.</target></trans-unit>
+<trans-unit id="sedb7e84739dabb52">
+  <source>The widget currently only support sending Parcel between layer 3 components</source>
+<target>Пакуль віджэт адпраўляе пакеты толькі паміж кампанентамі трэцяга ўзроўню.</target></trans-unit>
+<trans-unit id="s2e55a928208bdb7f">
+  <source>Your packet finished sending with the loop-back address.</source>
+<target>Адпраўка пакета завершана з адрасам зваротнай петлі.</target></trans-unit>
+<trans-unit id="s0f527a17b9b690e2">
+  <source>Well done!</source>
+<target>Выдатна!</target></trans-unit>
+<trans-unit id="s431446cf4939d374">
+  <source>All nets are correctly configured!</source>
+<target>Усе сеткі наладжаны правільна!</target></trans-unit>
+<trans-unit id="s8ec5e5061ca83fb9">
+  <source>Unconfigured net still exists.</source>
+<target>Яшчэ ёсць неналаджаная сетка.</target></trans-unit>
+<trans-unit id="s330a19f706948b7c">
+  <source>Cross validation between Nets: </source>
+<target>Перакрыжаваная праверка сетак: </target></trans-unit>
+<trans-unit id="s3b07747d0bd1c988">
+  <source>Setting up gateway: </source>
+<target>Наладжванне шлюза: </target></trans-unit>
+<trans-unit id="s6881b5a560c88bf8">
+  <source>Net-based mode on:</source>
+<target>Уключаны рэжым на аснове сеткі:</target></trans-unit>
+<trans-unit id="sa9b946da3254eeb2">
+  <source>Unconfigured net, automatically set Ipv4 address to loop-back.</source>
+<target>Сетка не наладжана. IPv4-адрас аўтаматычна заменены адрасам зваротнай петлі.</target></trans-unit>
+<trans-unit id="sba272ff6dce6bf6c">
+  <source>An exercise for CIDR from classful networks: drag and drop then check.</source>
+<target>Практыкаванне па CIDR для класавых сетак: перацягніце і праверце.</target></trans-unit>
+<trans-unit id="sf5a28de7d04f6bf1">
+  <source>An exercise for CIDR from classful networks: configure the classful networks then check.</source>
+<target>Практыкаванне па CIDR для класавых сетак: наладзьце сеткі і праверце.</target></trans-unit>
+<trans-unit id="se6394d8e29dba878">
+  <source>An exercise for subnetting from a classful network: configure the subnets then check.</source>
+<target>Практыкаванне па падзеле класавай сеткі: наладзьце падсеткі і праверце.</target></trans-unit>
+<trans-unit id="s0be43d4fa79554a1">
+  <source>A mixed exercise of CIDR and subnetting: drag and drop then check.</source>
+<target>Змешанае практыкаванне па CIDR і падсетках: перацягніце і праверце.</target></trans-unit>
+<trans-unit id="sc12a027fbcfb0c9b">
+  <source>Ethernet with a repeater and 2 hosts.</source>
+<target>Ethernet з паўтаральнікам і двума хастамі.</target></trans-unit>
+<trans-unit id="scc2c5dc40950c43d">
+  <source>Ethernet with a hub and 3 hosts.</source>
+<target>Ethernet з канцэнтратарам і трыма хастамі.</target></trans-unit>
+<trans-unit id="s73b5a4a416157778">
+  <source>Ethernet with a bridge and 2 hosts.</source>
+<target>Ethernet з мостам і двума хастамі.</target></trans-unit>
+<trans-unit id="sdbdba9594afe53ce">
+  <source>Ethernet with a switch and 3 hosts.</source>
+<target>Ethernet з камутатарам і трыма хастамі.</target></trans-unit>
+<trans-unit id="s370a2d0578bd2c7b">
+  <source>Wifi network with 1 access point, 3 hosts.</source>
+<target>Сетка Wi-Fi з адной кропкай доступу і трыма хастамі.</target></trans-unit>
+<trans-unit id="s2f615aee386409b0">
+  <source>2 Ethernets with a gateway.</source>
+<target>Дзве сеткі Ethernet са шлюзам.</target></trans-unit>
+<trans-unit id="sb1463e72905de3f8">
+  <source>An ethernet, a wireless network and a gateway.</source>
+<target>Ethernet, бесправадная сетка і шлюз.</target></trans-unit>
+<trans-unit id="s22feccbbd1ae2aa8">
+  <source>3 Ethernets and a gateway.</source>
+<target>Тры сеткі Ethernet і шлюз.</target></trans-unit>
+<trans-unit id="s18662a2a14477a6f">
+  <source>2 Ethernets and 3 routers.</source>
+<target>Дзве сеткі Ethernet і тры маршрутызатары.</target></trans-unit>
+<trans-unit id="s8c8aeec90bdad274">
+  <source>2 Ethernets and 4 routers.</source>
+<target>Дзве сеткі Ethernet і чатыры маршрутызатары.</target></trans-unit>
+<trans-unit id="s1f7698c061c208c9">
+  <source>Open</source>
+<target>Адкрыць</target></trans-unit>
+<trans-unit id="s7eb13b92e2f5090f">
+  <source>Example exercises for CIDR/ Subnetting</source>
+<target>Прыклады практыкаванняў па CIDR і падсетках</target></trans-unit>
+<trans-unit id="sb8766aae5913b0ef">
+  <source>Example networks for simulations</source>
+<target>Прыклады сетак для сімуляцый</target></trans-unit>
+<trans-unit id="s6f1b8c80ab2b4fd4">
+  <source>Tip: Use the CIDR/Subnetting controller to drag-and-drop then check.</source>
+<target>Парада: выкарыстоўвайце панэль CIDR і падсетак, каб перацягнуць вузлы і праверыць вынік.</target></trans-unit>
+<trans-unit id="s6ea934c6536e4930">
+  <source>Right-click on each network, then select Edit details to change its configuration.</source>
+<target>Націсніце кожную сетку правай кнопкай мышы, затым выберыце «Рэдагаваць звесткі», каб змяніць налады.</target></trans-unit>
+<trans-unit id="scfdc7642367b9665">
+  <source>Tip: Set source and destination then click on play button in</source>
+<target>Парада: задайце крыніцу і месца прызначэння, затым націсніце кнопку запуску ў</target></trans-unit>
+<trans-unit id="sbfe6d7af32c6737d">
+  <source>Packet sending controller to start simulation</source>
+<target>панэлі адпраўкі пакетаў, каб пачаць сімуляцыю</target></trans-unit>
+<trans-unit id="s64ef2a6c2dd1d3d1">
+  <source>Edit</source>
+<target>Рэдагаваць</target></trans-unit>
+<trans-unit id="scfcffcf35292bc6f">
+  <source>Simulate</source>
+<target>Сімуляваць</target></trans-unit>
+<trans-unit id="sd03c537f123f42a6">
+  <source>Exit Fullscreen</source>
+<target>Выйсці з поўнаэкраннага рэжыму</target></trans-unit>
+<trans-unit id="s4b10acae683d2978">
+  <source>Fullscreen</source>
+<target>Поўнаэкранны рэжым</target></trans-unit>
+<trans-unit id="s5eedf01beec54734">
+  <source>Tutorials</source>
+<target>Даведнікі</target></trans-unit>
+<trans-unit id="sba1e8892999bb878">
+  <source>Computer</source>
+<target>Камп’ютар</target></trans-unit>
+<trans-unit id="s4f0026a488fbdca3">
+  <source>Mobile device</source>
+<target>Мабільная прылада</target></trans-unit>
+<trans-unit id="sd8dddc9cd2d5b135">
+  <source>Network device</source>
+<target>Сеткавая прылада</target></trans-unit>
+<trans-unit id="se51d6fb9158b9f24">
+  <source>Router</source>
+<target>Маршрутызатар</target></trans-unit>
+<trans-unit id="s265dbd543be2f5ed">
+  <source>Access point</source>
+<target>Кропка доступу</target></trans-unit>
+<trans-unit id="s491d2a19cd6ec58c">
+  <source>Hub</source>
+<target>Канцэнтратар</target></trans-unit>
+<trans-unit id="s8e114dd98aeedf91">
+  <source>Switch</source>
+<target>Сеткавы камутатар</target></trans-unit>
+<trans-unit id="s6503256c2de2745c">
+  <source>Edge</source>
+<target>Злучэнне</target></trans-unit>
+<trans-unit id="sf4c791f0705344d6">
+  <source>Network assignment</source>
+<target>Прызначэнне сеткі</target></trans-unit>
+<trans-unit id="sf0751c039d26da12">
+  <source>Gateway assignment</source>
+<target>Прызначэнне шлюза</target></trans-unit>
+<trans-unit id="s0201d8d614a1b5a4">
+  <source>Validate global address assignments</source>
+<target>Праверыць агульнае прызначэнне адрасоў</target></trans-unit>
+<trans-unit id="s9c0c880f87b91eb4">
+  <source>Import a file created by this widget</source>
+<target>Імпартаваць файл, створаны гэтым віджэтам</target></trans-unit>
+<trans-unit id="s04507e583f35a215">
+  <source>Export the current graph</source>
+<target>Экспартаваць бягучы граф</target></trans-unit>
+<trans-unit id="s8ccfa5f804f6777a">
+  <source>Example graphs/exercises</source>
+<target>Прыклады графаў і практыкаванняў</target></trans-unit>
+<trans-unit id="s7c31cf556c31642f">
+  <source>Tutorials for features of this widget</source>
+<target>Даведнікі па функцыях гэтага віджэта</target></trans-unit>
+<trans-unit id="sabab0da440471b2c">
+  <source>Physical Node</source>
+<target>Фізічны вузел</target></trans-unit>
+<trans-unit id="sf70e0979427bcaf8">
+  <source>Logical Node</source>
+<target>Лагічны вузел</target></trans-unit>
+<trans-unit id="sbe1c7d207f771f2d">
+  <source>Number of ports</source>
+<target>Колькасць партоў</target></trans-unit>
+<trans-unit id="s94c954118f54fa1d">
+  <source>Number of input ports</source>
+<target>Колькасць уваходных партоў</target></trans-unit>
+<trans-unit id="sd9d1a55c5a664641">
+  <source>Add details for ports</source>
+<target>Дадаць звесткі пра парты</target></trans-unit>
+<trans-unit id="s79ca6e84a4df82e5">
+  <source>NetID</source>
+<target>Ідэнтыфікатар сеткі</target></trans-unit>
+<trans-unit id="s0b985047f07efbd0">
+  <source>Netmask</source>
+<target>Маска сеткі</target></trans-unit>
+<trans-unit id="see822b9851671c85">
+  <source>Click to add your component</source>
+<target>Націсніце, каб дадаць кампанент</target></trans-unit>
+<trans-unit id="scf4ac84fce176d91">
+  <source>Click to draw connecting links</source>
+<target>Націсніце, каб намаляваць злучэнні</target></trans-unit>
+<trans-unit id="s08cf63ff39d4bfaf">
+  <source>Click to change color of existing components</source>
+<target>Націсніце, каб змяніць колер існых кампанентаў</target></trans-unit>
+<trans-unit id="s2ffac3a7ddd1580b">
+  <source>CIDR/Subnetting controller</source>
+<target>Панэль CIDR і падсетак</target></trans-unit>
+<trans-unit id="s82dba63ce339e3a6">
+  <source>Choose a mode</source>
+<target>Выберыце рэжым</target></trans-unit>
+<trans-unit id="s22b5492cdee5c0d6">
+  <source>Manual Mode</source>
+<target>Ручны рэжым</target></trans-unit>
+<trans-unit id="sf0453217220f9a2d">
+  <source>Net-based Mode</source>
+<target>Рэжым на аснове сеткі</target></trans-unit>
+<trans-unit id="s7bc931f3ffdb6e60">
+  <source>Host-based Mode</source>
+<target>Рэжым на аснове хастоў</target></trans-unit>
+<trans-unit id="s73c3e21df2f12350">
+  <source>Activate Draw-and-drop</source>
+<target>Уключыць перацягванне</target></trans-unit>
+<trans-unit id="s7a3fb8031d3600cb">
+  <source>Drag to assign gateway</source>
+<target>Перацягніце, каб прызначыць шлюз</target></trans-unit>
+<trans-unit id="s42cbd8dca939a9c7">
+  <source>Check</source>
+<target>Праверыць</target></trans-unit>
+<trans-unit id="sfd468f7c41396df5">
+  <source>Packet sending controller</source>
+<target>Панэль адпраўкі пакетаў</target></trans-unit>
+<trans-unit id="s0dcc53abaa5c5df9">
+  <source>Choose sender</source>
+<target>Выбраць адпраўніка</target></trans-unit>
+<trans-unit id="s0356c70f23c234fd">
+  <source>Choose receiver</source>
+<target>Выбраць атрымальніка</target></trans-unit>
+<trans-unit id="se24130f1123560a0">
+  <source>Speed</source>
+<target>Хуткасць</target></trans-unit>
+<trans-unit id="sd8fe5e97ed28d99c">
+  <source>Focus on animated nodes</source>
+<target>Фокус на анімаваных вузлах</target></trans-unit>
+<trans-unit id="s62278f512692e037">
+  <source>Session</source>
+<target>Сеанс</target></trans-unit>
+<trans-unit id="s1951d0ebc9976aaf">
+  <source>Create a new simulation session</source>
+<target>Стварыць новы сеанс сімуляцыі</target></trans-unit>
+<trans-unit id="s649522600e4a80ac">
+  <source>Start sending a new packet</source>
+<target>Пачаць адпраўку новага пакета</target></trans-unit>
+<trans-unit id="se4752f0e82f9a5ab">
+  <source>Pause/resume all packets</source>
+<target>Прыпыніць або аднавіць адпраўку ўсіх пакетаў</target></trans-unit>
+<trans-unit id="s840bfacd9e8e393d">
+  <source>Stop the simulation session</source>
+<target>Спыніць сеанс сімуляцыі</target></trans-unit>
+<trans-unit id="sce83fe4fe279ab21">
+  <source>Track tables</source>
+<target>Сачыць за табліцамі</target></trans-unit>
+<trans-unit id="s349e167cfb664e7f">
+  <source>Simulation tables</source>
+<target>Табліцы сімуляцыі</target></trans-unit>
+<trans-unit id="sef49aec68fd1dc66">
+  <source>Name</source>
+<target>Назва</target></trans-unit>
+<trans-unit id="s82f9a9addfd569b4">
+  <source>Define Network</source>
+<target>Задаць сетку</target></trans-unit>
+<trans-unit id="s46e517b2962de3ce">
+  <source>Change Port Config</source>
+<target>Змяніць налады порта</target></trans-unit>
+<trans-unit id="sdff41263f305c0ea">
+  <source>Define Interfaces</source>
+<target>Задаць інтэрфейсы</target></trans-unit>
+<trans-unit id="sbca820dcc7f49c76">
+  <source>Change color</source>
+<target>Змяніць колер</target></trans-unit>
+<trans-unit id="sdc673e73b5c13aea">
+  <source>Delete</source>
+<target>Выдаліць</target></trans-unit>
+<trans-unit id="sbc909ebb8c28f954">
+  <source>Default Gateway</source>
+<target>Шлюз па змаўчанні</target></trans-unit>
+<trans-unit id="s0480d34205c42b70">
+  <source>Ports of </source>
+<target>Парты вузла </target></trans-unit>
+<trans-unit id="sb354dc19a7208a86">
+  <source>Port</source>
+<target>Порт</target></trans-unit>
+<trans-unit id="s954199c24bb1bd31">
+  <source>Disconnect the port to remove it.</source>
+<target>Адлучыце порт, каб яго выдаліць.</target></trans-unit>
+<trans-unit id="sfcafb45ec30fbc60">
+  <source>Remove Port</source>
+<target>Выдаліць порт</target></trans-unit>
+<trans-unit id="s61506a07625cfc18">
+  <source>Disconnect the port to change its type.</source>
+<target>Адлучыце порт, каб змяніць яго тып.</target></trans-unit>
+<trans-unit id="s4114a8a9e84611a4">
+  <source>No port available.</source>
+<target>Няма даступных партоў.</target></trans-unit>
+<trans-unit id="sf35d6a5dc03d5557">
+  <source>Add Port</source>
+<target>Дадаць порт</target></trans-unit>
+<trans-unit id="s431ab01e3ccd9bf1">
+  <source>Select a port</source>
+<target>Выберыце порт</target></trans-unit>
+<trans-unit id="sa67b523cb72c0edb">
+  <source>Interfaces of the connection</source>
+<target>Інтэрфейсы злучэння</target></trans-unit>
+<trans-unit id="s5f43af3669b1e098">
+  <source>Source</source>
+<target>Крыніца</target></trans-unit>
+<trans-unit id="sff5bb7742c2896c8">
+  <source>Target</source>
+<target>Месца прызначэння</target></trans-unit>
+<trans-unit id="s9a66f95d51e77c3d">
+  <source>Details of the network </source>
+<target>Звесткі пра сетку </target></trans-unit>
+<trans-unit id="s71183ed55882f1c9">
+  <source>IPv4 address is invalid.</source>
+<target>Несапраўдны IPv4-адрас.</target></trans-unit>
+<trans-unit id="s5882939b7613896e">
+  <source>Invalid net id.</source>
+<target>Несапраўдны ідэнтыфікатар сеткі.</target></trans-unit>
+<trans-unit id="sf2fe311e301fa69b">
+  <source>Network Mask</source>
+<target>Маска сеткі</target></trans-unit>
+<trans-unit id="s02ba6f5ad4b7f7d3">
+  <source>Invalid netmask.</source>
+<target>Несапраўдная маска сеткі.</target></trans-unit>
+<trans-unit id="s146232d3025412f3">
+  <source>Invalid bitmask.</source>
+<target>Несапраўдная бітавая маска.</target></trans-unit>
+<trans-unit id="s0ccb657bb5ab7aef">
+  <source>MAC address is invalid.</source>
+<target>Несапраўдны MAC-адрас.</target></trans-unit>
+<trans-unit id="sb3db490afc111f9f">
+  <source>IPv6 address is invalid.</source>
+<target>Несапраўдны IPv6-адрас.</target></trans-unit>
+<trans-unit id="s13a56952f9635fe4">
+  <source>Set Source</source>
+<target>Задаць крыніцу</target></trans-unit>
+<trans-unit id="se340f70c28bb766c">
+  <source>Set Target</source>
+<target>Задаць месца прызначэння</target></trans-unit>
+<trans-unit id="s479cdff9480652de">
+  <source>Start Simulation</source>
+<target>Пачаць сімуляцыю</target></trans-unit>
+<trans-unit id="s480e8cca00501fbf">
+  <source>Octets shouldn't be of negative value</source>
+<target>Значэнні актэтаў не могуць быць адмоўнымі.</target></trans-unit>
+<trans-unit id="s0b0811fac0075534">
+  <source>Your table is saved!</source>
+<target>Ваша табліца захавана!</target></trans-unit>
+<trans-unit id="s9c84598a99c03b88">
+  <source>Bitmask</source>
+<target>Бітавая маска</target></trans-unit>
+<trans-unit id="sbcc845948d536d4e">
+  <source>ARP Table</source>
+<target>Табліца ARP</target></trans-unit>
+<trans-unit id="sc86686973428936d">
+  <source>Routing Table</source>
+<target>Табліца маршрутызацыі</target></trans-unit>
+<trans-unit id="s47f47667e50169dc">
+  <source>Mac Address Table</source>
+<target>Табліца MAC-адрасоў</target></trans-unit>
+<trans-unit id="sf9aee319a006c9b4">
+  <source>Add</source>
+<target>Дадаць</target></trans-unit>
+<trans-unit id="sea4f08110bb8f15d">
+  <source>Remove</source>
+<target>Выдаліць</target></trans-unit>
+<trans-unit id="s33f85f24c0f5f008">
+  <source>Save</source>
+<target>Захаваць</target></trans-unit>
+<trans-unit id="sa0aaabb83bc98a72">
+  <source>Import network</source>
+<target>Імпартаваць сетку</target></trans-unit>
+<trans-unit id="s3f402f3f155ca6c9">
+  <source>Export network</source>
+<target>Экспартаваць сетку</target></trans-unit>
+<trans-unit id="sae0547f6ee918ff9">
+  <source>Please assign ports/interfaces</source>
+<target>Прызначце парты або інтэрфейсы</target></trans-unit>
+<trans-unit id="s269a190f0086d892">
+  <source>Unconfigured</source>
+<target>Не наладжана</target></trans-unit>
+<trans-unit id="s110e81e1ca4f992c">
+  <source>L2 L3 Data</source>
+<target>Даныя ўзроўняў L2 і L3</target></trans-unit>
+<trans-unit id="s72dee52f05a8a31b">
+  <source>L2 ARP request</source>
+<target>Запыт ARP узроўню L2</target></trans-unit>
+<trans-unit id="sfdd5df424bd1f92a">
+  <source>L2 ARP reply</source>
+<target>Адказ ARP узроўню L2</target></trans-unit>
+<trans-unit id="s631790646d968f40">
+  <source>L3 Data</source>
+<target>Даныя ўзроўню L3</target></trans-unit>
+</body>
+</file>
+</xliff>

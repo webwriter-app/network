@@ -39,14 +39,14 @@ npm install @webwriter/network
 ```
 
 ## Fields
+
+Nodes, connections, subnetworks and widget settings are authored in the direct `application/json` script block with `slot="data"`.
+
 | Name (Attribute Name) | Type | Description | Default | Reflects |
 | :-------------------: | :--: | :---------: | :-----: | :------: |
 | `automate` (`automate`) | `boolean` | Enables automation-related UI. | `false` | ✓ |
 | `screen` (`screen`) | `'small' \| 'medium'` | Controls the default size of Shoelace controls within this widget. | `'medium'` | ✓ |
 | `selectedObject` (`selectedObject`) | `any` | The currently selected Cytoscape element (node or edge). | - | ✗ |
-| `components` (`components`) | `Array<Component>` | Serialized node list. | `[]` | ✓ |
-| `connections` (`connections`) | `Array<Connection>` | Serialized edges between components. | `[]` | ✓ |
-| `networks` (`networks`) | `Array<Network>` | Serialized logical networks. | `[]` | ✓ |
 | `net_mode` | `SubnettingMode` | - | `'MANUAL'` | ✗ |
 | `NetworkComponent.shadowRootOptions` | `object` | Shadow root options. | `{ ...LitElement.shadowRootOptions, delegatesFocus: true }` | ✗ |
 | `NetworkComponent.scopedElements` | - | Scoped element registry for Shoelace components used in the template. | - | ✗ |

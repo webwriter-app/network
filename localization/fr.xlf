@@ -1,4 +1,5 @@
-<xliff xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd" xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd" version="1.2">
   <file original="lit-localize-inputs" datatype="plaintext" source-language="en" target-language="fr">
     <body>
       <trans-unit id="s64ef2a6c2dd1d3d1">
@@ -55,8 +56,7 @@
       </trans-unit>
       <trans-unit id="s8e114dd98aeedf91">
         <source>Switch</source>
-        <target>Interrupteur</target>
-      </trans-unit>
+<target>Commutateur réseau</target></trans-unit>
       <trans-unit id="s6503256c2de2745c">
         <source>Edge</source>
         <target>Bord</target>
@@ -917,6 +917,30 @@
         <source>Target</source>
         <target>Destination</target>
       </trans-unit>
-    </body>
+    <trans-unit id="sa0aaabb83bc98a72">
+  <source>Import network</source>
+<target>Importer un réseau</target></trans-unit>
+<trans-unit id="s3f402f3f155ca6c9">
+  <source>Export network</source>
+<target>Exporter le réseau</target></trans-unit>
+<trans-unit id="sae0547f6ee918ff9">
+  <source>Please assign ports/interfaces</source>
+<target>Attribuez des ports ou des interfaces</target></trans-unit>
+<trans-unit id="s269a190f0086d892">
+  <source>Unconfigured</source>
+<target>Non configuré</target></trans-unit>
+<trans-unit id="s110e81e1ca4f992c">
+  <source>L2 L3 Data</source>
+<target>Données L2 et L3</target></trans-unit>
+<trans-unit id="s72dee52f05a8a31b">
+  <source>L2 ARP request</source>
+<target>Requête ARP L2</target></trans-unit>
+<trans-unit id="sfdd5df424bd1f92a">
+  <source>L2 ARP reply</source>
+<target>Réponse ARP L2</target></trans-unit>
+<trans-unit id="s631790646d968f40">
+  <source>L3 Data</source>
+<target>Données L3</target></trans-unit>
+</body>
   </file>
 </xliff>

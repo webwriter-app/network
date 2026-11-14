@@ -11,7 +11,6 @@ import { Net } from '../components/logicalNodes/Net';
 import { Router } from '../components/physicalNodes/Connector';
 import { PhysicalNode } from '../components/physicalNodes/PhysicalNode';
 import { AlertHelper } from '../utils/AlertHelper';
-import { msg } from '@lit/localize';
 
 export class DialogFactory {
     static generateInputsDetailsForNode(network: NetworkComponent): void {
@@ -67,10 +66,10 @@ export class DialogFactory {
 
         //add the columns
         table += `<tr>`;
-        table += `<td>${msg('Port number')}</td>`;
-        table += layer > 2 ? `<td>${msg('Interface name')}</td>` : ``;
-        table += `<td>${msg('Connection type')}</td>`;
-        table += layer > 1 ? `<td>${msg('MAC Address')}</td>` : '';
+        table += `<td>${network.msg('Port number')}</td>`;
+        table += layer > 2 ? `<td>${network.msg('Interface name')}</td>` : ``;
+        table += `<td>${network.msg('Connection type')}</td>`;
+        table += layer > 1 ? `<td>${network.msg('MAC Address')}</td>` : '';
         table += layer > 2 ? `<td>Ipv4</td><td>Ipv6</td>` : '';
         table += `</tr>`;
 
@@ -88,17 +87,17 @@ export class DialogFactory {
             switch (currentComponentToAdd) {
                 case 'hub':
                 case 'switch':
-                    table += `<td>${msg('Ethernet')}</td>`;
+                    table += `<td>${network.msg('Ethernet')}</td>`;
                     break;
                 case 'access-point':
-                    table += i == 1 ? `<td>${msg('Ethernet')}</td>` : `<td>${msg('Wireless')}</td>`;
+                    table += i == 1 ? `<td>${network.msg('Ethernet')}</td>` : `<td>${network.msg('Wireless')}</td>`;
                     break;
                 default:
                     table +=
                         `<td><sl-select id="connection-type-` +
                         i +
-                        `"><sl-menu-item value="ethernet" style="overflow: hidden;">${msg('Ethernet')}</sl-menu-item>
-        <sl-menu-item value="wireless" style="overflow: hidden;">${msg('Wireless')}</sl-menu-item></sl-select></td>`;
+                        `"><sl-menu-item value="ethernet" style="overflow: hidden;">${network.msg('Ethernet')}</sl-menu-item>
+        <sl-menu-item value="wireless" style="overflow: hidden;">${network.msg('Wireless')}</sl-menu-item></sl-select></td>`;
                     break;
             }
 
@@ -153,7 +152,7 @@ export class DialogFactory {
         });
 
         let dialog = new SlDialog();
-        dialog.label = msg('Assigning ports for this connection');
+        dialog.label = network.msg('Assigning ports for this connection');
         let tabGroup: SlTabGroup = new SlTabGroup();
         tabGroup.innerHTML +=
             `<sl-tab slot="nav" panel="chooseSourcePort">` +
@@ -166,7 +165,7 @@ export class DialogFactory {
         let sourcePanel = new SlTabPanel();
         sourcePanel.name = 'chooseSourcePort';
         let sourceTable: string = `<table cellspacing="10"><tr>`;
-        sourceTable += `<td>${msg('Port number')}</td>`;
+        sourceTable += `<td>${network.msg('Port number')}</td>`;
         sourceNode.portData
             .entries()
             .next()
@@ -192,7 +191,7 @@ export class DialogFactory {
         availableSourcePorts.forEach(
             (port) => (selectedSourcePort.innerHTML += `<sl-menu-item value="` + port + `">` + port + `</sl-menu-item>`)
         );
-        sourcePanel.innerHTML += msg('Select one from available ports:');
+        sourcePanel.innerHTML += network.msg('Select one from available ports:');
         sourcePanel.appendChild(selectedSourcePort);
         tabGroup.append(sourcePanel);
 
@@ -200,7 +199,7 @@ export class DialogFactory {
         let targetPanel = new SlTabPanel();
         targetPanel.name = 'chooseTargetPort';
         let targetTable: string = `<table cellspacing="10"><tr>`;
-        targetTable += `<td>${msg('Port number')}</td>`;
+        targetTable += `<td>${network.msg('Port number')}</td>`;
         targetNode.portData
             .entries()
             .next()
@@ -227,7 +226,7 @@ export class DialogFactory {
             (port) => (selectedTargetPort.innerHTML += `<sl-menu-item value="` + port + `">` + port + `</sl-menu-item>`)
         );
 
-        targetPanel.innerHTML += msg('Select one from available ports:');
+        targetPanel.innerHTML += network.msg('Select one from available ports:');
         targetPanel.appendChild(selectedTargetPort);
         tabGroup.append(targetPanel);
 
@@ -246,7 +245,7 @@ export class DialogFactory {
                     'warning',
                     'exclamation-triangle',
                     '',
-                    msg('Please choose port/interface for') + ' ' + sourceNode.name
+                    network.msg('Please choose port/interface for') + ' ' + sourceNode.name
                 );
                 return;
             }
@@ -255,12 +254,12 @@ export class DialogFactory {
                     'warning',
                     'exclamation-triangle',
                     '',
-                    msg('Please choose port/interface for') + ' ' + sourceNode.name
+                    network.msg('Please choose port/interface for') + ' ' + sourceNode.name
                 );
                 return;
             }
 
-            let newData = GraphEdge.addPorts(edge.data(), inPort, outPort); //add port-link mapping for source+target
+            let newData = GraphEdge.addPorts(edge.data(), inPort, outPort, network.msg); //add port-link mapping for source+target
             if (newData != null) {
                 edge.removeClass('unconfigured-edge');
                 edge.addClass(newData.cssClass);
@@ -296,7 +295,7 @@ export class DialogFactory {
     ) {
         let physicalNode: PhysicalNode = node.data();
         let dialog: SlDialog = new SlDialog();
-        dialog.label = msg('Details about component') + ' ' + physicalNode.name;
+        dialog.label = network.msg('Details about component') + ' ' + physicalNode.name;
         dialog.innerHTML +=
             `<sl-input style="color: #43628A;"label="Name" id="` +
             id +
@@ -304,7 +303,7 @@ export class DialogFactory {
             `" value="` +
             physicalNode.name +
             `" clearable type="string">`;
-        let table: string = `<div style="margin-top: 10px; color: #43628A;">${msg('Details of the ports')}</div><table cellspacing="10"><tr>`;
+        let table: string = `<div style="margin-top: 10px; color: #43628A;">${network.msg('Details of the ports')}</div><table cellspacing="10"><tr>`;
         table += `<td>Index</td>`;
         physicalNode.portData
             .entries()
@@ -383,7 +382,7 @@ export class DialogFactory {
                             'warning',
                             'exclamation-triangle',
                             '',
-                            newMac + ' ' + msg('is not a valid MAC Address.')
+                            newMac + ' ' + network.msg('is not a valid MAC Address.')
                         );
                     }
                 }
@@ -410,8 +409,8 @@ export class DialogFactory {
                                         AlertHelper.toastAlert(
                                             'warning',
                                             'exclamation-triangle',
-                                            msg('Subnet-based mode on:'),
-                                            msg("Inserted IPv4 doesn't match the subnet mask.")
+                                            network.msg('Subnet-based mode on:'),
+                                            network.msg("Inserted IPv4 doesn't match the subnet mask.")
                                         );
                                         keepOldIp = true;
                                     }
@@ -443,8 +442,8 @@ export class DialogFactory {
                                         AlertHelper.toastAlert(
                                             'warning',
                                             'exclamation-triangle',
-                                            msg('Subnet-based mode on:'),
-                                            msg("Inserted IPv4 for gateway doesn't match the subnet mask or the network is not configured.")
+                                            network.msg('Subnet-based mode on:'),
+                                            network.msg("Inserted IPv4 for gateway doesn't match the subnet mask or the network is not configured.")
                                         );
                                         keepOldIp = true;
                                     }
@@ -464,7 +463,7 @@ export class DialogFactory {
                             changed = true;
                         }
                     } else if (newIpv4 != '') {
-                        AlertHelper.toastAlert('warning', 'exclamation-triangle', '', newIpv4 + ' ' + msg('is not valid.'));
+                        AlertHelper.toastAlert('warning', 'exclamation-triangle', '', newIpv4 + ' ' + network.msg('is not valid.'));
                     }
 
                     let validatedIpv6 =
@@ -482,14 +481,14 @@ export class DialogFactory {
                             'warning',
                             'exclamation-triangle',
                             '',
-                            newIpv6 + ' ' + msg('is not a valid IPv6 Address.')
+                            newIpv6 + ' ' + network.msg('is not a valid IPv6 Address.')
                         );
                     }
                 }
             }
 
             if (changed) {
-                AlertHelper.toastAlert('success', 'check2-circle', msg('Your changes have been saved.'), '');
+                AlertHelper.toastAlert('success', 'check2-circle', network.msg('Your changes have been saved.'), '');
             }
             dialog.hide();
         });
@@ -508,7 +507,7 @@ export class DialogFactory {
         dialog.innerHTML +=
             `<sl-input id="change-id-` +
             id +
-            `" label="${msg('Network Address')}" placeholder="` +
+            `" label="${network.msg('Network Address')}" placeholder="` +
             (subnet.networkAddress != undefined && subnet.networkAddress != null ? subnet.networkAddress.address : '') +
             `" clearable type="string">`;
         dialog.innerHTML +=
@@ -527,7 +526,7 @@ export class DialogFactory {
         //table for gateways
         let gateways: Map<string, number> = subnet.gateways;
         if (gateways.size != 0) {
-            let table: string = `<table cellspacing="10"><tr><td>${msg('Gateway')}</td><td>${msg('Interface')}</td><td>${msg('Connection Type')}</td><td>MAC</td><td>IPv4</td><td>IPv6</td></tr>`;
+            let table: string = `<table cellspacing="10"><tr><td>${network.msg('Gateway')}</td><td>${network.msg('Interface')}</td><td>${network.msg('Connection Type')}</td><td>MAC</td><td>IPv4</td><td>IPv6</td></tr>`;
 
             //TODO: add id for changes?
             gateways.forEach((port, gatewayId) => {
@@ -588,7 +587,7 @@ export class DialogFactory {
         let select = `<sl-select id="new-gateway-` + id + `">`;
 
         if (gateways.size != 0) {
-            let table: string = `<table cellspacing="10"><tr><td>${msg('Gateway')}</td><td>${msg('Port number')}</td><td>${msg('Interface')}</td><td>${msg('Connection Type')}</td><td>MAC</td><td>IPv4</td><td>IPv6</td></tr>`;
+            let table: string = `<table cellspacing="10"><tr><td>${network.msg('Gateway')}</td><td>${network.msg('Port number')}</td><td>${network.msg('Interface')}</td><td>${network.msg('Connection Type')}</td><td>MAC</td><td>IPv4</td><td>IPv6</td></tr>`;
 
             gateways.forEach((port, gatewayId) => {
                 if (port != null) {
@@ -618,7 +617,7 @@ export class DialogFactory {
             select += `</sl-select>`;
             dialog.innerHTML += select;
         } else {
-            dialog.innerHTML += msg('This network has no gateway.');
+            dialog.innerHTML += network.msg('This network has no gateway.');
         }
 
         if (!node.hasClass('default-gateway-not-found')) {
@@ -660,15 +659,15 @@ export class DialogFactory {
         dialog.label = data.id;
 
         if (data instanceof Packet) {
-            dialog.innerHTML += msg('Mac Address of Sender:') + data.layer2header.macSender + '<br/>';
-            dialog.innerHTML += msg('IP Address of Sender:') + data.layer3header.ipSender + '<br/>';
-            dialog.innerHTML += msg('Mac Address of Receiver:') + data.layer2header.macReceiver + '<br/>';
-            dialog.innerHTML += msg('IP Address of Receiver:') + data.layer3header.ipReceiver;
+            dialog.innerHTML += network.msg('Mac Address of Sender:') + data.layer2header.macSender + '<br/>';
+            dialog.innerHTML += network.msg('IP Address of Sender:') + data.layer3header.ipSender + '<br/>';
+            dialog.innerHTML += network.msg('Mac Address of Receiver:') + data.layer2header.macReceiver + '<br/>';
+            dialog.innerHTML += network.msg('IP Address of Receiver:') + data.layer3header.ipReceiver;
         } else if (data instanceof Frame) {
-            dialog.innerHTML += msg('Mac Address of Sender:') + data.layer2header.macSender + '<br/>';
-            dialog.innerHTML += msg('IP Address of Sender:') + data.layer2header.ipSender + '<br/>';
-            dialog.innerHTML += msg('Mac Address of Receiver:') + data.layer2header.macReceiver + '<br/>';
-            dialog.innerHTML += msg('IP Address of Receiver:') + data.layer2header.ipReceiver;
+            dialog.innerHTML += network.msg('Mac Address of Sender:') + data.layer2header.macSender + '<br/>';
+            dialog.innerHTML += network.msg('IP Address of Sender:') + data.layer2header.ipSender + '<br/>';
+            dialog.innerHTML += network.msg('Mac Address of Receiver:') + data.layer2header.macReceiver + '<br/>';
+            dialog.innerHTML += network.msg('IP Address of Receiver:') + data.layer2header.ipReceiver;
         }
 
         (network.renderRoot.querySelector('#inputDialog') as HTMLElement).innerHTML = '';
@@ -679,62 +678,62 @@ export class DialogFactory {
     static showHelpText(_network: NetworkComponent): TemplateResult {
         return html`
     <sl-tab-group>
-        <sl-tab slot="nav" panel="node">${msg('Add/ Configure graph components')}</sl-tab>
-        <sl-tab slot="nav" panel="cidr">${msg('CIDR/ Subnetting')}</sl-tab>
-        <sl-tab slot="nav" panel="simulation">${msg('Packet travelling simulation')}</sl-tab>
+        <sl-tab slot="nav" panel="node">${_network.msg('Add/ Configure graph components')}</sl-tab>
+        <sl-tab slot="nav" panel="cidr">${_network.msg('CIDR/ Subnetting')}</sl-tab>
+        <sl-tab slot="nav" panel="simulation">${_network.msg('Packet travelling simulation')}</sl-tab>
         
         <sl-tab-panel name="node">
-          <sl-details summary="${msg('How to add a physical node (host, router, switch,...)?')}">
+          <sl-details summary="${_network.msg('How to add a physical node (host, router, switch,...)?')}">
             <sl-card class="card-image">
-              <div slot="header"><b>${msg('Step')} 1:</b> ${msg('Choose your component')}</div>
+              <div slot="header"><b>${_network.msg('Step')} 1:</b> ${_network.msg('Choose your component')}</div>
               <img src="/resources/help-instructions/toolbar-select-physical.png"/>
             </sl-card>
             <sl-card class="card-image">
-              <div slot="header"><b>${msg('Step')} 2:</b> ${msg('More details with "Add details for ports"')}</div>
+              <div slot="header"><b>${_network.msg('Step')} 2:</b> ${_network.msg('More details with "Add details for ports"')}</div>
               <img src="/resources/help-instructions/toolbar-physical-node.png"/>
             </sl-card>
             <sl-card class="card-image">
-              <div slot="header"><b>${msg('Step')} 3:</b> ${msg('Pick a color also if you want to:')}</div>
+              <div slot="header"><b>${_network.msg('Step')} 3:</b> ${_network.msg('Pick a color also if you want to:')}</div>
               <img src="/resources/help-instructions/pick-color.png"/>
             </sl-card>
             <sl-card class="card-image">
-              <div slot="header"><b>${msg('Step')} 4:</b> ${msg('Click add')}</div>
+              <div slot="header"><b>${_network.msg('Step')} 4:</b> ${_network.msg('Click add')}</div>
               <img src="/resources/help-instructions/add-button.png"/>
             </sl-card>
           </sl-details>
-          <sl-details summary="${msg('How to add a logical node (network node)?')}">
+          <sl-details summary="${_network.msg('How to add a logical node (network node)?')}">
             <sl-card class="card-image">
-              <div slot="header"><b>${msg('Step')} 1:</b> ${msg('Choose your component')}</div>
+              <div slot="header"><b>${_network.msg('Step')} 1:</b> ${_network.msg('Choose your component')}</div>
               <img src="/resources/help-instructions/toolbar-select-logical.png"/>
             </sl-card>
             <sl-card class="card-image">
-              <div slot="header"><b>${msg('Step')} 2:</b> ${msg('Configure your network')}</div>
+              <div slot="header"><b>${_network.msg('Step')} 2:</b> ${_network.msg('Configure your network')}</div>
               <img src="/resources/help-instructions/toolbar-logical-node.png"/>
             </sl-card>
             <sl-card class="card-image">
-              <div slot="header"><b>${msg('Step')} 3:</b> ${msg('Pick a color also if you want to:')}</div>
+              <div slot="header"><b>${_network.msg('Step')} 3:</b> ${_network.msg('Pick a color also if you want to:')}</div>
               <img src="/resources/help-instructions/pick-color.png"/>
             </sl-card>
             <sl-card class="card-image">
-              <div slot="header"><b>${msg('Step')} 4:</b> ${msg('Click add')}</div>
+              <div slot="header"><b>${_network.msg('Step')} 4:</b> ${_network.msg('Click add')}</div>
               <img src="/resources/help-instructions/add-button.png"/>
             </sl-card>
           </sl-details>
-          <sl-details summary="${msg('How to add a link between two physical nodes?')}">
+          <sl-details summary="${_network.msg('How to add a link between two physical nodes?')}">
             <sl-card class="card-image">
-              <div slot="header"><b>${msg('Step')} 1:</b> ${msg('Choose edge component')}</div>
+              <div slot="header"><b>${_network.msg('Step')} 1:</b> ${_network.msg('Choose edge component')}</div>
               <img src="/resources/help-instructions/toolbar-select-edge.png"/>
             </sl-card>
             <sl-card class="card-image">
-              <div slot="header"><b>${msg('Step')} 2:</b> ${msg('Pick a color also if you want to:')}</div>
+              <div slot="header"><b>${_network.msg('Step')} 2:</b> ${_network.msg('Pick a color also if you want to:')}</div>
               <img src="/resources/help-instructions/pick-color.png"/>
             </sl-card>
             <sl-card class="card-image">
-              <div slot="header"><b>${msg('Step')} 3:</b> ${msg('Toggle draw mode')}</div>
+              <div slot="header"><b>${_network.msg('Step')} 3:</b> ${_network.msg('Toggle draw mode')}</div>
               <img src="/resources/help-instructions/draw-edge-button.png"/>
             </sl-card>
             <sl-card class="card-image">
-              <div slot="header"><b>${msg('Step')} 4:</b> ${msg('Draw then configure on right click')}</div>
+              <div slot="header"><b>${_network.msg('Step')} 4:</b> ${_network.msg('Draw then configure on right click')}</div>
               <img src="/resources/help-instructions/configure-edge.png"/>
             </sl-card>
           </sl-details>
@@ -743,54 +742,54 @@ export class DialogFactory {
         <sl-tab-panel name="cidr">
           <sl-details summary="How to assign a gateway?">
             <sl-card class="card-image">
-              <div slot="header"><b>${msg('Step')} 1:</b> ${msg('Activate the "assign gateway" mode:')}</div>
+              <div slot="header"><b>${_network.msg('Step')} 1:</b> ${_network.msg('Activate the "assign gateway" mode:')}</div>
               <img src="/resources/help-instructions/drag-to-assign-gateway.png"/>
             </sl-card>
             <sl-card class="card-image">
-              <div slot="header"><b>${msg('Step')} 2:</b> ${msg('Drag the gateway on the edge of a network:')}</div>
+              <div slot="header"><b>${_network.msg('Step')} 2:</b> ${_network.msg('Drag the gateway on the edge of a network:')}</div>
               <img src="/resources/help-instructions/drag-on-the-edge.png"/>
             </sl-card>
           </sl-details>
-          <sl-details summary="${msg('How to drag a component into a network?')}">
+          <sl-details summary="${_network.msg('How to drag a component into a network?')}">
             <sl-card class="card-image">
-              <div slot="header"><b>${msg('Step')} 1:</b> ${msg('Activate the "drag-and-drop" mode:')}</div>
+              <div slot="header"><b>${_network.msg('Step')} 1:</b> ${_network.msg('Activate the "drag-and-drop" mode:')}</div>
               <img height="175px" src="/resources/help-instructions/drag-and-drop.png"/>
             </sl-card>
             <sl-card class="card-image">
-              <div slot="header"><b>${msg('Step')} 2:</b> ${msg('Drag the component inside the network:')}</div>
+              <div slot="header"><b>${_network.msg('Step')} 2:</b> ${_network.msg('Drag the component inside the network:')}</div>
               <img src="/resources/help-instructions/drag-inside.png"/>
             </sl-card>
           </sl-details>
-          <sl-details summary="${msg('How does the Net-based mode work?')}">
+          <sl-details summary="${_network.msg('How does the Net-based mode work?')}">
             <sl-card class="card-image">
-              <div slot="header">${msg('Before dragging a node into network')} <b>1.1.1.0 /24</b></div>
+              <div slot="header">${_network.msg('Before dragging a node into network')} <b>1.1.1.0 /24</b></div>
               <img src="/resources/help-instructions/before-netmode.png"/>
             </sl-card>
             <sl-card class="card-image">
-              <div slot="header">${msg('After dragging the node into network')} <b>1.1.1.0 /24</b></div>
+              <div slot="header">${_network.msg('After dragging the node into network')} <b>1.1.1.0 /24</b></div>
               <img src="/resources/help-instructions/after-netmode.png"/>
-              <div slot="footer">${msg('New IPv4 will be assigned for conflicting addresses.')}<br/>
-              ${msg('During this mode, when users edit addresses of:')}
+              <div slot="footer">${_network.msg('New IPv4 will be assigned for conflicting addresses.')}<br/>
+              ${_network.msg('During this mode, when users edit addresses of:')}
               <ul>
-                <li><b>networks</b>: ${msg('conflicting addresses of all related hosts/gateways will be reassigned.')}</li>
-                <li><b>hosts/gateways/subnetworks</b>: ${msg('new addresses will be validated against the network addresses and will only be accepted when they are valid.')}</li>
+                <li><b>networks</b>: ${_network.msg('conflicting addresses of all related hosts/gateways will be reassigned.')}</li>
+                <li><b>hosts/gateways/subnetworks</b>: ${_network.msg('new addresses will be validated against the network addresses and will only be accepted when they are valid.')}</li>
               </ul>
               </div>
             </sl-card>
           </sl-details>
-          <sl-details summary="${msg('How does the Host-based mode work?')}">
+          <sl-details summary="${_network.msg('How does the Host-based mode work?')}">
             <sl-card class="card-image">
-              <div slot="header">${msg('Before dragging host0 into network')} <b>1.1.1.128 /25</b></div>
+              <div slot="header">${_network.msg('Before dragging host0 into network')} <b>1.1.1.128 /25</b></div>
               <img height="210px" src="/resources/help-instructions/before-hostmode.png"/>
             </sl-card>
             <sl-card class="card-image">
-              <div slot="header">${msg('After dragging host0 into network')} <b>1.1.1.128 /25</b></div>
+              <div slot="header">${_network.msg('After dragging host0 into network')} <b>1.1.1.128 /25</b></div>
               <img height="210px"  src="/resources/help-instructions/after-hostmode.png"/>
-              <div slot="footer">${msg('The existing network will expand to contain the new host.')}<br/>
-              ${msg('During this mode, when users edit addresses of:')}
+              <div slot="footer">${_network.msg('The existing network will expand to contain the new host.')}<br/>
+              ${_network.msg('During this mode, when users edit addresses of:')}
               <ul>
-                <li><b>${msg('networks')}</b>: ${msg('new network address range will be checked if they expands the old ones.')}</li>
-                <li><b>${msg('hosts/gateways/subnetworks')}</b>: ${msg('the existing network will expand to contain the new addresses.')}</li>
+                <li><b>${_network.msg('networks')}</b>: ${_network.msg('new network address range will be checked if they expands the old ones.')}</li>
+                <li><b>${_network.msg('hosts/gateways/subnetworks')}</b>: ${_network.msg('the existing network will expand to contain the new addresses.')}</li>
               </ul>
               </div>
             </sl-card>
@@ -798,61 +797,61 @@ export class DialogFactory {
         </sl-tab-panel>
 
         <sl-tab-panel name="simulation">
-          <sl-details summary="${msg('How to manipulate a simulation session?')}">
+          <sl-details summary="${_network.msg('How to manipulate a simulation session?')}">
             <sl-card class="card-image">
-              <div slot="header"><b>${msg('Step')} 1:</b> ${msg('if you don\'t use a graph from the examples, Init a new simulation session')}</div>
+              <div slot="header"><b>${_network.msg('Step')} 1:</b> ${_network.msg('if you don\'t use a graph from the examples, Init a new simulation session')}</div>
               <img height="175px" src="/resources/help-instructions/init-session.png"/>
-              <div slot="footer">${msg('In this step, for the:')}
+              <div slot="footer">${_network.msg('In this step, for the:')}
                 <ul>
-                  <li>${msg('host/router: ARP table and routing table are created')}</li>
-                  <li>${msg('switch/bridge/access point: MAC address table is created')}</li>
+                  <li>${_network.msg('host/router: ARP table and routing table are created')}</li>
+                  <li>${_network.msg('switch/bridge/access point: MAC address table is created')}</li>
                 <ul>
               </div>
             </sl-card>
             <sl-card class="card-image">
-              <div slot="header"><b>${msg('Step')} 2:</b> ${msg('assign a sender/receiver for the packet')}</div>
+              <div slot="header"><b>${_network.msg('Step')} 2:</b> ${_network.msg('assign a sender/receiver for the packet')}</div>
               <img height="175px" src="/resources/help-instructions/choose-receiver.png"/>
               <div slot="footer">
                 <ul>
-                  <li>${msg('Click on Choose sender or Choose receiver')}</li>
-                  <li>${msg('Click on a host on the canvas')}</li>
-                  <li>${msg('Choose an IP')}</li>
+                  <li>${_network.msg('Click on Choose sender or Choose receiver')}</li>
+                  <li>${_network.msg('Click on a host on the canvas')}</li>
+                  <li>${_network.msg('Choose an IP')}</li>
                 <ul>
               </div>
             </sl-card>
             <sl-card class="card-image">
-              <div slot="header"><b>${msg('Step')} 3:</b> ${msg('start sending a packet with the assigned sender and receiver in step 2')}</div>
+              <div slot="header"><b>${_network.msg('Step')} 3:</b> ${_network.msg('start sending a packet with the assigned sender and receiver in step 2')}</div>
               <img height="175px" src="/resources/help-instructions/send-packet.png"/>
-              <div slot="footer">${msg('Repeat steps 2 and 3 as much as desired.<br/> You can also use pause/resume or change focus/speed during or before starting to send a packet.')}</div>
+              <div slot="footer">${_network.msg('Repeat steps 2 and 3 as much as desired.<br/> You can also use pause/resume or change focus/speed during or before starting to send a packet.')}</div>
             </sl-card>
             <sl-card class="card-image">
-              <div slot="header"><b>${msg('Last step')}</b></div>
+              <div slot="header"><b>${_network.msg('Last step')}</b></div>
               <img height="175px" src="/resources/help-instructions/stop-session.png"/>
             <div slot="footer">
-            <b>${msg('Stop session')}</b> ${msg('resets all tables and ends the current simulation session.')}<br/>
-            ${msg('Start from step 1 again for a new simulation session.')}
+            <b>${_network.msg('Stop session')}</b> ${_network.msg('resets all tables and ends the current simulation session.')}<br/>
+            ${_network.msg('Start from step 1 again for a new simulation session.')}
             </div>
             </sl-card>
           </sl-details>
-          <sl-details summary="${msg('How to configure the tables?')}">
+          <sl-details summary="${_network.msg('How to configure the tables?')}">
             <sl-card class="card-image">
-              <div slot="header"><b>${msg('Step')} 1:</b> ${msg('Init. Ignore this step if you use an example graph, or there is a session running')}.</div>
+              <div slot="header"><b>${_network.msg('Step')} 1:</b> ${_network.msg('Init. Ignore this step if you use an example graph, or there is a session running')}.</div>
               <img src="/resources/help-instructions/init-table.png"/>
             </sl-card>
             <sl-card class="card-image">
-              <div slot="header"><b>${msg('Step')} 2.a:</b> ${msg('Click on Add to generate a new row in the table')}</div>
+              <div slot="header"><b>${_network.msg('Step')} 2.a:</b> ${_network.msg('Click on Add to generate a new row in the table')}</div>
               <img src="/resources/help-instructions/add-table.png"/>
             </sl-card>
             <sl-card class="card-image">
-              <div slot="header"><b>${msg('Step')} 2.b:</b> ${msg('Fill your table according to its type. Except for the tables of the routers, tables of other nodes can be filled automatically.')}</div>
+              <div slot="header"><b>${_network.msg('Step')} 2.b:</b> ${_network.msg('Fill your table according to its type. Except for the tables of the routers, tables of other nodes can be filled automatically.')}</div>
               <img src="/resources/help-instructions/example-table.png"/>
             </sl-card>
             <sl-card class="card-image">
-              <div slot="header"><b>${msg('Step')} 3:</b> ${msg('Remove button removes all checked rows')}</div>
+              <div slot="header"><b>${_network.msg('Step')} 3:</b> ${_network.msg('Remove button removes all checked rows')}</div>
               <img src="/resources/help-instructions/remove-table.png"/>
             </sl-card>
             <sl-card class="card-image">
-              <div slot="header"><b>${msg('Step')} 4:</b> ${msg('Save button saves the current table on the UI to the database')}</div>
+              <div slot="header"><b>${_network.msg('Step')} 4:</b> ${_network.msg('Save button saves the current table on the UI to the database')}</div>
               <img src="/resources/help-instructions/save-table.png"/>
             </sl-card>
 
