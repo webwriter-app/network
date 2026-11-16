@@ -130,27 +130,45 @@
   "author": "Jorik van Genuchten",
   "repository": "github:webwriter-app/network",
   "scripts": {
-    "prepublishOnly": "npx @webwriter/build"
+    "prepublishOnly": "npx @webwriter/build --shared-dependencies"
   },
   "dependencies": {
     "@lit/localize": "^0.12.2",
-    "@shoelace-style/shoelace": "^2.16.0",
-    "@webwriter/lit": "^3.0.0",
-    "cytoscape": "^3.35.0",
-    "cytoscape-compound-drag-and-drop": "^1.1.0",
-    "cytoscape-context-menus": "^4.2.1",
-    "cytoscape-edgehandles": "^4.0.1",
-    "cytoscape-node-html-label": "^1.2.2",
-    "lit": "^3.2.0"
+    "@shoelace-style/shoelace": "^2.20.1",
+    "@tabler/icons": "^3.52.0",
+    "@webwriter/lit": "^3.2.0",
+    "@webwriter/widget": "^1.2.0",
+    "lit": "^3.3.0",
+    "pixi.js": "^8.23.0"
   },
   "exports": {
     "./widgets/ww-network.*": {
-      "source": "./src/index.ts",
+      "source": "./src/widgets/ww-network.ts",
       "default": "./dist/widgets/ww-network.*"
     },
     "./snippets/simple-network.html": "./snippets/simple-network.html",
     "./snippets/complex-network.html": "./snippets/complex-network.html",
     "./snippets/triple-network.html": "./snippets/triple-network.html",
+    "./tests/language.*": {
+      "source": "./tests/language.test.ts",
+      "default": "./dist/tests/language.*"
+    },
+    "./tests/modes.*": {
+      "source": "./tests/modes.test.ts",
+      "default": "./dist/tests/modes.*"
+    },
+    "./tests/editing.*": {
+      "source": "./tests/editing.test.ts",
+      "default": "./dist/tests/editing.*"
+    },
+    "./tests/simulation.*": {
+      "source": "./tests/simulation.test.ts",
+      "default": "./dist/tests/simulation.*"
+    },
+    "./tests/scene.*": {
+      "source": "./tests/scene.test.ts",
+      "default": "./dist/tests/scene.*"
+    },
     "./package.json": "./package.json",
     "./icon": "./icon.svg",
     "./editing-config.json": "./editing-config.json",
@@ -162,6 +180,16 @@
   },
   "customElements": "custom-elements.json",
   "devDependencies": {
-    "@webwriter/build": "^1.13.1"
-  }
+    "@types/chai": "^5.2.3",
+    "@types/mocha": "^10.0.10",
+    "@webwriter/build": "^1.14.0",
+    "chai": "^6.3.0",
+    "mocha": "^12.0.3",
+    "typescript": "^7.0.2"
+  },
+  "prebuiltDependencies": [
+    "@webwriter/lit",
+    "@webwriter/widget",
+    "pixi.js"
+  ]
 }

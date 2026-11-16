@@ -1,5 +1,5 @@
-# Network (`@webwriter/network@2.0.8`)
-[License: MIT](LICENSE) | Version: 2.0.8
+# Network (`@webwriter/network@3.0.0`)
+[License: MIT](LICENSE) | Version: 3.0.0
 
 Visualization of network topologies. Can represent different kinds of networks.
 
@@ -14,7 +14,7 @@ Visualization of network topologies. Can represent different kinds of networks.
 
 
 
-## `NetworkComponent` (`<ww-network>`)
+## `WwNetwork` (`<ww-network>`)
 
 
 ### Usage
@@ -39,26 +39,56 @@ npm install @webwriter/network
 ```
 
 ## Fields
-
-Nodes, connections, subnetworks and widget settings are authored in the direct `application/json` script block with `slot="data"`.
-
 | Name (Attribute Name) | Type | Description | Default | Reflects |
 | :-------------------: | :--: | :---------: | :-----: | :------: |
-| `automate` (`automate`) | `boolean` | Enables automation-related UI. | `false` | ✓ |
-| `screen` (`screen`) | `'small' \| 'medium'` | Controls the default size of Shoelace controls within this widget. | `'medium'` | ✓ |
-| `selectedObject` (`selectedObject`) | `any` | The currently selected Cytoscape element (node or edge). | - | ✗ |
-| `net_mode` | `SubnettingMode` | - | `'MANUAL'` | ✗ |
-| `NetworkComponent.shadowRootOptions` | `object` | Shadow root options. | `{ ...LitElement.shadowRootOptions, delegatesFocus: true }` | ✗ |
-| `NetworkComponent.scopedElements` | - | Scoped element registry for Shoelace components used in the template. | - | ✗ |
+| `WwNetwork.shadowRootOptions` | `object` | - | `{ ...LitElement.shadowRootOptions, delegatesFocus: true }` | ✗ |
+| `WwNetwork.scopedElements` | `object` | - | `{ ...sceneElements, 'ww-scene': PixiScene, 'sl-button': SlButton, 'sl-icon': SlIcon, 'sl-button-group': SlButtonGroup, 'sl-details': SlDetails, 'sl-input': SlInput, 'sl-tooltip': SlTooltip, 'sl-alert': SlAlert, 'sl-select': SlSelect, 'sl-option': SlOption, 'sl-drawer': SlDrawer, 'sl-divider': SlDivider, 'sl-menu': SlMenu, 'sl-menu-item': SlMenuItem, 'sl-color-picker': SlColorPicker, 'sl-popup': SlPopup, 'sl-tab-group': SlTabGroup, 'sl-tab': SlTab, 'sl-tab-panel': SlTabPanel, }` | ✗ |
+| `WwNetwork.actions` | `{<br>        importNetwork: { label: (widget: { msg: MsgFn }) => widget.msg("Import network"), icon: "Upload", intent: "default", input: { type: "file", accept: ".json,application/json" } },<br>        exportNetwork: { label: (widget: { msg: MsgFn }) => widget.msg("Export network"), icon: "Download", intent: "default" },<br>    }` | - | `{ importNetwork: { label: (widget: { msg: MsgFn }) => widget.msg("Import network"), icon: "Upload", intent: "default", input: { type: "file", accept: ".json,application/json" } }, exportNetwork: { label: (widget: { msg: MsgFn }) => widget.msg("Export network"), icon: "Download", intent: "default" }, }` | ✗ |
+| `localize` | - | - | - | ✗ |
+| `msg` | `MsgFn` | - | - | ✗ |
+| `automate` (`automate`) | `boolean` | - | `false` | ✓ |
+| `screen` (`screen`) | `'small' \| 'medium'` | - | `'medium'` | ✓ |
+| `selectedObject` (`selectedObject`) | `GraphNode \| GraphEdge \| null` | The node, net or edge that was selected last. | `null` | ✗ |
+| `components` | `Array<Component>` | Serialized node list. | `[]` | ✗ |
+| `connections` | `Array<Connection>` | Serialized edges between components. | `[]` | ✗ |
+| `networks` | `Array<Network>` | Serialized logical networks. | `[]` | ✗ |
+| `contextMenuColorOpen` | `boolean` | - | `false` | ✗ |
+| `toasts` | `Toast[]` | - | `[]` | ✗ |
+| `contextMenu` | `SlPopup \| null` | - | - | ✗ |
+| `canvas` | `HTMLElement` | - | - | ✗ |
+| `editing` | `boolean` | True while the widget is in edit mode of the editor. | - | ✗ |
+| `onSelect` | - | - | `handleSelect` | ✗ |
+| `onMove` | - | - | `handleMove` | ✗ |
+| `onConnect` | - | - | `handleConnect` | ✗ |
+| `onContextMenu` | - | - | `handleContextMenu` | ✗ |
+| `diagram` | - | - | - | ✗ |
 
 *Fields including [properties](https://developer.mozilla.org/en-US/docs/Glossary/Property/JavaScript) and [attributes](https://developer.mozilla.org/en-US/docs/Glossary/Attribute) define the current state of the widget and offer customization options.*
 
-## CSS parts
-| Name | Description |
-| :--: | :---------: |
-| options | Sidebar container for import/export and controllers. |
+## Methods
+| Name | Description | Parameters |
+| :--: | :---------: | :-------: |
+| `importNetwork` | - | `files: File[]`
+| `exportNetwork` | - | -
+| `dismissToast` | - | `id: number`
+| `apply` | Runs a change of the diagram as one undo step and saves the result in the document. | `change: () => void`
+| `closeConfigDrawers` | Closes every widget-contained configuration drawer, so that a drawer never shows stale content. | -
+| `addNode` | Adds a host, a connector or a net from the toolbox. | `kind: string`
+| `deleteSelected` | - | -
+| `toggleDrawMode` | - | -
+| `toggleDragAndDropSubnetting` | - | -
+| `toggleAssigningGateway` | - | -
+| `validateAllNets` | - | -
+| `pickEndPoint` | Lets the next click on a node choose the sender or receiver of the simulation. | `role: 'source' | 'target'`
 
-*[CSS parts](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_shadow_parts) allow freely styling internals of the widget with CSS.*
+*[Methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Method_definitions) allow programmatic access to the widget.*
+
+## Slots
+| Name | Description | Content Type |
+| :--: | :---------: | :----------: |
+| `data` | Direct application/json block stores network components, connections, and networks. | - |
+
+*[Slots](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_templates_and_slots) define how the content of the widget is rendered.*
 
 ## Editing config
 | Name | Value |
@@ -67,8 +97,8 @@ Nodes, connections, subnetworks and widget settings are authored in the direct `
 
 *The [editing config](https://webwriter.app/docs/packages/configuring/#editingconfig) defines how explorable authoring tools such as [WebWriter](https://webwriter.app) treat the widget.*
 
-*No public methods, slots, events, or custom CSS properties.*
+*No public events, custom CSS properties, or CSS parts.*
 
 
 ---
-*Generated with @webwriter/build@1.9.1*
+*Generated with @webwriter/build@1.14.0*

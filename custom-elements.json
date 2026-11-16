@@ -4,19 +4,92 @@
   "modules": [
     {
       "kind": "javascript-module",
-      "path": "src/index.ts",
+      "path": "src/widgets/ww-network.ts",
       "declarations": [
         {
           "kind": "class",
           "description": "",
-          "name": "NetworkComponent",
-          "cssParts": [
+          "name": "WwNetwork",
+          "slots": [
             {
-              "description": "Sidebar container for import/export and controllers.",
-              "name": "options"
+              "description": "Direct application/json block stores network components, connections, and networks.",
+              "name": "data"
             }
           ],
           "members": [
+            {
+              "kind": "field",
+              "name": "shadowRootOptions",
+              "type": {
+                "text": "object"
+              },
+              "static": true,
+              "default": "{ ...LitElement.shadowRootOptions, delegatesFocus: true }"
+            },
+            {
+              "kind": "field",
+              "name": "scopedElements",
+              "type": {
+                "text": "object"
+              },
+              "static": true,
+              "default": "{ ...sceneElements, 'ww-scene': PixiScene, 'sl-button': SlButton, 'sl-icon': SlIcon, 'sl-button-group': SlButtonGroup, 'sl-details': SlDetails, 'sl-input': SlInput, 'sl-tooltip': SlTooltip, 'sl-alert': SlAlert, 'sl-select': SlSelect, 'sl-option': SlOption, 'sl-drawer': SlDrawer, 'sl-divider': SlDivider, 'sl-menu': SlMenu, 'sl-menu-item': SlMenuItem, 'sl-color-picker': SlColorPicker, 'sl-popup': SlPopup, 'sl-tab-group': SlTabGroup, 'sl-tab': SlTab, 'sl-tab-panel': SlTabPanel, }"
+            },
+            {
+              "kind": "field",
+              "name": "actions",
+              "static": true,
+              "default": "{ importNetwork: { label: (widget: { msg: MsgFn }) => widget.msg(\"Import network\"), icon: \"Upload\", intent: \"default\", input: { type: \"file\", accept: \".json,application/json\" } }, exportNetwork: { label: (widget: { msg: MsgFn }) => widget.msg(\"Export network\"), icon: \"Download\", intent: \"default\" }, }",
+              "type": {
+                "text": "{\n        importNetwork: { label: (widget: { msg: MsgFn }) => widget.msg(\"Import network\"), icon: \"Upload\", intent: \"default\", input: { type: \"file\", accept: \".json,application/json\" } },\n        exportNetwork: { label: (widget: { msg: MsgFn }) => widget.msg(\"Export network\"), icon: \"Download\", intent: \"default\" },\n    }"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "localize"
+            },
+            {
+              "kind": "field",
+              "name": "msg",
+              "type": {
+                "text": "MsgFn"
+              },
+              "privacy": "public",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "#permissions",
+              "privacy": "private",
+              "default": "new Permissions(this)"
+            },
+            {
+              "kind": "field",
+              "name": "#viewport",
+              "privacy": "private",
+              "type": {
+                "text": "Viewport"
+              },
+              "default": "new Viewport(this, { bounds: () => this.#scene.extent(), can: () => !this.#scene.marquee })",
+              "description": "The scene is the window of the viewport: it pans and zooms the diagram."
+            },
+            {
+              "kind": "field",
+              "name": "#scene",
+              "privacy": "private",
+              "type": {
+                "text": "SceneController"
+              },
+              "default": "new SceneController(this, { viewport: this.#viewport.core, can: (action) => (action === 'move' ? this.mode === 'edit' : action === 'connect' ? this.mode === 'edit' && this.drawModeOn : true), })"
+            },
+            {
+              "kind": "field",
+              "name": "#listeners",
+              "privacy": "private",
+              "type": {
+                "text": "AbortController | undefined"
+              }
+            },
             {
               "kind": "field",
               "name": "automate",
@@ -24,7 +97,6 @@
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Enables automation-related UI.",
               "attribute": "automate",
               "reflects": true
             },
@@ -35,7 +107,6 @@
                 "text": "'small' | 'medium'"
               },
               "default": "'medium'",
-              "description": "Controls the default size of Shoelace controls within this widget.",
               "attribute": "screen",
               "reflects": true
             },
@@ -43,9 +114,10 @@
               "kind": "field",
               "name": "selectedObject",
               "type": {
-                "text": "any"
+                "text": "GraphNode | GraphEdge | null"
               },
-              "description": "The currently selected Cytoscape element (node or edge).",
+              "default": "null",
+              "description": "The node, net or edge that was selected last.",
               "attribute": "selectedObject"
             },
             {
@@ -55,7 +127,7 @@
                 "text": "Array<Component>"
               },
               "default": "[]",
-              "description": "Serialized node list. Persisted in the direct JSON data block."
+              "description": "Serialized node list."
             },
             {
               "kind": "field",
@@ -64,7 +136,7 @@
                 "text": "Array<Connection>"
               },
               "default": "[]",
-              "description": "Serialized edges between components. Persisted in the direct JSON data block."
+              "description": "Serialized edges between components."
             },
             {
               "kind": "field",
@@ -73,33 +145,345 @@
                 "text": "Array<Network>"
               },
               "default": "[]",
-              "description": "Serialized logical networks. Persisted in the direct JSON data block."
+              "description": "Serialized logical networks."
             },
             {
               "kind": "field",
-              "name": "net_mode",
+              "name": "contextMenuColorOpen",
               "type": {
-                "text": "SubnettingMode"
+                "text": "boolean"
               },
-              "default": "'MANUAL'"
+              "default": "false"
             },
             {
               "kind": "field",
-              "name": "shadowRootOptions",
+              "name": "toasts",
               "type": {
-                "text": "object"
+                "text": "Toast[]"
               },
-              "static": true,
-              "default": "{ ...LitElement.shadowRootOptions, delegatesFocus: true }",
-              "description": "Shadow root options."
+              "default": "[]"
             },
             {
               "kind": "field",
-              "name": "scopedElements",
-              "privacy": "public",
-              "static": true,
-              "description": "Scoped element registry for Shoelace components used in the template.",
+              "name": "contextMenu",
+              "type": {
+                "text": "SlPopup | null"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "canvas",
+              "type": {
+                "text": "HTMLElement"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "#dataObserver",
+              "privacy": "private",
+              "default": "new MutationObserver(() => this.restoreData())"
+            },
+            {
+              "kind": "field",
+              "name": "#skipDataWrite",
+              "privacy": "private",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "#stateChangedExternally",
+              "privacy": "private",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "#toastCount",
+              "privacy": "private",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "#view",
+              "privacy": "private",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "editing",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "True while the widget is in edit mode of the editor.",
               "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "importNetwork",
+              "parameters": [
+                {
+                  "name": "files",
+                  "type": {
+                    "text": "File[]"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "exportNetwork"
+            },
+            {
+              "kind": "field",
+              "name": "onSelect",
+              "default": "handleSelect"
+            },
+            {
+              "kind": "field",
+              "name": "onMove",
+              "default": "handleMove"
+            },
+            {
+              "kind": "field",
+              "name": "onConnect",
+              "default": "handleConnect"
+            },
+            {
+              "kind": "field",
+              "name": "onContextMenu",
+              "default": "handleContextMenu"
+            },
+            {
+              "kind": "method",
+              "name": "newDiagram",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "Diagram"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "notify",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "variant",
+                  "type": {
+                    "text": "NoticeVariant"
+                  }
+                },
+                {
+                  "name": "header",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "message",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "Tells the user. Errors and successes only reach the console: a widget has no place for them in the page."
+            },
+            {
+              "kind": "method",
+              "name": "dismissToast",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "id",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "build",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "description": "Builds the diagram from the saved data."
+            },
+            {
+              "kind": "method",
+              "name": "apply",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "change",
+                  "optional": true,
+                  "type": {
+                    "text": "() => void"
+                  }
+                }
+              ],
+              "description": "Runs a change of the diagram as one undo step and saves the result in the document."
+            },
+            {
+              "kind": "method",
+              "name": "restoreData",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "closeConfigDrawers",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "description": "Closes every widget-contained configuration drawer, so that a drawer never shows stale content."
+            },
+            {
+              "kind": "method",
+              "name": "switchMode",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "mode",
+                  "type": {
+                    "text": "'edit' | 'simulate'"
+                  }
+                }
+              ],
+              "description": "Switches between 'edit' and 'simulate'. Leaving the simulation rebuilds the diagram from the saved data."
+            },
+            {
+              "kind": "method",
+              "name": "addNode",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "kind",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "Adds a host, a connector or a net from the toolbox."
+            },
+            {
+              "kind": "method",
+              "name": "centerView",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "description": "Pans the view so that the diagram is in the middle of it."
+            },
+            {
+              "kind": "method",
+              "name": "deleteSelected",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "toggleDrawMode",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "toggleDragAndDropSubnetting",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "toggleAssigningGateway",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "validateAllNets",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "pickEndPoint",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "role",
+                  "type": {
+                    "text": "'source' | 'target'"
+                  }
+                }
+              ],
+              "description": "Lets the next click on a node choose the sender or receiver of the simulation."
+            },
+            {
+              "kind": "method",
+              "name": "handleFullscreenToggle",
+              "privacy": "private",
+              "description": "Toggles fullscreen mode using the Fullscreen API."
             },
             {
               "kind": "field",
@@ -108,14 +492,11 @@
                 "text": "boolean"
               },
               "privacy": "private",
-              "description": "Whether the editor is in fullscreen mode.\r\nUses the Fullscreen API to determine if the element itself is the fullscreen element.",
               "readonly": true
             },
             {
-              "kind": "method",
-              "name": "handleFullscreenToggle",
-              "privacy": "private",
-              "description": "Toggles fullscreen mode using the Fullscreen API and requests a re-render afterwards.\r\nSafely catches errors when entering fullscreen is not allowed."
+              "kind": "field",
+              "name": "diagram"
             }
           ],
           "attributes": [
@@ -123,7 +504,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Enables automation-related UI.",
+              "description": "Enables automation-related UI for subnetting.",
               "name": "automate",
               "default": "false",
               "fieldName": "automate"
@@ -132,7 +513,7 @@
               "type": {
                 "text": "'small' | 'medium'"
               },
-              "description": "Controls the default size of Shoelace controls within this widget.",
+              "description": "Size forwarded to Shoelace controls.",
               "name": "screen",
               "default": "'medium'",
               "fieldName": "screen"
@@ -140,9 +521,10 @@
             {
               "name": "selectedObject",
               "type": {
-                "text": "any"
+                "text": "GraphNode | GraphEdge | null"
               },
-              "description": "The currently selected Cytoscape element (node or edge).",
+              "default": "null",
+              "description": "The node, net or edge that was selected last.",
               "fieldName": "selectedObject"
             }
           ],
@@ -153,25 +535,25 @@
           "tagName": "ww-network",
           "customElement": true,
           "summary": "Visualization of network topologies. Can represent different kinds of networks.",
-          "modulePath": "src/index.ts",
-          "definitionPath": "src/index.ts"
+          "modulePath": "src/widgets/ww-network.ts",
+          "definitionPath": "src/widgets/ww-network.ts"
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "NetworkComponent",
+          "name": "WwNetwork",
           "declaration": {
-            "name": "NetworkComponent",
-            "module": "src/index.ts"
+            "name": "WwNetwork",
+            "module": "src/widgets/ww-network.ts"
           }
         },
         {
           "kind": "custom-element-definition",
           "name": "ww-network",
           "declaration": {
-            "name": "NetworkComponent",
-            "module": "src/index.ts"
+            "name": "WwNetwork",
+            "module": "src/widgets/ww-network.ts"
           }
         }
       ]
