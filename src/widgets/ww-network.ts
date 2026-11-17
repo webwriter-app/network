@@ -273,6 +273,8 @@ export class WwNetwork extends LitElementWw {
         super.connectedCallback();
         this.#listeners = new AbortController();
         this.ownerDocument.addEventListener('fullscreenchange', () => this.requestUpdate(), { signal: this.#listeners.signal });
+        // firstUpdated observes only once; a re-inserted widget must observe again.
+        if (this.hasUpdated) this.#dataObserver.observe(this, { childList: true, subtree: true });
     }
 
     disconnectedCallback() {

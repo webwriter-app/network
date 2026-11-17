@@ -97,7 +97,6 @@ export class RoutableDecorator extends DataHandlingDecorator {
                                 portIn,
                                 data,
                                 macSender,
-                                data.layer3header.ipSender,
                                 '',
                                 ipReceiver,
                                 courier
@@ -122,7 +121,6 @@ export class RoutableDecorator extends DataHandlingDecorator {
                 null,
                 data,
                 this.getMacProvidedIp(data.layer3header.ipSender)!,
-                data.layer3header.ipSender,
                 '',
                 data.layer3header.ipReceiver,
                 courier
@@ -157,7 +155,6 @@ export class RoutableDecorator extends DataHandlingDecorator {
             portIn,
             arpRequest,
             macSender,
-            ipSender,
             arpRequest.layer2header.macReceiver,
             ipReceiver,
             courier
@@ -176,14 +173,13 @@ export class RoutableDecorator extends DataHandlingDecorator {
 
         const arpRes: Frame = Frame.createArpResponse(courier.diagram.currentColor, macReceiver, macSender, ipReceiver, ipSender);
         courier.initMessage(this.id, arpRes);
-        this.sendDataInSameNetwork(portIn, arpRes, macReceiver, ipReceiver, macSender, ipSender, courier);
+        this.sendDataInSameNetwork(portIn, arpRes, macReceiver, macSender, ipSender, courier);
     }
 
     sendDataInSameNetwork(
         lastPortIn: number | null,
         data: Data,
         macSender: string,
-        ipSender: string,
         macReceiver: string,
         ipReceiver: string,
         courier: Courier
@@ -242,7 +238,6 @@ export class RoutableDecorator extends DataHandlingDecorator {
                 lastPortIn,
                 data,
                 macSender,
-                ipSender,
                 this.arpTableMacIp.get(gatewayIp)!,
                 gatewayIp,
                 courier
@@ -291,7 +286,6 @@ export class RoutableDecorator extends DataHandlingDecorator {
                     portToSend,
                     data,
                     data.layer2header.macSender,
-                    data.layer3header.ipSender,
                     mac,
                     ip,
                     courier

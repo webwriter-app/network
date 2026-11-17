@@ -3,7 +3,7 @@ import "mocha/mocha.js";
 import { assert } from "chai";
 import { getMochaConfig } from "@webwriter/build/test";
 import "../src/widgets/ww-network";
- import { mount, until, unmountAll, nodes, dataBlock, snippets, wait } from "./helpers";
+import { mount, until, unmountAll, dataBlock, snippets, wait } from "./helpers";
 
 mocha.setup(getMochaConfig());
 
