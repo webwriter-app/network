@@ -1,5 +1,4 @@
 import { html, type TemplateResult } from 'lit';
-import { ifDefined } from 'lit/directives/if-defined.js';
 import iconAccessPoint from '@tabler/icons/outline/access-point.svg';
 import iconCloudCheck from '@tabler/icons/outline/cloud-check.svg';
 import iconCloudPlus from '@tabler/icons/outline/cloud-plus.svg';
@@ -17,19 +16,21 @@ import iconTopologyStar3 from '@tabler/icons/outline/topology-star-3.svg';
 import iconUser from '@tabler/icons/outline/user.svg';
 import type { WwNetwork } from '../widgets/ww-network';
 
-type Entry = { kind: string; label: string; icon: string; aria?: boolean };
+type Entry = { kind: string; label: string; icon: string };
 
 /**
  * Renders the floating toolbox used in 'edit' mode.
  * Contains quick actions to add hosts, network devices, edges, and networks.
  */
 export function toolboxTemplate(this: WwNetwork): TemplateResult {
-    const entry = ({ kind, label, icon, aria }: Entry) => html`
+    const group = (name: string) => (this.toolboxGroup === name ? 'toolbox__buttongroup open' : 'toolbox__buttongroup');
+    const toggle = (name: string) => () => (this.toolboxGroup = this.toolboxGroup === name ? null : name);
+    const entry = ({ kind, label, icon }: Entry) => html`
         <sl-tooltip content=${label} placement="top">
             <sl-button
                 circle
                 class="toolbox__btn"
-                aria-label=${ifDefined(aria ? label : undefined)}
+                aria-label=${label}
                 @click=${() => this.addNode(kind)}
             >
                 <sl-icon src=${icon}></sl-icon>
@@ -37,34 +38,67 @@ export function toolboxTemplate(this: WwNetwork): TemplateResult {
         </sl-tooltip>
     `;
     return html`
-        <div class="toolbox" style=${this.mode == 'edit' ? 'display: flex;' : 'display: none;'}>
+        <div
+            class="toolbox"
+            style=${this.mode == 'edit' ? 'display: flex;' : 'display: none;'}
+            @keydown=${(event: KeyboardEvent) => {
+                if (event.key !== 'Escape' || (!this.toolboxOpen && !this.toolboxGroup)) return;
+                event.preventDefault();
+                event.stopPropagation();
+                if (this.toolboxGroup) this.toolboxGroup = null;
+                else this.toolboxOpen = false;
+            }}
+        >
             <sl-button
                 size="large"
                 circle
                 class="toolbox__open"
                 aria-label=${this.msg('Add')}
-                @click=${() => this.renderRoot.querySelector('#toolboxButtons')?.classList.toggle('closed')}
+                aria-expanded=${this.toolboxOpen ? 'true' : 'false'}
+                aria-controls="toolboxButtons"
+                @click=${() => {
+                    this.toolboxOpen = !this.toolboxOpen;
+                    this.toolboxGroup = null;
+                }}
             >
                 <sl-icon src=${iconPlus}></sl-icon>
             </sl-button>
 
-            <div class="toolbox__buttons closed" id="toolboxButtons">
-                <div class="toolbox__buttongroup">
-                    <sl-button circle class="toolbox__btn" ?disabled=${this.drawModeOn}> <sl-icon src=${iconUser}></sl-icon> </sl-button>
+            <div class=${this.toolboxOpen ? 'toolbox__buttons' : 'toolbox__buttons closed'} id="toolboxButtons">
+                <div class=${group('hosts')}>
+                    <sl-button
+                        circle
+                        class="toolbox__btn"
+                        aria-label=${this.msg('Hosts')}
+                        aria-expanded=${this.toolboxGroup === 'hosts' ? 'true' : 'false'}
+                        ?disabled=${this.drawModeOn}
+                        @click=${toggle('hosts')}
+                    >
+                        <sl-icon src=${iconUser}></sl-icon>
+                    </sl-button>
                     <div class="toolbox__subbuttons">
                         ${entry({ kind: 'computer', label: this.msg('Computer'), icon: iconDeviceDesktop })}
                         ${entry({ kind: 'mobile', label: this.msg('Mobile device'), icon: iconDeviceMobile })}
                     </div>
                 </div>
-                <div class="toolbox__buttongroup">
-                    <sl-button circle class="toolbox__btn" ?disabled=${this.drawModeOn}> <sl-icon src=${iconServer}></sl-icon> </sl-button>
+                <div class=${group('devices')}>
+                    <sl-button
+                        circle
+                        class="toolbox__btn"
+                        aria-label=${this.msg('Network devices')}
+                        aria-expanded=${this.toolboxGroup === 'devices' ? 'true' : 'false'}
+                        ?disabled=${this.drawModeOn}
+                        @click=${toggle('devices')}
+                    >
+                        <sl-icon src=${iconServer}></sl-icon>
+                    </sl-button>
                     <div class="toolbox__subbuttons">
                         ${entry({ kind: 'router', label: this.msg('Router'), icon: iconRouter })}
                         ${entry({ kind: 'access-point', label: this.msg('Access point'), icon: iconAccessPoint })}
                         ${entry({ kind: 'repeater', label: this.msg('Repeater'), icon: iconServer })}
-                        ${entry({ kind: 'hub', label: this.msg('Hub'), icon: iconTopologyStar3, aria: true })}
-                        ${entry({ kind: 'bridge', label: this.msg('Bridge'), icon: iconTopologyBus, aria: true })}
-                        ${entry({ kind: 'switch', label: this.msg('Switch'), icon: iconSwitchHorizontal, aria: true })}
+                        ${entry({ kind: 'hub', label: this.msg('Hub'), icon: iconTopologyStar3 })}
+                        ${entry({ kind: 'bridge', label: this.msg('Bridge'), icon: iconTopologyBus })}
+                        ${entry({ kind: 'switch', label: this.msg('Switch'), icon: iconSwitchHorizontal })}
                     </div>
                 </div>
                 <div class="toolbox__buttongroup">
@@ -72,6 +106,8 @@ export function toolboxTemplate(this: WwNetwork): TemplateResult {
                         <sl-button
                             circle
                             class="toolbox__btn"
+                            aria-label=${this.msg('Edge')}
+                            aria-pressed=${this.drawModeOn ? 'true' : 'false'}
                             variant=${this.drawModeOn ? 'primary' : 'default'}
                             @click=${() => this.toggleDrawMode()}
                         >
@@ -79,9 +115,19 @@ export function toolboxTemplate(this: WwNetwork): TemplateResult {
                         </sl-button>
                     </sl-tooltip>
                 </div>
-                <div class="toolbox__buttongroup">
+                <div class=${group('nets')}>
                     <sl-tooltip content=${this.msg('Network')} placement="bottom">
-                        <sl-button circle class="toolbox__btn" ?disabled=${this.drawModeOn} @click=${() => this.addNode('net')}>
+                        <sl-button
+                            circle
+                            class="toolbox__btn"
+                            aria-label=${this.msg('Network')}
+                            aria-expanded=${this.toolboxGroup === 'nets' ? 'true' : 'false'}
+                            ?disabled=${this.drawModeOn}
+                            @click=${() => {
+                                this.addNode('net');
+                                this.toolboxGroup = 'nets';
+                            }}
+                        >
                             <sl-icon src=${iconTopologyFullHierarchy}></sl-icon>
                         </sl-button>
                     </sl-tooltip>
@@ -91,6 +137,8 @@ export function toolboxTemplate(this: WwNetwork): TemplateResult {
                             <sl-button
                                 circle
                                 class="toolbox__btn"
+                                aria-label=${this.msg('Network assignment')}
+                                aria-pressed=${this.mutexDragAndDrop === 'subnetting' ? 'true' : 'false'}
                                 variant=${this.mutexDragAndDrop === 'subnetting' ? 'primary' : 'default'}
                                 @click=${() => this.toggleDragAndDropSubnetting()}
                             >
@@ -101,6 +149,8 @@ export function toolboxTemplate(this: WwNetwork): TemplateResult {
                             <sl-button
                                 circle
                                 class="toolbox__btn"
+                                aria-label=${this.msg('Gateway assignment')}
+                                aria-pressed=${this.mutexDragAndDrop === 'gateway' ? 'true' : 'false'}
                                 variant=${this.mutexDragAndDrop === 'gateway' ? 'primary' : 'default'}
                                 @click=${() => this.toggleAssigningGateway()}
                             >
@@ -108,7 +158,12 @@ export function toolboxTemplate(this: WwNetwork): TemplateResult {
                             </sl-button>
                         </sl-tooltip>
                         <sl-tooltip content=${this.msg('Validate global address assignments')} placement="top">
-                            <sl-button circle class="toolbox__btn" @click=${() => this.validateAllNets()}>
+                            <sl-button
+                                circle
+                                class="toolbox__btn"
+                                aria-label=${this.msg('Validate global address assignments')}
+                                @click=${() => this.validateAllNets()}
+                            >
                                 <sl-icon src=${iconCloudCheck}></sl-icon>
                             </sl-button>
                         </sl-tooltip>

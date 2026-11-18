@@ -10,7 +10,20 @@
     "isced2011-4",
     "isced2011-5",
     "isced2011-6",
-    "iscedf2013-06",
+    "iscedf2013-0612",
+    "widget-editable",
+    "widget-allows-pointer-input",
+    "widget-allows-keyboard-input",
+    "widget-allows-touch-input",
+    "widget-convertible-to-application/json",
+    "widget-convertible-to-image/svg+xml",
+    "widget-convertible-from-application/json",
+    "widget-responsive",
+    "widget-themeable",
+    "widget-printable",
+    "widget-stateful",
+    "widget-testable",
+    "widget-supports-shared-dependencies",
     "topology",
     "networks",
     "routing",
@@ -169,6 +182,14 @@
       "source": "./tests/scene.test.ts",
       "default": "./dist/tests/scene.*"
     },
+    "./tests/features.*": {
+      "source": "./tests/features.test.ts",
+      "default": "./dist/tests/features.*"
+    },
+    "./tests/conversions.*": {
+      "source": "./tests/conversions.test.ts",
+      "default": "./dist/tests/conversions.*"
+    },
     "./package.json": "./package.json",
     "./icon": "./icon.svg",
     "./editing-config.json": "./editing-config.json",
@@ -176,7 +197,15 @@
   },
   "editingConfig": {
     ".": {},
-    "./widgets/ww-network": {}
+    "./widgets/ww-network": {
+      "importFormats": [
+        ".json"
+      ],
+      "exportFormats": [
+        ".json",
+        "image/svg+xml"
+      ]
+    }
   },
   "customElements": "custom-elements.json",
   "devDependencies": {

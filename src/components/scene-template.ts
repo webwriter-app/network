@@ -31,6 +31,7 @@ function netTemplate(this: WwNetwork, net: Net, editing: boolean): TemplateResul
         return html`
             <ww-shape
                 class=${shared.class}
+                part="net"
                 kind="rect"
                 radius="4"
                 data-ww-key=${shared.key}
@@ -48,6 +49,7 @@ function netTemplate(this: WwNetwork, net: Net, editing: boolean): TemplateResul
     return html`
         <ww-group
             class=${shared.class}
+            part="net"
             data-ww-key=${shared.key}
             frame
             padding=${NET_PADDING}
@@ -77,6 +79,7 @@ function edgeTemplate(this: WwNetwork, edge: GraphEdge): TemplateResult {
     return html`
         <ww-path
             class="color-edge ${edge.cssClass.join(' ')}"
+            part="edge"
             data-ww-key=${edge.id}
             from=${edge.source}
             to=${edge.target}
@@ -117,6 +120,7 @@ function physicalNodeTemplate(this: WwNetwork, node: PhysicalNode, editing: bool
     return html`
         <ww-node
             class="${node.cssClass.join(' ')} ${this.editing ? 'deletable' : ''}"
+            part="node"
             data-ww-key=${node.id}
             x=${node.x - NODE_SIZE / 2}
             y=${node.y - NODE_SIZE / 2}
@@ -165,7 +169,7 @@ export function sceneTemplate(this: WwNetwork): TemplateResult {
         <ww-scene
             select="single"
             data-ww-viewport="canvas"
-            data-ww-viewport-zoom="0.5 5"
+            data-ww-viewport-zoom="0.15 5"
             data-ww-viewport-wheel="zoom"
             data-ww-viewport-start="fit"
             data-ww-viewport-fit-padding=${FIT_PADDING}

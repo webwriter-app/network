@@ -23,6 +23,7 @@ function endPointTemplate(
             >
             <sl-select
                 size="small"
+                label=${role === 'source' ? this.msg('Source address') : this.msg('Target address')}
                 value=${ip}
                 @sl-change=${(event: Event) => {
                     const value = (event.target as HTMLSelectElement).value;

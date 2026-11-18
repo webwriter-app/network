@@ -15,7 +15,8 @@ export const sceneStyles = css`
         inset: 0;
         width: 100%;
         height: 100%;
-        color: black;
+        color: var(--ww-text-color, black);
+        --ww-scene-selection: var(--ww-theme-accent-1, Highlight);
         -webkit-touch-callout: none;
     }
 
@@ -31,22 +32,22 @@ export const sceneStyles = css`
     }
 
     ww-path ww-text {
-        font-family: monospace;
+        font-family: var(--ww-font-family, monospace);
         font-size: 8px;
         white-space: pre-line;
         text-anchor: middle;
-        fill: black;
+        fill: var(--ww-text-color, black);
     }
 
     ww-group.net,
     ww-shape.net {
-        font-family: monospace;
+        font-family: var(--ww-font-family, monospace);
         font-size: 8px;
         stroke: none;
     }
 
     ww-node {
-        font-family: monospace;
+        font-family: var(--ww-font-family, monospace);
     }
     ww-node.physical-node {
         font-size: 15px;
@@ -77,13 +78,13 @@ export const sceneStyles = css`
     }
     ww-node[data-ww-link] {
         cursor: crosshair;
-        outline: 1px dashed #0291db;
+        outline: 1px dashed var(--ww-theme-accent-1, #0291db);
     }
     ww-node[data-ww-port-candidate] {
         outline-width: 2px;
     }
     ww-node[data-ww-port-over] {
-        background: #0291db55;
+        background: color-mix(in srgb, var(--ww-theme-accent-1, #0291db) 33%, transparent);
     }
 
     ww-node.data-node {

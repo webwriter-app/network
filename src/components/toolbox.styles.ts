@@ -44,8 +44,22 @@ export const toolboxStyles = css`
         margin-right: 5px;
     }
 
-    .toolbox__buttongroup:not(:has(sl-button[disabled])):hover .toolbox__subbuttons {
+    .toolbox__buttongroup:not(:has(sl-button[disabled])):hover .toolbox__subbuttons,
+    .toolbox__buttongroup.open .toolbox__subbuttons {
         display: flex;
         flex-direction: row;
+    }
+
+    @container (max-width: 480px) {
+        .toolbox__subbuttons {
+            flex-wrap: wrap;
+            max-width: calc(100cqw - 110px);
+        }
+    }
+
+    @media print {
+        .toolbox {
+            display: none !important;
+        }
     }
 `;

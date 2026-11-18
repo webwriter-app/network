@@ -1,6 +1,7 @@
 import type { MsgFn } from "@lit/localize";
 import { localizer } from "@webwriter/lit/localize";
 import { Permissions } from "@webwriter/lit/permissions";
+import { Shortcuts } from "@webwriter/lit/shortcuts";
 import { SceneController } from "@webwriter/lit/scene";
 import { Viewport } from "@webwriter/lit/viewport";
 import { sceneElements, type SceneBase as SceneElement, type SceneItem } from "@webwriter/widget/scene";
@@ -30,6 +31,7 @@ import { GraphEdge } from '../model/graph-edge';
 import type { GraphNode } from '../model/graph-node';
 import type { Box } from '../model/layout';
 import { exportNetworkFile, importNetworkFile, importTables } from '../model/network-file';
+import { diagramToSvg } from '../model/network-svg';
 import { addNet, addPhysicalNode, newNodeData } from '../model/node-factory';
 import type { NoticeVariant } from '../model/notice';
 import { type Component, type Connection, loadDiagram, type Network, serializeDiagram } from '../model/serialization';
@@ -55,7 +57,6 @@ import SlTabGroup from '@shoelace-style/shoelace/dist/components/tab-group/tab-g
 import SlTab from '@shoelace-style/shoelace/dist/components/tab/tab.component.js';
 import SlTabPanel from '@shoelace-style/shoelace/dist/components/tab-panel/tab-panel.component.js';
 import SlIcon from '@shoelace-style/shoelace/dist/components/icon/icon.component.js';
-import { styleMap } from 'lit/directives/style-map.js';
 import iconPencil from '@tabler/icons/outline/pencil.svg';
 import iconPackages from '@tabler/icons/outline/packages.svg';
 import iconMinimize from '@tabler/icons/outline/minimize.svg';
@@ -76,6 +77,18 @@ import iconMaximize from '@tabler/icons/outline/maximize.svg';
  * @prop {Array<Network>} [networks=[]] - Serialized logical networks.
  *
  * @slot data - Direct application/json block stores network components, connections, and networks.
+ *
+ * @part canvas - The frame that holds the diagram and its controls.
+ * @part net - A net, drawn as a box around its hosts.
+ * @part node - A host or a connector.
+ * @part edge - A connection between two nodes.
+ *
+ * Conversions: imports and exports a network file (`.json`, the file of the Import and Export actions); exports the diagram as
+ * a picture (`image/svg+xml`: nets, connections, hosts and connectors with their names; simulation packets are left out).
+ * Theme: text follows `--ww-text-color` and `--ww-font-family`; the selection and the link marks follow `--ww-theme-accent-1`.
+ * Keyboard: Tab reaches the toolbox and the diagram; arrow keys move the selected node in edit mode, Enter on a node starts a
+ * connection while Edge is on, the menu key opens the context menu, Delete removes the selection. Print: the controls are
+ * hidden and the diagram prints as it is shown.
  */
 @customElement('ww-network')
 export class WwNetwork extends LitElementWw {
@@ -106,9 +119,14 @@ export class WwNetwork extends LitElementWw {
         'sl-tab-panel': SlTabPanel,
     };
 
+    static convertFrom = { '.json': 'importJson' };
+
+    static convertTo = { '.json': 'exportJson', 'image/svg+xml': 'exportSvg' };
+
     static actions = {
         importNetwork: { label: (widget: { msg: MsgFn }) => widget.msg("Import network"), icon: "Upload", intent: "default", input: { type: "file", accept: ".json,application/json" } },
         exportNetwork: { label: (widget: { msg: MsgFn }) => widget.msg("Export network"), icon: "Download", intent: "default" },
+        removeSelected: { label: (widget: { msg: MsgFn }) => widget.msg("Delete"), shortcut: ["Delete", "Backspace"], hidden: true },
     } as const;
 
     localize = localizer(this, {
@@ -121,6 +139,9 @@ export class WwNetwork extends LitElementWw {
     public readonly msg: MsgFn = this.localize.msg;
 
     #permissions = new Permissions(this);
+
+    /** @internal Runs the Delete key. */
+    readonly shortcuts = new Shortcuts(this);
 
     /** The scene is the window of the viewport: it pans and zooms the diagram. */
     #viewport: Viewport = new Viewport(this, { bounds: () => this.#scene.extent(), can: () => !this.#scene.marquee });
@@ -186,6 +207,14 @@ export class WwNetwork extends LitElementWw {
 
     @state()
     accessor contextMenuColorOpen = false;
+
+    /** @internal Whether the toolbox shows its buttons. */
+    @state()
+    accessor toolboxOpen = false;
+
+    /** @internal The toolbox group whose buttons are shown, null when none. */
+    @state()
+    accessor toolboxGroup: string | null = null;
 
     @state()
     accessor toasts: Toast[] = [];
@@ -284,26 +313,53 @@ export class WwNetwork extends LitElementWw {
         this.packetSimulator.stopSession();
     }
 
-    importNetwork(files: File[]) {
-        if (!files[0]) return;
-        void files[0].text().then((text) => {
-            const json = JSON.parse(text);
-            this.packetSimulator.stopSession();
-            const diagram = this.newDiagram();
+    /** Reads a network file and builds its diagram; the widget changes only when the returned function runs. */
+    async importJson(file: File): Promise<() => void> {
+        let json: any;
+        let diagram: Diagram;
+        try {
+            json = JSON.parse(await file.text());
+            const lists = ['logical-nodes', 'physical-nodes', 'edges'];
+            if (!lists.every((key) => Array.isArray(json?.[key]))) throw new Error('shape');
+            diagram = this.newDiagram();
             importNetworkFile(diagram, json);
+        } catch {
+            throw new Error(this.msg('This file is not a network file.'));
+        }
+        return () => {
+            this.packetSimulator.stopSession();
             this.diagram = diagram;
             if (json.hasOwnProperty('inited')) {
                 this.packetSimulator.initSession();
                 importTables(this.diagram, json);
             }
             this.apply();
-        });
+        };
+    }
+
+    importNetwork(files: File[]) {
+        if (!files[0]) return;
+        this.importJson(files[0]).then(
+            (apply) => apply(),
+            (error: Error) => this.notify('warning', '', error.message)
+        );
+    }
+
+    /** The topology as a network file: hosts, connectors, nets and connections, with the tables of a running simulation. */
+    exportJson(): File {
+        const data = exportNetworkFile(this.diagram, this.packetSimulator.inited);
+        return new File([JSON.stringify(data)], 'network.json', { type: 'application/json' });
+    }
+
+    /** The diagram as a picture. Simulation packets and the view's pan and zoom are not part of it. */
+    exportSvg(): File {
+        return new File([diagramToSvg(this.diagram)], 'network.svg', { type: 'image/svg+xml' });
     }
 
     exportNetwork() {
-        const blob = new Blob([JSON.stringify(exportNetworkFile(this.diagram, this.packetSimulator.inited))], { type: 'application/json' });
+        const file = this.exportJson();
         const link = this.ownerDocument.createElement('a');
-        link.href = URL.createObjectURL(blob);
+        link.href = URL.createObjectURL(file);
         link.download = 'network-graph-' + Date.now() + '.json';
         link.click();
         setTimeout(() => URL.revokeObjectURL(link.href), 1000);
@@ -421,6 +477,14 @@ export class WwNetwork extends LitElementWw {
         void this.updateComplete.then(() => this.centerView());
     }
 
+    /** Deletes the selected host, net or connection when the Delete key is pressed on the scene. */
+    removeSelected(): boolean {
+        const onScene = !!this.shadowRoot?.activeElement?.closest('ww-scene');
+        if (this.mode !== 'edit' || !this.selectedObject || !onScene || this.contextMenuAnchor) return false;
+        this.deleteSelected();
+        return true;
+    }
+
     /** Pans the view so that the diagram is in the middle of it. */
     private centerView(): void {
         const box = this.#scene.extent();
@@ -480,10 +544,11 @@ export class WwNetwork extends LitElementWw {
 
     public render(): TemplateResult {
         return html`
-            <div class="canvas" id="myCanvas" style="${styleMap({height: this.isFullscreen ? "100%" : "500px"})}">
+            <div class="canvas" id="myCanvas" part="canvas">
                 <div class="modeSwitch">
                     <sl-select
                         value=${this.mode}
+                        label=${this.msg("Mode")}
                         @sl-change=${(event: Event) => {
                             this.closeContextMenu();
                             this.switchMode((event.target as HTMLSelectElement).value as 'edit' | 'simulate');
@@ -501,7 +566,7 @@ export class WwNetwork extends LitElementWw {
                 <div class="viewportControls" data-ww-viewport-controls></div>
 
                 <sl-tooltip content=${this.isFullscreen ? this.msg("Exit Fullscreen") : this.msg("Fullscreen")}>
-                    <sl-button size="large" circle class="fullscreenButton" @click=${() => this.handleFullscreenToggle()}>
+                    <sl-button size="large" circle class="fullscreenButton" aria-label=${this.isFullscreen ? this.msg("Exit Fullscreen") : this.msg("Fullscreen")} @click=${() => this.handleFullscreenToggle()}>
                         <sl-icon src=${this.isFullscreen ? iconMinimize : iconMaximize}></sl-icon>
                     </sl-button>
                 </sl-tooltip>
