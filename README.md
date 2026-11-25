@@ -1,7 +1,7 @@
 # Network (`@webwriter/network@3.0.0`)
 [License: MIT](LICENSE) | Version: 3.0.0
 
-Visualization of network topologies. Can represent different kinds of networks.
+Visualize network topologies and compare different kinds of networks.
 
 ## Snippets
 [Snippets](https://webwriter.app/docs/snippets/snippets/) are examples and templates using the package's widgets.
@@ -120,4 +120,4 @@ npm install @webwriter/network
 
 
 ---
-*Generated with @webwriter/build@1.14.0*
+*Generated with @webwriter/build@1.15.0*

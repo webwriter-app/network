@@ -633,9 +633,7 @@
           },
           "tagName": "ww-network",
           "customElement": true,
-          "summary": "Visualization of network topologies. Can represent different kinds of networks.",
-          "modulePath": "src/widgets/ww-network.ts",
-          "definitionPath": "src/widgets/ww-network.ts"
+          "summary": "Visualization of network topologies. Can represent different kinds of networks."
         }
       ],
       "exports": [
