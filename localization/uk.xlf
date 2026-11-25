@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd" version="1.2">
   <file original="lit-localize-inputs" datatype="plaintext" source-language="en" target-language="uk">
     <body>
@@ -18,10 +18,6 @@
         <source>Fullscreen</source>
         <target>Повноекранний режим</target>
       </trans-unit>
-      <trans-unit id="s5eedf01beec54734">
-        <source>Tutorials</source>
-        <target>Навчальні посібники</target>
-      </trans-unit>
       <trans-unit id="sba1e8892999bb878">
         <source>Computer</source>
         <target>Комп'ютер.</target>
@@ -29,10 +25,6 @@
       <trans-unit id="s4f0026a488fbdca3">
         <source>Mobile device</source>
         <target>Мобільний пристрій</target>
-      </trans-unit>
-      <trans-unit id="sd8dddc9cd2d5b135">
-        <source>Network device</source>
-        <target>Мережевий пристрій</target>
       </trans-unit>
       <trans-unit id="se51d6fb9158b9f24">
         <source>Router</source>
@@ -56,7 +48,8 @@
       </trans-unit>
       <trans-unit id="s8e114dd98aeedf91">
         <source>Switch</source>
-<target>Мережевий комутатор</target></trans-unit>
+        <target>Мережевий комутатор</target>
+      </trans-unit>
       <trans-unit id="s6503256c2de2745c">
         <source>Edge</source>
         <target>Край</target>
@@ -77,6 +70,238 @@
         <source>Validate global address assignments</source>
         <target>Перевірка призначення глобальних адрес</target>
       </trans-unit>
+      <trans-unit id="s9c84598a99c03b88">
+        <source>Bitmask</source>
+        <target>Біт-маска.</target>
+      </trans-unit>
+      <trans-unit id="s3741f219c32abe78">
+        <source>Net</source>
+        <target>Net</target>
+      </trans-unit>
+      <trans-unit id="sc2abe27bb5be2879">
+        <source>Gateway</source>
+        <target>Шлюз</target>
+      </trans-unit>
+      <trans-unit id="scbbde46d3e773c0e">
+        <source>Ethernet</source>
+        <target>Ethernet</target>
+      </trans-unit>
+      <trans-unit id="s05f14bdb78dbcdb1">
+        <source>Wireless</source>
+        <target>Бездротовий</target>
+      </trans-unit>
+      <trans-unit id="sdb11e8f269ea1b13">
+        <source>Inserted IPv4 doesn't match the subnet mask.</source>
+        <target>Вставлений IPv4 не відповідає масці підмережі.</target>
+      </trans-unit>
+      <trans-unit id="s138df1ceb51a3661">
+        <source>Inserted IPv4 for gateway doesn't match the subnet mask or the network is not configured.</source>
+        <target>Вставлений IPv4 для шлюзу не відповідає масці підмережі або мережа не налаштована.</target>
+      </trans-unit>
+      <trans-unit id="se1b13a7c92d4dcc3">
+        <source>Connection Type</source>
+        <target>Тип підключення</target>
+      </trans-unit>
+      <trans-unit id="sbcc845948d536d4e">
+        <source>ARP Table</source>
+        <target>ARP-таблиця</target>
+      </trans-unit>
+      <trans-unit id="sc86686973428936d">
+        <source>Routing Table</source>
+        <target>Таблиця маршрутизації</target>
+      </trans-unit>
+      <trans-unit id="s47f47667e50169dc">
+        <source>Mac Address Table</source>
+        <target>Таблиця Mac-адрес</target>
+      </trans-unit>
+      <trans-unit id="sf9aee319a006c9b4">
+        <source>Add</source>
+        <target>Додати</target>
+      </trans-unit>
+      <trans-unit id="sef49aec68fd1dc66">
+        <source>Name</source>
+        <target>Ім'я</target>
+      </trans-unit>
+      <trans-unit id="s4114a8a9e84611a4">
+        <source>No port available.</source>
+        <target>Порт недоступний.</target>
+      </trans-unit>
+      <trans-unit id="sf35d6a5dc03d5557">
+        <source>Add Port</source>
+        <target>Додати порт</target>
+      </trans-unit>
+      <trans-unit id="s9a66f95d51e77c3d">
+        <source>Details of the network </source>
+        <target>Детальна інформація про мережу </target>
+      </trans-unit>
+      <trans-unit id="s71183ed55882f1c9">
+        <source>IPv4 address is invalid.</source>
+        <target>IPv4 адреса є недійсною.</target>
+      </trans-unit>
+      <trans-unit id="s5882939b7613896e">
+        <source>Invalid net id.</source>
+        <target>Неправильний ідентифікатор мережі.</target>
+      </trans-unit>
+      <trans-unit id="sf2fe311e301fa69b">
+        <source>Network Mask</source>
+        <target>Мережева маска</target>
+      </trans-unit>
+      <trans-unit id="s02ba6f5ad4b7f7d3">
+        <source>Invalid netmask.</source>
+        <target>Неправильна маска мережі.</target>
+      </trans-unit>
+      <trans-unit id="s146232d3025412f3">
+        <source>Invalid bitmask.</source>
+        <target>Неправильна біт-маска.</target>
+      </trans-unit>
+      <trans-unit id="s0ccb657bb5ab7aef">
+        <source>MAC address is invalid.</source>
+        <target>MAC-адреса невірна.</target>
+      </trans-unit>
+      <trans-unit id="sb3db490afc111f9f">
+        <source>IPv6 address is invalid.</source>
+        <target>IPv6 адреса є недійсною.</target>
+      </trans-unit>
+      <trans-unit id="s13a56952f9635fe4">
+        <source>Set Source</source>
+        <target>Встановити джерело</target>
+      </trans-unit>
+      <trans-unit id="se340f70c28bb766c">
+        <source>Set Target</source>
+        <target>Встановити ціль</target>
+      </trans-unit>
+      <trans-unit id="s479cdff9480652de">
+        <source>Start Simulation</source>
+        <target>Почніть моделювання</target>
+      </trans-unit>
+      <trans-unit id="s46e517b2962de3ce">
+        <source>Change Port Config</source>
+        <target>Змінити конфігурацію порту</target>
+      </trans-unit>
+      <trans-unit id="sbc909ebb8c28f954">
+        <source>Default Gateway</source>
+        <target>Шлюз за замовчуванням</target>
+      </trans-unit>
+      <trans-unit id="sdff41263f305c0ea">
+        <source>Define Interfaces</source>
+        <target>Визначте інтерфейси</target>
+      </trans-unit>
+      <trans-unit id="s82f9a9addfd569b4">
+        <source>Define Network</source>
+        <target>Визначте мережу</target>
+      </trans-unit>
+      <trans-unit id="s349e167cfb664e7f">
+        <source>Simulation tables</source>
+        <target>Таблиці моделювання</target>
+      </trans-unit>
+      <trans-unit id="sbca820dcc7f49c76">
+        <source>Change color</source>
+        <target>Змінити колір</target>
+      </trans-unit>
+      <trans-unit id="sdc673e73b5c13aea">
+        <source>Delete</source>
+        <target>Видалити</target>
+      </trans-unit>
+      <trans-unit id="s0480d34205c42b70">
+        <source>Ports of </source>
+        <target>Порти </target>
+      </trans-unit>
+      <trans-unit id="sb354dc19a7208a86">
+        <source>Port</source>
+        <target>Порт</target>
+      </trans-unit>
+      <trans-unit id="s954199c24bb1bd31">
+        <source>Disconnect the port to remove it.</source>
+        <target>Відключіть порт, щоб видалити його.</target>
+      </trans-unit>
+      <trans-unit id="sfcafb45ec30fbc60">
+        <source>Remove Port</source>
+        <target>Видалити порт</target>
+      </trans-unit>
+      <trans-unit id="s61506a07625cfc18">
+        <source>Disconnect the port to change its type.</source>
+        <target>Відключіть порт, щоб змінити його тип.</target>
+      </trans-unit>
+      <trans-unit id="s431ab01e3ccd9bf1">
+        <source>Select a port</source>
+        <target>Виберіть порт</target>
+      </trans-unit>
+      <trans-unit id="sa67b523cb72c0edb">
+        <source>Interfaces of the connection</source>
+        <target>Інтерфейси з'єднання</target>
+      </trans-unit>
+      <trans-unit id="s5f43af3669b1e098">
+        <source>Source</source>
+        <target>Джерело</target>
+      </trans-unit>
+      <trans-unit id="sff5bb7742c2896c8">
+        <source>Target</source>
+        <target>Призначення</target>
+      </trans-unit>
+      <trans-unit id="sa0aaabb83bc98a72">
+        <source>Import network</source>
+        <target>Імпортувати мережу</target>
+      </trans-unit>
+      <trans-unit id="s3f402f3f155ca6c9">
+        <source>Export network</source>
+        <target>Експортувати мережу</target>
+      </trans-unit>
+      <trans-unit id="sae0547f6ee918ff9">
+        <source>Please assign ports/interfaces</source>
+        <target>Призначте порти або інтерфейси</target>
+      </trans-unit>
+      <trans-unit id="s269a190f0086d892">
+        <source>Unconfigured</source>
+        <target>Не налаштовано</target>
+      </trans-unit>
+      <trans-unit id="s110e81e1ca4f992c">
+        <source>L2 L3 Data</source>
+        <target>Дані L2 і L3</target>
+      </trans-unit>
+      <trans-unit id="s72dee52f05a8a31b">
+        <source>L2 ARP request</source>
+        <target>Запит ARP на рівні L2</target>
+      </trans-unit>
+      <trans-unit id="sfdd5df424bd1f92a">
+        <source>L2 ARP reply</source>
+        <target>Відповідь ARP на рівні L2</target>
+      </trans-unit>
+      <trans-unit id="s631790646d968f40">
+        <source>L3 Data</source>
+        <target>Дані L3</target>
+      </trans-unit>
+      <trans-unit id="s4ebc556809db8378">
+        <source>Source address</source>
+        <target>Адреса джерела</target>
+      </trans-unit>
+      <trans-unit id="s2b52977dd01eb988">
+        <source>Target address</source>
+        <target>Цільова адреса</target>
+      </trans-unit>
+      <trans-unit id="sfae8c6e1b5f558f4">
+        <source>Hosts</source>
+        <target>Вузли</target>
+      </trans-unit>
+      <trans-unit id="s56af247a411c39f2">
+        <source>Network devices</source>
+        <target>Мережеві пристрої</target>
+      </trans-unit>
+      <trans-unit id="s5344520f09eaac03">
+        <source>This file is not a network file.</source>
+        <target>Цей файл не є мережевим файлом.</target>
+      </trans-unit>
+      <trans-unit id="s37cbecaec58e2192">
+        <source>Mode</source>
+      <target>Режим</target>
+</trans-unit>
+      <trans-unit id="s5eedf01beec54734">
+        <source>Tutorials</source>
+        <target>Навчальні посібники</target>
+      </trans-unit>
+      <trans-unit id="sd8dddc9cd2d5b135">
+        <source>Network device</source>
+        <target>Мережевий пристрій</target>
+      </trans-unit>
       <trans-unit id="s9c0c880f87b91eb4">
         <source>Import a file created by this widget</source>
         <target>Імпортуйте файл, створений цим віджетом</target>
@@ -95,7 +320,8 @@
       </trans-unit>
       <trans-unit id="s6b05f9d8801fc14f">
         <source>Host</source>
-<target>Хост</target></trans-unit>
+        <target>Хост</target>
+      </trans-unit>
       <trans-unit id="s1018d5f2b1cc4e8d">
         <source>Access Point</source>
         <target>Точка доступу</target>
@@ -127,10 +353,6 @@
       <trans-unit id="s0b985047f07efbd0">
         <source>Netmask</source>
         <target>Маска-сітка</target>
-      </trans-unit>
-      <trans-unit id="s9c84598a99c03b88">
-        <source>Bitmask</source>
-        <target>Біт-маска.</target>
       </trans-unit>
       <trans-unit id="see822b9851671c85">
         <source>Click to add your component</source>
@@ -256,14 +478,6 @@
         <source>No valid network address can be assigned to this net.</source>
         <target>Цій мережі не може бути призначено жодної дійсної мережевої адреси.</target>
       </trans-unit>
-      <trans-unit id="s3741f219c32abe78">
-        <source>Net</source>
-        <target>Net</target>
-      </trans-unit>
-      <trans-unit id="sc2abe27bb5be2879">
-        <source>Gateway</source>
-        <target>Шлюз</target>
-      </trans-unit>
       <trans-unit id="sc096fbcee1f2951a">
         <source>should contain</source>
         <target>повинен містити</target>
@@ -340,14 +554,6 @@
         <source>MAC Address</source>
         <target>MAC-адреса</target>
       </trans-unit>
-      <trans-unit id="scbbde46d3e773c0e">
-        <source>Ethernet</source>
-        <target>Ethernet</target>
-      </trans-unit>
-      <trans-unit id="s05f14bdb78dbcdb1">
-        <source>Wireless</source>
-        <target>Бездротовий</target>
-      </trans-unit>
       <trans-unit id="s7a1405870058921f">
         <source>Assigning ports for this connection</source>
         <target>Призначення портів для цього з'єднання</target>
@@ -376,14 +582,6 @@
         <source>Subnet-based mode on:</source>
         <target>Увімкнено режим на основі підмережі:</target>
       </trans-unit>
-      <trans-unit id="sdb11e8f269ea1b13">
-        <source>Inserted IPv4 doesn't match the subnet mask.</source>
-        <target>Вставлений IPv4 не відповідає масці підмережі.</target>
-      </trans-unit>
-      <trans-unit id="s138df1ceb51a3661">
-        <source>Inserted IPv4 for gateway doesn't match the subnet mask or the network is not configured.</source>
-        <target>Вставлений IPv4 для шлюзу не відповідає масці підмережі або мережа не налаштована.</target>
-      </trans-unit>
       <trans-unit id="s213a3bbc3f7af684">
         <source>is not valid.</source>
         <target>не є дійсним.</target>
@@ -399,10 +597,6 @@
       <trans-unit id="sf866305516492af0">
         <source>Interface</source>
         <target>Інтерфейс</target>
-      </trans-unit>
-      <trans-unit id="se1b13a7c92d4dcc3">
-        <source>Connection Type</source>
-        <target>Тип підключення</target>
       </trans-unit>
       <trans-unit id="s89d11288ef7198fa">
         <source>This network has no gateway.</source>
@@ -576,22 +770,6 @@
         <source>Your table is saved!</source>
         <target>Ваш стіл збережено!</target>
       </trans-unit>
-      <trans-unit id="sbcc845948d536d4e">
-        <source>ARP Table</source>
-        <target>ARP-таблиця</target>
-      </trans-unit>
-      <trans-unit id="sc86686973428936d">
-        <source>Routing Table</source>
-        <target>Таблиця маршрутизації</target>
-      </trans-unit>
-      <trans-unit id="s47f47667e50169dc">
-        <source>Mac Address Table</source>
-        <target>Таблиця Mac-адрес</target>
-      </trans-unit>
-      <trans-unit id="sf9aee319a006c9b4">
-        <source>Add</source>
-        <target>Додати</target>
-      </trans-unit>
       <trans-unit id="sea4f08110bb8f15d">
         <source>Remove</source>
         <target>Видалити</target>
@@ -683,78 +861,6 @@
       <trans-unit id="sb8766aae5913b0ef">
         <source>Example networks for simulations</source>
         <target>Приклади мереж для моделювання</target>
-      </trans-unit>
-      <trans-unit id="sef49aec68fd1dc66">
-        <source>Name</source>
-        <target>Ім'я</target>
-      </trans-unit>
-      <trans-unit id="s4114a8a9e84611a4">
-        <source>No port available.</source>
-        <target>Порт недоступний.</target>
-      </trans-unit>
-      <trans-unit id="sf35d6a5dc03d5557">
-        <source>Add Port</source>
-        <target>Додати порт</target>
-      </trans-unit>
-      <trans-unit id="s9a66f95d51e77c3d">
-        <source>Details of the network </source>
-        <target>Детальна інформація про мережу </target>
-      </trans-unit>
-      <trans-unit id="s71183ed55882f1c9">
-        <source>IPv4 address is invalid.</source>
-        <target>IPv4 адреса є недійсною.</target>
-      </trans-unit>
-      <trans-unit id="s5882939b7613896e">
-        <source>Invalid net id.</source>
-        <target>Неправильний ідентифікатор мережі.</target>
-      </trans-unit>
-      <trans-unit id="sf2fe311e301fa69b">
-        <source>Network Mask</source>
-        <target>Мережева маска</target>
-      </trans-unit>
-      <trans-unit id="s02ba6f5ad4b7f7d3">
-        <source>Invalid netmask.</source>
-        <target>Неправильна маска мережі.</target>
-      </trans-unit>
-      <trans-unit id="s146232d3025412f3">
-        <source>Invalid bitmask.</source>
-        <target>Неправильна біт-маска.</target>
-      </trans-unit>
-      <trans-unit id="s0ccb657bb5ab7aef">
-        <source>MAC address is invalid.</source>
-        <target>MAC-адреса невірна.</target>
-      </trans-unit>
-      <trans-unit id="sb3db490afc111f9f">
-        <source>IPv6 address is invalid.</source>
-        <target>IPv6 адреса є недійсною.</target>
-      </trans-unit>
-      <trans-unit id="s13a56952f9635fe4">
-        <source>Set Source</source>
-        <target>Встановити джерело</target>
-      </trans-unit>
-      <trans-unit id="se340f70c28bb766c">
-        <source>Set Target</source>
-        <target>Встановити ціль</target>
-      </trans-unit>
-      <trans-unit id="s479cdff9480652de">
-        <source>Start Simulation</source>
-        <target>Почніть моделювання</target>
-      </trans-unit>
-      <trans-unit id="s46e517b2962de3ce">
-        <source>Change Port Config</source>
-        <target>Змінити конфігурацію порту</target>
-      </trans-unit>
-      <trans-unit id="sbc909ebb8c28f954">
-        <source>Default Gateway</source>
-        <target>Шлюз за замовчуванням</target>
-      </trans-unit>
-      <trans-unit id="sdff41263f305c0ea">
-        <source>Define Interfaces</source>
-        <target>Визначте інтерфейси</target>
-      </trans-unit>
-      <trans-unit id="s82f9a9addfd569b4">
-        <source>Define Network</source>
-        <target>Визначте мережу</target>
       </trans-unit>
       <trans-unit id="s768df033dc306fbc">
         <source>Before dragging a node into network</source>
@@ -868,78 +974,6 @@
         <source>Packet sending controller to start simulation</source>
         <target>Контролер надсилання пакетів для запуску симуляції</target>
       </trans-unit>
-      <trans-unit id="s349e167cfb664e7f">
-        <source>Simulation tables</source>
-        <target>Таблиці моделювання</target>
-      </trans-unit>
-      <trans-unit id="sbca820dcc7f49c76">
-        <source>Change color</source>
-        <target>Змінити колір</target>
-      </trans-unit>
-      <trans-unit id="sdc673e73b5c13aea">
-        <source>Delete</source>
-        <target>Видалити</target>
-      </trans-unit>
-      <trans-unit id="s0480d34205c42b70">
-        <source>Ports of </source>
-        <target>Порти </target>
-      </trans-unit>
-      <trans-unit id="sb354dc19a7208a86">
-        <source>Port</source>
-        <target>Порт</target>
-      </trans-unit>
-      <trans-unit id="s954199c24bb1bd31">
-        <source>Disconnect the port to remove it.</source>
-        <target>Відключіть порт, щоб видалити його.</target>
-      </trans-unit>
-      <trans-unit id="sfcafb45ec30fbc60">
-        <source>Remove Port</source>
-        <target>Видалити порт</target>
-      </trans-unit>
-      <trans-unit id="s61506a07625cfc18">
-        <source>Disconnect the port to change its type.</source>
-        <target>Відключіть порт, щоб змінити його тип.</target>
-      </trans-unit>
-      <trans-unit id="s431ab01e3ccd9bf1">
-        <source>Select a port</source>
-        <target>Виберіть порт</target>
-      </trans-unit>
-      <trans-unit id="sa67b523cb72c0edb">
-        <source>Interfaces of the connection</source>
-        <target>Інтерфейси з'єднання</target>
-      </trans-unit>
-      <trans-unit id="s5f43af3669b1e098">
-        <source>Source</source>
-        <target>Джерело</target>
-      </trans-unit>
-      <trans-unit id="sff5bb7742c2896c8">
-        <source>Target</source>
-        <target>Призначення</target>
-      </trans-unit>
-    <trans-unit id="sa0aaabb83bc98a72">
-  <source>Import network</source>
-<target>Імпортувати мережу</target></trans-unit>
-<trans-unit id="s3f402f3f155ca6c9">
-  <source>Export network</source>
-<target>Експортувати мережу</target></trans-unit>
-<trans-unit id="sae0547f6ee918ff9">
-  <source>Please assign ports/interfaces</source>
-<target>Призначте порти або інтерфейси</target></trans-unit>
-<trans-unit id="s269a190f0086d892">
-  <source>Unconfigured</source>
-<target>Не налаштовано</target></trans-unit>
-<trans-unit id="s110e81e1ca4f992c">
-  <source>L2 L3 Data</source>
-<target>Дані L2 і L3</target></trans-unit>
-<trans-unit id="s72dee52f05a8a31b">
-  <source>L2 ARP request</source>
-<target>Запит ARP на рівні L2</target></trans-unit>
-<trans-unit id="sfdd5df424bd1f92a">
-  <source>L2 ARP reply</source>
-<target>Відповідь ARP на рівні L2</target></trans-unit>
-<trans-unit id="s631790646d968f40">
-  <source>L3 Data</source>
-<target>Дані L3</target></trans-unit>
-</body>
+    </body>
   </file>
 </xliff>

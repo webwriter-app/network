@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd" version="1.2">
   <file original="lit-localize-inputs" datatype="plaintext" source-language="en" target-language="sl">
     <body>
@@ -18,10 +18,6 @@
         <source>Fullscreen</source>
         <target>Celozaslonski zaslon</target>
       </trans-unit>
-      <trans-unit id="s5eedf01beec54734">
-        <source>Tutorials</source>
-        <target>Učna gradiva</target>
-      </trans-unit>
       <trans-unit id="sba1e8892999bb878">
         <source>Computer</source>
         <target>Računalnik</target>
@@ -29,10 +25,6 @@
       <trans-unit id="s4f0026a488fbdca3">
         <source>Mobile device</source>
         <target>Mobilna naprava</target>
-      </trans-unit>
-      <trans-unit id="sd8dddc9cd2d5b135">
-        <source>Network device</source>
-        <target>Omrežna naprava</target>
       </trans-unit>
       <trans-unit id="se51d6fb9158b9f24">
         <source>Router</source>
@@ -56,7 +48,8 @@
       </trans-unit>
       <trans-unit id="s8e114dd98aeedf91">
         <source>Switch</source>
-<target>Omrežno stikalo</target></trans-unit>
+        <target>Omrežno stikalo</target>
+      </trans-unit>
       <trans-unit id="s6503256c2de2745c">
         <source>Edge</source>
         <target>Rob</target>
@@ -76,6 +69,238 @@
       <trans-unit id="s0201d8d614a1b5a4">
         <source>Validate global address assignments</source>
         <target>Potrditev globalnih dodelitev naslovov</target>
+      </trans-unit>
+      <trans-unit id="s9c84598a99c03b88">
+        <source>Bitmask</source>
+        <target>Bitna maska</target>
+      </trans-unit>
+      <trans-unit id="s3741f219c32abe78">
+        <source>Net</source>
+        <target>Neto</target>
+      </trans-unit>
+      <trans-unit id="sc2abe27bb5be2879">
+        <source>Gateway</source>
+        <target>Gateway</target>
+      </trans-unit>
+      <trans-unit id="scbbde46d3e773c0e">
+        <source>Ethernet</source>
+        <target>Ethernet</target>
+      </trans-unit>
+      <trans-unit id="s05f14bdb78dbcdb1">
+        <source>Wireless</source>
+        <target>Brezžični</target>
+      </trans-unit>
+      <trans-unit id="sdb11e8f269ea1b13">
+        <source>Inserted IPv4 doesn't match the subnet mask.</source>
+        <target>Vstavljeni IPv4 se ne ujema z masko podomrežja.</target>
+      </trans-unit>
+      <trans-unit id="s138df1ceb51a3661">
+        <source>Inserted IPv4 for gateway doesn't match the subnet mask or the network is not configured.</source>
+        <target>Vstavljeni IPv4 za prehod se ne ujema z masko podomrežja ali omrežje ni konfigurirano.</target>
+      </trans-unit>
+      <trans-unit id="se1b13a7c92d4dcc3">
+        <source>Connection Type</source>
+        <target>Vrsta povezave</target>
+      </trans-unit>
+      <trans-unit id="sbcc845948d536d4e">
+        <source>ARP Table</source>
+        <target>Tabela ARP</target>
+      </trans-unit>
+      <trans-unit id="sc86686973428936d">
+        <source>Routing Table</source>
+        <target>Tabela usmerjanja</target>
+      </trans-unit>
+      <trans-unit id="s47f47667e50169dc">
+        <source>Mac Address Table</source>
+        <target>Tabela naslovov Mac</target>
+      </trans-unit>
+      <trans-unit id="sf9aee319a006c9b4">
+        <source>Add</source>
+        <target>Dodaj</target>
+      </trans-unit>
+      <trans-unit id="sef49aec68fd1dc66">
+        <source>Name</source>
+        <target>Ime</target>
+      </trans-unit>
+      <trans-unit id="s4114a8a9e84611a4">
+        <source>No port available.</source>
+        <target>Vrata niso na voljo.</target>
+      </trans-unit>
+      <trans-unit id="sf35d6a5dc03d5557">
+        <source>Add Port</source>
+        <target>Dodajanje pristanišča</target>
+      </trans-unit>
+      <trans-unit id="s9a66f95d51e77c3d">
+        <source>Details of the network </source>
+        <target>Podrobnosti o omrežju </target>
+      </trans-unit>
+      <trans-unit id="s71183ed55882f1c9">
+        <source>IPv4 address is invalid.</source>
+        <target>Naslov IPv4 je neveljaven.</target>
+      </trans-unit>
+      <trans-unit id="s5882939b7613896e">
+        <source>Invalid net id.</source>
+        <target>Nepravilna identiteta omrežja.</target>
+      </trans-unit>
+      <trans-unit id="sf2fe311e301fa69b">
+        <source>Network Mask</source>
+        <target>Maska omrežja</target>
+      </trans-unit>
+      <trans-unit id="s02ba6f5ad4b7f7d3">
+        <source>Invalid netmask.</source>
+        <target>Nepravilna omrežna maska.</target>
+      </trans-unit>
+      <trans-unit id="s146232d3025412f3">
+        <source>Invalid bitmask.</source>
+        <target>Nepravilna bitna maska.</target>
+      </trans-unit>
+      <trans-unit id="s0ccb657bb5ab7aef">
+        <source>MAC address is invalid.</source>
+        <target>Naslov MAC je neveljaven.</target>
+      </trans-unit>
+      <trans-unit id="sb3db490afc111f9f">
+        <source>IPv6 address is invalid.</source>
+        <target>Naslov IPv6 je neveljaven.</target>
+      </trans-unit>
+      <trans-unit id="s13a56952f9635fe4">
+        <source>Set Source</source>
+        <target>Nastaviti vir</target>
+      </trans-unit>
+      <trans-unit id="se340f70c28bb766c">
+        <source>Set Target</source>
+        <target>Določite cilj</target>
+      </trans-unit>
+      <trans-unit id="s479cdff9480652de">
+        <source>Start Simulation</source>
+        <target>Začetek simulacije</target>
+      </trans-unit>
+      <trans-unit id="s46e517b2962de3ce">
+        <source>Change Port Config</source>
+        <target>Sprememba konfiguracije vrat</target>
+      </trans-unit>
+      <trans-unit id="sbc909ebb8c28f954">
+        <source>Default Gateway</source>
+        <target>Privzeta vrata</target>
+      </trans-unit>
+      <trans-unit id="sdff41263f305c0ea">
+        <source>Define Interfaces</source>
+        <target>Opredelitev vmesnikov</target>
+      </trans-unit>
+      <trans-unit id="s82f9a9addfd569b4">
+        <source>Define Network</source>
+        <target>Opredelitev omrežja</target>
+      </trans-unit>
+      <trans-unit id="s349e167cfb664e7f">
+        <source>Simulation tables</source>
+        <target>Simulacijske tabele</target>
+      </trans-unit>
+      <trans-unit id="sbca820dcc7f49c76">
+        <source>Change color</source>
+        <target>Spremeni barvo</target>
+      </trans-unit>
+      <trans-unit id="sdc673e73b5c13aea">
+        <source>Delete</source>
+        <target>Izbriši</target>
+      </trans-unit>
+      <trans-unit id="s0480d34205c42b70">
+        <source>Ports of </source>
+        <target>Pristanišča v </target>
+      </trans-unit>
+      <trans-unit id="sb354dc19a7208a86">
+        <source>Port</source>
+        <target>Vrata</target>
+      </trans-unit>
+      <trans-unit id="s954199c24bb1bd31">
+        <source>Disconnect the port to remove it.</source>
+        <target>Odklopite vrata, da jih odstranite.</target>
+      </trans-unit>
+      <trans-unit id="sfcafb45ec30fbc60">
+        <source>Remove Port</source>
+        <target>Odstrani vrata</target>
+      </trans-unit>
+      <trans-unit id="s61506a07625cfc18">
+        <source>Disconnect the port to change its type.</source>
+        <target>Odklopite vrata, da spremenite njihov tip.</target>
+      </trans-unit>
+      <trans-unit id="s431ab01e3ccd9bf1">
+        <source>Select a port</source>
+        <target>Izberite vrata</target>
+      </trans-unit>
+      <trans-unit id="sa67b523cb72c0edb">
+        <source>Interfaces of the connection</source>
+        <target>Vmesniki povezave</target>
+      </trans-unit>
+      <trans-unit id="s5f43af3669b1e098">
+        <source>Source</source>
+        <target>Vir</target>
+      </trans-unit>
+      <trans-unit id="sff5bb7742c2896c8">
+        <source>Target</source>
+        <target>Cilj</target>
+      </trans-unit>
+      <trans-unit id="sa0aaabb83bc98a72">
+        <source>Import network</source>
+        <target>Uvozi omrežje</target>
+      </trans-unit>
+      <trans-unit id="s3f402f3f155ca6c9">
+        <source>Export network</source>
+        <target>Izvozi omrežje</target>
+      </trans-unit>
+      <trans-unit id="sae0547f6ee918ff9">
+        <source>Please assign ports/interfaces</source>
+        <target>Dodeli vrata ali vmesnike</target>
+      </trans-unit>
+      <trans-unit id="s269a190f0086d892">
+        <source>Unconfigured</source>
+        <target>Ni nastavljeno</target>
+      </trans-unit>
+      <trans-unit id="s110e81e1ca4f992c">
+        <source>L2 L3 Data</source>
+        <target>Podatki L2 in L3</target>
+      </trans-unit>
+      <trans-unit id="s72dee52f05a8a31b">
+        <source>L2 ARP request</source>
+        <target>Zahteva ARP na L2</target>
+      </trans-unit>
+      <trans-unit id="sfdd5df424bd1f92a">
+        <source>L2 ARP reply</source>
+        <target>Odgovor ARP na L2</target>
+      </trans-unit>
+      <trans-unit id="s631790646d968f40">
+        <source>L3 Data</source>
+        <target>Podatki L3</target>
+      </trans-unit>
+      <trans-unit id="s4ebc556809db8378">
+        <source>Source address</source>
+        <target>Izvorni naslov</target>
+      </trans-unit>
+      <trans-unit id="s2b52977dd01eb988">
+        <source>Target address</source>
+        <target>Ciljni naslov</target>
+      </trans-unit>
+      <trans-unit id="sfae8c6e1b5f558f4">
+        <source>Hosts</source>
+        <target>Gostitelji</target>
+      </trans-unit>
+      <trans-unit id="s56af247a411c39f2">
+        <source>Network devices</source>
+        <target>Omrežne naprave</target>
+      </trans-unit>
+      <trans-unit id="s5344520f09eaac03">
+        <source>This file is not a network file.</source>
+        <target>Ta datoteka ni omrežna datoteka.</target>
+      </trans-unit>
+      <trans-unit id="s37cbecaec58e2192">
+        <source>Mode</source>
+      <target>Način</target>
+</trans-unit>
+      <trans-unit id="s5eedf01beec54734">
+        <source>Tutorials</source>
+        <target>Učna gradiva</target>
+      </trans-unit>
+      <trans-unit id="sd8dddc9cd2d5b135">
+        <source>Network device</source>
+        <target>Omrežna naprava</target>
       </trans-unit>
       <trans-unit id="s9c0c880f87b91eb4">
         <source>Import a file created by this widget</source>
@@ -128,10 +353,6 @@
       <trans-unit id="s0b985047f07efbd0">
         <source>Netmask</source>
         <target>Netmaska</target>
-      </trans-unit>
-      <trans-unit id="s9c84598a99c03b88">
-        <source>Bitmask</source>
-        <target>Bitna maska</target>
       </trans-unit>
       <trans-unit id="see822b9851671c85">
         <source>Click to add your component</source>
@@ -257,14 +478,6 @@
         <source>No valid network address can be assigned to this net.</source>
         <target>Tej mreži ni mogoče dodeliti nobenega veljavnega omrežnega naslova.</target>
       </trans-unit>
-      <trans-unit id="s3741f219c32abe78">
-        <source>Net</source>
-        <target>Neto</target>
-      </trans-unit>
-      <trans-unit id="sc2abe27bb5be2879">
-        <source>Gateway</source>
-        <target>Gateway</target>
-      </trans-unit>
       <trans-unit id="sc096fbcee1f2951a">
         <source>should contain</source>
         <target>mora vsebovati</target>
@@ -341,14 +554,6 @@
         <source>MAC Address</source>
         <target>Naslov MAC</target>
       </trans-unit>
-      <trans-unit id="scbbde46d3e773c0e">
-        <source>Ethernet</source>
-        <target>Ethernet</target>
-      </trans-unit>
-      <trans-unit id="s05f14bdb78dbcdb1">
-        <source>Wireless</source>
-        <target>Brezžični</target>
-      </trans-unit>
       <trans-unit id="s7a1405870058921f">
         <source>Assigning ports for this connection</source>
         <target>Dodelitev vrat za to povezavo</target>
@@ -377,14 +582,6 @@
         <source>Subnet-based mode on:</source>
         <target>Vklopljen način na podlagi podomrežja:</target>
       </trans-unit>
-      <trans-unit id="sdb11e8f269ea1b13">
-        <source>Inserted IPv4 doesn't match the subnet mask.</source>
-        <target>Vstavljeni IPv4 se ne ujema z masko podomrežja.</target>
-      </trans-unit>
-      <trans-unit id="s138df1ceb51a3661">
-        <source>Inserted IPv4 for gateway doesn't match the subnet mask or the network is not configured.</source>
-        <target>Vstavljeni IPv4 za prehod se ne ujema z masko podomrežja ali omrežje ni konfigurirano.</target>
-      </trans-unit>
       <trans-unit id="s213a3bbc3f7af684">
         <source>is not valid.</source>
         <target>ni veljavna.</target>
@@ -400,10 +597,6 @@
       <trans-unit id="sf866305516492af0">
         <source>Interface</source>
         <target>Vmesnik</target>
-      </trans-unit>
-      <trans-unit id="se1b13a7c92d4dcc3">
-        <source>Connection Type</source>
-        <target>Vrsta povezave</target>
       </trans-unit>
       <trans-unit id="s89d11288ef7198fa">
         <source>This network has no gateway.</source>
@@ -577,22 +770,6 @@
         <source>Your table is saved!</source>
         <target>Vaša miza je shranjena!</target>
       </trans-unit>
-      <trans-unit id="sbcc845948d536d4e">
-        <source>ARP Table</source>
-        <target>Tabela ARP</target>
-      </trans-unit>
-      <trans-unit id="sc86686973428936d">
-        <source>Routing Table</source>
-        <target>Tabela usmerjanja</target>
-      </trans-unit>
-      <trans-unit id="s47f47667e50169dc">
-        <source>Mac Address Table</source>
-        <target>Tabela naslovov Mac</target>
-      </trans-unit>
-      <trans-unit id="sf9aee319a006c9b4">
-        <source>Add</source>
-        <target>Dodaj</target>
-      </trans-unit>
       <trans-unit id="sea4f08110bb8f15d">
         <source>Remove</source>
         <target>Odstranite</target>
@@ -684,78 +861,6 @@
       <trans-unit id="sb8766aae5913b0ef">
         <source>Example networks for simulations</source>
         <target>Primeri omrežij za simulacije</target>
-      </trans-unit>
-      <trans-unit id="sef49aec68fd1dc66">
-        <source>Name</source>
-        <target>Ime</target>
-      </trans-unit>
-      <trans-unit id="s4114a8a9e84611a4">
-        <source>No port available.</source>
-        <target>Vrata niso na voljo.</target>
-      </trans-unit>
-      <trans-unit id="sf35d6a5dc03d5557">
-        <source>Add Port</source>
-        <target>Dodajanje pristanišča</target>
-      </trans-unit>
-      <trans-unit id="s9a66f95d51e77c3d">
-        <source>Details of the network </source>
-        <target>Podrobnosti o omrežju </target>
-      </trans-unit>
-      <trans-unit id="s71183ed55882f1c9">
-        <source>IPv4 address is invalid.</source>
-        <target>Naslov IPv4 je neveljaven.</target>
-      </trans-unit>
-      <trans-unit id="s5882939b7613896e">
-        <source>Invalid net id.</source>
-        <target>Nepravilna identiteta omrežja.</target>
-      </trans-unit>
-      <trans-unit id="sf2fe311e301fa69b">
-        <source>Network Mask</source>
-        <target>Maska omrežja</target>
-      </trans-unit>
-      <trans-unit id="s02ba6f5ad4b7f7d3">
-        <source>Invalid netmask.</source>
-        <target>Nepravilna omrežna maska.</target>
-      </trans-unit>
-      <trans-unit id="s146232d3025412f3">
-        <source>Invalid bitmask.</source>
-        <target>Nepravilna bitna maska.</target>
-      </trans-unit>
-      <trans-unit id="s0ccb657bb5ab7aef">
-        <source>MAC address is invalid.</source>
-        <target>Naslov MAC je neveljaven.</target>
-      </trans-unit>
-      <trans-unit id="sb3db490afc111f9f">
-        <source>IPv6 address is invalid.</source>
-        <target>Naslov IPv6 je neveljaven.</target>
-      </trans-unit>
-      <trans-unit id="s13a56952f9635fe4">
-        <source>Set Source</source>
-        <target>Nastaviti vir</target>
-      </trans-unit>
-      <trans-unit id="se340f70c28bb766c">
-        <source>Set Target</source>
-        <target>Določite cilj</target>
-      </trans-unit>
-      <trans-unit id="s479cdff9480652de">
-        <source>Start Simulation</source>
-        <target>Začetek simulacije</target>
-      </trans-unit>
-      <trans-unit id="s46e517b2962de3ce">
-        <source>Change Port Config</source>
-        <target>Sprememba konfiguracije vrat</target>
-      </trans-unit>
-      <trans-unit id="sbc909ebb8c28f954">
-        <source>Default Gateway</source>
-        <target>Privzeta vrata</target>
-      </trans-unit>
-      <trans-unit id="sdff41263f305c0ea">
-        <source>Define Interfaces</source>
-        <target>Opredelitev vmesnikov</target>
-      </trans-unit>
-      <trans-unit id="s82f9a9addfd569b4">
-        <source>Define Network</source>
-        <target>Opredelitev omrežja</target>
       </trans-unit>
       <trans-unit id="s768df033dc306fbc">
         <source>Before dragging a node into network</source>
@@ -869,78 +974,6 @@
         <source>Packet sending controller to start simulation</source>
         <target>Kontroler za pošiljanje paketov za začetek simulacije</target>
       </trans-unit>
-      <trans-unit id="s349e167cfb664e7f">
-        <source>Simulation tables</source>
-        <target>Simulacijske tabele</target>
-      </trans-unit>
-      <trans-unit id="sbca820dcc7f49c76">
-        <source>Change color</source>
-        <target>Spremeni barvo</target>
-      </trans-unit>
-      <trans-unit id="sdc673e73b5c13aea">
-        <source>Delete</source>
-        <target>Izbriši</target>
-      </trans-unit>
-      <trans-unit id="s0480d34205c42b70">
-        <source>Ports of </source>
-        <target>Pristanišča v </target>
-      </trans-unit>
-      <trans-unit id="sb354dc19a7208a86">
-        <source>Port</source>
-        <target>Vrata</target>
-      </trans-unit>
-      <trans-unit id="s954199c24bb1bd31">
-        <source>Disconnect the port to remove it.</source>
-        <target>Odklopite vrata, da jih odstranite.</target>
-      </trans-unit>
-      <trans-unit id="sfcafb45ec30fbc60">
-        <source>Remove Port</source>
-        <target>Odstrani vrata</target>
-      </trans-unit>
-      <trans-unit id="s61506a07625cfc18">
-        <source>Disconnect the port to change its type.</source>
-        <target>Odklopite vrata, da spremenite njihov tip.</target>
-      </trans-unit>
-      <trans-unit id="s431ab01e3ccd9bf1">
-        <source>Select a port</source>
-        <target>Izberite vrata</target>
-      </trans-unit>
-      <trans-unit id="sa67b523cb72c0edb">
-        <source>Interfaces of the connection</source>
-        <target>Vmesniki povezave</target>
-      </trans-unit>
-      <trans-unit id="s5f43af3669b1e098">
-        <source>Source</source>
-        <target>Vir</target>
-      </trans-unit>
-      <trans-unit id="sff5bb7742c2896c8">
-        <source>Target</source>
-        <target>Cilj</target>
-      </trans-unit>
-    <trans-unit id="sa0aaabb83bc98a72">
-  <source>Import network</source>
-<target>Uvozi omrežje</target></trans-unit>
-<trans-unit id="s3f402f3f155ca6c9">
-  <source>Export network</source>
-<target>Izvozi omrežje</target></trans-unit>
-<trans-unit id="sae0547f6ee918ff9">
-  <source>Please assign ports/interfaces</source>
-<target>Dodeli vrata ali vmesnike</target></trans-unit>
-<trans-unit id="s269a190f0086d892">
-  <source>Unconfigured</source>
-<target>Ni nastavljeno</target></trans-unit>
-<trans-unit id="s110e81e1ca4f992c">
-  <source>L2 L3 Data</source>
-<target>Podatki L2 in L3</target></trans-unit>
-<trans-unit id="s72dee52f05a8a31b">
-  <source>L2 ARP request</source>
-<target>Zahteva ARP na L2</target></trans-unit>
-<trans-unit id="sfdd5df424bd1f92a">
-  <source>L2 ARP reply</source>
-<target>Odgovor ARP na L2</target></trans-unit>
-<trans-unit id="s631790646d968f40">
-  <source>L3 Data</source>
-<target>Podatki L3</target></trans-unit>
-</body>
+    </body>
   </file>
 </xliff>

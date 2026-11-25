@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd" version="1.2">
   <file original="lit-localize-inputs" datatype="plaintext" source-language="en" target-language="id">
     <body>
@@ -18,10 +18,6 @@
         <source>Fullscreen</source>
         <target>Layar penuh</target>
       </trans-unit>
-      <trans-unit id="s5eedf01beec54734">
-        <source>Tutorials</source>
-        <target>Tutorial</target>
-      </trans-unit>
       <trans-unit id="sba1e8892999bb878">
         <source>Computer</source>
         <target>Komputer</target>
@@ -29,10 +25,6 @@
       <trans-unit id="s4f0026a488fbdca3">
         <source>Mobile device</source>
         <target>Perangkat seluler</target>
-      </trans-unit>
-      <trans-unit id="sd8dddc9cd2d5b135">
-        <source>Network device</source>
-        <target>Perangkat jaringan</target>
       </trans-unit>
       <trans-unit id="se51d6fb9158b9f24">
         <source>Router</source>
@@ -56,7 +48,8 @@
       </trans-unit>
       <trans-unit id="s8e114dd98aeedf91">
         <source>Switch</source>
-<target>Switch jaringan</target></trans-unit>
+        <target>Switch jaringan</target>
+      </trans-unit>
       <trans-unit id="s6503256c2de2745c">
         <source>Edge</source>
         <target>Tepi</target>
@@ -77,6 +70,238 @@
         <source>Validate global address assignments</source>
         <target>Memvalidasi penetapan alamat global</target>
       </trans-unit>
+      <trans-unit id="s9c84598a99c03b88">
+        <source>Bitmask</source>
+        <target>Bitmask</target>
+      </trans-unit>
+      <trans-unit id="s3741f219c32abe78">
+        <source>Net</source>
+        <target>Net</target>
+      </trans-unit>
+      <trans-unit id="sc2abe27bb5be2879">
+        <source>Gateway</source>
+        <target>Gerbang</target>
+      </trans-unit>
+      <trans-unit id="scbbde46d3e773c0e">
+        <source>Ethernet</source>
+        <target>Ethernet</target>
+      </trans-unit>
+      <trans-unit id="s05f14bdb78dbcdb1">
+        <source>Wireless</source>
+        <target>Nirkabel</target>
+      </trans-unit>
+      <trans-unit id="sdb11e8f269ea1b13">
+        <source>Inserted IPv4 doesn't match the subnet mask.</source>
+        <target>IPv4 yang dimasukkan tidak cocok dengan subnet mask.</target>
+      </trans-unit>
+      <trans-unit id="s138df1ceb51a3661">
+        <source>Inserted IPv4 for gateway doesn't match the subnet mask or the network is not configured.</source>
+        <target>IPv4 yang dimasukkan untuk gateway tidak sesuai dengan subnet mask atau jaringan tidak dikonfigurasi.</target>
+      </trans-unit>
+      <trans-unit id="se1b13a7c92d4dcc3">
+        <source>Connection Type</source>
+        <target>Jenis Koneksi</target>
+      </trans-unit>
+      <trans-unit id="sbcc845948d536d4e">
+        <source>ARP Table</source>
+        <target>Tabel ARP</target>
+      </trans-unit>
+      <trans-unit id="sc86686973428936d">
+        <source>Routing Table</source>
+        <target>Tabel Perutean</target>
+      </trans-unit>
+      <trans-unit id="s47f47667e50169dc">
+        <source>Mac Address Table</source>
+        <target>Tabel Alamat Mac</target>
+      </trans-unit>
+      <trans-unit id="sf9aee319a006c9b4">
+        <source>Add</source>
+        <target>Menambahkan</target>
+      </trans-unit>
+      <trans-unit id="sef49aec68fd1dc66">
+        <source>Name</source>
+        <target>Nama</target>
+      </trans-unit>
+      <trans-unit id="s4114a8a9e84611a4">
+        <source>No port available.</source>
+        <target>Tidak ada port yang tersedia.</target>
+      </trans-unit>
+      <trans-unit id="sf35d6a5dc03d5557">
+        <source>Add Port</source>
+        <target>Tambahkan Port</target>
+      </trans-unit>
+      <trans-unit id="s9a66f95d51e77c3d">
+        <source>Details of the network </source>
+        <target>Rincian jaringan </target>
+      </trans-unit>
+      <trans-unit id="s71183ed55882f1c9">
+        <source>IPv4 address is invalid.</source>
+        <target>Alamat IPv4 tidak valid.</target>
+      </trans-unit>
+      <trans-unit id="s5882939b7613896e">
+        <source>Invalid net id.</source>
+        <target>Id bersih tidak valid.</target>
+      </trans-unit>
+      <trans-unit id="sf2fe311e301fa69b">
+        <source>Network Mask</source>
+        <target>Masker Jaringan</target>
+      </trans-unit>
+      <trans-unit id="s02ba6f5ad4b7f7d3">
+        <source>Invalid netmask.</source>
+        <target>Netmask tidak valid.</target>
+      </trans-unit>
+      <trans-unit id="s146232d3025412f3">
+        <source>Invalid bitmask.</source>
+        <target>Bitmask tidak valid.</target>
+      </trans-unit>
+      <trans-unit id="s0ccb657bb5ab7aef">
+        <source>MAC address is invalid.</source>
+        <target>Alamat MAC tidak valid.</target>
+      </trans-unit>
+      <trans-unit id="sb3db490afc111f9f">
+        <source>IPv6 address is invalid.</source>
+        <target>Alamat IPv6 tidak valid.</target>
+      </trans-unit>
+      <trans-unit id="s13a56952f9635fe4">
+        <source>Set Source</source>
+        <target>Tetapkan Sumber</target>
+      </trans-unit>
+      <trans-unit id="se340f70c28bb766c">
+        <source>Set Target</source>
+        <target>Tetapkan Target</target>
+      </trans-unit>
+      <trans-unit id="s479cdff9480652de">
+        <source>Start Simulation</source>
+        <target>Mulai Simulasi</target>
+      </trans-unit>
+      <trans-unit id="s46e517b2962de3ce">
+        <source>Change Port Config</source>
+        <target>Mengubah Konfigurasi Port</target>
+      </trans-unit>
+      <trans-unit id="sbc909ebb8c28f954">
+        <source>Default Gateway</source>
+        <target>Gateway Default</target>
+      </trans-unit>
+      <trans-unit id="sdff41263f305c0ea">
+        <source>Define Interfaces</source>
+        <target>Tentukan Antarmuka</target>
+      </trans-unit>
+      <trans-unit id="s82f9a9addfd569b4">
+        <source>Define Network</source>
+        <target>Tentukan Jaringan</target>
+      </trans-unit>
+      <trans-unit id="s349e167cfb664e7f">
+        <source>Simulation tables</source>
+        <target>Tabel simulasi</target>
+      </trans-unit>
+      <trans-unit id="sbca820dcc7f49c76">
+        <source>Change color</source>
+        <target>Ubah warna</target>
+      </trans-unit>
+      <trans-unit id="sdc673e73b5c13aea">
+        <source>Delete</source>
+        <target>Hapus</target>
+      </trans-unit>
+      <trans-unit id="s0480d34205c42b70">
+        <source>Ports of </source>
+        <target>Pelabuhan di </target>
+      </trans-unit>
+      <trans-unit id="sb354dc19a7208a86">
+        <source>Port</source>
+        <target>Port</target>
+      </trans-unit>
+      <trans-unit id="s954199c24bb1bd31">
+        <source>Disconnect the port to remove it.</source>
+        <target>Putuskan sambungan port untuk menghapusnya.</target>
+      </trans-unit>
+      <trans-unit id="sfcafb45ec30fbc60">
+        <source>Remove Port</source>
+        <target>Hapus Port</target>
+      </trans-unit>
+      <trans-unit id="s61506a07625cfc18">
+        <source>Disconnect the port to change its type.</source>
+        <target>Putuskan sambungan port untuk mengubah jenisnya.</target>
+      </trans-unit>
+      <trans-unit id="s431ab01e3ccd9bf1">
+        <source>Select a port</source>
+        <target>Pilih port</target>
+      </trans-unit>
+      <trans-unit id="sa67b523cb72c0edb">
+        <source>Interfaces of the connection</source>
+        <target>Antarmuka koneksi</target>
+      </trans-unit>
+      <trans-unit id="s5f43af3669b1e098">
+        <source>Source</source>
+        <target>Sumber</target>
+      </trans-unit>
+      <trans-unit id="sff5bb7742c2896c8">
+        <source>Target</source>
+        <target>Tujuan</target>
+      </trans-unit>
+      <trans-unit id="sa0aaabb83bc98a72">
+        <source>Import network</source>
+        <target>Impor jaringan</target>
+      </trans-unit>
+      <trans-unit id="s3f402f3f155ca6c9">
+        <source>Export network</source>
+        <target>Ekspor jaringan</target>
+      </trans-unit>
+      <trans-unit id="sae0547f6ee918ff9">
+        <source>Please assign ports/interfaces</source>
+        <target>Tetapkan port atau antarmuka</target>
+      </trans-unit>
+      <trans-unit id="s269a190f0086d892">
+        <source>Unconfigured</source>
+        <target>Belum dikonfigurasi</target>
+      </trans-unit>
+      <trans-unit id="s110e81e1ca4f992c">
+        <source>L2 L3 Data</source>
+        <target>Data L2 dan L3</target>
+      </trans-unit>
+      <trans-unit id="s72dee52f05a8a31b">
+        <source>L2 ARP request</source>
+        <target>Permintaan ARP L2</target>
+      </trans-unit>
+      <trans-unit id="sfdd5df424bd1f92a">
+        <source>L2 ARP reply</source>
+        <target>Balasan ARP L2</target>
+      </trans-unit>
+      <trans-unit id="s631790646d968f40">
+        <source>L3 Data</source>
+        <target>Data L3</target>
+      </trans-unit>
+      <trans-unit id="s4ebc556809db8378">
+        <source>Source address</source>
+        <target>Alamat sumber</target>
+      </trans-unit>
+      <trans-unit id="s2b52977dd01eb988">
+        <source>Target address</source>
+        <target>Alamat tujuan</target>
+      </trans-unit>
+      <trans-unit id="sfae8c6e1b5f558f4">
+        <source>Hosts</source>
+        <target>Host</target>
+      </trans-unit>
+      <trans-unit id="s56af247a411c39f2">
+        <source>Network devices</source>
+        <target>Perangkat jaringan</target>
+      </trans-unit>
+      <trans-unit id="s5344520f09eaac03">
+        <source>This file is not a network file.</source>
+        <target>File ini bukan file jaringan.</target>
+      </trans-unit>
+      <trans-unit id="s37cbecaec58e2192">
+        <source>Mode</source>
+      <target>Mode</target>
+</trans-unit>
+      <trans-unit id="s5eedf01beec54734">
+        <source>Tutorials</source>
+        <target>Tutorial</target>
+      </trans-unit>
+      <trans-unit id="sd8dddc9cd2d5b135">
+        <source>Network device</source>
+        <target>Perangkat jaringan</target>
+      </trans-unit>
       <trans-unit id="s9c0c880f87b91eb4">
         <source>Import a file created by this widget</source>
         <target>Impor file yang dibuat oleh widget ini</target>
@@ -95,7 +320,8 @@
       </trans-unit>
       <trans-unit id="s6b05f9d8801fc14f">
         <source>Host</source>
-<target>Host</target></trans-unit>
+        <target>Host</target>
+      </trans-unit>
       <trans-unit id="s1018d5f2b1cc4e8d">
         <source>Access Point</source>
         <target>Titik Akses</target>
@@ -127,10 +353,6 @@
       <trans-unit id="s0b985047f07efbd0">
         <source>Netmask</source>
         <target>Netmask</target>
-      </trans-unit>
-      <trans-unit id="s9c84598a99c03b88">
-        <source>Bitmask</source>
-        <target>Bitmask</target>
       </trans-unit>
       <trans-unit id="see822b9851671c85">
         <source>Click to add your component</source>
@@ -256,14 +478,6 @@
         <source>No valid network address can be assigned to this net.</source>
         <target>Tidak ada alamat jaringan yang valid yang dapat ditetapkan ke jaringan ini.</target>
       </trans-unit>
-      <trans-unit id="s3741f219c32abe78">
-        <source>Net</source>
-        <target>Net</target>
-      </trans-unit>
-      <trans-unit id="sc2abe27bb5be2879">
-        <source>Gateway</source>
-        <target>Gerbang</target>
-      </trans-unit>
       <trans-unit id="sc096fbcee1f2951a">
         <source>should contain</source>
         <target>harus berisi</target>
@@ -340,14 +554,6 @@
         <source>MAC Address</source>
         <target>Alamat MAC</target>
       </trans-unit>
-      <trans-unit id="scbbde46d3e773c0e">
-        <source>Ethernet</source>
-        <target>Ethernet</target>
-      </trans-unit>
-      <trans-unit id="s05f14bdb78dbcdb1">
-        <source>Wireless</source>
-        <target>Nirkabel</target>
-      </trans-unit>
       <trans-unit id="s7a1405870058921f">
         <source>Assigning ports for this connection</source>
         <target>Menetapkan port untuk koneksi ini</target>
@@ -376,14 +582,6 @@
         <source>Subnet-based mode on:</source>
         <target>Mode berbasis subnet aktif:</target>
       </trans-unit>
-      <trans-unit id="sdb11e8f269ea1b13">
-        <source>Inserted IPv4 doesn't match the subnet mask.</source>
-        <target>IPv4 yang dimasukkan tidak cocok dengan subnet mask.</target>
-      </trans-unit>
-      <trans-unit id="s138df1ceb51a3661">
-        <source>Inserted IPv4 for gateway doesn't match the subnet mask or the network is not configured.</source>
-        <target>IPv4 yang dimasukkan untuk gateway tidak sesuai dengan subnet mask atau jaringan tidak dikonfigurasi.</target>
-      </trans-unit>
       <trans-unit id="s213a3bbc3f7af684">
         <source>is not valid.</source>
         <target>tidak valid.</target>
@@ -399,10 +597,6 @@
       <trans-unit id="sf866305516492af0">
         <source>Interface</source>
         <target>Antarmuka</target>
-      </trans-unit>
-      <trans-unit id="se1b13a7c92d4dcc3">
-        <source>Connection Type</source>
-        <target>Jenis Koneksi</target>
       </trans-unit>
       <trans-unit id="s89d11288ef7198fa">
         <source>This network has no gateway.</source>
@@ -576,22 +770,6 @@
         <source>Your table is saved!</source>
         <target>Tabel Anda sudah tersimpan!</target>
       </trans-unit>
-      <trans-unit id="sbcc845948d536d4e">
-        <source>ARP Table</source>
-        <target>Tabel ARP</target>
-      </trans-unit>
-      <trans-unit id="sc86686973428936d">
-        <source>Routing Table</source>
-        <target>Tabel Perutean</target>
-      </trans-unit>
-      <trans-unit id="s47f47667e50169dc">
-        <source>Mac Address Table</source>
-        <target>Tabel Alamat Mac</target>
-      </trans-unit>
-      <trans-unit id="sf9aee319a006c9b4">
-        <source>Add</source>
-        <target>Menambahkan</target>
-      </trans-unit>
       <trans-unit id="sea4f08110bb8f15d">
         <source>Remove</source>
         <target>Menghapus</target>
@@ -683,78 +861,6 @@
       <trans-unit id="sb8766aae5913b0ef">
         <source>Example networks for simulations</source>
         <target>Contoh jaringan untuk simulasi</target>
-      </trans-unit>
-      <trans-unit id="sef49aec68fd1dc66">
-        <source>Name</source>
-        <target>Nama</target>
-      </trans-unit>
-      <trans-unit id="s4114a8a9e84611a4">
-        <source>No port available.</source>
-        <target>Tidak ada port yang tersedia.</target>
-      </trans-unit>
-      <trans-unit id="sf35d6a5dc03d5557">
-        <source>Add Port</source>
-        <target>Tambahkan Port</target>
-      </trans-unit>
-      <trans-unit id="s9a66f95d51e77c3d">
-        <source>Details of the network </source>
-        <target>Rincian jaringan </target>
-      </trans-unit>
-      <trans-unit id="s71183ed55882f1c9">
-        <source>IPv4 address is invalid.</source>
-        <target>Alamat IPv4 tidak valid.</target>
-      </trans-unit>
-      <trans-unit id="s5882939b7613896e">
-        <source>Invalid net id.</source>
-        <target>Id bersih tidak valid.</target>
-      </trans-unit>
-      <trans-unit id="sf2fe311e301fa69b">
-        <source>Network Mask</source>
-        <target>Masker Jaringan</target>
-      </trans-unit>
-      <trans-unit id="s02ba6f5ad4b7f7d3">
-        <source>Invalid netmask.</source>
-        <target>Netmask tidak valid.</target>
-      </trans-unit>
-      <trans-unit id="s146232d3025412f3">
-        <source>Invalid bitmask.</source>
-        <target>Bitmask tidak valid.</target>
-      </trans-unit>
-      <trans-unit id="s0ccb657bb5ab7aef">
-        <source>MAC address is invalid.</source>
-        <target>Alamat MAC tidak valid.</target>
-      </trans-unit>
-      <trans-unit id="sb3db490afc111f9f">
-        <source>IPv6 address is invalid.</source>
-        <target>Alamat IPv6 tidak valid.</target>
-      </trans-unit>
-      <trans-unit id="s13a56952f9635fe4">
-        <source>Set Source</source>
-        <target>Tetapkan Sumber</target>
-      </trans-unit>
-      <trans-unit id="se340f70c28bb766c">
-        <source>Set Target</source>
-        <target>Tetapkan Target</target>
-      </trans-unit>
-      <trans-unit id="s479cdff9480652de">
-        <source>Start Simulation</source>
-        <target>Mulai Simulasi</target>
-      </trans-unit>
-      <trans-unit id="s46e517b2962de3ce">
-        <source>Change Port Config</source>
-        <target>Mengubah Konfigurasi Port</target>
-      </trans-unit>
-      <trans-unit id="sbc909ebb8c28f954">
-        <source>Default Gateway</source>
-        <target>Gateway Default</target>
-      </trans-unit>
-      <trans-unit id="sdff41263f305c0ea">
-        <source>Define Interfaces</source>
-        <target>Tentukan Antarmuka</target>
-      </trans-unit>
-      <trans-unit id="s82f9a9addfd569b4">
-        <source>Define Network</source>
-        <target>Tentukan Jaringan</target>
       </trans-unit>
       <trans-unit id="s768df033dc306fbc">
         <source>Before dragging a node into network</source>
@@ -868,78 +974,6 @@
         <source>Packet sending controller to start simulation</source>
         <target>Pengontrol pengiriman paket untuk memulai simulasi</target>
       </trans-unit>
-      <trans-unit id="s349e167cfb664e7f">
-        <source>Simulation tables</source>
-        <target>Tabel simulasi</target>
-      </trans-unit>
-      <trans-unit id="sbca820dcc7f49c76">
-        <source>Change color</source>
-        <target>Ubah warna</target>
-      </trans-unit>
-      <trans-unit id="sdc673e73b5c13aea">
-        <source>Delete</source>
-        <target>Hapus</target>
-      </trans-unit>
-      <trans-unit id="s0480d34205c42b70">
-        <source>Ports of </source>
-        <target>Pelabuhan di </target>
-      </trans-unit>
-      <trans-unit id="sb354dc19a7208a86">
-        <source>Port</source>
-        <target>Port</target>
-      </trans-unit>
-      <trans-unit id="s954199c24bb1bd31">
-        <source>Disconnect the port to remove it.</source>
-        <target>Putuskan sambungan port untuk menghapusnya.</target>
-      </trans-unit>
-      <trans-unit id="sfcafb45ec30fbc60">
-        <source>Remove Port</source>
-        <target>Hapus Port</target>
-      </trans-unit>
-      <trans-unit id="s61506a07625cfc18">
-        <source>Disconnect the port to change its type.</source>
-        <target>Putuskan sambungan port untuk mengubah jenisnya.</target>
-      </trans-unit>
-      <trans-unit id="s431ab01e3ccd9bf1">
-        <source>Select a port</source>
-        <target>Pilih port</target>
-      </trans-unit>
-      <trans-unit id="sa67b523cb72c0edb">
-        <source>Interfaces of the connection</source>
-        <target>Antarmuka koneksi</target>
-      </trans-unit>
-      <trans-unit id="s5f43af3669b1e098">
-        <source>Source</source>
-        <target>Sumber</target>
-      </trans-unit>
-      <trans-unit id="sff5bb7742c2896c8">
-        <source>Target</source>
-        <target>Tujuan</target>
-      </trans-unit>
-    <trans-unit id="sa0aaabb83bc98a72">
-  <source>Import network</source>
-<target>Impor jaringan</target></trans-unit>
-<trans-unit id="s3f402f3f155ca6c9">
-  <source>Export network</source>
-<target>Ekspor jaringan</target></trans-unit>
-<trans-unit id="sae0547f6ee918ff9">
-  <source>Please assign ports/interfaces</source>
-<target>Tetapkan port atau antarmuka</target></trans-unit>
-<trans-unit id="s269a190f0086d892">
-  <source>Unconfigured</source>
-<target>Belum dikonfigurasi</target></trans-unit>
-<trans-unit id="s110e81e1ca4f992c">
-  <source>L2 L3 Data</source>
-<target>Data L2 dan L3</target></trans-unit>
-<trans-unit id="s72dee52f05a8a31b">
-  <source>L2 ARP request</source>
-<target>Permintaan ARP L2</target></trans-unit>
-<trans-unit id="sfdd5df424bd1f92a">
-  <source>L2 ARP reply</source>
-<target>Balasan ARP L2</target></trans-unit>
-<trans-unit id="s631790646d968f40">
-  <source>L3 Data</source>
-<target>Data L3</target></trans-unit>
-</body>
+    </body>
   </file>
 </xliff>
