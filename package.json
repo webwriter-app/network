@@ -1,6 +1,6 @@
 {
   "name": "@webwriter/network",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Visualize network topologies and compare different kinds of networks.",
   "keywords": [
     "webwriter-widget",
