@@ -1,5 +1,5 @@
-# Network (`@webwriter/network@3.0.2`)
-[License: MIT](LICENSE) | Version: 3.0.2
+# Network (`@webwriter/network@3.1.0`)
+[License: MIT](LICENSE) | Version: 3.1.0
 
 Visualize network topologies and compare different kinds of networks.
 
