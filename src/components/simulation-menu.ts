@@ -5,10 +5,10 @@ import type { WwNetwork } from '../widgets/ww-network';
 function endPointTemplate(
     this: WwNetwork,
     role: 'source' | 'target',
-    node: PhysicalNode | undefined,
-    other: 'source' | 'target' | null
+    node: PhysicalNode | undefined
 ) {
     const simulator = this.packetSimulator;
+    const picking = this.picking;
     const label = role === 'source' ? this.msg('Set Source') : this.msg('Set Target');
     const ip = role === 'source' ? simulator.sourceIp : simulator.targetIp;
     return html`
@@ -16,8 +16,8 @@ function endPointTemplate(
             <sl-button
                 class=${role === 'source' ? 'set-source-btn' : 'set-target-btn'}
                 size="small"
-                ?loading=${this.picking === role}
-                ?disabled=${this.picking === other}
+                ?loading=${picking === role}
+                ?disabled=${picking !== null && picking !== role}
                 @click=${() => this.pickEndPoint(role)}
                 >${node ? node.id : label}</sl-button
             >
@@ -50,8 +50,8 @@ export function simulationMenuTemplate(this: WwNetwork) {
 
     return html`
         <div class="simulationmenu" style=${this.mode === 'simulate' ? 'display: block;' : 'display: none;'}>
-            ${endPointTemplate.call(this, 'source', source, this.picking === 'target' ? 'target' : null)}
-            ${endPointTemplate.call(this, 'target', target, this.picking === 'source' ? 'source' : null)}
+            ${endPointTemplate.call(this, 'source', source)}
+            ${endPointTemplate.call(this, 'target', target)}
             <sl-button-group>
                 <sl-button @click=${() => simulator.startSession()} size="small">${this.msg('Start Simulation')}</sl-button>
             </sl-button-group>
